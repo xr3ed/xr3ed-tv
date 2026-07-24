@@ -1,0 +1,45 @@
+name: Update Playlist
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # Jalan otomatis tiap 15 menit
+  workflow_dispatch:      # Tombol manual aktif
+
+permissions:
+  contents: write         # Izinkan bot untuk push berkas
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install pycryptodome
+
+      - name: Run decryption
+        env:
+          DECRYPT_URL: ${{ secrets.DECRYPT_URL }}
+          DECRYPT_KEY_A: ${{ secrets.DECRYPT_KEY_A }}
+          DECRYPT_KEY_B: ${{ secrets.DECRYPT_KEY_B }}
+          DECRYPT_KEY_V: ${{ secrets.DECRYPT_KEY_V }}
+          DECRYPT_PKG: ${{ secrets.DECRYPT_PKG }}
+        run: |
+          python update_playlist.py
+
+      - name: Commit, Squash and Force Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan temp-branch
+          git add -A
+          git commit -m "Update Playlists"
+          git branch -D main
+          git branch -m main
+          git push origin main --force
