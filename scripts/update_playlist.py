@@ -289,17 +289,17 @@ def _name_tokens(s):
 
 def fuzzy_match_od(t1_primary, t2_primary, od_list, time_ms_primary=None):
     """Find best OD match for a primary event pair (t1 vs t2).
-    Uses token-overlap: both team names must have significant word overlap.
-    Optional time_ms_primary (unix ms) to restrict to ±5h window.
-    Returns matched OD entry or None."""
-    tok1 = _name_tokens(t1_primary)
-    tok2 = _name_tokens(t2_primary)
-    if not tok1 or not tok2:
-        return None
-    # Remove very short/common tokens
-    tok1 = {t for t in tok1 if len(t) > 2}
-    tok2 = {t for t in tok2 if len(t) > 2}
-    if not tok1 or not tok2:
+    Uses token-overlap: handles both normal matches and single-string fight events."""
+    if not t2_primary and (' vs ' in t1_primary.lower() or ' v ' in t1_primary.lower()):
+        parts = re.split(r'\s+(?:vs|v)\.?\s+', t1_primary, flags=re.IGNORECASE)
+        if len(parts) >= 2:
+            t1_primary, t2_primary = parts[0], parts[1]
+
+    tok1 = {t for t in _name_tokens(t1_primary) if len(t) > 2}
+    tok2 = {t for t in _name_tokens(t2_primary) if len(t) > 2}
+
+    full_prim_toks = {t for t in _name_tokens(f"{t1_primary} {t2_primary}") if len(t) > 2}
+    if not full_prim_toks:
         return None
 
     best = None
@@ -309,30 +309,30 @@ def fuzzy_match_od(t1_primary, t2_primary, od_list, time_ms_primary=None):
         teams = m.get('teams') or {}
         ot1 = (teams.get('home') or {}).get('name', '')
         ot2 = (teams.get('away') or {}).get('name', '')
-        if not ot1 or not ot2:
-            continue
+        od_title = m.get('title') or m.get('name') or ''
 
         otok1 = {t for t in _name_tokens(ot1) if len(t) > 2}
         otok2 = {t for t in _name_tokens(ot2) if len(t) > 2}
-        if not otok1 or not otok2:
-            continue
+        full_od_toks = {t for t in _name_tokens(f"{ot1} {ot2} {od_title}") if len(t) > 2}
 
-        # Score: sum of intersection / union for both pairs
         def overlap(a, b):
             inter = len(a & b)
             if not inter:
                 return 0.0
-            return inter / min(len(a), len(b))  # recall-based
+            return inter / min(len(a), len(b))
 
-        # Try both home/away orderings
-        s_normal = (overlap(tok1, otok1) + overlap(tok2, otok2)) / 2
-        s_flipped = (overlap(tok1, otok2) + overlap(tok2, otok1)) / 2
-        score = max(s_normal, s_flipped)
+        score = 0.0
+        if tok1 and tok2 and otok1 and otok2:
+            s_normal = (overlap(tok1, otok1) + overlap(tok2, otok2)) / 2
+            s_flipped = (overlap(tok1, otok2) + overlap(tok2, otok1)) / 2
+            score = max(s_normal, s_flipped)
+
+        score_full = overlap(full_prim_toks, full_od_toks)
+        score = max(score, score_full)
 
         if score < 0.6:
             continue
 
-        # Optional time check ±5h
         if time_ms_primary:
             od_date = m.get('date', 0) or 0
             if od_date and abs(od_date - time_ms_primary) > 5 * 3600 * 1000:
@@ -442,7 +442,9 @@ def generate_playlist():
         except Exception:
             pass
 
-        matched_od = fuzzy_match_od(t1, t2, valid_ondemand, prim_time_ms) if (t1 and t2) else None
+        ev_query_1 = t1 or league or (ev.get('name') or ev.get('title') or '')
+        ev_query_2 = t2
+        matched_od = fuzzy_match_od(ev_query_1, ev_query_2, valid_ondemand, prim_time_ms) if ev_query_1 else None
 
         if matched_od:
             ondemand_handled_ids.add(matched_od.get('id'))
@@ -450,14 +452,18 @@ def generate_playlist():
             channels = [ch.get('name') for ch in matched_od.get('tvChannels', []) if ch.get('name')]
             unique_tv = list(dict.fromkeys(channels))
             od_tv = f" [{' | '.join(unique_tv[:3])}]" if unique_tv else ""
+            od_title_val = matched_od.get('title') or matched_od.get('name') or ''
         else:
             od_badge = ""
             od_tv = ""
+            od_title_val = ""
 
         if t1 and t2 and not is_identical and not is_t1_placeholder and not is_t2_placeholder:
             match_title = f"[{league}] {t1} vs {t2}{od_tv}"
         elif t1 and not is_t1_placeholder and t1.lower() != league.lower():
             match_title = f"[{league}] {t1}{od_tv}"
+        elif od_title_val:
+            match_title = f"[{league}] {od_title_val}{od_tv}"
         else:
             match_title = f"[{league}]{od_tv}"
 
@@ -483,19 +489,46 @@ def generate_playlist():
         seen_match_urls = set()
         server_list = []
 
-        # Optional worker stream
+        # Optional worker stream + TV channels + substreams from matched OnDemand
         if matched_od and WORKER_AUTH_KEY:
             m_od_id = matched_od.get('id')
             if m_od_id:
                 enc_id = encrypt_match_id(m_od_id, WORKER_AUTH_KEY)
                 worker_stream = f"{WORKER_BASE}/live/{enc_id}.m3u8"
                 seen_match_urls.add(worker_stream)
+                srv_idx = len(server_list) + 1
                 server_list.append((
-                    "Server 1 (Worker HLS)",
+                    f"Server {srv_idx} (Worker HLS)",
                     worker_stream,
                     'https://damitv.st/',
                     None
                 ))
+
+            # Matched TV channels
+            for ch in (matched_od.get('tvChannels') or []):
+                ch_id = ch.get('id')
+                ch_name = ch.get('name') or 'TV Feed'
+                if ch_id:
+                    enc_ch_id = encrypt_match_id(str(ch_id), WORKER_AUTH_KEY)
+                    ch_url = f"{WORKER_BASE}/live/{enc_ch_id}.m3u8"
+                    if ch_url not in seen_match_urls:
+                        seen_match_urls.add(ch_url)
+                        srv_idx = len(server_list) + 1
+                        server_list.append((f"Server {srv_idx} ({ch_name})", ch_url, 'https://damitv.st/', None))
+
+            # Matched Substreams
+            for sub in (matched_od.get('substreams') or []):
+                sub_id = sub.get('id')
+                sub_name = sub.get('name') or 'Alt Stream'
+                sub_locale = sub.get('locale', '')
+                if sub_id:
+                    enc_sub_id = encrypt_match_id(str(sub_id), WORKER_AUTH_KEY)
+                    sub_url = f"{WORKER_BASE}/live/{enc_sub_id}.m3u8"
+                    if sub_url not in seen_match_urls:
+                        seen_match_urls.add(sub_url)
+                        srv_idx = len(server_list) + 1
+                        loc_str = f" {sub_locale.upper()}" if sub_locale else ""
+                        server_list.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url, 'https://damitv.st/', None))
 
         # Add servers from Primary API (Kltra) with exact de-duplication
         for s_obj in active_servers:
