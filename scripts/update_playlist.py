@@ -480,24 +480,26 @@ def generate_playlist():
 
         if status_type in ("ENDED", "OUT_OF_WINDOW"):
             continue
-
+        seen_match_urls = set()
         server_list = []
 
-        # If matched with OnDemand and WORKER_AUTH_KEY available, add Worker HLS as Server 1
+        # Optional worker stream
         if matched_od and WORKER_AUTH_KEY:
-            enc_id = encrypt_match_id(matched_od['id'], WORKER_AUTH_KEY)
-            worker_stream = f"{WORKER_BASE}/live/{enc_id}.m3u8"
-            server_list.append((
-                "Server 1 (Worker HLS)",
-                worker_stream,
-                'https://damitv.st/',
-                None
-            ))
+            m_od_id = matched_od.get('id')
+            if m_od_id:
+                enc_id = encrypt_match_id(m_od_id, WORKER_AUTH_KEY)
+                worker_stream = f"{WORKER_BASE}/live/{enc_id}.m3u8"
+                seen_match_urls.add(worker_stream)
+                server_list.append((
+                    "Server 1 (Worker HLS)",
+                    worker_stream,
+                    'https://damitv.st/',
+                    None
+                ))
 
-        # Add servers from Primary API
-        start_idx = len(server_list) + 1
-        for idx, s_obj in enumerate(active_servers, start_idx):
-            raw_label = s_obj.get('label', f'Server {idx}')
+        # Add servers from Primary API (Kltra) with exact de-duplication
+        for s_obj in active_servers:
+            raw_label = s_obj.get('label', '')
             base_type = get_base_server_type(raw_label)
             s_url = s_obj.get('url', '').strip()
 
@@ -507,17 +509,11 @@ def generate_playlist():
             if not s_url or s_url.startswith('javascript:'):
                 continue
 
-            if 'COURT' in base_type.upper():
-                srv_label = base_type
-            else:
-                srv_label = f"Server {idx} ({base_type})"
-
             final_stream_url = s_url
             clearkey_str = None
 
             parsed = urllib.parse.urlparse(s_url)
             qs = urllib.parse.parse_qs(parsed.query)
-
             if 'channel' in qs and qs['channel'][0] in channels_data:
                 ch_target = channels_data[qs['channel'][0]]
                 final_stream_url = ch_target.get('url', s_url)
@@ -529,6 +525,17 @@ def generate_playlist():
                 final_stream_url = qs['src'][0]
                 if 'ck' in qs:
                     clearkey_str = qs['ck'][0]
+
+            # Ignore exact identical streams
+            if final_stream_url in seen_match_urls:
+                continue
+            seen_match_urls.add(final_stream_url)
+
+            srv_idx = len(server_list) + 1
+            if 'COURT' in base_type.upper():
+                srv_label = base_type
+            else:
+                srv_label = f"Server {srv_idx} ({base_type})"
 
             ref = get_stream_referer(final_stream_url)
             server_list.append((srv_label, final_stream_url, ref, clearkey_str))
@@ -545,17 +552,17 @@ def generate_playlist():
             else:
                 full_display_title = f"{match_title} - {srv_label}".strip()
 
-            def build_entry(grp_title):
+            def build_entry(grp_title, _title=full_display_title, _url=stream_url, _ref=ref, _ck=clearkey_str):
                 item = []
-                extinf = f'#EXTINF:-1 tvg-id="" tvg-name="{full_display_title}" tvg-logo="{logo}" group-title="{grp_title}",{full_display_title}'
+                extinf = f'#EXTINF:-1 tvg-id="" tvg-name="{_title}" tvg-logo="{logo}" group-title="{grp_title}",{_title}'
                 item.append(extinf)
-                if ref:
-                    item.append(f'#EXTVLCOPT:http-referrer={ref}')
+                if _ref:
+                    item.append(f'#EXTVLCOPT:http-referrer={_ref}')
                 item.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
-                if clearkey_str:
+                if _ck:
                     item.append('#KODIPROP:inputstream.adaptive.license_type=clearkey')
-                    item.append(f'#KODIPROP:inputstream.adaptive.license_key={clearkey_str}')
-                item.append(stream_url)
+                    item.append(f'#KODIPROP:inputstream.adaptive.license_key={_ck}')
+                item.append(_url)
                 return item
 
             # 1. Hot Event (Matches with Main_ icon)
@@ -574,7 +581,7 @@ def generate_playlist():
 
             total_servers += 1
 
-    # 4. Process Standalone Valid OnDemand Matches (messi.damitv.st streams)
+    # 4. Process Standalone Valid OnDemand Matches with ALL available servers
     if WORKER_AUTH_KEY:
         now_wib = datetime.now(WIB)
         for m in valid_ondemand:
@@ -628,28 +635,64 @@ def generate_playlist():
                 match_ts = int(now_wib.timestamp())
 
             prefix = '' if is_live else '[UPCOMING] '
-            full_display_title = f"{prefix}[{league}] {name} - Server 1 (Worker HLS) {tag}".strip()
+            match_title_base = f"{prefix}[{league}] {name}".strip()
 
+            # Collect all OnDemand servers (Primary + TV Channels + Substreams)
+            od_servers = []
+            seen_od_streams = set()
+
+            # Primary stream
             enc_id = encrypt_match_id(mid, WORKER_AUTH_KEY)
-            stream_url = f"{WORKER_BASE}/live/{enc_id}.m3u8"
+            primary_url = f"{WORKER_BASE}/live/{enc_id}.m3u8"
+            seen_od_streams.add(primary_url)
+            od_servers.append(("Server 1 (Worker HLS)", primary_url))
 
-            def build_od_entry(grp_title, _title=full_display_title, _logo=logo, _url=stream_url):
-                item = []
-                extinf = f'#EXTINF:-1 tvg-id="" tvg-name="{_title}" tvg-logo="{_logo}" group-title="{grp_title}",{_title}'
-                item.append(extinf)
-                item.append(f'#EXTVLCOPT:http-referrer={ONDEMAND_REFERER}')
-                item.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
-                item.append(_url)
-                return item
+            # TV Channels
+            for ch in (m.get('tvChannels') or []):
+                ch_id = ch.get('id')
+                ch_name = ch.get('name') or 'TV Feed'
+                if ch_id:
+                    enc_ch_id = encrypt_match_id(str(ch_id), WORKER_AUTH_KEY)
+                    ch_url = f"{WORKER_BASE}/live/{enc_ch_id}.m3u8"
+                    if ch_url not in seen_od_streams:
+                        seen_od_streams.add(ch_url)
+                        srv_idx = len(od_servers) + 1
+                        od_servers.append((f"Server {srv_idx} ({ch_name})", ch_url))
 
-            if is_live and cat_raw != '24/7-streams':
-                live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
-            elif status_type == "UPCOMING" and cat_raw != '24/7-streams':
-                if mid not in upcoming_dict:
-                    upcoming_dict[mid] = (match_ts, [])
-                upcoming_dict[mid][1].extend(build_od_entry(GROUP_UPCOMING_EVENT))
+            # Substreams
+            for sub in (m.get('substreams') or []):
+                sub_id = sub.get('id')
+                sub_name = sub.get('name') or 'Alt Stream'
+                sub_locale = sub.get('locale', '')
+                if sub_id:
+                    enc_sub_id = encrypt_match_id(str(sub_id), WORKER_AUTH_KEY)
+                    sub_url = f"{WORKER_BASE}/live/{enc_sub_id}.m3u8"
+                    if sub_url not in seen_od_streams:
+                        seen_od_streams.add(sub_url)
+                        srv_idx = len(od_servers) + 1
+                        loc_str = f" {sub_locale.upper()}" if sub_locale else ""
+                        od_servers.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url))
 
-            total_servers += 1
+            for srv_label, s_url in od_servers:
+                full_display_title = f"{match_title_base} - {srv_label} {tag}".strip()
+
+                def build_od_entry(grp_title, _title=full_display_title, _logo=logo, _url=s_url):
+                    item = []
+                    extinf = f'#EXTINF:-1 tvg-id="" tvg-name="{_title}" tvg-logo="{_logo}" group-title="{grp_title}",{_title}'
+                    item.append(extinf)
+                    item.append(f'#EXTVLCOPT:http-referrer={ONDEMAND_REFERER}')
+                    item.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
+                    item.append(_url)
+                    return item
+
+                if is_live and cat_raw != '24/7-streams':
+                    live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
+                elif status_type == "UPCOMING" and cat_raw != '24/7-streams':
+                    if mid not in upcoming_dict:
+                        upcoming_dict[mid] = (match_ts, [])
+                    upcoming_dict[mid][1].extend(build_od_entry(GROUP_UPCOMING_EVENT))
+
+                total_servers += 1
 
     # Sort Live Event newest first (matching website testa.js)
     live_event_entries.sort(key=lambda item: item[0], reverse=True)

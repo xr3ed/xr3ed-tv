@@ -205,11 +205,13 @@ def resolve_match_channels(opener, xsrf_token, match):
         return []
 
     results = []
-    for idx, ch_url in enumerate(channels):
+    seen_urls = set()
+    for ch_url in channels:
         direct_stream = resolve_channel_stream(opener, xsrf_token, ch_url)
-        if direct_stream and direct_stream.startswith('http'):
+        if direct_stream and direct_stream.startswith('http') and direct_stream not in seen_urls:
+            seen_urls.add(direct_stream)
             results.append({
-                'server_index': idx + 1,
+                'server_index': len(results) + 1,
                 'stream_url': direct_stream
             })
     return results
