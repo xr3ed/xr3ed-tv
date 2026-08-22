@@ -333,9 +333,9 @@ def fuzzy_match_od(t1_primary, t2_primary, od_list, time_ms_primary=None):
         if score < 0.6:
             continue
 
-        if time_ms_primary:
+        if time_ms_primary and score < 0.75:
             od_date = m.get('date', 0) or 0
-            if od_date and abs(od_date - time_ms_primary) > 5 * 3600 * 1000:
+            if od_date and abs(od_date - time_ms_primary) > 12 * 3600 * 1000:
                 continue
 
         if score > best_score:
