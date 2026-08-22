@@ -65,6 +65,7 @@ SPORT_CATEGORY_CONFIG = {
 
 GROUP_LIVE_EVENT = "🔴 Live Event"
 GROUP_HOT_EVENT = "🔥 Hot Event"
+GROUP_UPCOMING_EVENT = "⏳ Upcoming Event"
 
 SPORT_ORDER = [
     '🏸 Badminton',
@@ -408,7 +409,7 @@ def generate_playlist():
 
     hot_entries = []
     live_event_entries = []
-    sport_entries = {}
+    upcoming_dict = {}
     total_servers = 0
 
     # 3. Process Primary Events (EVERY match in eventweb.json is processed)
@@ -558,17 +559,18 @@ def generate_playlist():
                 return item
 
             # 1. Hot Event (Matches with Main_ icon)
-            if is_main:
+            if is_main and status_type == "LIVE":
                 hot_entries.extend(build_entry(GROUP_HOT_EVENT))
 
             # 2. Live Event (Ongoing live matches)
             if status_type == "LIVE":
                 live_event_entries.append((match_ts, build_entry(GROUP_LIVE_EVENT)))
 
-            # 3. Sport Category Group
-            if sport_group not in sport_entries:
-                sport_entries[sport_group] = []
-            sport_entries[sport_group].extend(build_entry(sport_group))
+            # 3. Upcoming Event (Collected for top 10 upcoming list)
+            if status_type == "UPCOMING":
+                if ev_id not in upcoming_dict:
+                    upcoming_dict[ev_id] = (match_ts, [])
+                upcoming_dict[ev_id][1].extend(build_entry(GROUP_UPCOMING_EVENT))
 
             total_servers += 1
 
@@ -580,17 +582,7 @@ def generate_playlist():
             if not mid or mid in ondemand_handled_ids:
                 continue
 
-            # messi.damitv.st streams use _category from flatten
             cat_raw = (m.get('_category') or m.get('category') or '').lower().strip()
-            # normalize category key for SPORT_CATEGORY_CONFIG
-            cat_key = cat_raw.replace('-', '_').replace(' ', '_')
-            # also try original
-            sport_group = (
-                SPORT_CATEGORY_CONFIG.get(cat_raw) or
-                SPORT_CATEGORY_CONFIG.get(cat_key) or
-                f"🏆 {cat_raw.replace('-',' ').title()}" if cat_raw else "🏆 OnDemand Sports"
-            )
-
             league = clean_league_name(m.get('league') or cat_raw.replace('-', ' ').title() or 'Sports')
             name = clean_title_str(m.get('name') or m.get('title') or 'Live Match')
 
@@ -600,7 +592,6 @@ def generate_playlist():
                 m.get('poster') or ''
             )
 
-            # Time from starts_at (unix seconds) or date (unix ms)
             starts_at = m.get('starts_at', 0) or 0
             date_ms = m.get('date', 0) or 0
             if starts_at:
@@ -615,10 +606,8 @@ def generate_playlist():
 
             if start_dt:
                 time_str = start_dt.strftime('%H:%M WIB')
-                # Skip >24h window
                 if start_dt > now_wib + timedelta(hours=24):
                     continue
-                # ended
                 ends_at = m.get('ends_at', 0) or 0
                 if ends_at and datetime.fromtimestamp(ends_at, tz=WIB) < now_wib:
                     continue
@@ -627,7 +616,7 @@ def generate_playlist():
                     tag = "• LIVE"
                     status_type = "LIVE"
                 elif start_dt + timedelta(hours=4) <= now_wib and not is_live:
-                    continue  # ended
+                    continue
                 else:
                     tag = f"• {time_str}"
                     status_type = "UPCOMING"
@@ -655,10 +644,10 @@ def generate_playlist():
 
             if is_live and cat_raw != '24/7-streams':
                 live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
-
-            if sport_group not in sport_entries:
-                sport_entries[sport_group] = []
-            sport_entries[sport_group].extend(build_od_entry(sport_group))
+            elif status_type == "UPCOMING" and cat_raw != '24/7-streams':
+                if mid not in upcoming_dict:
+                    upcoming_dict[mid] = (match_ts, [])
+                upcoming_dict[mid][1].extend(build_od_entry(GROUP_UPCOMING_EVENT))
 
             total_servers += 1
 
@@ -668,8 +657,23 @@ def generate_playlist():
     for _, entry_lines in live_event_entries:
         live_event_sorted_lines.extend(entry_lines)
 
+    # Sort Upcoming Event closest kick-off first & take top 10 matches
+    upcoming_items = list(upcoming_dict.values())
+    upcoming_items.sort(key=lambda item: item[0])
+    upcoming_sorted_lines = []
+    for _, entry_lines in upcoming_items[:10]:
+        upcoming_sorted_lines.extend(entry_lines)
+
     # 3. Read 24/7 Linear Channels grouped by category
-    nasional_path = os.environ.get('NASIONAL_OUTPUT', 'nasional.m3u').strip()
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    nasional_env = os.environ.get('NASIONAL_OUTPUT', 'nasional.m3u').strip()
+    if os.path.basename(script_dir) == 'scripts':
+        nasional_path = os.path.normpath(os.path.join(script_dir, '..', nasional_env))
+    else:
+        nasional_path = os.path.normpath(os.path.join(script_dir, nasional_env))
+    if not os.path.exists(nasional_path) and os.path.exists(nasional_env):
+        nasional_path = nasional_env
+
     nasional_categories = {}
     nasional_cat_order = []
     total_247_channels = 0
@@ -697,42 +701,46 @@ def generate_playlist():
     # 4. Assemble Final Master Playlist
     final_lines = ['#EXTM3U url-tvg="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml"']
 
-    # 1. 🔥 Hot Event (Nomor 1)
+    # 0. 📢 INFO (Paling Atas)
+    if '📢 INFO' in nasional_categories:
+        final_lines.extend(nasional_categories['📢 INFO'])
+
+    # 1. 🔥 Hot Event (Live Big Matches)
     if hot_entries:
         final_lines.extend(hot_entries)
 
-    # 2. 🔴 Live Event (Nomor 2)
+    # 2. 🔴 Live Event (All Live Sports)
     if live_event_sorted_lines:
         final_lines.extend(live_event_sorted_lines)
 
-    # 3. 🇮🇩 NASIONAL (Nomor 3)
+    # 3. ⏳ Upcoming Event (Top 10 Upcoming Matches)
+    if upcoming_sorted_lines:
+        final_lines.extend(upcoming_sorted_lines)
+
+    # 4. 🇮🇩 NASIONAL (TV Indonesia 24/7)
     if '🇮🇩 NASIONAL' in nasional_categories:
         final_lines.extend(nasional_categories['🇮🇩 NASIONAL'])
 
-    # 4. ⚽ SPORTS (Nomor 4)
+    # 5. ⚽ SPORTS (Channel TV 24/7: beIN, SPOTV, dll)
     if '⚽ SPORTS' in nasional_categories:
         final_lines.extend(nasional_categories['⚽ SPORTS'])
 
-    # 5. 🏅 SPORT MATCHES (Live event categories placed directly below ⚽ SPORTS)
-    seen_groups = set()
-    for sport_name in SPORT_ORDER:
-        if sport_name in sport_entries:
-            final_lines.extend(sport_entries[sport_name])
-            seen_groups.add(sport_name)
-
-    remaining_sports = sorted([k for k in sport_entries.keys() if k not in seen_groups])
-    for k in remaining_sports:
-        final_lines.extend(sport_entries[k])
-
-    # 6. Remaining 24/7 Categories (🏆 LIGA CHAMPION, Leagues, Movies, Kids, Doc, Religi, Asia, Music)
+    # 6. Remaining 24/7 Categories (Movies, Kids, Doc, Religi, Asia, Music)
     for cat in nasional_cat_order:
-        if cat not in ['🇮🇩 NASIONAL', '⚽ SPORTS'] and cat in nasional_categories:
+        if cat not in ['📢 INFO', '🇮🇩 NASIONAL', '⚽ SPORTS'] and cat in nasional_categories:
             final_lines.extend(nasional_categories[cat])
 
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    if os.path.basename(script_dir) == 'scripts':
+        out_path = os.path.join(script_dir, '..', OUTPUT_FILE)
+    else:
+        out_path = os.path.join(script_dir, OUTPUT_FILE)
+    out_path = os.path.normpath(out_path)
+
+    with open(out_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(final_lines) + '\n')
 
-    print(f"Synced {OUTPUT_FILE} successfully: {total_servers} live event servers + {total_247_channels} 24/7 channels merged.")
+    print(f"Synced {out_path} successfully: {total_servers} live event servers + {total_247_channels} 24/7 channels merged.")
     return True
 
 

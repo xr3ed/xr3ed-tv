@@ -20,7 +20,7 @@ Otomatisasi sinkronisasi playlist IPTV terlengkap yang menggabungkan **🔴 Siar
 Masukkan link RAW di bawah ini langsung ke aplikasi IPTV player favorit kamu (**OTT Navigator, TiviMate, VLC, Kodi, Smart TV, Android Box, iOS / Android**):
 
 ### 🌟 1. Master Playlist All-In-One (Live Sports + TV 24/7)
-> **Rekomendasi Utama** — Berisi siaran langsung olahraga hari ini di bagian atas + seluruh channel TV 24/7 di bawahnya.
+> **Rekomendasi Utama** — Berisi info + siaran langsung olahraga hari ini di bagian atas + seluruh channel TV 24/7 di bawahnya.
 
 ```text
 https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3dtv.m3u8
@@ -48,23 +48,15 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
 
 ## 📂 Struktur Kategori Playlist
 
-### ⚽ A. Playlist Live Event (`xr3edtv-liveevent.m3u`)
-```
-📂 [xr3edtv-liveevent.m3u]
- ├── 📢 INFO (Telegram Grup: t.me/CloudstreamXR & Donasi: lynk.id/xr3ed)
- ├── 🔥 Hot Event (Big Matches pilihan yang SEDANG LIVE saat ini)
- ├── 🔴 Live Event (Semua pertandingan live broadcast On The Air)
- └── ⏳ Upcoming Event (10 pertandingan mendatang terdekat dengan jadwal WIB)
-```
-
-### 📺 B. Playlist Master All-In-One (`xr3dtv.m3u8`)
+### 🌟 A. Master Playlist All-In-One (`xr3dtv.m3u8`)
 ```
 📂 [xr3dtv.m3u8]
- ├── 🔥 1. Hot Event (Pertandingan Pilihan Utama)
- ├── 🔴 2. Live Event (Match Kick-Off / Sedang Berlangsung)
- ├── 🇮🇩 3. NASIONAL (Channel TV Indonesia, Multi-Server 1, 2, 3)
- ├── ⚽ 4. SPORTS (beIN Sports, SPOTV, Fight Sports, dll)
- ├── 🏅 5+. SPORT MATCHES (Badminton, Soccer Live, Tennis, Motorsport, Basketball, Combat)
+ ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
+ ├── 🔥 Hot Event (Big Matches LIVE)
+ ├── 🔴 Live Event (Semua Olahraga LIVE: Bola, F1, UFC, Tenis, Badminton)
+ ├── ⏳ Upcoming Event (Top 10 Match Terdekat Mendatang)
+ ├── 🇮🇩 NASIONAL (Channel TV Indonesia, Multi-Server 1, 2, 3)
+ ├── ⚽ SPORTS (Channel TV 24/7: beIN Sports, SPOTV, Fight Sports, dll)
  ├── 🏆 LIGA CHAMPION (Arena Sport & Digi Sport)
  ├── ⚽ LIGA INGGRIS (Fubo Sports)
  ├── ⚽ LIGA SPANYOL (LaLiga Feeds)
@@ -81,6 +73,24 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
  ├── 🇰🇷 KOREA (tvN, tvN Movies, ONE HD, Arirang)
  ├── 🇨🇳 CHINA (CCTV & Dragon TV)
  └── 🎵 MUSIC (Radio & Video Musik)
+```
+
+### ⚽ B. Playlist Live Event (`xr3edtv-liveevent.m3u`)
+```
+📂 [xr3edtv-liveevent.m3u]
+ ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
+ ├── 🔥 Hot Event (Big Matches pilihan yang SEDANG LIVE saat ini)
+ ├── 🔴 Live Event (Semua pertandingan live broadcast On The Air)
+ └── ⏳ Upcoming Event (10 pertandingan mendatang terdekat dengan jadwal WIB)
+```
+
+### 📺 C. Playlist 24/7 Channels (`nasional.m3u`)
+```
+📂 [nasional.m3u]
+ ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
+ ├── 🇮🇩 NASIONAL (98 TV Nasional Indonesia)
+ ├── ⚽ SPORTS (beIN Sports, SPOTV 24/7)
+ └── ... (Kategori Hiburan, Film, Kartun, Berita, Religi, Mancanegara, Musik)
 ```
 
 ---

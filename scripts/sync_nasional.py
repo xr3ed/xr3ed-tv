@@ -444,7 +444,23 @@ def generate_consolidated_playlist():
                 output_lines.append(item['url'])
                 total_streams += 1
 
+    # --- 0. 📢 INFO (Telegram & Coffee) ---
+    def write_info_category():
+        nonlocal total_streams
+        tg_logo = "https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/telegram.png"
+        coffee_logo = "https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/coffee.png"
+        
+        output_lines.append(f'#EXTINF:-1 tvg-id="xr3ed-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="{tg_logo}" group-title="📢 INFO",📢 Gabung Telegram: t.me/CloudstreamXR')
+        output_lines.append("https://t.me/CloudstreamXR")
+        
+        output_lines.append(f'#EXTINF:-1 tvg-id="xr3ed-coffee" tvg-name="☕ Traktir Kopi: lynk.id/xr3ed" tvg-logo="{coffee_logo}" group-title="📢 INFO",☕ Traktir Kopi: lynk.id/xr3ed')
+        output_lines.append("https://lynk.id/xr3ed")
+        total_streams += 2
+
     # --- EXECUTE IN CATEGORY ORDER WITH TEXT EMOJIS ONLY (NO BADGES) ---
+    print("Writing 0. 📢 INFO...")
+    write_info_category()
+
     print("Writing 1. 🇮🇩 NASIONAL...")
     write_national_category()
 
@@ -503,10 +519,17 @@ def generate_consolidated_playlist():
         print(f"Warning: Only {total_streams} streams parsed. Keeping existing {OUTPUT_M3U} to prevent data loss.")
         return True
 
-    with open(OUTPUT_M3U, 'w', encoding='utf-8') as f:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    if os.path.basename(script_dir) == 'scripts':
+        out_path = os.path.join(script_dir, '..', OUTPUT_M3U)
+    else:
+        out_path = os.path.join(script_dir, OUTPUT_M3U)
+    out_path = os.path.normpath(out_path)
+
+    with open(out_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(output_lines) + '\n')
 
-    print(f"\nGenerated {OUTPUT_M3U} successfully!")
+    print(f"\nGenerated {out_path} successfully!")
     print(f"Total Channels/Streams: {total_streams}")
     return True
 
