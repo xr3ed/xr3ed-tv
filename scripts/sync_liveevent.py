@@ -46,9 +46,9 @@ GROUP_LIVE = "🔴 Live Event"
 GROUP_UPCOMING = "⏳ Upcoming Event"
 
 TG_LINK = "https://t.me/CloudstreamXR"
-TG_LOGO = "https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
+TG_LOGO = "https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/telegram.png"
 COFFEE_LINK = "https://lynk.id/xr3ed"
-COFFEE_LOGO = "https://cdn-icons-png.flaticon.com/512/2935/2935307.png"
+COFFEE_LOGO = "https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/coffee.png"
 
 MAX_UPCOMING_MATCHES = 10
 
@@ -267,10 +267,10 @@ def generate_m3u(opener, xsrf_token, hot_live_list, live_all_list, upcoming_list
         f"# XR3ED LIVE SPORTS PLAYLIST — Updated: {now_wib}",
         "# Categories: 📢 INFO | 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event",
         "",
-        f'#EXTINF:-1 tvg-id="info-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="{TG_LOGO}" group-title="{GROUP_INFO}",📢 Gabung Telegram: t.me/CloudstreamXR',
+        f'#EXTINF:-1 tvg-id="xr3ed-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="{TG_LOGO}" group-title="{GROUP_INFO}",📢 Gabung Telegram: t.me/CloudstreamXR',
         TG_LINK,
         "",
-        f'#EXTINF:-1 tvg-id="info-coffee" tvg-name="☕ Traktir Kopi: lynk.id/xr3ed" tvg-logo="{COFFEE_LOGO}" group-title="{GROUP_INFO}",☕ Traktir Kopi: lynk.id/xr3ed',
+        f'#EXTINF:-1 tvg-id="xr3ed-coffee" tvg-name="☕ Traktir Kopi: lynk.id/xr3ed" tvg-logo="{COFFEE_LOGO}" group-title="{GROUP_INFO}",☕ Traktir Kopi: lynk.id/xr3ed',
         COFFEE_LINK,
         ""
     ]
