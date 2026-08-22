@@ -46,7 +46,7 @@ GROUP_LIVE = "🔴 Live Event"
 GROUP_UPCOMING = "⏳ Upcoming Event"
 
 TG_LINK = "https://t.me/CloudstreamXR"
-TG_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/512px-Telegram_logo.svg.png"
+TG_LOGO = "https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
 COFFEE_LINK = "https://lynk.id/xr3ed"
 COFFEE_LOGO = "https://cdn-icons-png.flaticon.com/512/2935/2935307.png"
 
