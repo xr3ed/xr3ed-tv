@@ -1,0 +1,37 @@
+name: Sync Live Event Sports
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-liveevent:
+    name: Sync Live Event (3 Categories)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Generate xr3edtv-liveevent.m3u
+        env:
+          LIVEEVENT_SRC_URL: ${{ secrets.LIVEEVENT_SRC_URL }}
+          LIVEEVENT_REF_URL: ${{ secrets.LIVEEVENT_REF_URL }}
+          LIVEEVENT_OUTPUT: 'xr3edtv-liveevent.m3u'
+        run: |
+          python scripts/sync_liveevent.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add xr3edtv-liveevent.m3u scripts/sync_liveevent.py .github/workflows/sync_liveevent.yml
+          git diff --staged --quiet || (git commit -m "Auto-sync live sports event playlist [skip ci]" && git push origin main)
