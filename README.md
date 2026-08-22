@@ -51,9 +51,10 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
 ### ⚽ A. Playlist Live Event (`xr3edtv-liveevent.m3u`)
 ```
 📂 [xr3edtv-liveevent.m3u]
- ├── 🔥 1. Hot Event (Big Matches pilihan yang SEDANG LIVE saat ini)
- ├── 🔴 2. Live Event (Semua pertandingan live broadcast On The Air)
- └── ⏳ 3. Upcoming Event (10 pertandingan mendatang terdekat dengan jadwal WIB)
+ ├── 📢 INFO (Telegram Grup: t.me/CloudstreamXR & Donasi: lynk.id/xr3ed)
+ ├── 🔥 Hot Event (Big Matches pilihan yang SEDANG LIVE saat ini)
+ ├── 🔴 Live Event (Semua pertandingan live broadcast On The Air)
+ └── ⏳ Upcoming Event (10 pertandingan mendatang terdekat dengan jadwal WIB)
 ```
 
 ### 📺 B. Playlist Master All-In-One (`xr3dtv.m3u8`)

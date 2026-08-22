@@ -40,9 +40,15 @@ OUTPUT_FILE = os.environ.get('LIVEEVENT_OUTPUT', 'xr3edtv-liveevent.m3u').strip(
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 WIB = timezone(timedelta(hours=7))
 
+GROUP_INFO = "📢 INFO"
 GROUP_HOT = "🔥 Hot Event"
 GROUP_LIVE = "🔴 Live Event"
 GROUP_UPCOMING = "⏳ Upcoming Event"
+
+TG_LINK = "https://t.me/CloudstreamXR"
+TG_LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/512px-Telegram_logo.svg.png"
+COFFEE_LINK = "https://lynk.id/xr3ed"
+COFFEE_LOGO = "https://cdn-icons-png.flaticon.com/512/2935/2935307.png"
 
 MAX_UPCOMING_MATCHES = 10
 
@@ -259,7 +265,13 @@ def generate_m3u(opener, xsrf_token, hot_live_list, live_all_list, upcoming_list
     lines = [
         "#EXTM3U",
         f"# XR3ED LIVE SPORTS PLAYLIST — Updated: {now_wib}",
-        "# Categories: 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event",
+        "# Categories: 📢 INFO | 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event",
+        "",
+        f'#EXTINF:-1 tvg-id="info-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="{TG_LOGO}" group-title="{GROUP_INFO}",📢 Gabung Telegram: t.me/CloudstreamXR',
+        TG_LINK,
+        "",
+        f'#EXTINF:-1 tvg-id="info-coffee" tvg-name="☕ Traktir Kopi: lynk.id/xr3ed" tvg-logo="{COFFEE_LOGO}" group-title="{GROUP_INFO}",☕ Traktir Kopi: lynk.id/xr3ed',
+        COFFEE_LINK,
         ""
     ]
 
