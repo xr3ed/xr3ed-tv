@@ -15,9 +15,14 @@ try:
 except ImportError:
     AESGCM = None
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+env_file = os.path.normpath(os.path.join(script_dir, '..', '.env'))
 try:
     from dotenv import load_dotenv
-    load_dotenv(override=True, interpolate=False)
+    if os.path.exists(env_file):
+        load_dotenv(env_file, override=True, interpolate=False)
+    else:
+        load_dotenv(override=True, interpolate=False)
 except ImportError:
     pass
 
@@ -27,9 +32,9 @@ SALT_KEY = os.environ.get('XR3EDTV_SALT_KEY', '')
 ONDEMAND_API = os.environ.get('XR3EDTV_ONDEMAND_API', '').strip()
 ONDEMAND_EXTRACT = os.environ.get('XR3EDTV_ONDEMAND_EXTRACT', '').strip()
 ONDEMAND_REFERER = os.environ.get('XR3EDTV_ONDEMAND_REFERER', '').strip()
-DEFAULT_REFERER = os.environ.get('XR3EDTV_REFERER', '')
+DEFAULT_REFERER = os.environ.get('XR3EDTV_REFERER', '').strip()
 OUTPUT_FILE = os.environ.get('XR3EDTV_OUTPUT', 'xr3dtv.m3u8')
-WORKER_BASE = os.environ.get('WORKER_BASE_URL', 'https://stream-cdn-box.xr3ed-edge.workers.dev').rstrip('/')
+WORKER_BASE = os.environ.get('WORKER_BASE_URL', '').rstrip('/')
 WORKER_AUTH_KEY = os.environ.get('WORKER_AUTH_KEY', '')
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
@@ -507,7 +512,7 @@ def generate_playlist():
                 server_list.append((
                     f"Server {srv_idx} (Worker HLS)",
                     worker_stream,
-                    'https://damitv.st/',
+                    ONDEMAND_REFERER,
                     None
                 ))
 
@@ -523,7 +528,7 @@ def generate_playlist():
                         seen_match_urls.add(sub_url)
                         srv_idx = len(server_list) + 1
                         loc_str = f" {sub_locale.upper()}" if sub_locale else ""
-                        server_list.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url, 'https://damitv.st/', None))
+                        server_list.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url, ONDEMAND_REFERER, None))
 
         # Add servers from Primary API (Kltra) with exact de-duplication
         for s_obj in active_servers:

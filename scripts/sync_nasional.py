@@ -2,9 +2,14 @@ import os
 import sys
 import re
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+env_file = os.path.normpath(os.path.join(script_dir, '..', '.env'))
 try:
     from dotenv import load_dotenv
-    load_dotenv(override=True)
+    if os.path.exists(env_file):
+        load_dotenv(env_file, override=True)
+    else:
+        load_dotenv(override=True)
 except ImportError:
     pass
 

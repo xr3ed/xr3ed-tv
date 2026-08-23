@@ -22,19 +22,26 @@ import http.cookiejar
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+env_file = os.path.normpath(os.path.join(script_dir, '..', '.env'))
 try:
     from dotenv import load_dotenv
-    load_dotenv(override=True)
+    if os.path.exists(env_file):
+        load_dotenv(env_file, override=True)
+    else:
+        load_dotenv(override=True)
 except ImportError:
     pass
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-# ─── Konfigurasi & Secret ─────────────────────────────────────────────────────
+# ─── Konfigurasi & Secret (Dibaca dari GitHub Secrets / .env lokal) ───────────
 
-SRC_URL = os.environ.get('LIVEEVENT_SRC_URL', 'https://beesport.site').rstrip('/')
-REF_URL = os.environ.get('LIVEEVENT_REF_URL', 'https://new-player.greenvora.net/').rstrip('/') + '/'
-CDN_BASE = "https://enewl.greenvora.net"
+SRC_URL = os.environ.get('LIVEEVENT_SRC_URL', '').rstrip('/')
+REF_URL = os.environ.get('LIVEEVENT_REF_URL', '').rstrip('/')
+if REF_URL and not REF_URL.endswith('/'):
+    REF_URL += '/'
+CDN_BASE = os.environ.get('LIVEEVENT_CDN_BASE', '').rstrip('/')
 OUTPUT_FILE = os.environ.get('LIVEEVENT_OUTPUT', 'xr3edtv-liveevent.m3u').strip()
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
@@ -61,6 +68,10 @@ def log(msg):
 # ─── Fetch Page & Setup Session ───────────────────────────────────────────────
 
 def init_session():
+    if not SRC_URL:
+        log("ERROR: LIVEEVENT_SRC_URL tidak diset.")
+        return None, None, None
+
     cj = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     
