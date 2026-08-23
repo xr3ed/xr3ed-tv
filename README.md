@@ -55,6 +55,7 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
  ├── 🔥 Hot Event (Big Matches LIVE)
  ├── 🔴 Live Event (Semua Olahraga LIVE: Bola, F1, UFC, Tenis, Badminton)
  ├── ⏳ Upcoming Event (Top 10 Match Terdekat Mendatang)
+ ├── 🥊 FIGHT & COMBAT (Hanya jika ada match LIVE: UFC, Boxing, MMA, WWE)
  ├── 🇮🇩 NASIONAL (Channel TV Indonesia, Multi-Server 1, 2, 3)
  ├── ⚽ SPORTS (Channel TV 24/7: beIN Sports, SPOTV, Fight Sports, dll)
  ├── 🏆 LIGA CHAMPION (Arena Sport & Digi Sport)

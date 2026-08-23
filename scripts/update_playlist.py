@@ -66,6 +66,12 @@ SPORT_CATEGORY_CONFIG = {
 GROUP_LIVE_EVENT = "🔴 Live Event"
 GROUP_HOT_EVENT = "🔥 Hot Event"
 GROUP_UPCOMING_EVENT = "⏳ Upcoming Event"
+GROUP_FIGHT_EVENT = "🥊 FIGHT & COMBAT"
+
+def is_fight_match(league, clean_key, cat_raw, title=""):
+    text = f"{league} {clean_key} {cat_raw} {title}".lower()
+    keywords = ['fight', 'combat', 'ufc', 'boxing', 'mma', 'wrestling', 'wwe', 'aew', 'tna', 'kickboxing', 'bellator', 'one championship']
+    return any(k in text for k in keywords)
 
 SPORT_ORDER = [
     '🏸 Badminton',
@@ -409,6 +415,7 @@ def generate_playlist():
 
     hot_entries = []
     live_event_entries = []
+    fight_entries = []
     upcoming_dict = {}
     total_servers = 0
 
@@ -593,6 +600,8 @@ def generate_playlist():
             # 2. Live Event (Ongoing live matches)
             if status_type == "LIVE":
                 live_event_entries.append((match_ts, build_entry(GROUP_LIVE_EVENT)))
+                if is_fight_match(league, clean_key, "", match_title):
+                    fight_entries.append((match_ts, build_entry(GROUP_FIGHT_EVENT)))
 
             # 3. Upcoming Event (Collected for top 10 upcoming list)
             if status_type == "UPCOMING":
@@ -658,7 +667,7 @@ def generate_playlist():
             prefix = '' if is_live else '[UPCOMING] '
             match_title_base = f"{prefix}[{league}] {name}".strip()
 
-            # Collect all OnDemand servers (Primary + TV Channels + Substreams)
+            # Collect all OnDemand servers (Primary + Substreams)
             od_servers = []
             seen_od_streams = set()
 
@@ -696,6 +705,8 @@ def generate_playlist():
 
                 if is_live and cat_raw != '24/7-streams':
                     live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
+                    if is_fight_match(league, "", cat_raw, match_title_base):
+                        fight_entries.append((match_ts, build_od_entry(GROUP_FIGHT_EVENT)))
                 elif status_type == "UPCOMING" and cat_raw != '24/7-streams':
                     if mid not in upcoming_dict:
                         upcoming_dict[mid] = (match_ts, [])
@@ -708,6 +719,12 @@ def generate_playlist():
     live_event_sorted_lines = []
     for _, entry_lines in live_event_entries:
         live_event_sorted_lines.extend(entry_lines)
+
+    # Sort Fight & Combat newest first
+    fight_entries.sort(key=lambda item: item[0], reverse=True)
+    fight_sorted_lines = []
+    for _, entry_lines in fight_entries:
+        fight_sorted_lines.extend(entry_lines)
 
     # Sort Upcoming Event closest kick-off first & take top 10 matches
     upcoming_items = list(upcoming_dict.values())
@@ -769,15 +786,19 @@ def generate_playlist():
     if upcoming_sorted_lines:
         final_lines.extend(upcoming_sorted_lines)
 
-    # 4. 🇮🇩 NASIONAL (TV Indonesia 24/7)
+    # 4. 🥊 FIGHT & COMBAT (Posisi 5 - Hanya jika ada match LIVE fight)
+    if fight_sorted_lines:
+        final_lines.extend(fight_sorted_lines)
+
+    # 5. 🇮🇩 NASIONAL (TV Indonesia 24/7)
     if '🇮🇩 NASIONAL' in nasional_categories:
         final_lines.extend(nasional_categories['🇮🇩 NASIONAL'])
 
-    # 5. ⚽ SPORTS (Channel TV 24/7: beIN, SPOTV, dll)
+    # 6. ⚽ SPORTS (Channel TV 24/7: beIN, SPOTV, dll)
     if '⚽ SPORTS' in nasional_categories:
         final_lines.extend(nasional_categories['⚽ SPORTS'])
 
-    # 6. Remaining 24/7 Categories (Movies, Kids, Doc, Religi, Asia, Music)
+    # 7. Remaining 24/7 Categories (Movies, Kids, Doc, Religi, Asia, Music)
     for cat in nasional_cat_order:
         if cat not in ['📢 INFO', '🇮🇩 NASIONAL', '⚽ SPORTS'] and cat in nasional_categories:
             final_lines.extend(nasional_categories[cat])
