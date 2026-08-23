@@ -504,19 +504,7 @@ def generate_playlist():
                     None
                 ))
 
-            # Matched TV channels
-            for ch in (matched_od.get('tvChannels') or []):
-                ch_id = ch.get('id')
-                ch_name = ch.get('name') or 'TV Feed'
-                if ch_id:
-                    enc_ch_id = encrypt_match_id(str(ch_id), WORKER_AUTH_KEY)
-                    ch_url = f"{WORKER_BASE}/live/{enc_ch_id}.m3u8"
-                    if ch_url not in seen_match_urls:
-                        seen_match_urls.add(ch_url)
-                        srv_idx = len(server_list) + 1
-                        server_list.append((f"Server {srv_idx} ({ch_name})", ch_url, 'https://damitv.st/', None))
-
-            # Matched Substreams
+            # Matched Substreams (Real playable streams like Paramount+, DAZN, etc.)
             for sub in (matched_od.get('substreams') or []):
                 sub_id = sub.get('id')
                 sub_name = sub.get('name') or 'Alt Stream'
@@ -680,19 +668,7 @@ def generate_playlist():
             seen_od_streams.add(primary_url)
             od_servers.append(("Server 1 (Worker HLS)", primary_url))
 
-            # TV Channels
-            for ch in (m.get('tvChannels') or []):
-                ch_id = ch.get('id')
-                ch_name = ch.get('name') or 'TV Feed'
-                if ch_id:
-                    enc_ch_id = encrypt_match_id(str(ch_id), WORKER_AUTH_KEY)
-                    ch_url = f"{WORKER_BASE}/live/{enc_ch_id}.m3u8"
-                    if ch_url not in seen_od_streams:
-                        seen_od_streams.add(ch_url)
-                        srv_idx = len(od_servers) + 1
-                        od_servers.append((f"Server {srv_idx} ({ch_name})", ch_url))
-
-            # Substreams
+            # Substreams (Real playable streams like Paramount+, DAZN, etc.)
             for sub in (m.get('substreams') or []):
                 sub_id = sub.get('id')
                 sub_name = sub.get('name') or 'Alt Stream'
