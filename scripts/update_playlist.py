@@ -26,16 +26,19 @@ try:
 except ImportError:
     pass
 
-API_BASE = os.environ.get('XR3EDTV_API_BASE', '').rstrip('/')
-XOR_KEY = os.environ.get('XR3EDTV_XOR_KEY', '')
-SALT_KEY = os.environ.get('XR3EDTV_SALT_KEY', '')
-ONDEMAND_API = os.environ.get('XR3EDTV_ONDEMAND_API', '').strip()
-ONDEMAND_EXTRACT = os.environ.get('XR3EDTV_ONDEMAND_EXTRACT', '').strip()
-ONDEMAND_REFERER = os.environ.get('XR3EDTV_ONDEMAND_REFERER', '').strip()
-DEFAULT_REFERER = os.environ.get('XR3EDTV_REFERER', '').strip()
-OUTPUT_FILE = os.environ.get('XR3EDTV_OUTPUT', 'xr3dtv.m3u8')
-WORKER_BASE = os.environ.get('WORKER_BASE_URL', '').rstrip('/')
-WORKER_AUTH_KEY = os.environ.get('WORKER_AUTH_KEY', '')
+def clean_env(val: str) -> str:
+    return (val or '').strip().lstrip('\ufeff\uffef\u200b\u200c\u200d').strip()
+
+API_BASE = clean_env(os.environ.get('XR3EDTV_API_BASE', '')).rstrip('/')
+XOR_KEY = clean_env(os.environ.get('XR3EDTV_XOR_KEY', ''))
+SALT_KEY = clean_env(os.environ.get('XR3EDTV_SALT_KEY', ''))
+ONDEMAND_API = clean_env(os.environ.get('XR3EDTV_ONDEMAND_API', ''))
+ONDEMAND_EXTRACT = clean_env(os.environ.get('XR3EDTV_ONDEMAND_EXTRACT', ''))
+ONDEMAND_REFERER = clean_env(os.environ.get('XR3EDTV_ONDEMAND_REFERER', ''))
+DEFAULT_REFERER = clean_env(os.environ.get('XR3EDTV_REFERER', ''))
+OUTPUT_FILE = clean_env(os.environ.get('XR3EDTV_OUTPUT', 'xr3dtv.m3u8')) or 'xr3dtv.m3u8'
+WORKER_BASE = clean_env(os.environ.get('WORKER_BASE_URL', '')).rstrip('/')
+WORKER_AUTH_KEY = clean_env(os.environ.get('WORKER_AUTH_KEY', ''))
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
