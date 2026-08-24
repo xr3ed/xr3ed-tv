@@ -764,8 +764,6 @@ def generate_playlist():
                     live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
                     if is_fight_match(league, "", cat_raw, match_title_base):
                         fight_entries.append((match_ts, build_od_entry(GROUP_FIGHT_EVENT)))
-                    if od_sport_grp:
-                        sport_entries[od_sport_grp].append((match_ts, build_od_entry(od_sport_grp)))
                 elif status_type == "UPCOMING" and cat_raw != '24/7-streams':
                     if mid not in upcoming_dict:
                         upcoming_dict[mid] = (match_ts, [])
