@@ -531,6 +531,18 @@ def generate_playlist():
                         loc_str = f" {sub_locale.upper()}" if sub_locale else ""
                         server_list.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url, ONDEMAND_REFERER, None))
 
+            # Matched TV Channels (e.g. FOX USA, Sky Sports, TSN, DAZN, ESPN)
+            for tv in (matched_od.get('tvChannels') or []):
+                tv_id = str(tv.get('id') or '').replace('dlhd-', '').replace('tv-', '').strip()
+                tv_name = tv.get('name') or 'TV Channel'
+                if tv_id and tv_id.isdigit():
+                    enc_tv_id = encrypt_match_id(tv_id, WORKER_AUTH_KEY)
+                    tv_url = f"{WORKER_BASE}/live/{enc_tv_id}.m3u8"
+                    if tv_url not in seen_match_urls:
+                        seen_match_urls.add(tv_url)
+                        srv_idx = len(server_list) + 1
+                        server_list.append((f"Server {srv_idx} ({tv_name})", tv_url, ONDEMAND_REFERER, None))
+
         # Add servers from Primary API (Kltra) with exact de-duplication
         for s_obj in active_servers:
             raw_label = s_obj.get('label', '')
@@ -710,7 +722,17 @@ def generate_playlist():
                         seen_od_streams.add(sub_url)
                         srv_idx = len(od_servers) + 1
                         loc_str = f" {sub_locale.upper()}" if sub_locale else ""
-                        od_servers.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url))
+            # TV Channels (e.g. FOX USA, Sky Sports, TSN, DAZN, ESPN)
+            for tv in (m.get('tvChannels') or []):
+                tv_id = str(tv.get('id') or '').replace('dlhd-', '').replace('tv-', '').strip()
+                tv_name = tv.get('name') or 'TV Channel'
+                if tv_id and tv_id.isdigit():
+                    enc_tv_id = encrypt_match_id(tv_id, WORKER_AUTH_KEY)
+                    tv_url = f"{WORKER_BASE}/live/{enc_tv_id}.m3u8"
+                    if tv_url not in seen_od_streams:
+                        seen_od_streams.add(tv_url)
+                        srv_idx = len(od_servers) + 1
+                        od_servers.append((f"Server {srv_idx} ({tv_name})", tv_url))
 
             for srv_label, s_url in od_servers:
                 full_display_title = f"{match_title_base} - {srv_label} {tag}".strip()
