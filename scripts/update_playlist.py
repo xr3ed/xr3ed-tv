@@ -605,16 +605,13 @@ def generate_playlist():
                 headers_json = {"User-Agent": USER_AGENT}
                 if _ref:
                     headers_json["Referer"] = _ref
-                item.append(f'#EXTHTTP:{json.dumps({"headers": headers_json})}')
+                item.append(f'#EXTHTTP:{json.dumps(headers_json)}')
 
                 if _ck:
                     item.append('#KODIPROP:inputstream.adaptive.license_type=clearkey')
                     item.append(f'#KODIPROP:inputstream.adaptive.license_key={_ck}')
 
-                if _ref and '|' not in _url:
-                    item.append(f"{_url}|Referer={_ref}&User-Agent={USER_AGENT}")
-                else:
-                    item.append(_url)
+                item.append(_url)
                 return item
 
             # 1. Hot Event (Matches with Main_ icon)
@@ -729,12 +726,9 @@ def generate_playlist():
                     headers_json = {"User-Agent": USER_AGENT}
                     if ONDEMAND_REFERER:
                         headers_json["Referer"] = ONDEMAND_REFERER
-                    item.append(f'#EXTHTTP:{json.dumps({"headers": headers_json})}')
+                    item.append(f'#EXTHTTP:{json.dumps(headers_json)}')
 
-                    if ONDEMAND_REFERER and '|' not in _url:
-                        item.append(f"{_url}|Referer={ONDEMAND_REFERER}&User-Agent={USER_AGENT}")
-                    else:
-                        item.append(_url)
+                    item.append(_url)
                     return item
 
                 if is_live and cat_raw != '24/7-streams':
