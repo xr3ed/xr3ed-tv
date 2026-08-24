@@ -629,8 +629,9 @@ def generate_playlist():
                 item.append(_url)
                 return item
 
-            # 1. Hot Event (Matches with Main_ icon)
-            if is_main and status_type == "LIVE":
+            # 1. Hot Event (Matches with Main_ icon or trending OnDemand match)
+            is_od_trending = bool(matched_od and (matched_od.get('popular') or matched_od.get('trending') or (matched_od.get('viewers', 0) or 0) >= 10))
+            if (is_main or is_od_trending) and status_type == "LIVE":
                 hot_entries.extend(build_entry(GROUP_HOT_EVENT))
 
             # 2. Live Event (Ongoing live matches)
@@ -739,7 +740,7 @@ def generate_playlist():
                         srv_idx = len(od_servers) + 1
                         od_servers.append((f"Server {srv_idx} ({tv_name})", tv_url))
 
-            is_pop = bool(m.get('popular'))
+            is_trending = bool(m.get('popular')) or bool(m.get('trending')) or bool(m.get('hot')) or ((m.get('viewers', 0) or 0) >= 10)
             od_sport_grp = get_sport_group(cat_raw)
 
             for srv_label, s_url in od_servers:
@@ -762,7 +763,7 @@ def generate_playlist():
                     return item
 
                 if is_live and cat_raw != '24/7-streams':
-                    if is_pop:
+                    if is_trending:
                         hot_entries.extend(build_od_entry(GROUP_HOT_EVENT))
                     live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
                     if is_fight_match(league, "", cat_raw, match_title_base):
