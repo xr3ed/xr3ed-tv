@@ -672,10 +672,9 @@ def generate_playlist():
                 start_dt = None
 
             is_live = m.get('status') == 'live'
-            time_str = ''
 
             if start_dt:
-                time_str = start_dt.strftime('%H:%M WIB')
+                time_hm = start_dt.strftime('%H:%M')
                 if start_dt > now_wib + timedelta(hours=24):
                     continue
                 ends_at = m.get('ends_at', 0) or 0
@@ -683,17 +682,18 @@ def generate_playlist():
                     continue
                 if is_live or (start_dt <= now_wib < start_dt + timedelta(hours=4) and m.get('status') != 'upcoming'):
                     is_live = True
-                    tag = "• LIVE"
+                    tag = f"• LIVE {time_hm}"
                     status_type = "LIVE"
                 elif start_dt + timedelta(hours=4) <= now_wib and not is_live:
                     continue
                 else:
-                    tag = f"• {time_str}"
+                    tag = f"• {time_hm} WIB"
                     status_type = "UPCOMING"
                 match_ts = int(start_dt.timestamp())
             else:
+                time_hm = now_wib.strftime('%H:%M')
                 is_live = True
-                tag = "• LIVE"
+                tag = f"• LIVE {time_hm}"
                 status_type = "LIVE"
                 match_ts = int(now_wib.timestamp())
 
@@ -722,6 +722,8 @@ def generate_playlist():
                         seen_od_streams.add(sub_url)
                         srv_idx = len(od_servers) + 1
                         loc_str = f" {sub_locale.upper()}" if sub_locale else ""
+                        od_servers.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url))
+
             # TV Channels (e.g. FOX USA, Sky Sports, TSN, DAZN, ESPN)
             for tv in (m.get('tvChannels') or []):
                 tv_id = str(tv.get('id') or '').replace('dlhd-', '').replace('tv-', '').strip()
@@ -733,6 +735,9 @@ def generate_playlist():
                         seen_od_streams.add(tv_url)
                         srv_idx = len(od_servers) + 1
                         od_servers.append((f"Server {srv_idx} ({tv_name})", tv_url))
+
+            is_pop = bool(m.get('popular'))
+            od_sport_grp = get_sport_group(cat_raw)
 
             for srv_label, s_url in od_servers:
                 full_display_title = f"{match_title_base} - {srv_label} {tag}".strip()
@@ -754,9 +759,13 @@ def generate_playlist():
                     return item
 
                 if is_live and cat_raw != '24/7-streams':
+                    if is_pop:
+                        hot_entries.extend(build_od_entry(GROUP_HOT_EVENT))
                     live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
                     if is_fight_match(league, "", cat_raw, match_title_base):
                         fight_entries.append((match_ts, build_od_entry(GROUP_FIGHT_EVENT)))
+                    if od_sport_grp:
+                        sport_entries[od_sport_grp].append((match_ts, build_od_entry(od_sport_grp)))
                 elif status_type == "UPCOMING" and cat_raw != '24/7-streams':
                     if mid not in upcoming_dict:
                         upcoming_dict[mid] = (match_ts, [])
