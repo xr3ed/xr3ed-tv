@@ -362,14 +362,15 @@ def generate_playlist():
     players_data = []
 
     # 1. Fetch Primary API Data
-    if API_BASE and XOR_KEY and SALT_KEY:
-        print("Fetching primary API channel & event definitions...")
-        try:
-            raw_channels = fetch_url(f"{API_BASE}/vip/channels.json?v={ts}")
-            channels_data = xor_decrypt(raw_channels.decode('utf-8'), XOR_KEY)
-            print(f"Loaded {len(channels_data)} channel references.")
-        except Exception as e:
-            print(f"Channels decode exception: {e}")
+    if API_BASE and SALT_KEY:
+        print("Fetching primary API event & player definitions...")
+        if XOR_KEY:
+            try:
+                raw_channels = fetch_url(f"{API_BASE}/vip/channels.json?v={ts}")
+                channels_data = xor_decrypt(raw_channels.decode('utf-8'), XOR_KEY)
+                print(f"Loaded {len(channels_data)} channel references.")
+            except Exception as e:
+                print(f"Channels decode exception: {e}")
 
         try:
             events_raw = fetch_url(f"{API_BASE}/vip/eventweb.json?v={ts}")
@@ -535,9 +536,17 @@ def generate_playlist():
             raw_label = s_obj.get('label', '')
             base_type = get_base_server_type(raw_label)
             s_url = s_obj.get('url', '').strip()
-
             if s_url in vivo_url_map:
                 s_url = vivo_url_map[s_url]
+
+            if 'liveUrl=' in s_url:
+                try:
+                    parsed_live = urllib.parse.urlparse(s_url)
+                    qs_live = urllib.parse.parse_qs(parsed_live.query)
+                    if 'liveUrl' in qs_live and qs_live['liveUrl'][0]:
+                        s_url = qs_live['liveUrl'][0]
+                except Exception:
+                    pass
 
             if not s_url or s_url.startswith('javascript:'):
                 continue
