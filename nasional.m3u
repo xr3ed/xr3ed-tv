@@ -8,26 +8,26 @@ https://t.me/CloudstreamXR
 #EXTINF:-1 tvg-id="xr3ed-coffee" tvg-name="☕ Traktir Kopi: lynk.id/xr3ed" tvg-logo="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/coffee.png" group-title="📢 INFO",☕ Traktir Kopi: lynk.id/xr3ed
 https://lynk.id/xr3ed
 #EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI - Server 1" tvg-logo="https://www.visionplus.id/images/repository/580/580-LOGO-l.png" group-title="🇮🇩 NASIONAL",RCTI - Server 1
-https://cdnbal1.indihometv.com/atm/DASH/rcti/manifest.mpd
+#EXTVLCOPT:http-user-agent=android-R+
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://r-plus.sedotcw3.workers.dev/index.m3u8?id=rcti
 #EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI - Server 2" tvg-logo="https://www.visionplus.id/images/repository/580/580-LOGO-l.png" group-title="🇮🇩 NASIONAL",RCTI - Server 2
+https://cdnbal1.indihometv.com/atm/DASH/rcti/manifest.mpd
+#EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI - Server 3" tvg-logo="https://www.visionplus.id/images/repository/580/580-LOGO-l.png" group-title="🇮🇩 NASIONAL",RCTI - Server 3
 #EXTVLCOPT:http-user-agent=android-R+
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 https://rplus.semar26.xyz/rcti.m3u8
-#EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI - Server 3" tvg-logo="https://www.visionplus.id/images/repository/580/580-LOGO-l.png" group-title="🇮🇩 NASIONAL",RCTI - Server 3
-#EXTVLCOPT:http-user-agent=android-R+
-#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-https://r-plus.sedotcw3.workers.dev/index.m3u8?id=rcti
 #EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI - Server 4" tvg-logo="https://www.visionplus.id/images/repository/580/580-LOGO-l.png" group-title="🇮🇩 NASIONAL",RCTI - Server 4
 #EXTVLCOPT:http-referrer=https://m.rctiplus.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0
 https://beetv.my.id/xstreamx/rctiplus.m3u8?ch=rcti
 #EXTINF:-1 tvg-id="MNC TV" tvg-name="MNC TV - Server 1" tvg-logo="https://www.visionplus.id/images/repository/581/581-LOGO-l.png" group-title="🇮🇩 NASIONAL",MNC TV - Server 1
-https://cdnbal1.indihometv.com/atm/DASH/mnctv/manifest.mpd
-#EXTINF:-1 tvg-id="MNC TV" tvg-name="MNC TV - Server 2" tvg-logo="https://www.visionplus.id/images/repository/581/581-LOGO-l.png" group-title="🇮🇩 NASIONAL",MNC TV - Server 2
 #EXTVLCOPT:http-user-agent=android-R+
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
 https://r-plus.sedotcw3.workers.dev/index.m3u8?id=mnctv
+#EXTINF:-1 tvg-id="MNC TV" tvg-name="MNC TV - Server 2" tvg-logo="https://www.visionplus.id/images/repository/581/581-LOGO-l.png" group-title="🇮🇩 NASIONAL",MNC TV - Server 2
+https://cdnbal1.indihometv.com/atm/DASH/mnctv/manifest.mpd
 #EXTINF:-1 tvg-id="MNC TV" tvg-name="MNC TV - Server 3" tvg-logo="https://www.visionplus.id/images/repository/581/581-LOGO-l.png" group-title="🇮🇩 NASIONAL",MNC TV - Server 3
 #EXTVLCOPT:http-referrer=https://m.rctiplus.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0
