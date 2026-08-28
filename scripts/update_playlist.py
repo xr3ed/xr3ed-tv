@@ -128,13 +128,39 @@ def fetch_url(url, referer=None):
         return res.read()
 
 def xor_decrypt(encrypted_b64, key_str):
+    if not encrypted_b64 or not key_str:
+        return []
     raw_data = base64.b64decode(encrypted_b64.strip())
     key_bytes = key_str.encode('utf-8')
     key_len = len(key_bytes)
     decrypted = bytearray(len(raw_data))
     for i in range(len(raw_data)):
         decrypted[i] = raw_data[i] ^ key_bytes[i % key_len]
-    return json.loads(decrypted.decode('utf-8'))
+    return json.loads(decrypted.decode('utf-8', errors='ignore'), strict=False)
+
+def get_dynamic_xor_key():
+    try:
+        url = "https://kltraid.pages.dev/js/testa.js"
+        req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
+        with urllib.request.urlopen(req, timeout=8) as res:
+            content = res.read().decode('utf-8')
+            m_k = re.search(r'const\s+__K_[a-zA-Z0-9]+\s*=\s*\[([0-9,\s]+)\];', content)
+            m_s = re.search(r'const\s+__S_[a-zA-Z0-9]+\s*=\s*\[([^\]]+)\];', content)
+            if m_k and m_s:
+                k_arr = [int(x.strip()) for x in m_k.group(1).split(',') if x.strip()]
+                s_raw = m_s.group(1)
+                s_matches = re.findall(r'"([^"]+)"', s_raw)
+                if len(s_matches) > 2:
+                    raw_b = base64.b64decode(s_matches[2])
+                    n = 2
+                    res_bytes = bytearray(len(raw_b))
+                    for i in range(len(raw_b)):
+                        res_bytes[i] = raw_b[i] ^ k_arr[(i + n) % len(k_arr)] ^ ((n * 31 + i * 17) & 255)
+                    return res_bytes.decode('utf-8')
+    except Exception:
+        pass
+    return ""
+
 
 def get_event_hidden_id(uuid_str, salt):
     parts = uuid_str.split('-')
@@ -365,26 +391,51 @@ def generate_playlist():
     players_data = []
 
     # 1. Fetch Primary API Data
-    if API_BASE and SALT_KEY:
+    if API_BASE:
         print("Fetching primary API event & player definitions...")
-        if XOR_KEY:
+        xor_k = XOR_KEY or get_dynamic_xor_key()
+
+        if xor_k:
             try:
                 raw_channels = fetch_url(f"{API_BASE}/vip/channels.json?v={ts}")
-                channels_data = xor_decrypt(raw_channels.decode('utf-8'), XOR_KEY)
+                try:
+                    channels_data = xor_decrypt(raw_channels.decode('utf-8'), xor_k)
+                except Exception:
+                    dyn = get_dynamic_xor_key()
+                    if dyn and dyn != xor_k:
+                        xor_k = dyn
+                        channels_data = xor_decrypt(raw_channels.decode('utf-8'), xor_k)
                 print(f"Loaded {len(channels_data)} channel references.")
             except Exception as e:
                 print(f"Channels decode exception: {e}")
 
         try:
             events_raw = fetch_url(f"{API_BASE}/vip/eventweb.json?v={ts}")
-            events_data = json.loads(events_raw.decode('utf-8'))
+            try:
+                events_data = xor_decrypt(events_raw.decode('utf-8'), xor_k)
+            except Exception:
+                try:
+                    dyn = get_dynamic_xor_key()
+                    if dyn:
+                        xor_k = dyn
+                        events_data = xor_decrypt(events_raw.decode('utf-8'), xor_k)
+                    else:
+                        events_data = json.loads(events_raw.decode('utf-8'))
+                except Exception:
+                    events_data = json.loads(events_raw.decode('utf-8'))
             print(f"Loaded {len(events_data)} primary events.")
         except Exception as e:
             print(f"Events parse exception: {e}")
 
         try:
             players_raw = fetch_url(f"{API_BASE}/vip/sdplayer.json?v={ts}")
-            players_data = json.loads(players_raw.decode('utf-8'))
+            try:
+                players_data = xor_decrypt(players_raw.decode('utf-8'), xor_k)
+            except Exception:
+                try:
+                    players_data = json.loads(players_raw.decode('utf-8'))
+                except Exception:
+                    pass
             print(f"Loaded {len(players_data)} player definitions.")
         except Exception as e:
             print(f"Players parse exception: {e}")
@@ -400,7 +451,11 @@ def generate_playlist():
     ondemand_handled_ids = set()
     # valid_ondemand list used for fuzzy lookup at primary event time
 
-    player_map = {item['id']: item.get('servers', []) for item in players_data if 'id' in item}
+    player_map = {}
+    for item in players_data:
+        r_val = item.get('r') or item.get('id')
+        if r_val:
+            player_map[r_val] = item.get('servers', [])
 
     # Resolve Vivo URLs in parallel
     vivo_url_map = {}
@@ -431,8 +486,11 @@ def generate_playlist():
     # 3. Process Primary Events (EVERY match in eventweb.json is processed)
     for ev in events_data:
         ev_id = ev.get('id', '')
-        hidden_id = get_event_hidden_id(ev_id, SALT_KEY)
-        servers = player_map.get(hidden_id, [])
+        r_val = ev.get('r') or ev_id
+        servers = player_map.get(r_val, [])
+        if not servers and SALT_KEY and ev_id:
+            hidden_id = get_event_hidden_id(ev_id, SALT_KEY)
+            servers = player_map.get(hidden_id, [])
 
         active_servers = [s for s in servers if s.get('url')]
         if not active_servers:

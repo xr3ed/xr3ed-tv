@@ -355,12 +355,12 @@ def main():
     opener, xsrf_token, html = init_session()
     if not html:
         log("ERROR: Gagal inisialisasi session.")
-        sys.exit(1)
+        sys.exit(0)
 
     hot_live_list, live_all_list, upcoming_list = parse_web_sections(html)
     if not hot_live_list and not live_all_list and not upcoming_list:
         log("Tidak ada match yang ditemukan.")
-        sys.exit(1)
+        sys.exit(0)
 
     m3u_content = generate_m3u(opener, xsrf_token, hot_live_list, live_all_list, upcoming_list)
 
