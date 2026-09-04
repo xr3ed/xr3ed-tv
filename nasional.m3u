@@ -209,6 +209,8 @@ https://op-group1-densxvisionhd-1.dens.tv/h/h12/index.m3u8
 #EXTINF:-1 tvg-id="Metro TV" tvg-name="Metro TV - Server 2" tvg-logo="https://www.visionplus.id/images/repository/591/591-LOGO-l.png" group-title="🇮🇩 NASIONAL",Metro TV - Server 2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleCoreMedia/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
 https://tvratu.my.id/vid/index.m3u8?id=777&type=hls
+#EXTINF:-1 tvg-id="Metro TV" tvg-name="Metro TV - Server 3" tvg-logo="https://www.visionplus.id/images/repository/591/591-LOGO-l.png" group-title="🇮🇩 NASIONAL",Metro TV - Server 3
+https://edge.medcom.id/live-edge/smil:metro.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="Kompas TV" tvg-name="Kompas TV - Server 1" tvg-logo="https://www.visionplus.id/images/repository/590/590-LOGO-l.png" group-title="🇮🇩 NASIONAL",Kompas TV - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0
 https://op-group1-densxvisionhd-1.dens.tv/s/s104/index.m3u8
@@ -1057,16 +1059,8 @@ https://d1daq1khzqxpku.cloudfront.net/playlist.m3u8
 http://31.148.48.15/Avto_Plus/index.m3u8
 #EXTINF:-1 tvg-id="Сити Эдем АвтоГид" tvg-name="Сити Эдем АвтоГид" tvg-logo="https://i.imgur.com/qpe8L27.png" group-title="🏎️ OTOMOTIF",Сити Эдем АвтоГид
 https://cityeden.catcast.tv/content/47515/index.m3u8
-#EXTINF:-1 tvg-id="HBO mibi" tvg-name="HBO mibi" tvg-logo="https://1.bp.blogspot.com/-fVO4vCYo_Bo/YJZOdutTXbI/AAAAAAAAEqs/yWuL62zcS50CoTEme5Gpgkwb51VIJHE4ACLcBGAsYHQ/s720/HBO-Poster.png" group-title="🎬 MOVIES & ENTERTAINMENT",HBO mibi
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-https://mb13.cyou/sc/playmax.mpd?tekon=60eb364e52b04c094b6d65ffa18f7c7d&channel=0_xgdr0qbd&opt=a&kid=yes
-#EXTINF:-1 tvg-id="HBO BOXING" tvg-name="HBO BOXING" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1UhQQC5fDS_yf8VAFH1m0eRcCiXrwqeiePbq4PWAx3OBzxEjBk4rnpgJrIp-o9f0Ue62NCssP6FYRxCeBxP5yLh54QQ1TaWuFNDRxN7uxnsU5seidOKE_RqsIOiy870wqmKVY-G2oatN3BuW65l_jOwkSFNe0cH_q3kHVc7632BvuQXet9ZWKqXmy74Q/s720/HBO BOXING.png" group-title="🎬 MOVIES & ENTERTAINMENT",HBO BOXING
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-https://otte.cache.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/9a6uh9e0rz/out/v1/4ca8071b437142ffb1bea21340b0ba05/cenc.mpd
 #EXTINF:-1 tvg-id="HBO" tvg-name="HBO" tvg-logo="https://iili.io/Ju79f8g.png" group-title="🎬 MOVIES & ENTERTAINMENT",HBO
-https://cdnbal1.indihometv.com/atm/DASH/hbo/hbo-avc1_2500000=7-3277707030000000.mpd
+https://mb13.cyou/sc/playmax.mpd?tekon=60eb364e52b04c094b6d65ffa18f7c7d&channel=0_xgdr0qbd&opt=a&kid=yes
 #EXTINF:-1 tvg-id="HBO Hits" tvg-name="HBO Hits - Server 1" tvg-logo="https://iili.io/Ju79nwv.png" group-title="🎬 MOVIES & ENTERTAINMENT",HBO Hits - Server 1
 https://cdnbal1.indihometv.com/atm/DASH/hbohits/hbohits-avc1_2500000=7-3277707030000000.mpd
 #EXTINF:-1 tvg-id="HBO Hits" tvg-name="HBO Hits - Server 2" tvg-logo="https://iili.io/Ju79nwv.png" group-title="🎬 MOVIES & ENTERTAINMENT",HBO Hits - Server 2
@@ -1204,10 +1198,6 @@ https://op-flashcon-digdayahd-1.dens.tv/h/h18/01.m3u8
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=33333f38930949b1af65b3361ad80d1d:b159847f9af0500738b01e91cf023e30
 https://d3b0v7fggu5zwm.cloudfront.net/out/v1/e992e986a88346c18a5dcc4fbcdae6b9/index.mpd
-#EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI" tvg-logo="https://1.bp.blogspot.com/-ttxgG7g-CAI/YJVWw4xpJtI/AAAAAAAAEa0/p7l4XNFPt5M7dpl9WeMBXMNnWCfklN1xwCLcBGAsYHQ/s720/rcti-p.png" group-title="🎬 MOVIES & ENTERTAINMENT",RCTI
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=mpd
-https://cmt.mb13.cyou/bW9kZXJv/ku/see/tiv/hypp.mpd?a=vplus&url=https://d2xz2v5wuvgur6.cloudfront.net/out/v1/997ce8767b604fae9fce05379b3b8b3a/index.mpd&tekon=60eb364e52b04c094b6d65ffa18f7c7d
 #EXTINF:-1 tvg-id="Rock Action" tvg-name="Rock Action" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh34ZdVeieuTVDdIoWiU9o2zSMI7lq4AbnWSGVrNDXQ6Lfr95Vj9YBiOI2xhEOljsZJAo2Fl3m2DBNGGeO3ssmCtxv8qfMYBUuHblHlYa1YN_HGX7rT5X0ab04UMkcCJctJ0lATY-T1wQz5NpmDJUGfY-W1wUNShQQ3LmE92apJ1RRVrL5g9k1TkI92/s720/rock-action-p.png" group-title="🎬 MOVIES & ENTERTAINMENT",Rock Action
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 14; Google TV Streamer Build/UTT3.240625.001.K5; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.60 Mobile Safari/537.36
 #KODIPROP:mimetype=application/dash+xml
