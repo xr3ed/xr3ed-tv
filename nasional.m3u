@@ -301,8 +301,6 @@ https://stream.carubantv.id/hls/0/stream.m3u8
 #KODIPROP:inputstream.adaptive.license_key=10bba49df37c42e78365a9995ca93f79:1d504b9bf2efa10d4d00058222b5020a
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
 https://d3b0v7fggu5zwm.cloudfront.net/out/v1/8cf72e61626f4361a45c57ce6f2fdad8/index.mpd
-#EXTINF:-1 tvg-id="Celestial Movies V" tvg-name="Celestial Movies V - Server 1" tvg-logo="https://alchetron.com/cdn/celestial-movies-bb30cf54-c796-47e1-aa8f-f2b8bdbbf5a-resize-750.png" group-title="🇮🇩 NASIONAL",Celestial Movies V - Server 1
-https://d2xz2v5wuvgur6.cloudfront.net/out/v1/fd25e662b7154c60a94f7c061573ba2d/index.mpd
 #EXTINF:-1 tvg-id="Citra Drama" tvg-name="Citra Drama - Server 1" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2023-05/f3002848368f2982b1a30e82f1842917.png" group-title="🇮🇩 NASIONAL",Citra Drama - Server 1
 http://013tv.com:8080/F33848/cbd9779b/264748
 #EXTINF:-1 tvg-id="Cnbc Indonesia Channelfeed" tvg-name="Cnbc Indonesia Channelfeed - Server 1" tvg-logo="https://1.bp.blogspot.com/-jWY4dT3fPgs/YJdUpBHfS9I/AAAAAAAAE8s/HE6S2OdofN4vPDYHROQaJcuuZqstfB4JgCLcBGAsYHQ/s720/cnbc-p.png" group-title="🇮🇩 NASIONAL",Cnbc Indonesia Channelfeed - Server 1
@@ -1368,7 +1366,14 @@ https://cdnjktbpid37.cubmu.com/riutx01-22b1f3c4ac0e47a0ed0e3305661027ee/dash/Q2l
 http://202.150.161.212:5000/live/channel30/playlist.m3u8
 #EXTINF:-1 tvg-id="tvN" tvg-name="tvN" tvg-logo="https://www.visionplus.id/images/repository/614/614-LOGO-l.png" group-title="🎬 MOVIES & ENTERTAINMENT",tvN
 https://d84q7nw4qf3j3.cloudfront.net/out/v1/6dc5412d26ea4e65961c825d866f2a34/index.mpd
-#EXTINF:-1 tvg-id="Celestial Movies" tvg-name="Celestial Movies" tvg-logo="https://alchetron.com/cdn/celestial-movies-bb30cf54-c796-47e1-aa8f-f2b8bdbbf5a-resize-750.png" group-title="🎬 MOVIES & ENTERTAINMENT",Celestial Movies
+#EXTINF:-1 tvg-id="Celestial Movies" tvg-name="Celestial Movies" tvg-logo="https://1.bp.blogspot.com/-j0vYn2Bx7z8/YJZOiNHodAI/AAAAAAAAEro/EQ8hL5eA_qMBv0tlKKt07DZxj-JuhfXLQCLcBGAsYHQ/s720/celestial-Poster.png" group-title="🎬 MOVIES & ENTERTAINMENT",Celestial Movies
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 14; Google TV Streamer Build/UTT3.240625.001.K5; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.60 Mobile Safari/537.36
+#KODIPROP:mimetype=application/dash+xml
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.stream_headers=origin=https://www.visionplus.id&referer=https://www.visionplus.id/&user-agent=Vision+/11.3.7 (4.2407240952) Vision+ (Linux;Android 11) ExoPlayerLib/2.19.1
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=de4a383599bb4ec4a24f8c61f2b9a3ba:5166677d7f6797bcf459cf7c8b66dcb9
 https://d2xz2v5wuvgur6.cloudfront.net/out/v1/fd25e662b7154c60a94f7c061573ba2d/index.mpd
 #EXTINF:-1 tvg-id="AXN" tvg-name="AXN - Server 1" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/bb/AXN_2011.png/revision/latest?cb=20201126072546" group-title="🎬 MOVIES & ENTERTAINMENT",AXN - Server 1
 #KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)&Origin=https://www.cubmu.com&Referer=https://www.cubmu.com/
