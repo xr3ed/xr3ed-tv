@@ -228,8 +228,12 @@ https://5bf7b725107e5.streamlock.net/bmstv/bmstv/playlist.m3u8
 #EXTINF:-1 tvg-id="Bioskop Indonesia" tvg-name="Bioskop Indonesia - Server 1" tvg-logo="https://1.bp.blogspot.com/-h8UVAYa9N6I/YJZOhm1ViBI/AAAAAAAAErg/SsZku81FNCkHB8hgdiM6gvfV0P4OVsOJACLcBGAsYHQ/s720/bioskopindo-post.png" group-title="🇮🇩 NASIONAL",Bioskop Indonesia - Server 1
 http://013tv.com:8080/F33848/cbd9779b/264801
 #EXTINF:-1 tvg-id="Bioskop Indonesia" tvg-name="Bioskop Indonesia - Server 2" tvg-logo="https://1.bp.blogspot.com/-h8UVAYa9N6I/YJZOhm1ViBI/AAAAAAAAErg/SsZku81FNCkHB8hgdiM6gvfV0P4OVsOJACLcBGAsYHQ/s720/bioskopindo-post.png" group-title="🇮🇩 NASIONAL",Bioskop Indonesia - Server 2
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0
 http://202.150.161.212:5000/live/channel35/playlist.m3u8
+#EXTINF:-1 tvg-id="Bioskop Indonesia Transcorp" tvg-name="Bioskop Indonesia Transcorp - Server 1" tvg-logo="https://www.transvision.co.id/img/channel/bioskop_ind.png" group-title="🇮🇩 NASIONAL",Bioskop Indonesia Transcorp - Server 1
+#KODIPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)&Origin=https://www.cubmu.com&Referer=https://www.cubmu.com/
+#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
+#KODIPROP:inputstream.adaptive.license_key=6ffb9c53af284fd590217ede1eba765e:4abf1fd26e8c45a5b6bae60cf6ffc2b9
+https://cdnjktcyber05.transvision.co.id/riutx01-a823b93f0d45cabb0fba0e57ca612f86/dash/Qmlvc2tvcCBJbmRvbmVzaWE/manifest.mpd?signature=ZjIzM2U5OWVlZDdkMzg3ZWE5MWQ3YTBmN2JkZGIxZmI=\u0026time=77777777777\u0026device_id=kd7Lc0uNWO-f4gbWECGzkjTO6C1VNjQ_Sxqz12F2wWEwPbeBKYBn
 #EXTINF:-1 tvg-id="Bms Tv" tvg-name="Bms Tv - Server 1" tvg-logo="https://iili.io/JbtnSCF.png" group-title="🇮🇩 NASIONAL",Bms Tv - Server 1
 https://5bf7b725107e5.streamlock.net/bmstv/bmstv/playlist.m3u8
 #EXTINF:-1 tvg-id="Bn Channel" tvg-name="Bn Channel - Server 1" tvg-logo="https://i.ytimg.com/vi/HkWwrFkvYJU/maxresdefault.jpg" group-title="🇮🇩 NASIONAL",Bn Channel - Server 1
@@ -247,6 +251,12 @@ https://lnd0t3b922.tenbytecdn.com/ta-sg1/90369cf5-6ac2-411d-b3d0-15fae10a2e2c/ma
 https://op-flashcon-digdayahd-1.dens.tv/h/h313/S1/mnf.m3u8
 #EXTINF:-1 tvg-id="Carubantv" tvg-name="Carubantv - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3a/CarubanTV%28Low-res%29.png" group-title="🇮🇩 NASIONAL",Carubantv - Server 1
 https://stream.carubantv.id/hls/0/stream.m3u8
+#EXTINF:-1 tvg-id="Celebritiestv Vision" tvg-name="Celebritiestv Vision - Server 1" tvg-logo="https://e7.pngegg.com/pngimages/789/35/png-clipart-logo-celebrity-graphic-design-brand-font-cat-victorious-purple-television.png" group-title="🇮🇩 NASIONAL",Celebritiestv Vision - Server 1
+#KODIPROP:inputstream.adaptive.stream_headers=origin=https://www.visionplus.id&referer=https://www.visionplus.id/&user-agent=Vision+/11.3.7 (4.2407240952) Vision+ (Linux;Android 11) ExoPlayerLib/2.19.1
+#EXTVLCOPT:http-referrer=https://www.visionplus.id/
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://vision.hoe.my.id/play?ids=88&type=drm&token=alf-store
+https://d3b0v7fggu5zwm.cloudfront.net/out/v1/8cf72e61626f4361a45c57ce6f2fdad8/index.mpd
 #EXTINF:-1 tvg-id="Citra Drama" tvg-name="Citra Drama - Server 1" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2023-05/f3002848368f2982b1a30e82f1842917.png" group-title="🇮🇩 NASIONAL",Citra Drama - Server 1
 http://013tv.com:8080/F33848/cbd9779b/264748
 #EXTINF:-1 tvg-id="Cnbc Indonesia Channelfeed" tvg-name="Cnbc Indonesia Channelfeed - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/id/3/35/CNBC_Indonesia.png" group-title="🇮🇩 NASIONAL",Cnbc Indonesia Channelfeed - Server 1
@@ -273,8 +283,20 @@ https://dhohotv.siar.us/dhohotv/live/playlist.m3u8
 https://dhohotv.siar.us/dhohotv/live/playlist.m3u8?checkedby:iptvcat.com
 #EXTINF:-1 tvg-id="Duta Tv" tvg-name="Duta Tv - Server 1" tvg-logo="https://i.imgur.com/B4JW54M.png" group-title="🇮🇩 NASIONAL",Duta Tv - Server 1
 https://dutatv.siar.us/dutatv/live/playlist.m3u8
+#EXTINF:-1 tvg-id="Entertainment Vision" tvg-name="Entertainment Vision - Server 1" tvg-logo="https://static.wikia.nocookie.net/logo-tv/images/b/b1/Ent_%282020%29.png/revision/latest?cb=20210401065932" group-title="🇮🇩 NASIONAL",Entertainment Vision - Server 1
+#KODIPROP:inputstream.adaptive.stream_headers=origin=https://www.visionplus.id&referer=https://www.visionplus.id/&user-agent=Vision+/11.3.7 (4.2407240952) Vision+ (Linux;Android 11) ExoPlayerLib/2.19.1
+#EXTVLCOPT:http-referrer=https://www.visionplus.id/
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://vision.hoe.my.id/play?ids=72&type=drm&token=alf-store
+https://d2xx73ro32cip.cloudfront.net/out/v1/a90cb773466446b08595007bab12b920/index.mpd
 #EXTINF:-1 tvg-id="Garuda Tv Channelfeed" tvg-name="Garuda Tv Channelfeed - Server 1" tvg-logo="https://thumbor.prod.vidiocdn.com/qtIYvE-mjwMPwd-VUxilo2gFiAI=/230x230/filters:quality(70)/vidio-web-prod-livestreaming/uploads/livestreaming/square_image/18162/b4bea2.png" group-title="🇮🇩 NASIONAL",Garuda Tv Channelfeed - Server 1
 https://hgmtv.com:19360/garudatvlivestreaming/480p.m3u8
+#EXTINF:-1 tvg-id="Hanacaraka Tv Vision" tvg-name="Hanacaraka Tv Vision - Server 1" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_90.png" group-title="🇮🇩 NASIONAL",Hanacaraka Tv Vision - Server 1
+#KODIPROP:inputstream.adaptive.stream_headers=origin=https://www.visionplus.id&referer=https://www.visionplus.id/&user-agent=Vision+/11.3.7 (4.2407240952) Vision+ (Linux;Android 11) ExoPlayerLib/2.19.1
+#EXTVLCOPT:http-referrer=https://www.visionplus.id/
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://vision.hoe.my.id/play?ids=89&type=drm&token=alf-store
+https://d1vckova5fh9mt.cloudfront.net/out/v1/17c724036c5f4615bd0b8093126b5c44/index.mpd
 #EXTINF:-1 tvg-id="Idx" tvg-name="Idx - Server 1" tvg-logo="https://www.mncvision.id/userfiles/image/channel/iBcm_IDX.jpg" group-title="🇮🇩 NASIONAL",Idx - Server 1
 https://cdnbal1.indihometv.com/atm/DASH/idx/idx-avc1_2500000=7-3277707030000000.mpd
 #EXTINF:-1 tvg-id="Idx V" tvg-name="Idx V - Server 1" tvg-logo="https://www.visionplus.id/images/repository/659/659-LOGO-m.png" group-title="🇮🇩 NASIONAL",Idx V - Server 1
@@ -282,6 +304,12 @@ https://cdnbal1.indihometv.com/atm/DASH/idx/idx-avc1_2500000=7-3277707030000000.
 #EXTVLCOPT:http-user-agent=VideoPlayer/4.3.0-WITH_ADS
 #KODIPROP:inputstream.adaptive.license_key=https://dusk.biz.id/rpl/drm.php?id=134
 https://d2xx73ro32cip.cloudfront.net/out/v1/db34a1b61f414d2181c29f1892bc8d0b/index.mpd
+#EXTINF:-1 tvg-id="Indonesia Movie Channel Vision" tvg-name="Indonesia Movie Channel Vision - Server 1" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_imc.png" group-title="🇮🇩 NASIONAL",Indonesia Movie Channel Vision - Server 1
+#KODIPROP:inputstream.adaptive.stream_headers=origin=https://www.visionplus.id&referer=https://www.visionplus.id/&user-agent=Vision+/11.3.7 (4.2407240952) Vision+ (Linux;Android 11) ExoPlayerLib/2.19.1
+#EXTVLCOPT:http-referrer=https://www.visionplus.id/
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://vision.hoe.my.id/play?ids=50&type=drm&token=alf-store
+https://d3b0v7fggu5zwm.cloudfront.net/out/v1/65432a4c12ca4a52abf473a0e41d7c7e/index.mpd
 #EXTINF:-1 tvg-id="Indonesiana Tv" tvg-name="Indonesiana Tv - Server 1" tvg-logo="https://1.bp.blogspot.com/-KpWyLR5i7xQ/YZxuWqY4HfI/AAAAAAAAIJc/aSs_n2nzEQYWjGTpiKpgjjHMiTg7a8jVgCLcBGAsYHQ/s720/Untitled-1.png" group-title="🇮🇩 NASIONAL",Indonesiana Tv - Server 1
 https://tvstreamcast.com/indonesiana.m3u8
 #EXTINF:-1 tvg-id="Indonesiana Tv Channelfeed" tvg-name="Indonesiana Tv Channelfeed - Server 1" tvg-logo="https://layarceritaperempuan.indonesiana.tv/_nuxt/img/logo-indonesianatv-fit.0d9697f.png" group-title="🇮🇩 NASIONAL",Indonesiana Tv Channelfeed - Server 1
@@ -482,6 +510,12 @@ https://op-group1-densxvisionhd-1.dens.tv/h/h40/01.m3u8
 https://d3b0v7fggu5zwm.cloudfront.net/out/v1/f3df48faafaf4198a65b9763140fce30/index.mpd
 #EXTINF:-1 tvg-id="UGTV" tvg-name="UGTV - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/87/UGTV_Indonesia.png" group-title="🇮🇩 NASIONAL",UGTV - Server 1
 https://cdn.gunadarma.ac.id/streams/ugtv/ingestugtv_high.m3u8
+#EXTINF:-1 tvg-id="Vision Prime Vision" tvg-name="Vision Prime Vision - Server 1" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/0/0a/VisionPrime.png/revision/latest/scale-to-width-down/300?cb=20200225175642&path-prefix=es" group-title="🇮🇩 NASIONAL",Vision Prime Vision - Server 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.visionplus.id/
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://dusk.biz.id/rpl/drm.php?id=87
+https://d43tg978oium5.cloudfront.net/out/v1/873c24d3946048f68e459250f1d2fd98/index.mpd
 #EXTINF:-1 tvg-id="Vtv" tvg-name="Vtv - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/7b/VTV_Indonesia_red.png" group-title="🇮🇩 NASIONAL",Vtv - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
 https://flv.intechmedia.net/live/ch107.m3u8|user-agent=Mozilla/5.0
