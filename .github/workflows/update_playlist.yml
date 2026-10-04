@@ -48,9 +48,27 @@ jobs:
           python scripts/update_playlist.py
           python scripts/sync_liveevent.py
 
+      - name: Sync RBTV Live Event 2 Playlist
+        continue-on-error: true
+        env:
+          RBTV_MAIN_URL: ${{ secrets.RBTV_MAIN_URL }}
+          RBTV_API_HOST: ${{ secrets.RBTV_API_HOST }}
+          RBTV_GIST_URL: ${{ secrets.RBTV_GIST_URL }}
+          RBTV_PATH_BS: ${{ secrets.RBTV_PATH_BS }}
+          RBTV_PATH_LIVE: ${{ secrets.RBTV_PATH_LIVE }}
+          RBTV_PATH_DETAIL: ${{ secrets.RBTV_PATH_DETAIL }}
+          RBTV_USER_AGENT: ${{ secrets.RBTV_USER_AGENT }}
+          RBTV_STREAM_REFERER: ${{ secrets.RBTV_STREAM_REFERER }}
+          RBTV_POSTER_URL: ${{ secrets.RBTV_POSTER_URL }}
+          RBTV_RESOLVER_URL: ${{ secrets.RBTV_RESOLVER_URL }}
+          WORKER_AUTH_KEY: ${{ secrets.WORKER_AUTH_KEY }}
+          RBTV_OUTPUT: 'xr3edtv-liveevent2.m3u'
+        run: |
+          python scripts/sync_rbtv.py
+
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add xr3dtv.m3u8 nasional.m3u xr3edtv-liveevent.m3u
+          git add xr3dtv.m3u8 nasional.m3u xr3edtv-liveevent.m3u xr3edtv-liveevent2.m3u
           git diff --staged --quiet || (git commit -m "Sync master, 24/7 & live sports playlists [skip ci]" && git push origin main --force)

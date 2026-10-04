@@ -37,7 +37,16 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.m3u
 
 ---
 
-### 📺 3. 24/7 Channels Only Playlist (Murni TV Linear)
+### ⚡ 3. Dedicated Live Sports Event 2 Playlist (RBTV+ Provider)
+> **Khusus Olahraga RBTV+ dengan Prioritas Indonesia** — Filter real-time pertandingan live & upcoming dengan 3 kategori: `🇮🇩 Indonesia` di posisi teratas, `🔴 Live Event`, dan `⏳ Upcoming Event`. Dilengkapi Cloudflare resolver dinamis.
+
+```text
+https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent2.m3u
+```
+
+---
+
+### 📺 4. 24/7 Channels Only Playlist (Murni TV Linear)
 > Berisi seluruh siaran TV 24/7 (Nasional, Olahraga 24/7, Film HBO, Kartun, Berita, Religi, Mancanegara, Musik).
 
 ```text
@@ -94,6 +103,15 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
  └── ... (Kategori Hiburan, Film, Kartun, Berita, Religi, Mancanegara, Musik)
 ```
 
+### ⚡ D. Playlist Live Event 2 (RBTV+) (`xr3edtv-liveevent2.m3u`)
+```
+📂 [xr3edtv-liveevent2.m3u]
+ ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
+ ├── 🇮🇩 Indonesia (Semua match Indonesia: Live & Upcoming)
+ ├── 🔴 Live Event (Match internasional yang SEDANG LIVE)
+ └── ⏳ Upcoming Event (Match mendatang terdekat)
+```
+
 ---
 
 ## 🛠️ Panduan Pasang di Player
@@ -111,6 +129,5 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
 ---
 
 ## ⚡ Otomasi CI/CD
-- **Sync Master & 24/7 Playlist** (`.github/workflows/update_playlist.yml`): Berjalan otomatis tiap 5 menit (`*/5 * * * *`).
-- **Sync Live Sports Event** (`.github/workflows/sync_liveevent.yml`): Berjalan otomatis tiap 10 menit (`*/10 * * * *`).
+- **Sync Master, Nasional, Live Event 1 & Live Event 2 (RBTV+)** (`.github/workflows/update_playlist.yml`): Berjalan otomatis tiap 5 menit (`*/5 * * * *`).
 - **GitHub Secrets Protection**: Semua URL dan kredensial sensitif diamankan menggunakan GitHub Actions Secrets.
