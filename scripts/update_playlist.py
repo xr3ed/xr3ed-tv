@@ -1,21 +1,30 @@
+#!/usr/bin/env python3
+"""
+update_playlist.py
+==================
+Sinkronisasi playlist Master XR3ED TV (xr3dtv.m3u8) dengan:
+- Live Sports terpadu dari OnDemand, Kltra, dan Beesport via live_engine.py
+- Multi-server failover & deduplikasi otomatis
+- Isolasi channel linear 24/7 (NFL Network, Willow, Fox Cricket, Rally TV) ke grup '⚽ SPORTS'
+- Kategori TV Nasional & Internasional 24/7 dari nasional.m3u
+- Murni membaca dari environment variable tanpa hardcoded fallback
+"""
+
 import os
-import json
-import base64
-import hashlib
-import time
+import sys
 import re
-import urllib.parse
-import urllib.request
-import urllib.error
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
 
+# Ensure UTF-8 output on Windows
 try:
-    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-except ImportError:
-    AESGCM = None
+    sys.stdout.reconfigure(encoding='utf-8')
+except Exception:
+    pass
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
+if script_dir not in sys.path:
+    sys.path.insert(0, script_dir)
+
 env_file = os.path.normpath(os.path.join(script_dir, '..', '.env'))
 try:
     from dotenv import load_dotenv
@@ -29,842 +38,66 @@ except ImportError:
 def clean_env(val: str) -> str:
     return (val or '').strip().lstrip('\ufeff\uffef\u200b\u200c\u200d').strip()
 
-API_BASE = clean_env(os.environ.get('XR3EDTV_API_BASE', '')).rstrip('/')
-XOR_KEY = clean_env(os.environ.get('XR3EDTV_XOR_KEY', ''))
-SALT_KEY = clean_env(os.environ.get('XR3EDTV_SALT_KEY', ''))
-ONDEMAND_API = clean_env(os.environ.get('XR3EDTV_ONDEMAND_API', ''))
-ONDEMAND_EXTRACT = clean_env(os.environ.get('XR3EDTV_ONDEMAND_EXTRACT', ''))
-ONDEMAND_REFERER = clean_env(os.environ.get('XR3EDTV_ONDEMAND_REFERER', ''))
-DEFAULT_REFERER = clean_env(os.environ.get('XR3EDTV_REFERER', ''))
 OUTPUT_FILE = clean_env(os.environ.get('XR3EDTV_OUTPUT', 'xr3dtv.m3u8')) or 'xr3dtv.m3u8'
-WORKER_BASE = clean_env(os.environ.get('WORKER_BASE_URL', '')).rstrip('/')
-WORKER_AUTH_KEY = clean_env(os.environ.get('WORKER_AUTH_KEY', ''))
+NASIONAL_ENV = clean_env(os.environ.get('NASIONAL_OUTPUT', 'nasional.m3u')) or 'nasional.m3u'
 
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
-
-# WIB Timezone (UTC+7)
-WIB = timezone(timedelta(hours=7))
-
-# Sport Categories Configuration (Exact mapping matching website testa.js)
-SPORT_CATEGORY_CONFIG = {
-    'badminton': '🏸 Badminton',
-    'soccer': '⚽ Soccer',
-    'football': '⚽ Soccer',
-    'basketball': '🏀 Basketball',
-    'motorsport': '🏎️ Motorsport',
-    'motor-sports': '🏎️ Motorsport',
-    'racing': '🏎️ Motorsport',
-    'tennis': '🎾 Tennis',
-    'table_tennis': '🏓 Table Tennis',
-    'table tennis': '🏓 Table Tennis',
-    'combat': '🥊 Combat Sports',
-    'ufc': '🥊 Combat Sports',
-    'mma': '🥊 Combat Sports',
-    'boxing': '🥊 Combat Sports',
-    'baseball': '⚾ Baseball',
-    'billiards': '🎱 Billiards',
-    'billiard': '🎱 Billiards',
-    'cricket': '🏏 Cricket',
-    'golf': '⛳ Golf',
-    'volleyball': '🏐 Volleyball',
-    'hockey': '🏒 Hockey',
-    '24/7-streams': '📺 24/7 Streams'
-}
-
-GROUP_LIVE_EVENT = "🔴 Live Event"
-GROUP_HOT_EVENT = "🔥 Hot Event"
-GROUP_UPCOMING_EVENT = "⏳ Upcoming Event"
-GROUP_FIGHT_EVENT = "🥊 FIGHT & COMBAT"
-
-def is_fight_match(league, clean_key, cat_raw, title=""):
-    text = f"{league} {clean_key} {cat_raw} {title}".lower()
-    keywords = ['fight', 'combat', 'ufc', 'boxing', 'mma', 'wrestling', 'wwe', 'aew', 'tna', 'kickboxing', 'bellator', 'one championship']
-    return any(k in text for k in keywords)
-
-SPORT_ORDER = [
-    '🏸 Badminton',
-    '⚽ Soccer',
-    '🏀 Basketball',
-    '🏎️ Motorsport',
-    '🎾 Tennis',
-    '🏓 Table Tennis',
-    '🥊 Combat Sports',
-    '⚾ Baseball',
-    '🎱 Billiards',
-    '🏏 Cricket',
-    '⛳ Golf',
-    '🏐 Volleyball',
-    '🏒 Hockey',
-    '📺 24/7 Streams'
-]
-
-GENERIC_PLACEHOLDERS = {'table tennis', 'tennis', 'soccer', 'football', 'basketball', 'baseball', 'billiards', 'badminton', 'volleyball'}
-
-def clean_league_name(league_str):
-    if not league_str:
-        return "Sports"
-    clean = league_str.replace('|', '-')
-    clean = re.sub(r'[^\x00-\x7F]+', '', clean).strip()
-    clean = re.sub(r'\s+', ' ', clean)
-    if clean.islower():
-        clean = clean.title()
-    return clean or "Sports"
-
-def clean_title_str(s):
-    s = re.sub(r'[^\x00-\x7F]+', '', s or '').replace('|', '-').strip()
-    return re.sub(r'\s+', ' ', s) or 'Sports'
-
-def fetch_url(url, referer=None):
-    headers = {
-        'User-Agent': USER_AGENT,
-        'Accept': 'application/json, text/plain, */*',
-        'Accept-Language': 'en-US,en;q=0.9',
-    }
-    if referer:
-        headers['Referer'] = referer
-        headers['Origin'] = referer.rstrip('/')
-    req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req, timeout=25) as res:
-        return res.read()
-
-def xor_decrypt(encrypted_b64, key_str):
-    if not encrypted_b64 or not key_str:
-        return []
-    raw_data = base64.b64decode(encrypted_b64.strip())
-    key_bytes = key_str.encode('utf-8')
-    key_len = len(key_bytes)
-    decrypted = bytearray(len(raw_data))
-    for i in range(len(raw_data)):
-        decrypted[i] = raw_data[i] ^ key_bytes[i % key_len]
-    return json.loads(decrypted.decode('utf-8', errors='ignore'), strict=False)
-
-def get_dynamic_xor_key():
-    try:
-        url = "https://kltraid.pages.dev/js/testa.js"
-        req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
-        with urllib.request.urlopen(req, timeout=8) as res:
-            content = res.read().decode('utf-8')
-            m_k = re.search(r'const\s+__K_[a-zA-Z0-9]+\s*=\s*\[([0-9,\s]+)\];', content)
-            m_s = re.search(r'const\s+__S_[a-zA-Z0-9]+\s*=\s*\[([^\]]+)\];', content)
-            if m_k and m_s:
-                k_arr = [int(x.strip()) for x in m_k.group(1).split(',') if x.strip()]
-                s_raw = m_s.group(1)
-                s_matches = re.findall(r'"([^"]+)"', s_raw)
-                if len(s_matches) > 2:
-                    raw_b = base64.b64decode(s_matches[2])
-                    n = 2
-                    res_bytes = bytearray(len(raw_b))
-                    for i in range(len(raw_b)):
-                        res_bytes[i] = raw_b[i] ^ k_arr[(i + n) % len(k_arr)] ^ ((n * 31 + i * 17) & 255)
-                    return res_bytes.decode('utf-8')
-    except Exception:
-        pass
-    return ""
-
-
-def get_event_hidden_id(uuid_str, salt):
-    parts = uuid_str.split('-')
-    if len(parts) < 5:
-        return ""
-    s1 = salt[:7]
-    s2 = salt[12:20]
-    raw = parts[2] + s1 + parts[4] + s2 + parts[0]
-    return hashlib.sha256(raw.encode('utf-8')).hexdigest()[:16]
-
-def encrypt_match_id(match_id: str, secret: str) -> str:
-    if not AESGCM or not secret:
-        return base64.urlsafe_b64encode(match_id.encode('utf-8')).decode('utf-8').rstrip('=')
-    key = hashlib.sha256(secret.encode('utf-8')).digest()
-    aesgcm = AESGCM(key)
-    iv = os.urandom(12)
-    encrypted_with_tag = aesgcm.encrypt(iv, match_id.encode('utf-8'), None)
-    combined = iv + encrypted_with_tag
-    return base64.urlsafe_b64encode(combined).decode('utf-8').rstrip('=')
-
-def parse_icon_category(icon_url):
-    if not icon_url:
-        return 'other_sports', False
-    clean = icon_url.split('?')[0].split('/')[-1]
-    name = clean.replace('.png', '').replace('.jpg', '').replace('.webp', '')
-    lower = name.lower()
-    is_main = False
-    cat = name
-
-    if lower.startswith('main_') or lower.startswith('main-'):
-        is_main = True
-        cat = name[5:]
-    elif lower.endswith('_main'):
-        is_main = True
-        cat = name[:-5]
-
-    clean_key = cat.lower().replace('-', '_').strip()
-    return clean_key, is_main
-
-def get_sport_group(clean_key):
-    if clean_key in SPORT_CATEGORY_CONFIG:
-        return SPORT_CATEGORY_CONFIG[clean_key]
-    title_name = clean_key.replace('_', ' ').title()
-    return f"🏆 {title_name}" if title_name else "🏆 Other Sports"
-
-def get_stream_referer(url):
-    """Returns exact referer only if required. Avoids 403 blocks from hostile CDNs."""
-    lower = url.lower()
-    if 'vivo200.com' in lower or 'online909.com' in lower:
-        return 'https://player.online909.com/'
-    elif 'dens.tv' in lower:
-        return 'https://www.dens.tv/'
-    elif 'detik.com' in lower:
-        return 'https://video.detik.com/'
-    elif 'rctiplus' in lower:
-        return 'https://www.rctiplus.com/'
-    elif 'starzplayarabia' in lower:
-        return 'https://starzplay.com/'
-    elif 'stream-cdn-box' in lower or 'damitv' in lower or 'messi.damitv' in lower:
-        return 'https://damitv.st/'
-    elif 'elutuna.workers.dev' in lower or 'resolve-web' in lower:
-        return 'https://playerkltratv.pages.dev/'
-    return None
-
-def check_match_status(match_date, match_time, duration=3.5):
-    """Calculates live/upcoming/ended status matching exact website logic within 24h."""
-    if not match_date or not match_time:
-        return "SCHEDULED", "", 0
-    try:
-        dt_str = f"{match_date.strip()} {match_time.strip()}"
-        match_dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M").replace(tzinfo=WIB)
-        now_wib = datetime.now(WIB)
-
-        dur_hours = float(duration) if duration else 3.5
-        end_dt = match_dt + timedelta(hours=dur_hours)
-        match_ts = int(match_dt.timestamp())
-
-        if match_dt > now_wib + timedelta(hours=24):
-            return "OUT_OF_WINDOW", "", match_ts
-
-        if match_dt <= now_wib < end_dt:
-            return "LIVE", f"• LIVE {match_time}", match_ts
-        elif now_wib < match_dt:
-            return "UPCOMING", f"• {match_time} WIB", match_ts
-        else:
-            return "ENDED", f"• Ended", match_ts
-    except Exception:
-        return "SCHEDULED", f"• {match_time} WIB" if match_time else "", 0
-
-def get_base_server_type(raw_label):
-    if not raw_label or not raw_label.strip():
-        return "SD"
-    upper = raw_label.upper()
-    if 'COURT' in upper:
-        clean = raw_label.replace('[', '').replace(']', '').replace('(', '').replace(')', '').strip()
-        return clean
-    elif 'SD' in upper and 'Y' in upper:
-        return "SD Yalla"
-    elif 'SD' in upper and 'V' in upper:
-        return "SD Vivo"
-    elif 'AUTO' in upper:
-        return "HD"
-    elif 'DAMI' in upper or ('HD' in upper and 'IOS' in upper):
-        return "HD Damiya"
-    elif 'HD' in upper:
-        return "HD"
-    elif 'SD' in upper:
-        return "SD"
-    else:
-        clean = raw_label.replace('[', '').replace(']', '').replace('(', '').replace(')', '').strip()
-        return clean or "Stream"
-
-def resolve_vivo_redirect(url):
-    """Resolves livevent.elutuna.workers.dev/resolve-web/vivo200 302 redirect to direct m3u8 stream."""
-    if 'resolve-web' not in url and 'livevent.elutuna.workers.dev' not in url:
-        return url
-    class NoRedirect(urllib.request.HTTPRedirectHandler):
-        def redirect_request(self, req, fp, code, msg, headers, newurl):
-            return None
-    opener = urllib.request.build_opener(NoRedirect)
-    headers = {'User-Agent': USER_AGENT, 'Referer': 'https://playerkltratv.pages.dev/'}
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        loc = None
-        try:
-            res = opener.open(req, timeout=4)
-            loc = res.headers.get('Location')
-        except urllib.error.HTTPError as e:
-            loc = e.headers.get('Location')
-        if loc:
-            parsed_loc = urllib.parse.urlparse(loc)
-            qs_loc = urllib.parse.parse_qs(parsed_loc.query)
-            if 'liveUrl' in qs_loc and qs_loc['liveUrl'][0]:
-                return qs_loc['liveUrl'][0]
-            elif loc.startswith('http') and ('.m3u8' in loc or '.mpd' in loc or 'vivo200.com' in loc):
-                return loc
-    except Exception:
-        pass
-    return url
-
-def fetch_ondemand_streams():
-    """Fetches live/upcoming matches from messi.damitv.st/papi/matches/all.
-    Returns flat list — same schema as ondemand.st/papi/matches/all."""
-    if not ONDEMAND_API:
-        return []
-    try:
-        raw = fetch_url(ONDEMAND_API, referer=ONDEMAND_REFERER)
-        data = json.loads(raw.decode('utf-8'))
-        return data if isinstance(data, list) else []
-    except Exception as e:
-        print(f"Ondemand streams fetch exception: {e}")
-        return []
-
-def _norm(s):
-    """Normalize team name for fuzzy comparison."""
-    s = (s or '').lower().strip()
-    s = re.sub(r'[^\w\s]', ' ', s)
-    s = re.sub(r'\s+', ' ', s).strip()
-    # Common abbreviation expansions
-    s = s.replace(' fc', '').replace(' cf', '').replace(' sc', '')
-    s = s.replace(' utd', ' united').replace(' city', '').strip()
-    return s
-
-def _name_tokens(s):
-    return set(_norm(s).split())
-
-def fuzzy_match_od(t1_primary, t2_primary, od_list, time_ms_primary=None):
-    """Find best OD match for a primary event pair (t1 vs t2).
-    Uses token-overlap: handles both normal matches and single-string fight events."""
-    if not t2_primary and (' vs ' in t1_primary.lower() or ' v ' in t1_primary.lower()):
-        parts = re.split(r'\s+(?:vs|v)\.?\s+', t1_primary, flags=re.IGNORECASE)
-        if len(parts) >= 2:
-            t1_primary, t2_primary = parts[0], parts[1]
-
-    tok1 = {t for t in _name_tokens(t1_primary) if len(t) > 2}
-    tok2 = {t for t in _name_tokens(t2_primary) if len(t) > 2}
-
-    full_prim_toks = {t for t in _name_tokens(f"{t1_primary} {t2_primary}") if len(t) > 2}
-    if not full_prim_toks:
-        return None
-
-    best = None
-    best_score = 0
-
-    for m in od_list:
-        teams = m.get('teams') or {}
-        ot1 = (teams.get('home') or {}).get('name', '')
-        ot2 = (teams.get('away') or {}).get('name', '')
-        od_title = m.get('title') or m.get('name') or ''
-
-        otok1 = {t for t in _name_tokens(ot1) if len(t) > 2}
-        otok2 = {t for t in _name_tokens(ot2) if len(t) > 2}
-        full_od_toks = {t for t in _name_tokens(f"{ot1} {ot2} {od_title}") if len(t) > 2}
-
-        def overlap(a, b):
-            inter = len(a & b)
-            if not inter:
-                return 0.0
-            return inter / min(len(a), len(b))
-
-        score = 0.0
-        if tok1 and tok2 and otok1 and otok2:
-            s_normal = (overlap(tok1, otok1) + overlap(tok2, otok2)) / 2
-            s_flipped = (overlap(tok1, otok2) + overlap(tok2, otok1)) / 2
-            score = max(s_normal, s_flipped)
-
-        score_full = overlap(full_prim_toks, full_od_toks)
-        score = max(score, score_full)
-
-        if score < 0.6:
-            continue
-
-        if time_ms_primary and score < 0.75:
-            od_date = m.get('date', 0) or 0
-            if od_date and abs(od_date - time_ms_primary) > 12 * 3600 * 1000:
-                continue
-
-        if score > best_score:
-            best_score = score
-            best = m
-
-    return best
+from live_engine import (
+    fetch_merged_matches,
+    render_m3u_entry,
+    is_fight_match,
+    log,
+    GROUP_HOT_EVENT,
+    GROUP_LIVE_EVENT,
+    GROUP_UPCOMING_EVENT,
+    GROUP_FIGHT_EVENT
+)
 
 def generate_playlist():
-    ts = int(time.time() * 1000)
-    channels_data = {}
-    events_data = []
-    players_data = []
-
-    # 1. Fetch Primary API Data
-    if API_BASE:
-        print("Fetching primary API event & player definitions...")
-        xor_k = XOR_KEY or get_dynamic_xor_key()
-
-        if xor_k:
-            try:
-                raw_channels = fetch_url(f"{API_BASE}/vip/channels.json?v={ts}")
-                try:
-                    channels_data = xor_decrypt(raw_channels.decode('utf-8'), xor_k)
-                except Exception:
-                    dyn = get_dynamic_xor_key()
-                    if dyn and dyn != xor_k:
-                        xor_k = dyn
-                        channels_data = xor_decrypt(raw_channels.decode('utf-8'), xor_k)
-                print(f"Loaded {len(channels_data)} channel references.")
-            except Exception as e:
-                print(f"Channels decode exception: {e}")
-
-        try:
-            events_raw = fetch_url(f"{API_BASE}/vip/eventweb.json?v={ts}")
-            try:
-                events_data = xor_decrypt(events_raw.decode('utf-8'), xor_k)
-            except Exception:
-                try:
-                    dyn = get_dynamic_xor_key()
-                    if dyn:
-                        xor_k = dyn
-                        events_data = xor_decrypt(events_raw.decode('utf-8'), xor_k)
-                    else:
-                        events_data = json.loads(events_raw.decode('utf-8'))
-                except Exception:
-                    events_data = json.loads(events_raw.decode('utf-8'))
-            print(f"Loaded {len(events_data)} primary events.")
-        except Exception as e:
-            print(f"Events parse exception: {e}")
-
-        try:
-            players_raw = fetch_url(f"{API_BASE}/vip/sdplayer.json?v={ts}")
-            try:
-                players_data = xor_decrypt(players_raw.decode('utf-8'), xor_k)
-            except Exception:
-                try:
-                    players_data = json.loads(players_raw.decode('utf-8'))
-                except Exception:
-                    pass
-            print(f"Loaded {len(players_data)} player definitions.")
-        except Exception as e:
-            print(f"Players parse exception: {e}")
-
-    # 2. Fetch OnDemand Streams (messi.damitv.st — supports all sports IDs)
-    print("Fetching OnDemand streams...")
-    ondemand_matches = fetch_ondemand_streams()
-    print(f"Loaded {len(ondemand_matches)} OnDemand stream entries.")
-
-    # All entries from streams API are valid — messi.damitv.st/papi/extract-url handles them all
-    valid_ondemand = [m for m in ondemand_matches if m.get('id')]
-
-    ondemand_handled_ids = set()
-    # valid_ondemand list used for fuzzy lookup at primary event time
-
-    player_map = {}
-    for item in players_data:
-        r_val = item.get('r') or item.get('id')
-        if r_val:
-            player_map[r_val] = item.get('servers', [])
-
-    # Resolve Vivo URLs in parallel
-    vivo_url_map = {}
-    vivo_urls_to_resolve = set()
-    for item in players_data:
-        for s in item.get('servers', []):
-            u = s.get('url', '')
-            if 'resolve-web' in u or 'livevent.elutuna.workers.dev' in u:
-                vivo_urls_to_resolve.add(u)
-
-    if vivo_urls_to_resolve:
-        print(f"Resolving {len(vivo_urls_to_resolve)} Vivo web-player streams to direct HLS...")
-        with ThreadPoolExecutor(max_workers=12) as executor:
-            future_to_url = {executor.submit(resolve_vivo_redirect, u): u for u in vivo_urls_to_resolve}
-            for future in future_to_url:
-                orig_u = future_to_url[future]
-                try:
-                    vivo_url_map[orig_u] = future.result()
-                except Exception:
-                    vivo_url_map[orig_u] = orig_u
+    log("=== update_playlist.py dimulai ===")
+    merged_data = fetch_merged_matches()
 
     hot_entries = []
     live_event_entries = []
     fight_entries = []
-    upcoming_dict = {}
-    total_servers = 0
-
-    # 3. Process Primary Events (EVERY match in eventweb.json is processed)
-    for ev in events_data:
-        ev_id = ev.get('id', '')
-        r_val = ev.get('r') or ev_id
-        servers = player_map.get(r_val, [])
-        if not servers and SALT_KEY and ev_id:
-            hidden_id = get_event_hidden_id(ev_id, SALT_KEY)
-            servers = player_map.get(hidden_id, [])
-
-        active_servers = [s for s in servers if s.get('url')]
-        if not active_servers:
-            continue
-
-        league = clean_league_name((ev.get('league') or 'Sports Event').strip())
-        t1 = (ev.get('team1', {}).get('name') or '').strip()
-        t2 = (ev.get('team2', {}).get('name') or '').strip()
-
-        is_t1_placeholder = t1.lower() in GENERIC_PLACEHOLDERS
-        is_t2_placeholder = t2.lower() in GENERIC_PLACEHOLDERS
-        is_identical = t1.lower() == t2.lower()
-
-        # Fuzzy match OD entry to primary event
-        m_date_str = ev.get('match_date') or ev.get('kickoff_date') or ''
-        m_time_str = ev.get('match_time') or ev.get('kickoff_time') or ''
-        prim_time_ms = None
-        try:
-            if m_date_str and m_time_str:
-                from datetime import datetime as _dt
-                prim_dt = _dt.strptime(f"{m_date_str} {m_time_str}", "%Y-%m-%d %H:%M").replace(tzinfo=WIB)
-                prim_time_ms = int(prim_dt.timestamp() * 1000)
-        except Exception:
-            pass
-
-        ev_query_1 = t1 or league or (ev.get('name') or ev.get('title') or '')
-        ev_query_2 = t2
-        matched_od = fuzzy_match_od(ev_query_1, ev_query_2, valid_ondemand, prim_time_ms) if ev_query_1 else None
-
-        if matched_od:
-            ondemand_handled_ids.add(matched_od.get('id'))
-            od_badge = (matched_od.get('teams') or {}).get('home', {}).get('badge') or matched_od.get('poster') or ''
-            channels = [ch.get('name') for ch in matched_od.get('tvChannels', []) if ch.get('name')]
-            unique_tv = list(dict.fromkeys(channels))
-            od_tv = f" [{' | '.join(unique_tv[:3])}]" if unique_tv else ""
-            od_title_val = matched_od.get('title') or matched_od.get('name') or ''
-        else:
-            od_badge = ""
-            od_tv = ""
-            od_title_val = ""
-
-        if t1 and t2 and not is_identical and not is_t1_placeholder and not is_t2_placeholder:
-            match_title = f"[{league}] {t1} vs {t2}{od_tv}"
-        elif t1 and not is_t1_placeholder and t1.lower() != league.lower():
-            match_title = f"[{league}] {t1}{od_tv}"
-        elif od_title_val:
-            match_title = f"[{league}] {od_title_val}{od_tv}"
-        else:
-            match_title = f"[{league}]{od_tv}"
-
-        logo = (
-            od_badge or
-            ev.get('team1', {}).get('logo') or
-            ev.get('team2', {}).get('logo') or
-            ev.get('icon') or
-            ""
-        ).strip()
-
-        clean_key, is_main = parse_icon_category(ev.get('icon', ''))
-        sport_group = get_sport_group(clean_key)
-
-        m_date = ev.get('match_date') or ev.get('kickoff_date') or ""
-        m_time = ev.get('match_time') or ev.get('kickoff_time') or ""
-        duration = ev.get('duration', 3.5)
-
-        status_type, status_suffix, match_ts = check_match_status(m_date, m_time, duration)
-
-        if status_type in ("ENDED", "OUT_OF_WINDOW"):
-            continue
-        seen_match_urls = set()
-        server_list = []
-
-        # Optional worker stream + TV channels + substreams from matched OnDemand
-        if matched_od and WORKER_AUTH_KEY:
-            m_od_id = matched_od.get('id')
-            if m_od_id:
-                enc_id = encrypt_match_id(m_od_id, WORKER_AUTH_KEY)
-                worker_stream = f"{WORKER_BASE}/live/{enc_id}.m3u8"
-                seen_match_urls.add(worker_stream)
-                srv_idx = len(server_list) + 1
-                server_list.append((
-                    f"Server {srv_idx} (Worker HLS)",
-                    worker_stream,
-                    ONDEMAND_REFERER,
-                    None
-                ))
-
-            # Matched Substreams (Real playable streams like Paramount+, DAZN, etc.)
-            for sub in (matched_od.get('substreams') or []):
-                sub_id = sub.get('id')
-                sub_name = sub.get('name') or 'Alt Stream'
-                sub_locale = sub.get('locale', '')
-                if sub_id:
-                    enc_sub_id = encrypt_match_id(str(sub_id), WORKER_AUTH_KEY)
-                    sub_url = f"{WORKER_BASE}/live/{enc_sub_id}.m3u8"
-                    if sub_url not in seen_match_urls:
-                        seen_match_urls.add(sub_url)
-                        srv_idx = len(server_list) + 1
-                        loc_str = f" {sub_locale.upper()}" if sub_locale else ""
-                        server_list.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url, ONDEMAND_REFERER, None))
-
-            # Matched TV Channels (e.g. FOX USA, Sky Sports, TSN, DAZN, ESPN)
-            for tv in (matched_od.get('tvChannels') or []):
-                tv_id = str(tv.get('id') or '').replace('dlhd-', '').replace('tv-', '').strip()
-                tv_name = tv.get('name') or 'TV Channel'
-                if tv_id and tv_id.isdigit():
-                    enc_tv_id = encrypt_match_id(tv_id, WORKER_AUTH_KEY)
-                    tv_url = f"{WORKER_BASE}/live/{enc_tv_id}.m3u8"
-                    if tv_url not in seen_match_urls:
-                        seen_match_urls.add(tv_url)
-                        srv_idx = len(server_list) + 1
-                        server_list.append((f"Server {srv_idx} ({tv_name})", tv_url, ONDEMAND_REFERER, None))
-
-        # Add servers from Primary API (Kltra) with exact de-duplication
-        for s_obj in active_servers:
-            raw_label = s_obj.get('label', '')
-            base_type = get_base_server_type(raw_label)
-            s_url = s_obj.get('url', '').strip()
-            if s_url in vivo_url_map:
-                s_url = vivo_url_map[s_url]
-
-            if 'liveUrl=' in s_url:
-                try:
-                    parsed_live = urllib.parse.urlparse(s_url)
-                    qs_live = urllib.parse.parse_qs(parsed_live.query)
-                    if 'liveUrl' in qs_live and qs_live['liveUrl'][0]:
-                        s_url = qs_live['liveUrl'][0]
-                except Exception:
-                    pass
-
-            if not s_url or s_url.startswith('javascript:'):
-                continue
-
-            final_stream_url = s_url
-            clearkey_str = None
-
-            parsed = urllib.parse.urlparse(s_url)
-            qs = urllib.parse.parse_qs(parsed.query)
-            if 'channel' in qs and qs['channel'][0] in channels_data:
-                ch_target = channels_data[qs['channel'][0]]
-                final_stream_url = ch_target.get('url', s_url)
-                if 'drm' in ch_target and ch_target['drm']:
-                    drm_dict = ch_target['drm']
-                    k_id = list(drm_dict.keys())[0]
-                    clearkey_str = f"{k_id}:{drm_dict[k_id]}"
-            elif 'src' in qs:
-                final_stream_url = qs['src'][0]
-                if 'ck' in qs:
-                    clearkey_str = qs['ck'][0]
-
-            # Ignore exact identical streams
-            if final_stream_url in seen_match_urls:
-                continue
-            seen_match_urls.add(final_stream_url)
-
-            srv_idx = len(server_list) + 1
-            if 'COURT' in base_type.upper():
-                srv_label = base_type
-            else:
-                srv_label = f"Server {srv_idx} ({base_type})"
-
-            ref = get_stream_referer(final_stream_url)
-            server_list.append((srv_label, final_stream_url, ref, clearkey_str))
-
-        if not server_list:
-            continue
-
-        # Build entries for each server
-        for srv_label, stream_url, ref, clearkey_str in server_list:
-            if status_type == "UPCOMING":
-                full_display_title = f"[UPCOMING] {match_title} - {srv_label} {status_suffix}".strip()
-            elif status_suffix:
-                full_display_title = f"{match_title} - {srv_label} {status_suffix}".strip()
-            else:
-                full_display_title = f"{match_title} - {srv_label}".strip()
-
-            def build_entry(grp_title, _title=full_display_title, _url=stream_url, _ref=ref, _ck=clearkey_str):
-                item = []
-                extinf = f'#EXTINF:-1 tvg-id="" tvg-name="{_title}" tvg-logo="{logo}" group-title="{grp_title}",{_title}'
-                item.append(extinf)
-                if _ref:
-                    item.append(f'#EXTVLCOPT:http-referrer={_ref}')
-                item.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
-
-                headers_json = {"User-Agent": USER_AGENT}
-                if _ref:
-                    headers_json["Referer"] = _ref
-                item.append(f'#EXTHTTP:{json.dumps(headers_json)}')
-
-                if _ck:
-                    item.append('#KODIPROP:inputstream.adaptive.license_type=clearkey')
-                    item.append(f'#KODIPROP:inputstream.adaptive.license_key={_ck}')
-
-                item.append(_url)
-                return item
-
-            # 1. Hot Event (Matches with Main_ icon or trending OnDemand match)
-            is_od_trending = bool(matched_od and (matched_od.get('popular') or matched_od.get('trending') or (matched_od.get('viewers', 0) or 0) >= 10))
-            if (is_main or is_od_trending) and status_type == "LIVE":
-                hot_entries.extend(build_entry(GROUP_HOT_EVENT))
-
-            # 2. Live Event (Ongoing live matches)
-            if status_type == "LIVE":
-                live_event_entries.append((match_ts, build_entry(GROUP_LIVE_EVENT)))
-                if is_fight_match(league, clean_key, "", match_title):
-                    fight_entries.append((match_ts, build_entry(GROUP_FIGHT_EVENT)))
-
-            # 3. Upcoming Event (Collected for top 10 upcoming list)
-            if status_type == "UPCOMING":
-                if ev_id not in upcoming_dict:
-                    upcoming_dict[ev_id] = (match_ts, [])
-                upcoming_dict[ev_id][1].extend(build_entry(GROUP_UPCOMING_EVENT))
-
-            total_servers += 1
-
-    # 4. Process Standalone Valid OnDemand Matches with ALL available servers
-    if WORKER_AUTH_KEY:
-        now_wib = datetime.now(WIB)
-        for m in valid_ondemand:
-            mid = m.get('id', '')
-            if not mid or mid in ondemand_handled_ids:
-                continue
-
-            cat_raw = (m.get('_category') or m.get('category') or '').lower().strip()
-            league = clean_league_name(m.get('league') or cat_raw.replace('-', ' ').title() or 'Sports')
-            name = clean_title_str(m.get('name') or m.get('title') or 'Live Match')
-
-            teams = m.get('teams') or {}
-            logo = (
-                (teams.get('home') or {}).get('badge') or
-                m.get('poster') or ''
-            )
-
-            starts_at = m.get('starts_at', 0) or 0
-            date_ms = m.get('date', 0) or 0
-            if starts_at:
-                start_dt = datetime.fromtimestamp(starts_at, tz=WIB)
-            elif date_ms:
-                start_dt = datetime.fromtimestamp(date_ms / 1000, tz=WIB)
-            else:
-                start_dt = None
-
-            is_live = m.get('status') == 'live'
-
-            if start_dt:
-                time_hm = start_dt.strftime('%H:%M')
-                if start_dt > now_wib + timedelta(hours=24):
-                    continue
-                ends_at = m.get('ends_at', 0) or 0
-                if ends_at and datetime.fromtimestamp(ends_at, tz=WIB) < now_wib:
-                    continue
-                if is_live or (start_dt <= now_wib < start_dt + timedelta(hours=4) and m.get('status') != 'upcoming'):
-                    is_live = True
-                    tag = f"• LIVE {time_hm}"
-                    status_type = "LIVE"
-                elif start_dt + timedelta(hours=4) <= now_wib and not is_live:
-                    continue
-                else:
-                    tag = f"• {time_hm} WIB"
-                    status_type = "UPCOMING"
-                match_ts = int(start_dt.timestamp())
-            else:
-                time_hm = now_wib.strftime('%H:%M')
-                is_live = True
-                tag = f"• LIVE {time_hm}"
-                status_type = "LIVE"
-                match_ts = int(now_wib.timestamp())
-
-            prefix = '' if is_live else '[UPCOMING] '
-            match_title_base = f"{prefix}[{league}] {name}".strip()
-
-            # Collect all OnDemand servers (Primary + Substreams)
-            od_servers = []
-            seen_od_streams = set()
-
-            # Primary stream
-            enc_id = encrypt_match_id(mid, WORKER_AUTH_KEY)
-            primary_url = f"{WORKER_BASE}/live/{enc_id}.m3u8"
-            seen_od_streams.add(primary_url)
-            od_servers.append(("Server 1 (Worker HLS)", primary_url))
-
-            # Substreams (Real playable streams like Paramount+, DAZN, etc.)
-            for sub in (m.get('substreams') or []):
-                sub_id = sub.get('id')
-                sub_name = sub.get('name') or 'Alt Stream'
-                sub_locale = sub.get('locale', '')
-                if sub_id:
-                    enc_sub_id = encrypt_match_id(str(sub_id), WORKER_AUTH_KEY)
-                    sub_url = f"{WORKER_BASE}/live/{enc_sub_id}.m3u8"
-                    if sub_url not in seen_od_streams:
-                        seen_od_streams.add(sub_url)
-                        srv_idx = len(od_servers) + 1
-                        loc_str = f" {sub_locale.upper()}" if sub_locale else ""
-                        od_servers.append((f"Server {srv_idx} ({sub_name}{loc_str})", sub_url))
-
-            # TV Channels (e.g. FOX USA, Sky Sports, TSN, DAZN, ESPN)
-            for tv in (m.get('tvChannels') or []):
-                tv_id = str(tv.get('id') or '').replace('dlhd-', '').replace('tv-', '').strip()
-                tv_name = tv.get('name') or 'TV Channel'
-                if tv_id and tv_id.isdigit():
-                    enc_tv_id = encrypt_match_id(tv_id, WORKER_AUTH_KEY)
-                    tv_url = f"{WORKER_BASE}/live/{enc_tv_id}.m3u8"
-                    if tv_url not in seen_od_streams:
-                        seen_od_streams.add(tv_url)
-                        srv_idx = len(od_servers) + 1
-                        od_servers.append((f"Server {srv_idx} ({tv_name})", tv_url))
-
-            is_trending = bool(m.get('popular')) or bool(m.get('trending')) or bool(m.get('hot')) or ((m.get('viewers', 0) or 0) >= 10)
-            od_sport_grp = get_sport_group(cat_raw)
-
-            for srv_label, s_url in od_servers:
-                full_display_title = f"{match_title_base} - {srv_label} {tag}".strip()
-
-                def build_od_entry(grp_title, _title=full_display_title, _logo=logo, _url=s_url):
-                    item = []
-                    extinf = f'#EXTINF:-1 tvg-id="" tvg-name="{_title}" tvg-logo="{_logo}" group-title="{grp_title}",{_title}'
-                    item.append(extinf)
-                    if ONDEMAND_REFERER:
-                        item.append(f'#EXTVLCOPT:http-referrer={ONDEMAND_REFERER}')
-                    item.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
-
-                    headers_json = {"User-Agent": USER_AGENT}
-                    if ONDEMAND_REFERER:
-                        headers_json["Referer"] = ONDEMAND_REFERER
-                    item.append(f'#EXTHTTP:{json.dumps(headers_json)}')
-
-                    item.append(_url)
-                    return item
-
-                if is_live and cat_raw != '24/7-streams':
-                    if is_trending:
-                        hot_entries.extend(build_od_entry(GROUP_HOT_EVENT))
-                    live_event_entries.append((match_ts, build_od_entry(GROUP_LIVE_EVENT)))
-                    if is_fight_match(league, "", cat_raw, match_title_base):
-                        fight_entries.append((match_ts, build_od_entry(GROUP_FIGHT_EVENT)))
-                elif status_type == "UPCOMING" and cat_raw != '24/7-streams':
-                    if mid not in upcoming_dict:
-                        upcoming_dict[mid] = (match_ts, [])
-                    upcoming_dict[mid][1].extend(build_od_entry(GROUP_UPCOMING_EVENT))
-
-                total_servers += 1
-
-    # Sort Live Event newest first (matching website testa.js)
-    live_event_entries.sort(key=lambda item: item[0], reverse=True)
-    live_event_sorted_lines = []
-    for _, entry_lines in live_event_entries:
-        live_event_sorted_lines.extend(entry_lines)
-
-    # Sort Fight & Combat newest first
-    fight_entries.sort(key=lambda item: item[0], reverse=True)
-    fight_sorted_lines = []
-    for _, entry_lines in fight_entries:
-        fight_sorted_lines.extend(entry_lines)
-
-    # Sort Upcoming Event closest kick-off first & take top 10 matches
-    upcoming_items = list(upcoming_dict.values())
-    upcoming_items.sort(key=lambda item: item[0])
     upcoming_sorted_lines = []
-    for _, entry_lines in upcoming_items[:10]:
-        upcoming_sorted_lines.extend(entry_lines)
+    total_live_servers = 0
 
-    # 3. Read 24/7 Linear Channels grouped by category
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    nasional_env = os.environ.get('NASIONAL_OUTPUT', 'nasional.m3u').strip()
+    # 1. Hot Event (Hanya yang LIVE & HOT)
+    for m in merged_data.get('hot_matches', []):
+        for idx, srv in enumerate(m.get('servers', [])):
+            hot_entries.extend(render_m3u_entry(GROUP_HOT_EVENT, m, idx + 1, srv))
+            total_live_servers += 1
+
+    # 2. Live Event (Semua match LIVE)
+    for m in merged_data.get('live_matches', []):
+        for idx, srv in enumerate(m.get('servers', [])):
+            live_event_entries.extend(render_m3u_entry(GROUP_LIVE_EVENT, m, idx + 1, srv))
+            total_live_servers += 1
+
+    # 3. Fight & Combat (Match LIVE khusus combat/fight)
+    fight_matches = [m for m in merged_data.get('live_matches', []) if is_fight_match(m.get('league', ''), m.get('title', ''))]
+    for m in fight_matches:
+        for idx, srv in enumerate(m.get('servers', [])):
+            fight_entries.extend(render_m3u_entry(GROUP_FIGHT_EVENT, m, idx + 1, srv))
+
+    # 4. Upcoming Event (Top 10 terdekat)
+    for m in merged_data.get('upcoming_matches', [])[:10]:
+        for idx, srv in enumerate(m.get('servers', [])):
+            upcoming_sorted_lines.extend(render_m3u_entry(GROUP_UPCOMING_EVENT, m, idx + 1, srv))
+            total_live_servers += 1
+
+    # 5. Baca Channel 24/7 dari nasional.m3u
     if os.path.basename(script_dir) == 'scripts':
-        nasional_path = os.path.normpath(os.path.join(script_dir, '..', nasional_env))
+        nasional_path = os.path.normpath(os.path.join(script_dir, '..', NASIONAL_ENV))
     else:
-        nasional_path = os.path.normpath(os.path.join(script_dir, nasional_env))
-    if not os.path.exists(nasional_path) and os.path.exists(nasional_env):
-        nasional_path = nasional_env
+        nasional_path = os.path.normpath(os.path.join(script_dir, NASIONAL_ENV))
+    if not os.path.exists(nasional_path) and os.path.exists(NASIONAL_ENV):
+        nasional_path = NASIONAL_ENV
 
     nasional_categories = {}
     nasional_cat_order = []
     total_247_channels = 0
+
     if os.path.exists(nasional_path):
         with open(nasional_path, 'r', encoding='utf-8', errors='ignore') as f:
             current_grp = None
@@ -886,7 +119,21 @@ def generate_playlist():
             if current_grp and current_chunk:
                 nasional_categories.setdefault(current_grp, []).extend(current_chunk)
 
-    # 4. Assemble Final Master Playlist
+    # 6. Alihkan Channel Linear 24/7 (NFL Network, Willow, Fox Cricket, Rally TV, dll)
+    # ke kategori '⚽ SPORTS' agar tidak mencemari Live Event
+    linear_sports = merged_data.get('linear_channels', [])
+    if linear_sports:
+        sports_grp = '⚽ SPORTS'
+        if sports_grp not in nasional_categories:
+            nasional_categories[sports_grp] = []
+        if sports_grp not in nasional_cat_order:
+            nasional_cat_order.append(sports_grp)
+        for m in linear_sports:
+            for idx, srv in enumerate(m.get('servers', [])):
+                nasional_categories[sports_grp].extend(render_m3u_entry(sports_grp, m, idx + 1, srv))
+                total_247_channels += 1
+
+    # 7. Susun Playlist Master Final
     final_lines = ['#EXTM3U url-tvg="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml"']
 
     # 0. 📢 INFO (Paling Atas)
@@ -898,45 +145,41 @@ def generate_playlist():
         final_lines.extend(hot_entries)
 
     # 2. 🔴 Live Event (All Live Sports)
-    if live_event_sorted_lines:
-        final_lines.extend(live_event_sorted_lines)
+    if live_event_entries:
+        final_lines.extend(live_event_entries)
 
     # 3. ⏳ Upcoming Event (Top 10 Upcoming Matches)
     if upcoming_sorted_lines:
         final_lines.extend(upcoming_sorted_lines)
 
-    # 4. 🥊 FIGHT & COMBAT (Posisi 5 - Hanya jika ada match LIVE fight)
-    if fight_sorted_lines:
-        final_lines.extend(fight_sorted_lines)
+    # 4. 🥊 FIGHT & COMBAT (Hanya jika ada match LIVE fight)
+    if fight_entries:
+        final_lines.extend(fight_entries)
 
     # 5. 🇮🇩 NASIONAL (TV Indonesia 24/7)
     if '🇮🇩 NASIONAL' in nasional_categories:
         final_lines.extend(nasional_categories['🇮🇩 NASIONAL'])
 
-    # 6. ⚽ SPORTS (Channel TV 24/7: beIN, SPOTV, dll)
+    # 6. ⚽ SPORTS (Channel TV 24/7: beIN, SPOTV, Willow, NFL Network, dll)
     if '⚽ SPORTS' in nasional_categories:
         final_lines.extend(nasional_categories['⚽ SPORTS'])
 
-    # 7. Remaining 24/7 Categories (Movies, Kids, Doc, Religi, Asia, Music)
+    # 7. Kategori TV 24/7 Lainnya (Movies, Kids, Doc, Religi, Asia, Music)
     for cat in nasional_cat_order:
         if cat not in ['📢 INFO', '🇮🇩 NASIONAL', '⚽ SPORTS'] and cat in nasional_categories:
             final_lines.extend(nasional_categories[cat])
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
     if os.path.basename(script_dir) == 'scripts':
-        out_path = os.path.join(script_dir, '..', OUTPUT_FILE)
+        out_path = os.path.normpath(os.path.join(script_dir, '..', OUTPUT_FILE))
     else:
-        out_path = os.path.join(script_dir, OUTPUT_FILE)
-    out_path = os.path.normpath(out_path)
+        out_path = os.path.normpath(os.path.join(script_dir, OUTPUT_FILE))
 
-    with open(out_path, 'w', encoding='utf-8') as f:
+    with open(out_path, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(final_lines) + '\n')
 
-    print(f"Synced {out_path} successfully: {total_servers} live event servers + {total_247_channels} 24/7 channels merged.")
+    log(f"Synced {out_path} successfully: {total_live_servers} live event servers + {total_247_channels} 24/7 channels merged.")
+    log("=== update_playlist.py selesai ===")
     return True
-
-
-
 
 if __name__ == '__main__':
     generate_playlist()

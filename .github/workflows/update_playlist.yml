@@ -41,6 +41,7 @@ jobs:
           NASIONAL_OUTPUT: 'nasional.m3u'
           LIVEEVENT_SRC_URL: ${{ secrets.LIVEEVENT_SRC_URL }}
           LIVEEVENT_REF_URL: ${{ secrets.LIVEEVENT_REF_URL }}
+          LIVEEVENT_CDN_BASE: ${{ secrets.LIVEEVENT_CDN_BASE }}
           LIVEEVENT_OUTPUT: 'xr3edtv-liveevent.m3u'
 
         run: |
