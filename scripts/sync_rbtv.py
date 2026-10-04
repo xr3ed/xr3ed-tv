@@ -139,6 +139,7 @@ def parse_match_basic(mdata: bytes) -> dict:
     team_logos = []
     league_name = None
     league_logo = None
+    match_title = None
     while idx < len(mdata):
         try:
             key, idx = read_varint(mdata, idx)
@@ -174,6 +175,21 @@ def parse_match_basic(mdata: bytes) -> dict:
                                 si = skip_field(sub, si, sw)
                     elif lt == 4 and lw == 2:
                         league_logo, li = read_string(ldata, li)
+                    elif lt == 80 and lw == 2:
+                        l80, li = read_varint(ldata, li)
+                        sub80 = ldata[li:li + l80]
+                        li += l80
+                        s80i = 0
+                        while s80i < len(sub80):
+                            s80k, s80i = read_varint(sub80, s80i)
+                            s80t, s80w = s80k >> 3, s80k & 7
+                            if s80t == 4 and s80w == 2:
+                                if not league_logo:
+                                    league_logo, s80i = read_string(sub80, s80i)
+                                else:
+                                    s80i = skip_field(sub80, s80i, s80w)
+                            else:
+                                s80i = skip_field(sub80, s80i, s80w)
                     else:
                         li = skip_field(ldata, li, lw)
             elif tag == 30 and wire == 2:
@@ -184,7 +200,11 @@ def parse_match_basic(mdata: bytes) -> dict:
                 while ci < len(cdata):
                     ck, ci = read_varint(cdata, ci)
                     ct, cw = ck >> 3, ck & 7
-                    if ct == 10 and cw == 2:
+                    if ct == 2 and cw == 2:
+                        s_title, ci = read_string(cdata, ci)
+                        if not match_title:
+                            match_title = s_title
+                    elif ct in (10, 20) and cw == 2:
                         tl, ci = read_varint(cdata, ci)
                         tdata = cdata[ci:ci + tl]
                         ci += tl
@@ -229,7 +249,8 @@ def parse_match_basic(mdata: bytes) -> dict:
         'teams': teams,
         'team_logos': team_logos,
         'league': league_name or "",
-        'league_logo': league_logo
+        'league_logo': league_logo,
+        'match_title': match_title or ""
     }
 
 def parse_api_response(data: bytes, sport_type_hint: int = 0) -> list:
@@ -403,12 +424,13 @@ def resolve_logo_url(raw_logo: str, api_host: str, main_url: str) -> str:
     return f"{domain}/{raw_logo}"
 
 def select_match_poster(m: dict, api_host: str, main_url: str) -> str:
-    # 1. Ambil poster Tim A (Home) jika ada
+    # 1. Ambil poster Tim A (Home) jika ada, fallback ke tim berikutnya jika ada
     team_logos = m.get('team_logos') or []
-    if team_logos and team_logos[0]:
-        resolved = resolve_logo_url(team_logos[0], api_host, main_url)
-        if resolved:
-            return resolved
+    for tl in team_logos:
+        if tl:
+            resolved = resolve_logo_url(tl, api_host, main_url)
+            if resolved:
+                return resolved
 
     # 2. Jika tidak ada logo tim / single event, ambil logo kompetisi/liga
     league_logo = m.get('league_logo')
@@ -589,7 +611,21 @@ def main():
         home = teams[0] if len(teams) > 0 else ""
         away = teams[1] if len(teams) > 1 else ""
         league = m.get('league', '')
-        title = f"{home} vs {away}".strip() if home and away else (home or league or f"Match {m['id']}")
+        match_title = m.get('match_title', '').strip()
+
+        if match_title:
+            title = match_title
+            if not home and not away and ' vs ' in match_title:
+                parts = match_title.split(' vs ', 1)
+                home, away = parts[0].strip(), parts[1].strip()
+        elif home and away:
+            title = f"{home} vs {away}".strip()
+        elif home:
+            title = home
+        elif league:
+            title = league
+        else:
+            title = f"Match {m['id']}"
 
         is_indo = is_indonesia_match(title, league, home, away)
         is_live = (
@@ -661,7 +697,7 @@ def main():
         time_wib = datetime.fromtimestamp(m['time'] / 1000, WIB).strftime("%H:%M") if m['time'] > 0 else "?"
         poster_url = select_match_poster(m, api_host, main_url)
 
-        league_prefix = f"[{m['league']}] " if m['league'] else ""
+        league_prefix = f"[{m['league']}] " if m['league'] and not m['title'].lower().startswith(m['league'].lower()) else ""
         time_suffix = f" • 🔴 LIVE" if m['is_live'] else f" • {time_wib} WIB"
         base_title = f"{league_prefix}{m['title']}{time_suffix}"
 
