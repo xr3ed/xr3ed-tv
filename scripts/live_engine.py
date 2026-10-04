@@ -577,10 +577,24 @@ def fetch_kltra_matches() -> list:
         for s in active_servers:
             u = s.get('url', '')
             resolved_u = vivo_map.get(u, u)
+            if 'liveUrl=' in resolved_u:
+                try:
+                    parsed_live = urllib.parse.urlparse(resolved_u)
+                    qs_live = urllib.parse.parse_qs(parsed_live.query)
+                    if 'liveUrl' in qs_live and qs_live['liveUrl'][0]:
+                        resolved_u = qs_live['liveUrl'][0]
+                except Exception:
+                    pass
+
             label = s.get('label') or s.get('name') or 'Stream'
-            ref = DEFAULT_REFERER or 'https://playerkltratv.pages.dev/'
-            if 'online909.com' in resolved_u:
+
+            if any(dom in resolved_u for dom in ('streamviewk7x', 'vivo', 'dyrur1.com', 'gkykp.com')):
+                ref = None
+            elif 'online909.com' in resolved_u:
                 ref = 'https://player.online909.com/'
+            else:
+                ref = DEFAULT_REFERER
+
             k_servers.append({'name': f"Kltra - {label}", 'url': resolved_u, 'referer': ref})
 
         results.append({
@@ -756,6 +770,143 @@ def fetch_beesport_matches() -> list:
 
     return results
 
+MAX_SERVERS_PER_MATCH = int(clean_env(os.environ.get('MAX_SERVERS_PER_MATCH', '5')) or 5)
+
+def probe_single_stream(target: tuple) -> tuple:
+    url, ref = target
+    t0 = time.time()
+    headers = {
+        'User-Agent': DESKTOP_UA,
+        'Range': 'bytes=0-512'
+    }
+    if ref:
+        headers['Referer'] = ref
+
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=2.0) as res:
+            lat = int((time.time() - t0) * 1000)
+            if res.status not in (200, 206):
+                return url, False, lat, 0
+
+            chunk = res.read(512).decode('utf-8', errors='ignore')
+            if '<!doctype' in chunk.lower() or '<html' in chunk.lower():
+                return url, False, lat, 0
+
+            if '#EXTM3U' not in chunk and '#EXT-X' not in chunk and '.mpd' not in url:
+                return url, False, lat, 0
+
+            speed_bonus = max(0, int(30 - (lat / 100)))
+            return url, True, lat, speed_bonus
+    except Exception:
+        lat = int((time.time() - t0) * 1000)
+        return url, False, lat, 0
+
+def filter_and_rank_servers(matches_list: list, linear_channels: list, max_servers: int = MAX_SERVERS_PER_MATCH) -> tuple:
+    targets = set()
+    for m in matches_list + linear_channels:
+        for s in m.get('servers', []):
+            u = s.get('url')
+            if u and u.startswith('http'):
+                targets.add((u, s.get('referer')))
+
+    log(f"Memvalidasi kesehatan {len(targets)} server stream secara paralel (timeout 2.0s)...")
+    probe_map = {}
+    if targets:
+        with ThreadPoolExecutor(max_workers=50) as ex:
+            futs = [ex.submit(probe_single_stream, t) for t in targets]
+            for fut in as_completed(futs):
+                url, alive, lat, spd_bonus = fut.result()
+                probe_map[url] = {'alive': alive, 'latency': lat, 'speed_bonus': spd_bonus}
+
+    alive_total = sum(1 for v in probe_map.values() if v['alive'])
+    dead_total = len(probe_map) - alive_total
+    log(f"Hasil Uji Server: {alive_total} Aktif & Valid, {dead_total} Mati/Palsu (dibuang).")
+
+    filtered_matches = []
+    for m in matches_list:
+        is_live = m.get('is_live', False)
+        servers = m.get('servers', [])
+        scored_servers = []
+
+        for s in servers:
+            p_info = probe_map.get(s['url'], {'alive': False, 'latency': 9999, 'speed_bonus': 0})
+            srv_name = (s.get('name') or '').lower()
+
+            base_q = 60
+            if 'worker hls' in srv_name or 'server 1' in srv_name:
+                base_q = 100
+            elif 'beesport' in srv_name or 'greenvora' in s.get('url', ''):
+                base_q = 95
+            elif 'hd' in srv_name:
+                base_q = 90
+            elif any(k in srv_name for k in ('dazn', 'paramount', 'tnt', 'sky', 'espn', 'fox', 'sport')):
+                base_q = 85
+            elif 'sd' in srv_name:
+                base_q = 40
+
+            total_score = base_q + p_info['speed_bonus']
+            scored_servers.append((s, p_info['alive'], p_info['latency'], total_score))
+
+        if is_live:
+            # Match live: Hanya simpan server yang terbukti aktif
+            active_only = [x for x in scored_servers if x[1]]
+            if not active_only:
+                continue
+
+            active_only.sort(key=lambda x: x[3], reverse=True)
+            chosen = [x[0] for x in active_only[:max_servers]]
+
+            renamed_servers = []
+            for idx, s in enumerate(chosen):
+                clean_s = dict(s)
+                type_label = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').strip(' -()') or 'HD'
+                clean_s['name'] = f"Server {idx + 1} ({type_label})"
+                renamed_servers.append(clean_s)
+
+            m['servers'] = renamed_servers
+            filtered_matches.append(m)
+        else:
+            # Match upcoming: Utamakan yang aktif, jika belum siaran ambil top 3 server terbaik
+            active_only = [x for x in scored_servers if x[1]]
+            if active_only:
+                active_only.sort(key=lambda x: x[3], reverse=True)
+                chosen = [x[0] for x in active_only[:max_servers]]
+            else:
+                scored_servers.sort(key=lambda x: x[3], reverse=True)
+                chosen = [x[0] for x in scored_servers[:min(3, max_servers)]]
+
+            renamed_servers = []
+            for idx, s in enumerate(chosen):
+                clean_s = dict(s)
+                type_label = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').strip(' -()') or 'HD'
+                clean_s['name'] = f"Server {idx + 1} ({type_label})"
+                renamed_servers.append(clean_s)
+
+            m['servers'] = renamed_servers
+            filtered_matches.append(m)
+
+    filtered_linear = []
+    for m in linear_channels:
+        scored = []
+        for s in m.get('servers', []):
+            p_info = probe_map.get(s['url'], {'alive': False, 'latency': 9999, 'speed_bonus': 0})
+            if p_info['alive']:
+                scored.append((s, p_info['speed_bonus']))
+        if scored:
+            scored.sort(key=lambda x: x[1], reverse=True)
+            chosen_linear = [x[0] for x in scored[:3]]
+            renamed = []
+            for idx, s in enumerate(chosen_linear):
+                cs = dict(s)
+                tl = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').strip(' -()') or 'Live'
+                cs['name'] = f"Server {idx + 1} ({tl})"
+                renamed.append(cs)
+            m['servers'] = renamed
+            filtered_linear.append(m)
+
+    return filtered_matches, filtered_linear
+
 # ─── Unified Merge Engine (Persis Cloudstream) ────────────────────────────────
 
 def fetch_merged_matches(force_refresh: bool = False) -> dict:
@@ -891,20 +1042,23 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
             continue
         merged_results.append(bs)
 
+    # Step 4: Health Check & Filter Top Servers (max 5)
+    filtered_results, filtered_linear = filter_and_rank_servers(merged_results, linear_channels)
+
     # Pisahkan ke Hot, Live, Upcoming
-    hot_matches = [m for m in merged_results if m['is_live'] and m['is_hot']]
-    live_matches = [m for m in merged_results if m['is_live']]
-    upcoming_matches = [m for m in merged_results if m['is_upcoming']]
+    hot_matches = [m for m in filtered_results if m['is_live'] and m['is_hot']]
+    live_matches = [m for m in filtered_results if m['is_live']]
+    upcoming_matches = [m for m in filtered_results if m['is_upcoming']]
     upcoming_matches.sort(key=lambda x: x['timestamp_ms'] if x['timestamp_ms'] > 0 else 9999999999999)
 
-    log(f"Hasil Merge: Live={len(live_matches)} (Hot={len(hot_matches)}), Upcoming={len(upcoming_matches)}, Linear 24/7={len(linear_channels)}")
+    log(f"Hasil Akhir: Live={len(live_matches)} (Hot={len(hot_matches)}), Upcoming={len(upcoming_matches)}, Linear 24/7={len(filtered_linear)}")
 
     result_data = {
-        'all_matches': merged_results,
+        'all_matches': filtered_results,
         'hot_matches': hot_matches,
         'live_matches': live_matches,
         'upcoming_matches': upcoming_matches,
-        'linear_channels': linear_channels
+        'linear_channels': filtered_linear
     }
 
     try:
