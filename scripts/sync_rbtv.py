@@ -136,7 +136,9 @@ def parse_match_basic(mdata: bytes) -> dict:
     idx = 0
     match_id = match_status = match_time = sport_type = 0
     teams = []
+    team_logos = []
     league_name = None
+    league_logo = None
     while idx < len(mdata):
         try:
             key, idx = read_varint(mdata, idx)
@@ -170,7 +172,8 @@ def parse_match_basic(mdata: bytes) -> dict:
                                 break
                             else:
                                 si = skip_field(sub, si, sw)
-                        break
+                    elif lt == 4 and lw == 2:
+                        league_logo, li = read_string(ldata, li)
                     else:
                         li = skip_field(ldata, li, lw)
             elif tag == 30 and wire == 2:
@@ -186,6 +189,8 @@ def parse_match_basic(mdata: bytes) -> dict:
                         tdata = cdata[ci:ci + tl]
                         ci += tl
                         ti = 0
+                        tname = None
+                        tlogo = None
                         while ti < len(tdata):
                             tk, ti = read_varint(tdata, ti)
                             tt, tw = tk >> 3, tk & 7
@@ -199,14 +204,17 @@ def parse_match_basic(mdata: bytes) -> dict:
                                     st, sw = sk >> 3, sk & 7
                                     if st == 2 and sw == 2:
                                         tname, si = read_string(sub, si)
-                                        if tname:
-                                            teams.append(tname)
                                         break
                                     else:
                                         si = skip_field(sub, si, sw)
-                                break
+                            elif tt == 4 and tw == 2:
+                                tlogo, ti = read_string(tdata, ti)
                             else:
                                 ti = skip_field(tdata, ti, tw)
+                        if tname:
+                            teams.append(tname)
+                        if tlogo:
+                            team_logos.append(tlogo)
                     else:
                         ci = skip_field(cdata, ci, cw)
             else:
@@ -219,7 +227,9 @@ def parse_match_basic(mdata: bytes) -> dict:
         'time': match_time,
         'sport': sport_type,
         'teams': teams,
-        'league': league_name or ""
+        'team_logos': team_logos,
+        'league': league_name or "",
+        'league_logo': league_logo
     }
 
 def parse_api_response(data: bytes, sport_type_hint: int = 0) -> list:
@@ -341,6 +351,74 @@ def encrypt_match_id(payload: str, secret: str) -> str:
     iv = os.urandom(12)
     ct = aesgcm.encrypt(iv, payload.encode('utf-8'), None)
     return base64.urlsafe_b64encode(iv + ct).decode('utf-8').rstrip('=')
+
+SPORT_FALLBACK_SLUGS = {
+    1: "football",
+    2: "basketball",
+    3: "tennis",
+    4: "baseball",
+    6: "cricket",
+    7: "motorsport",
+    8: "rugby",
+    9: "american_football",
+    10: "aussierules",
+    12: "badminton",
+    13: "volleyball",
+    14: "fighting",
+    15: "cycling",
+    16: "handball",
+    90: "golf",
+}
+DEFAULT_SPORT_SLUG = "sports"
+SPORT_POSTER_BASE_URL = "https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/sports"
+
+def get_sport_fallback_url(sport_type: int) -> str:
+    slug = SPORT_FALLBACK_SLUGS.get(sport_type, DEFAULT_SPORT_SLUG)
+    return f"{SPORT_POSTER_BASE_URL}/{slug}.png"
+
+def resolve_logo_url(raw_logo: str, api_host: str, main_url: str) -> str:
+    if not raw_logo:
+        return ""
+    active_logo_host = "https://logos1.tcdru136ovur.ru"
+    if api_host:
+        try:
+            parsed = urllib.parse.urlparse(api_host)
+            host = parsed.netloc or ""
+            if '.' in host:
+                base = host.split('.', 1)[1]
+                active_logo_host = f"https://logos1.{base}"
+        except Exception:
+            pass
+
+    domain = main_url or "https://www.rbtvplus.com"
+    if "/aelogo/" in raw_logo:
+        path = raw_logo.split("/aelogo/", 1)[1]
+        return f"{active_logo_host}/aelogo/{path}"
+    if raw_logo.startswith("http://") or raw_logo.startswith("https://"):
+        return raw_logo
+    if raw_logo.startswith("//"):
+        return f"https:{raw_logo}"
+    if raw_logo.startswith("/"):
+        return f"{domain}{raw_logo}"
+    return f"{domain}/{raw_logo}"
+
+def select_match_poster(m: dict, api_host: str, main_url: str) -> str:
+    # 1. Ambil poster Tim A (Home) jika ada
+    team_logos = m.get('team_logos') or []
+    if team_logos and team_logos[0]:
+        resolved = resolve_logo_url(team_logos[0], api_host, main_url)
+        if resolved:
+            return resolved
+
+    # 2. Jika tidak ada logo tim / single event, ambil logo kompetisi/liga
+    league_logo = m.get('league_logo')
+    if league_logo:
+        resolved = resolve_logo_url(league_logo, api_host, main_url)
+        if resolved:
+            return resolved
+
+    # 3. Fallback sesuai jenis olahraga
+    return get_sport_fallback_url(m.get('sport', 0))
 
 def build_poster_url(base_url: str, sport: str, league: str, home: str, away: str,
                      time_str: str, countdown: str, phase: str, is_live: bool,
@@ -580,31 +658,8 @@ def main():
     ]
 
     def render_match(m, group_name):
-        sport_name = SPORT_NAMES.get(m['sport'], f"Sport {m['sport']}")
         time_wib = datetime.fromtimestamp(m['time'] / 1000, WIB).strftime("%H:%M") if m['time'] > 0 else "?"
-        status_name = STATUS_NAMES.get(m['status'], "Live" if m['is_live'] else "Coming")
-        is_solo = len(m['teams']) <= 1 or m['sport'] in (7, 15, 90)
-
-        countdown = ""
-        if not m['is_live'] and m['time'] > now_ms:
-            diff_sec = int((m['time'] - now_ms) / 1000)
-            hours = diff_sec // 3600
-            mins = (diff_sec % 3600) // 60
-            countdown = f"In {hours}h {mins}m" if hours > 0 else f"In {mins}m"
-
-        poster_url = build_poster_url(
-            RBTV_POSTER_URL,
-            sport_name,
-            m['league'],
-            m['home'],
-            m['away'],
-            f"{time_wib} WIB" if time_wib != "?" else "",
-            countdown,
-            status_name if m['is_live'] else "",
-            m['is_live'],
-            m['is_indo'],
-            is_solo
-        )
+        poster_url = select_match_poster(m, api_host, main_url)
 
         league_prefix = f"[{m['league']}] " if m['league'] else ""
         time_suffix = f" • 🔴 LIVE" if m['is_live'] else f" • {time_wib} WIB"
@@ -616,7 +671,8 @@ def main():
             full_title = f"{base_title}{server_suffix}"
             tvg_id = f"rbtv-{m['id']}"
 
-            m3u_lines.append(f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{full_title}" tvg-logo="{poster_url}" group-title="{group_name}",{full_title}')
+            logo_attr = f' tvg-logo="{poster_url}"' if poster_url else ''
+            m3u_lines.append(f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{full_title}"{logo_attr} group-title="{group_name}",{full_title}')
             if RBTV_STREAM_REFERER:
                 m3u_lines.append(f"#EXTVLCOPT:http-referrer={RBTV_STREAM_REFERER}")
             if RBTV_USER_AGENT:
