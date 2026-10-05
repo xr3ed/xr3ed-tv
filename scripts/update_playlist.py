@@ -121,8 +121,8 @@ def generate_playlist():
             if current_grp and current_chunk:
                 nasional_categories.setdefault(current_grp, []).extend(current_chunk)
 
-    # 6. Alihkan Channel Linear 24/7 (NFL Network, Willow, Fox Cricket, Rally TV, dll)
-    # ke kategori '⚽ SPORTS' agar tidak mencemari Live Event
+    # 6. Alihkan Channel Linear 24/7 dari OnDemand (NFL Network, Willow, Fox Cricket, Rally TV, dll)
+    # ke urutan PERTAMA di kategori '⚽ SPORTS'
     linear_sports = merged_data.get('linear_channels', [])
     if linear_sports:
         sports_grp = '⚽ SPORTS'
@@ -130,10 +130,13 @@ def generate_playlist():
             nasional_categories[sports_grp] = []
         if sports_grp not in nasional_cat_order:
             nasional_cat_order.append(sports_grp)
+        linear_entries = []
         for m in linear_sports:
             for idx, srv in enumerate(m.get('servers', [])):
-                nasional_categories[sports_grp].extend(render_m3u_entry(sports_grp, m, idx + 1, srv))
+                linear_entries.extend(render_m3u_entry(sports_grp, m, idx + 1, srv))
                 total_247_channels += 1
+        # Prepend ke urutan paling awal di kategori SPORTS
+        nasional_categories[sports_grp] = linear_entries + nasional_categories[sports_grp]
 
     # 7. Susun Playlist Master Final
     final_lines = ['#EXTM3U url-tvg="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml"']
