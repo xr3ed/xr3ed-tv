@@ -565,16 +565,23 @@ def main():
         log("ERROR: API Host tidak ditemukan. Keluar.")
         return
 
-    # Ambil Gist Live Match IDs jika ada
+    # Ambil Gist Live & Upcoming Match IDs jika ada
     gist_live_ids = set()
+    gist_upcoming_ids = set()
     if RBTV_GIST_URL:
         try:
             content = fetch_url(RBTV_GIST_URL, timeout=8).decode('utf-8', errors='ignore')
             gdata = json.loads(content)
             for gm in gdata.get('matches', []):
-                if gm.get('matchId'):
-                    gist_live_ids.add(gm['matchId'])
-            log(f"Loaded {len(gist_live_ids)} live match IDs dari Gist")
+                mid = gm.get('matchId')
+                if not mid:
+                    continue
+                g_status = gm.get('status', 0)
+                if g_status in ONGOING_STATUSES:
+                    gist_live_ids.add(mid)
+                else:
+                    gist_upcoming_ids.add(mid)
+            log(f"Loaded from Gist: {len(gist_live_ids)} live IDs, {len(gist_upcoming_ids)} upcoming IDs")
         except Exception as e:
             log(f"Warning: Gagal membaca Gist: {e}")
 
@@ -628,11 +635,17 @@ def main():
             title = f"Match {m['id']}"
 
         is_indo = is_indonesia_match(title, league, home, away)
-        is_live = (
-            (status in ONGOING_STATUSES) or
-            (m['id'] in gist_live_ids) or
-            (m_time > 0 and now_ms >= (m_time + 10 * 60 * 1000) and now_ms <= (m_time + get_sport_max_duration_ms(sport)))
-        )
+
+        # Match yang waktu mulainya masih di masa depan (> 5 menit lagi) tidak boleh dianggap Live
+        is_future = (m_time > 0 and m_time > (now_ms + 5 * 60 * 1000))
+        if is_future:
+            is_live = False
+        else:
+            is_live = (
+                (status in ONGOING_STATUSES) or
+                (m['id'] in gist_live_ids) or
+                (m_time > 0 and now_ms >= (m_time + 10 * 60 * 1000) and now_ms <= (m_time + get_sport_max_duration_ms(sport)))
+            )
 
         m_item = {
             **m,
@@ -649,20 +662,24 @@ def main():
         elif is_live:
             live_matches.append(m_item)
         else:
-            # Upcoming: ada di Gist (H-60m) atau mulai dalam 3 jam ke depan
-            if (m['id'] in gist_live_ids) or (0 < m_time <= now_ms + 3 * 3600 * 1000):
+            # Upcoming: ada di Gist atau mulai dalam 12 jam ke depan
+            if (m['id'] in gist_upcoming_ids) or (0 < m_time <= now_ms + 12 * 3600 * 1000):
                 upcoming_matches.append(m_item)
 
-    # Sort logic persis plugin: Live first -> Sepak bola first -> Waktu mulai
-    def sort_key(item):
-        live_score = 0 if item['is_live'] else 1
+    # Sort logic: Live (Sepak bola -> waktu), Upcoming (urutan waktu kickoff terdekat)
+    def live_sort_key(item):
         sport_score = 0 if item['sport'] == 1 else 1
         time_score = item['time'] if item['time'] > 0 else 9999999999999
-        return (live_score, sport_score, time_score)
+        return (sport_score, time_score)
 
-    indo_matches.sort(key=sort_key)
-    live_matches.sort(key=sort_key)
-    upcoming_matches.sort(key=sort_key)
+    def upcoming_sort_key(item):
+        time_score = item['time'] if item['time'] > 0 else 9999999999999
+        sport_score = 0 if item['sport'] == 1 else 1
+        return (time_score, sport_score)
+
+    indo_matches.sort(key=live_sort_key)
+    live_matches.sort(key=live_sort_key)
+    upcoming_matches.sort(key=upcoming_sort_key)
 
     log(f"Hasil filter: Indonesia={len(indo_matches)}, Live={len(live_matches)}, Upcoming={len(upcoming_matches)}")
 
