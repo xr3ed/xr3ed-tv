@@ -110,8 +110,10 @@ def generate_playlist():
                     if current_grp and current_chunk:
                         nasional_categories.setdefault(current_grp, []).extend(current_chunk)
                         current_chunk = []
-                    grp_m = re.search(r'group-title="([^"]*)"', l)
-                    current_grp = grp_m.group(1).strip() if grp_m else 'Other'
+                    # Fix broken attribute repetitions (e.g. logo="... group-title=" group-title="XYZ")
+                    l = re.sub(r'(\S+)\s+group-title="\s*(?=group-title=")', r'\1" ', l)
+                    grp_matches = [m.strip() for m in re.findall(r'group-title="([^"]*)"', l) if m.strip() and not m.strip().startswith('group-title=')]
+                    current_grp = grp_matches[-1] if grp_matches else 'Other'
                     if current_grp not in nasional_cat_order:
                         nasional_cat_order.append(current_grp)
                     total_247_channels += 1

@@ -207,8 +207,10 @@ def parse_m3u_robust(content):
             continue
         
         if l.startswith('#EXTINF:'):
-            grp_m = re.search(r'group-title="([^"]*)"', l)
-            grp = grp_m.group(1).strip() if grp_m else 'Other'
+            # Fix broken attribute repetitions (e.g. logo="... group-title=" group-title="XYZ")
+            l = re.sub(r'(\S+)\s+group-title="\s*(?=group-title=")', r'\1" ', l)
+            grp_matches = [m.strip() for m in re.findall(r'group-title="([^"]*)"', l) if m.strip() and not m.strip().startswith('group-title=')]
+            grp = grp_matches[-1] if grp_matches else 'Other'
             
             logo_m = re.search(r'tvg-logo="([^"]*)"', l)
             logo = logo_m.group(1).strip() if logo_m else ''
