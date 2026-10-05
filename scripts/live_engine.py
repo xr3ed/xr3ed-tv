@@ -198,39 +198,59 @@ def is_linear_sports_channel(item: dict) -> bool:
     for prefix in ('od_', 'kltra_', 'bs_'):
         if clean_id.startswith(prefix):
             clean_id = clean_id[len(prefix):]
-    title = (item.get('title') or item.get('name') or '').lower()
-    league = (item.get('league') or '').lower()
+    title = (item.get('title') or item.get('name') or '').lower().strip()
+    league = (item.get('league') or '').lower().strip()
 
-    if clean_id.startswith('247-'):
-        return True
-    if clean_id in ('nfl-network', 'rally-tv') or clean_id.startswith('sky-sports-'):
-        return True
-    if '24/7' in title or '24/7' in league:
-        return True
-    if 'rally tv' in title:
+    # 1. Eksplisit tag / prefix 24/7
+    if clean_id.startswith('247-') or '24/7' in title or '24/7' in league:
         return True
 
-    home = (item.get('home') or '').strip()
-    away = (item.get('away') or '').strip()
+    # 2. Known linear sports channels / shows (RedZone, Rally TV, TV networks)
+    if 'redzone' in title or 'red zone' in title or 'redzone' in clean_id:
+        return True
+    if 'rally tv' in title or 'rallytv' in title or clean_id == 'rally-tv':
+        return True
+
+    if any(clean_id.startswith(p) for p in (
+        'nfl-network', 'nhl-network', 'mlb-network', 'nba-tv', 'nfl-redzone',
+        'rally-tv', 'sky-sports-', 'willow', 'fox-cricket', 'fox-footy', 'fox-league'
+    )):
+        return True
+
+    # 3. Cek apakah ini match antar tim/pemain vs single broadcast channel
+    home = (item.get('home') or '').strip().lower()
+    away = (item.get('away') or '').strip().lower()
     if not home and not away:
         teams = item.get('teams') or {}
         if isinstance(teams, dict):
-            home = (teams.get('home') or {}).get('name', '').strip() if isinstance(teams.get('home'), dict) else str(teams.get('home') or '').strip()
-            away = (teams.get('away') or {}).get('name', '').strip() if isinstance(teams.get('away'), dict) else str(teams.get('away') or '').strip()
+            home = (teams.get('home') or {}).get('name', '').strip().lower() if isinstance(teams.get('home'), dict) else str(teams.get('home') or '').strip().lower()
+            away = (teams.get('away') or {}).get('name', '').strip().lower() if isinstance(teams.get('away'), dict) else str(teams.get('away') or '').strip().lower()
         elif isinstance(teams, list) and len(teams) >= 2:
-            home, away = str(teams[0]).strip(), str(teams[1]).strip()
+            home, away = str(teams[0]).strip().lower(), str(teams[1]).strip().lower()
 
-    has_no_teams = not home and not away and ' vs ' not in title and ' v ' not in title
-    if has_no_teams:
-        known_linear = (
-            'network' in title or
-            'fox footy' in title or
-            'fox cricket' in title or
-            'fox league' in title or
-            'sky sports' in title or
-            'willow' in title
+    # Match selalu memiliki indikator vs/v/@ atau tim lawan yang berbeda dengan nama channel
+    has_opponent = (' vs ' in title) or (' v ' in title) or (' @ ' in title) or (away and away != title and away != home)
+
+    if not has_opponent:
+        linear_keywords = (
+            'network',
+            'channel',
+            'willow',
+            'fox footy',
+            'fox cricket',
+            'fox league',
+            'sky sports',
+            'super sport',
+            'supersport',
+            'bein sport',
+            'espn',
+            'tnt sport',
+            'nba tv',
+            'mlb tv',
+            'nhl tv',
+            'fight network'
         )
-        if known_linear:
+        if any(k in title for k in linear_keywords):
             return True
 
     return False
@@ -893,7 +913,10 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             p_info = probe_map.get(s['url'], {'alive': False, 'latency': 9999, 'speed_bonus': 0})
             if p_info['alive']:
                 scored.append((s, p_info['speed_bonus']))
-        if scored:
+        if not scored:
+            m['servers'] = m.get('servers', [])[:1]
+            filtered_linear.append(m)
+        else:
             scored.sort(key=lambda x: x[1], reverse=True)
             chosen_linear = [x[0] for x in scored[:3]]
             renamed = []
@@ -1039,6 +1062,9 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
     # Step 3: Beesport unik tersisa
     for bs in bs_matches:
         if bs['id'] in used_bs_ids:
+            continue
+        if bs.get('is_linear'):
+            linear_channels.append(bs)
             continue
         merged_results.append(bs)
 
