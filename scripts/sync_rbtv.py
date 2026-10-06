@@ -618,22 +618,29 @@ def main():
         except Exception as e:
             log(f"Warning: Gagal membaca Gist: {e}")
 
-    # Fetch semua cabang olahraga secara paralel (termasuk 0 untuk homepage live/all dan 11 untuk hoki)
-    sport_types = [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 90]
+    # Ambil pertandingan dari tab Live situs RBTV (sportType=0)
     all_matches_map = {}
-    with ThreadPoolExecutor(max_workers=6) as executor:
-        futures = {executor.submit(fetch_sport_matches, api_host, main_url, st): st for st in sport_types}
-        for future in as_completed(futures):
-            st = futures[future]
-            try:
-                matches = future.result()
-                for m in matches:
-                    if m['id'] > 0 and m['id'] not in all_matches_map:
-                        all_matches_map[m['id']] = m
-            except Exception as e:
-                log(f"Error fetching sport {st}: {e}")
+    matches_live_tab = fetch_sport_matches(api_host, main_url, 0)
+    for m in matches_live_tab:
+        if m['id'] > 0 and m['id'] not in all_matches_map:
+            all_matches_map[m['id']] = m
 
-    log(f"Total pertandingan ditemukan dari API: {len(all_matches_map)}")
+    # Cek sepak bola (sport 1) khusus jika ada siaran yang melibatkan Indonesia
+    try:
+        ftb_matches = fetch_sport_matches(api_host, main_url, 1)
+        for m in ftb_matches:
+            if m['id'] > 0 and m.get('status', 0) < 10000:
+                teams = m.get('teams', [])
+                league = m.get('league', '')
+                title = m.get('match_title', '')
+                home = teams[0] if len(teams) > 0 else ''
+                away = teams[1] if len(teams) > 1 else ''
+                if is_indonesia_match(title, league, home, away):
+                    all_matches_map[m['id']] = m
+    except Exception:
+        pass
+
+    log(f"Total pertandingan ditemukan dari API (Tab Live): {len(all_matches_map)}")
 
     # Klasifikasi Pertandingan
     indo_matches = []
@@ -706,9 +713,10 @@ def main():
         time_score = -item['time'] if item['time'] > 0 else 0
         return (sport_score, time_score)
 
+    cutoff_recent = now_ms - 2 * 3600 * 1000
     def upcoming_sort_key(item):
         t = item['time']
-        if t >= now_ms:
+        if t >= cutoff_recent:
             time_score = t
         elif t > 0:
             time_score = t + 10_000_000_000_000
