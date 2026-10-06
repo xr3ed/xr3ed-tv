@@ -618,8 +618,8 @@ def main():
         except Exception as e:
             log(f"Warning: Gagal membaca Gist: {e}")
 
-    # Fetch semua cabang olahraga secara paralel
-    sport_types = [1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 90]
+    # Fetch semua cabang olahraga secara paralel (termasuk 0 untuk homepage live/all dan 11 untuk hoki)
+    sport_types = [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 90]
     all_matches_map = {}
     with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {executor.submit(fetch_sport_matches, api_host, main_url, st): st for st in sport_types}
@@ -635,7 +635,7 @@ def main():
 
     log(f"Total pertandingan ditemukan dari API: {len(all_matches_map)}")
 
-    # Klasifikasi ke 3 Grup
+    # Klasifikasi Pertandingan
     indo_matches = []
     live_matches = []
     upcoming_matches = []
@@ -695,12 +695,10 @@ def main():
 
         if is_indo:
             indo_matches.append(m_item)
-        elif is_live:
+        if is_live:
             live_matches.append(m_item)
         else:
-            # Upcoming: ada di Gist atau mulai dalam 12 jam ke depan
-            if (m['id'] in gist_upcoming_ids) or (0 < m_time <= now_ms + 12 * 3600 * 1000):
-                upcoming_matches.append(m_item)
+            upcoming_matches.append(m_item)
 
     # Sort logic: Live (Sepak bola -> waktu terbaru di atas), Upcoming (urutan waktu kickoff terdekat)
     def live_sort_key(item):
@@ -709,7 +707,13 @@ def main():
         return (sport_score, time_score)
 
     def upcoming_sort_key(item):
-        time_score = item['time'] if item['time'] > 0 else 9999999999999
+        t = item['time']
+        if t >= now_ms:
+            time_score = t
+        elif t > 0:
+            time_score = t + 10_000_000_000_000
+        else:
+            time_score = 99_999_999_999_999
         sport_score = 0 if item['sport'] == 1 else 1
         return (time_score, sport_score)
 
@@ -736,7 +740,7 @@ def main():
     m3u_lines = [
         "#EXTM3U",
         f"# XR3ED LIVE SPORTS PLAYLIST (RBTV+) — Updated: {datetime.now(WIB).strftime('%Y-%m-%d %H:%M')} WIB",
-        "# Categories: 📢 INFO | 🇮🇩 Indonesia | 🔴 Live Event | ⏳ Upcoming Event",
+        "# Categories: 📢 INFO | 🇮🇩 Indonesia | 🔴 Live Event",
         "",
         f'#EXTINF:-1 tvg-id="xr3ed-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="{TG_LOGO}" group-title="{GROUP_INFO}",📢 Gabung Telegram: t.me/CloudstreamXR',
         TG_LINK,
@@ -782,7 +786,7 @@ def main():
         render_match(m, GROUP_LIVE)
 
     for m in upcoming_matches:
-        render_match(m, GROUP_UPCOMING)
+        render_match(m, GROUP_LIVE)
 
     output_path = os.path.normpath(os.path.join(script_dir, '..', OUTPUT_FILE))
     with open(output_path, 'w', encoding='utf-8') as f:
