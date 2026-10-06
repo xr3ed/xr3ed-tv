@@ -611,10 +611,8 @@ def fetch_kltra_matches() -> list:
             was_online909 = 'online909.com' in u or 'online909.com' in resolved_u
             if was_online909:
                 ref = 'https://player.online909.com/'
-            elif any(dom in resolved_u for dom in ('streamviewk7x', 'vivo', 'dyrur1.com', 'gkykp.com')):
-                ref = None
             else:
-                ref = DEFAULT_REFERER
+                ref = None
 
             k_servers.append({'name': f"Kltra - {label}", 'url': resolved_u, 'referer': ref})
 
@@ -858,6 +856,8 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
                 base_q = 100
             elif 'beesport' in srv_name or 'greenvora' in s.get('url', ''):
                 base_q = 95
+            elif ('court' in srv_name or 'table' in srv_name) and 'sd' not in srv_name:
+                base_q = 92
             elif 'hd' in srv_name:
                 base_q = 90
             elif any(k in srv_name for k in ('dazn', 'paramount', 'tnt', 'sky', 'espn', 'fox', 'sport')):
@@ -868,21 +868,47 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             total_score = base_q + p_info['speed_bonus']
             scored_servers.append((s, p_info['alive'], p_info['latency'], total_score))
 
+        has_multi_court = any(('court' in (s.get('name') or '').lower() or 'table' in (s.get('name') or '').lower()) for s in servers)
+        match_max_servers = max(max_servers, len(servers)) if has_multi_court else max_servers
+
         # Utamakan server yang terbukti aktif. Jika probe gagal (false negative akibat proteksi CDN / timeout),
-        # JANGAN buang match dari playlist, melainkan fallback ke server prioritas terbaik (maksimal max_servers).
+        # JANGAN buang match dari playlist, melainkan fallback ke server prioritas terbaik.
         active_only = [x for x in scored_servers if x[1]]
-        if active_only:
-            active_only.sort(key=lambda x: x[3], reverse=True)
-            chosen = [x[0] for x in active_only[:max_servers]]
+        if has_multi_court:
+            def court_key(item):
+                name = (item[0].get('name') or '').lower()
+                is_sd = 1 if 'sd' in name else 0
+                m_c = re.search(r'(?:court|table)\s*(\d+)', name)
+                c_num = int(m_c.group(1)) if m_c else 99
+                return (is_sd, c_num, -item[3])
+
+            if active_only:
+                active_only.sort(key=court_key)
+                chosen = [x[0] for x in active_only[:match_max_servers]]
+            else:
+                scored_servers.sort(key=court_key)
+                chosen = [x[0] for x in scored_servers[:min(len(scored_servers), match_max_servers)]]
         else:
-            scored_servers.sort(key=lambda x: x[3], reverse=True)
-            chosen = [x[0] for x in scored_servers[:min(len(scored_servers), max_servers)]]
+            if active_only:
+                active_only.sort(key=lambda x: x[3], reverse=True)
+                chosen = [x[0] for x in active_only[:match_max_servers]]
+            else:
+                scored_servers.sort(key=lambda x: x[3], reverse=True)
+                chosen = [x[0] for x in scored_servers[:min(len(scored_servers), match_max_servers)]]
 
         renamed_servers = []
         for idx, s in enumerate(chosen):
             clean_s = dict(s)
-            type_label = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').strip(' -()') or 'HD'
-            clean_s['name'] = f"Server {idx + 1} ({type_label})"
+            orig_name = s.get('name') or ''
+            clean_label = orig_name
+            for prefix in ('Kltra - ', 'OnDemand - ', 'Beesport - '):
+                if clean_label.startswith(prefix):
+                    clean_label = clean_label[len(prefix):]
+            clean_label = clean_label.replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').strip(' -()')
+            if clean_label:
+                clean_s['name'] = f"Server {idx + 1} ({clean_label})"
+            else:
+                clean_s['name'] = f"Server {idx + 1} (HD)"
             renamed_servers.append(clean_s)
 
         m['servers'] = renamed_servers
@@ -1057,7 +1083,13 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
     hot_matches = [m for m in filtered_results if m['is_live'] and m['is_hot']]
     live_matches = [m for m in filtered_results if m['is_live']]
     upcoming_matches = [m for m in filtered_results if m['is_upcoming']]
-    upcoming_matches.sort(key=lambda x: x['timestamp_ms'] if x['timestamp_ms'] > 0 else 9999999999999)
+
+    # Live & Hot: Urutkan DESCENDING (terbaru / kickoff paling baru di paling atas)
+    hot_matches.sort(key=lambda x: x.get('timestamp_ms', 0) or 0, reverse=True)
+    live_matches.sort(key=lambda x: x.get('timestamp_ms', 0) or 0, reverse=True)
+
+    # Upcoming: Urutkan ASCENDING (kickoff paling dekat di paling atas)
+    upcoming_matches.sort(key=lambda x: x['timestamp_ms'] if x.get('timestamp_ms', 0) > 0 else 9999999999999)
 
     log(f"Hasil Akhir: Live={len(live_matches)} (Hot={len(hot_matches)}), Upcoming={len(upcoming_matches)}, Linear 24/7={len(filtered_linear)}")
 
@@ -1086,8 +1118,17 @@ def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict)
         time_str = f" • LIVE {dt.strftime('%H:%M')}" if match['is_live'] else f" • {dt.strftime('%H:%M')} WIB"
 
     s_name = server.get('name') or f"Server {server_idx}"
-    prefix = "" if (match.get('is_linear') or match['is_live']) else "[UPCOMING] "
-    full_title = f"{prefix}[{match['league']}] {match['title']} - {s_name}{time_str}".strip()
+    prefix = "" if (match.get('is_linear') or match.get('is_live')) else "[UPCOMING] "
+    league = (match.get('league') or '').strip()
+    title = (match.get('title') or '').strip()
+    if league and title and league.lower() == title.lower():
+        match_display = f"[{title}]"
+    elif league:
+        match_display = f"[{league}] {title}"
+    else:
+        match_display = title
+
+    full_title = f"{prefix}{match_display} - {s_name}{time_str}".strip()
 
     extinf = f'#EXTINF:-1 tvg-id="{match.get("id", "")}" tvg-name="{full_title}" tvg-logo="{match.get("logo", "")}" group-title="{grp_title}",{full_title}'
     lines = [extinf]
