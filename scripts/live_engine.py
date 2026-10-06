@@ -608,10 +608,11 @@ def fetch_kltra_matches() -> list:
 
             label = s.get('label') or s.get('name') or 'Stream'
 
-            if any(dom in resolved_u for dom in ('streamviewk7x', 'vivo', 'dyrur1.com', 'gkykp.com')):
-                ref = None
-            elif 'online909.com' in resolved_u:
+            was_online909 = 'online909.com' in u or 'online909.com' in resolved_u
+            if was_online909:
                 ref = 'https://player.online909.com/'
+            elif any(dom in resolved_u for dom in ('streamviewk7x', 'vivo', 'dyrur1.com', 'gkykp.com')):
+                ref = None
             else:
                 ref = DEFAULT_REFERER
 
@@ -797,19 +798,18 @@ def probe_single_stream(target: tuple) -> tuple:
     t0 = time.time()
     headers = {
         'User-Agent': DESKTOP_UA,
-        'Range': 'bytes=0-512'
     }
     if ref:
         headers['Referer'] = ref
 
     req = urllib.request.Request(url, headers=headers)
     try:
-        with urllib.request.urlopen(req, timeout=2.0) as res:
+        with urllib.request.urlopen(req, timeout=2.5) as res:
             lat = int((time.time() - t0) * 1000)
             if res.status not in (200, 206):
                 return url, False, lat, 0
 
-            chunk = res.read(512).decode('utf-8', errors='ignore')
+            chunk = res.read(1024).decode('utf-8', errors='ignore')
             if '<!doctype' in chunk.lower() or '<html' in chunk.lower():
                 return url, False, lat, 0
 
@@ -868,43 +868,25 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             total_score = base_q + p_info['speed_bonus']
             scored_servers.append((s, p_info['alive'], p_info['latency'], total_score))
 
-        if is_live:
-            # Match live: Hanya simpan server yang terbukti aktif
-            active_only = [x for x in scored_servers if x[1]]
-            if not active_only:
-                continue
-
+        # Utamakan server yang terbukti aktif. Jika probe gagal (false negative akibat proteksi CDN / timeout),
+        # JANGAN buang match dari playlist, melainkan fallback ke server prioritas terbaik (maksimal max_servers).
+        active_only = [x for x in scored_servers if x[1]]
+        if active_only:
             active_only.sort(key=lambda x: x[3], reverse=True)
             chosen = [x[0] for x in active_only[:max_servers]]
-
-            renamed_servers = []
-            for idx, s in enumerate(chosen):
-                clean_s = dict(s)
-                type_label = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').strip(' -()') or 'HD'
-                clean_s['name'] = f"Server {idx + 1} ({type_label})"
-                renamed_servers.append(clean_s)
-
-            m['servers'] = renamed_servers
-            filtered_matches.append(m)
         else:
-            # Match upcoming: Utamakan yang aktif, jika belum siaran ambil top 3 server terbaik
-            active_only = [x for x in scored_servers if x[1]]
-            if active_only:
-                active_only.sort(key=lambda x: x[3], reverse=True)
-                chosen = [x[0] for x in active_only[:max_servers]]
-            else:
-                scored_servers.sort(key=lambda x: x[3], reverse=True)
-                chosen = [x[0] for x in scored_servers[:min(3, max_servers)]]
+            scored_servers.sort(key=lambda x: x[3], reverse=True)
+            chosen = [x[0] for x in scored_servers[:min(len(scored_servers), max_servers)]]
 
-            renamed_servers = []
-            for idx, s in enumerate(chosen):
-                clean_s = dict(s)
-                type_label = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').strip(' -()') or 'HD'
-                clean_s['name'] = f"Server {idx + 1} ({type_label})"
-                renamed_servers.append(clean_s)
+        renamed_servers = []
+        for idx, s in enumerate(chosen):
+            clean_s = dict(s)
+            type_label = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').strip(' -()') or 'HD'
+            clean_s['name'] = f"Server {idx + 1} ({type_label})"
+            renamed_servers.append(clean_s)
 
-            m['servers'] = renamed_servers
-            filtered_matches.append(m)
+        m['servers'] = renamed_servers
+        filtered_matches.append(m)
 
     filtered_linear = []
     for m in linear_channels:
