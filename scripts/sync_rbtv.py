@@ -256,6 +256,7 @@ def parse_match_basic(mdata: bytes) -> dict:
 
 def parse_api_response(data: bytes, sport_type_hint: int = 0) -> list:
     matches = []
+    live_match_ids = set()
     idx = 0
     while idx < len(data):
         try:
@@ -278,6 +279,28 @@ def parse_api_response(data: bytes, sport_type_hint: int = 0) -> list:
                             if m['sport'] == 0:
                                 m['sport'] = sport_type_hint
                             matches.append(m)
+                    elif bt == 2 and bw == 2:
+                        ml, bi = read_varint(block, bi)
+                        t2_bytes = block[bi:bi + ml]
+                        bi += ml
+                        pos = 0
+                        flds = {}
+                        while pos < len(t2_bytes):
+                            k, pos = read_varint(t2_bytes, pos)
+                            t, w = k >> 3, k & 7
+                            if w == 0:
+                                v, pos = read_varint(t2_bytes, pos)
+                                flds[t] = v
+                            elif w == 2:
+                                sl, pos = read_varint(t2_bytes, pos)
+                                pos += sl
+                            elif w == 1:
+                                pos += 8
+                            elif w == 5:
+                                pos += 4
+                        mid = flds.get(50) or flds.get(1)
+                        if mid:
+                            live_match_ids.add(mid)
                     else:
                         bi = skip_field(block, bi, bw)
                 break
@@ -288,6 +311,9 @@ def parse_api_response(data: bytes, sport_type_hint: int = 0) -> list:
                 _, idx = read_varint(data, idx)
         except Exception:
             break
+    for m in matches:
+        if m['id'] in live_match_ids:
+            m['is_live_hint'] = True
     return matches
 
 def parse_detail_streams(data: bytes) -> list:
@@ -625,18 +651,24 @@ def main():
         if m['id'] > 0 and m['id'] not in all_matches_map:
             all_matches_map[m['id']] = m
 
-    # Cek sepak bola (sport 1) khusus jika ada siaran yang melibatkan Indonesia
+    # Cek cabang olahraga utama untuk menangkap match yang sedang LIVE
     try:
-        ftb_matches = fetch_sport_matches(api_host, main_url, 1)
-        for m in ftb_matches:
-            if m['id'] > 0 and m.get('status', 0) < 10000:
-                teams = m.get('teams', [])
-                league = m.get('league', '')
-                title = m.get('match_title', '')
-                home = teams[0] if len(teams) > 0 else ''
-                away = teams[1] if len(teams) > 1 else ''
-                if is_indonesia_match(title, league, home, away):
-                    all_matches_map[m['id']] = m
+        for st in [1, 2, 3, 4, 11]:
+            st_matches = fetch_sport_matches(api_host, main_url, st)
+            for m in st_matches:
+                if m['id'] > 0 and m.get('status', 0) in ONGOING_STATUSES:
+                    if m['id'] not in all_matches_map:
+                        all_matches_map[m['id']] = m
+                    else:
+                        all_matches_map[m['id']]['status'] = m['status']
+                elif m['id'] > 0 and m.get('status', 0) < 10000:
+                    teams = m.get('teams', [])
+                    league = m.get('league', '')
+                    title = m.get('match_title', '')
+                    home = teams[0] if len(teams) > 0 else ''
+                    away = teams[1] if len(teams) > 1 else ''
+                    if is_indonesia_match(title, league, home, away):
+                        all_matches_map[m['id']] = m
     except Exception:
         pass
 
@@ -683,12 +715,16 @@ def main():
 
         is_indo = is_indonesia_match(title, league, home, away)
 
-        # Match yang waktu mulainya masih di masa depan (> 5 menit lagi) tidak boleh dianggap Live
-        is_future = (m_time > 0 and m_time > (now_ms + 5 * 60 * 1000))
+        # Match yang waktu mulainya masih di masa depan (> 15 menit lagi) tidak boleh dianggap Live
+        is_future = (m_time > 0 and m_time > (now_ms + 15 * 60 * 1000))
         if is_future:
             is_live = False
         else:
-            is_live = (status in ONGOING_STATUSES) or (m['id'] in gist_live_ids and status < 10000)
+            is_live = (
+                m.get('is_live_hint', False) or
+                (status in ONGOING_STATUSES) or
+                (m['id'] in gist_live_ids and status < 10000)
+            )
 
         m_item = {
             **m,
@@ -748,7 +784,7 @@ def main():
     m3u_lines = [
         "#EXTM3U",
         f"# XR3ED LIVE SPORTS PLAYLIST (RBTV+) — Updated: {datetime.now(WIB).strftime('%Y-%m-%d %H:%M')} WIB",
-        "# Categories: 📢 INFO | 🇮🇩 Indonesia | 🔴 Live Event",
+        "# Categories: 📢 INFO | 🇮🇩 Indonesia | 🔴 Live Event | ⏳ Upcoming Event",
         "",
         f'#EXTINF:-1 tvg-id="xr3ed-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="{TG_LOGO}" group-title="{GROUP_INFO}",📢 Gabung Telegram: t.me/CloudstreamXR',
         TG_LINK,
@@ -794,7 +830,7 @@ def main():
         render_match(m, GROUP_LIVE)
 
     for m in upcoming_matches:
-        render_match(m, GROUP_LIVE)
+        render_match(m, GROUP_UPCOMING)
 
     output_path = os.path.normpath(os.path.join(script_dir, '..', OUTPUT_FILE))
     with open(output_path, 'w', encoding='utf-8') as f:
