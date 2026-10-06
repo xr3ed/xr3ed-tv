@@ -15,6 +15,7 @@ import sys
 import json
 import re
 import time
+import gzip
 import base64
 import hashlib
 import urllib.parse
@@ -400,7 +401,7 @@ def get_sport_fallback_url(sport_type: int) -> str:
 def resolve_logo_url(raw_logo: str, api_host: str, main_url: str) -> str:
     if not raw_logo:
         return ""
-    active_logo_host = "https://logos1.tcdru136ovur.ru"
+    active_logo_host = ""
     if api_host:
         try:
             parsed = urllib.parse.urlparse(api_host)
@@ -411,17 +412,19 @@ def resolve_logo_url(raw_logo: str, api_host: str, main_url: str) -> str:
         except Exception:
             pass
 
-    domain = main_url or "https://www.rbtvplus.com"
+    domain = main_url
     if "/aelogo/" in raw_logo:
         path = raw_logo.split("/aelogo/", 1)[1]
-        return f"{active_logo_host}/aelogo/{path}"
+        return f"{active_logo_host}/aelogo/{path}" if active_logo_host else raw_logo
     if raw_logo.startswith("http://") or raw_logo.startswith("https://"):
         return raw_logo
     if raw_logo.startswith("//"):
         return f"https:{raw_logo}"
-    if raw_logo.startswith("/"):
-        return f"{domain}{raw_logo}"
-    return f"{domain}/{raw_logo}"
+    if domain:
+        if raw_logo.startswith("/"):
+            return f"{domain}{raw_logo}"
+        return f"{domain}/{raw_logo}"
+    return raw_logo
 
 def select_match_poster(m: dict, api_host: str, main_url: str) -> str:
     # 1. Ambil poster Tim A (Home) jika ada, fallback ke tim berikutnya jika ada
@@ -467,7 +470,13 @@ def fetch_url(url: str, headers: dict = None, timeout: int = 15) -> bytes:
         h.update(headers)
     req = urllib.request.Request(url, headers=h)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.read()
+        data = resp.read()
+        if data.startswith(b'\x1f\x8b'):
+            try:
+                data = gzip.decompress(data)
+            except Exception:
+                pass
+        return data
 
 def get_or_resolve_main_url() -> str:
     if RBTV_GIST_URL:
@@ -478,16 +487,19 @@ def get_or_resolve_main_url() -> str:
                 return data['active_domain'].rstrip('/')
         except Exception:
             pass
-    return RBTV_MAIN_URL or "https://www.rbtvplus.com"
+    return RBTV_MAIN_URL
 
 def get_api_host(main_url: str) -> str:
+    if not main_url:
+        return RBTV_API_HOST
     try:
-        content = fetch_url(f"{main_url}/id/", timeout=10).decode('utf-8', errors='ignore')
-        js_urls = re.findall(r"https://statics1\.[a-zA-Z0-9.-]+\.cfd/statics/[a-f0-9]+\.js", content)
+        page_url = main_url if main_url.endswith('/id') or main_url.endswith('/id/') else f"{main_url.rstrip('/')}/id/"
+        content = fetch_url(page_url, timeout=10).decode('utf-8', errors='ignore')
+        js_urls = re.findall(r"https://statics1\.[a-zA-Z0-9.-]+/[^\x22\x27\s]+\.js", content)
         for js_url in set(js_urls):
             try:
                 js_content = fetch_url(js_url, timeout=8).decode('utf-8', errors='ignore')
-                m = re.search(r"CF_DA_API['\"]?\s*:\s*['\"]?(https://apis-data[0-9]*\.[a-zA-Z0-9.-]+\.[a-zA-Z]+)", js_content)
+                m = re.search(r"CF_DA_API['\"]?\s*:\s*['\"]?(https://apis-data[0-9]*\.[a-zA-Z0-9.-]+)", js_content)
                 if m:
                     return m.group(1).rstrip('/')
             except Exception:
@@ -497,12 +509,19 @@ def get_api_host(main_url: str) -> str:
     return RBTV_API_HOST
 
 def get_bs_token(api_host: str, main_url: str, sport_type: int) -> str:
-    if not RBTV_PATH_BS:
+    if not RBTV_PATH_BS or not api_host:
         return ""
     url = f"{api_host}{RBTV_PATH_BS}?code=100&code=101&stream=true&sportType={sport_type}&language=34"
+    origin = main_url
+    if main_url:
+        try:
+            p = urllib.parse.urlparse(main_url)
+            origin = f"{p.scheme}://{p.netloc}"
+        except Exception:
+            pass
     headers = {
-        'Referer': f"{main_url}/",
-        'Origin': main_url,
+        'Referer': f"{main_url}/" if not main_url.endswith('/') else main_url,
+        'Origin': origin,
         'Accept': 'application/json, text/plain, */*'
     }
     try:
@@ -522,9 +541,16 @@ def fetch_sport_matches(api_host: str, main_url: str, sport_type: int) -> list:
     jp = f'{{"sportType":{sport_type},"language":34,"stream":true}}'
     sfver = f"sfver{md5_hex(jp)[:6]}{token}"
     url = f"{api_host}/{sfver}{RBTV_PATH_LIVE}?sportType={sport_type}&language=34&stream=true"
+    origin = main_url
+    if main_url:
+        try:
+            p = urllib.parse.urlparse(main_url)
+            origin = f"{p.scheme}://{p.netloc}"
+        except Exception:
+            pass
     headers = {
-        'Referer': f"{main_url}/",
-        'Origin': main_url,
+        'Referer': f"{main_url}/" if not main_url.endswith('/') else main_url,
+        'Origin': origin,
         'Accept': 'application/json, text/plain, */*'
     }
     try:
@@ -540,9 +566,16 @@ def fetch_match_streams_count(api_host: str, main_url: str, match_id: int, sport
     jp = f'{{"matchId":{match_id},"sportType":{sport_type},"language":34}}'
     sfver = f"sfver{md5_hex(jp)[:6]}{token}"
     url = f"{api_host}/{sfver}{RBTV_PATH_DETAIL}?matchId={match_id}&sportType={sport_type}&language=34"
+    origin = main_url
+    if main_url:
+        try:
+            p = urllib.parse.urlparse(main_url)
+            origin = f"{p.scheme}://{p.netloc}"
+        except Exception:
+            pass
     headers = {
-        'Referer': f"{main_url}/",
-        'Origin': main_url,
+        'Referer': f"{main_url}/" if not main_url.endswith('/') else main_url,
+        'Origin': origin,
         'Accept': 'application/json, text/plain, */*'
     }
     try:
@@ -615,19 +648,26 @@ def main():
         m_time = m.get('time', 0)
         sport = m.get('sport', 1)
         teams = m.get('teams', [])
-        home = teams[0] if len(teams) > 0 else ""
-        away = teams[1] if len(teams) > 1 else ""
         league = m.get('league', '')
         match_title = m.get('match_title', '').strip()
+        home = ""
+        away = ""
 
-        if match_title:
+        if len(teams) == 2:
+            home = teams[0].strip()
+            away = teams[1].strip()
+            title = f"{home} vs {away}"
+        elif len(teams) == 4:
+            home = f"{teams[0]} / {teams[2]}".strip()
+            away = f"{teams[1]} / {teams[3]}".strip()
+            title = f"{home} vs {away}"
+        elif match_title:
             title = match_title
-            if not home and not away and ' vs ' in match_title:
+            if ' vs ' in match_title:
                 parts = match_title.split(' vs ', 1)
                 home, away = parts[0].strip(), parts[1].strip()
-        elif home and away:
-            title = f"{home} vs {away}".strip()
-        elif home:
+        elif len(teams) == 1:
+            home = teams[0].strip()
             title = home
         elif league:
             title = league
@@ -641,11 +681,7 @@ def main():
         if is_future:
             is_live = False
         else:
-            is_live = (
-                (status in ONGOING_STATUSES) or
-                (m['id'] in gist_live_ids) or
-                (m_time > 0 and now_ms >= (m_time + 10 * 60 * 1000) and now_ms <= (m_time + get_sport_max_duration_ms(sport)))
-            )
+            is_live = (status in ONGOING_STATUSES) or (m['id'] in gist_live_ids and status < 10000)
 
         m_item = {
             **m,
@@ -666,10 +702,10 @@ def main():
             if (m['id'] in gist_upcoming_ids) or (0 < m_time <= now_ms + 12 * 3600 * 1000):
                 upcoming_matches.append(m_item)
 
-    # Sort logic: Live (Sepak bola -> waktu), Upcoming (urutan waktu kickoff terdekat)
+    # Sort logic: Live (Sepak bola -> waktu terbaru di atas), Upcoming (urutan waktu kickoff terdekat)
     def live_sort_key(item):
         sport_score = 0 if item['sport'] == 1 else 1
-        time_score = item['time'] if item['time'] > 0 else 9999999999999
+        time_score = -item['time'] if item['time'] > 0 else 0
         return (sport_score, time_score)
 
     def upcoming_sort_key(item):
@@ -734,7 +770,7 @@ def main():
             # Token enkripsi untuk worker resolver
             token_payload = f"{m['id']}:{m['sport']}"
             enc_token = encrypt_match_id(token_payload, WORKER_AUTH_KEY)
-            resolver_base = RBTV_RESOLVER_URL or "https://rbtv-resolver.xr3ed-edge.workers.dev"
+            resolver_base = RBTV_RESOLVER_URL
             stream_url = f"{resolver_base}/live/{enc_token}.m3u8?s={s_idx}"
             m3u_lines.append(stream_url)
             m3u_lines.append("")
