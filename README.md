@@ -46,7 +46,16 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent2.m3u
 
 ---
 
-### 📺 4. 24/7 Channels Only Playlist (Murni TV Linear)
+### 🌐 4. Dedicated Live Sports Event 3 Playlist (Alternative Provider)
+> **Direct HLS Stream Multi-Kategori** — Siaran langsung olahraga harian direct m3u8 (tanpa proxy) dengan kategori: `📢 INFO`, `🇮🇩 Indonesia`, `🔴 Live Event`, dan `⏳ Upcoming Event`.
+
+```text
+https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent3.m3u
+```
+
+---
+
+### 📺 5. 24/7 Channels Only Playlist (Murni TV Linear)
 > Berisi seluruh siaran TV 24/7 (Nasional, Olahraga 24/7, Film HBO, Kartun, Berita, Religi, Mancanegara, Musik).
 
 ```text

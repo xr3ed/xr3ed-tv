@@ -67,9 +67,21 @@ jobs:
         run: |
           python scripts/sync_rbtv.py
 
+      - name: Sync Live Event 3 Playlist
+        continue-on-error: true
+        env:
+          EVENT3_BASE_URL: ${{ secrets.EVENT3_BASE_URL }}
+          EVENT3_ENDPOINTS: ${{ secrets.EVENT3_ENDPOINTS }}
+          EVENT3_PARSER_RULES: ${{ secrets.EVENT3_PARSER_RULES }}
+          EVENT3_DECRYPTOR: ${{ secrets.EVENT3_DECRYPTOR }}
+          EVENT3_HEADERS: ${{ secrets.EVENT3_HEADERS }}
+          EVENT3_OUTPUT: 'xr3edtv-liveevent3.m3u'
+        run: |
+          python scripts/sync_liveevent3.py
+
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add xr3dtv.m3u8 nasional.m3u xr3edtv-liveevent.m3u xr3edtv-liveevent2.m3u
+          git add xr3dtv.m3u8 nasional.m3u xr3edtv-liveevent.m3u xr3edtv-liveevent2.m3u xr3edtv-liveevent3.m3u
           git diff --staged --quiet || (git commit -m "Sync master, 24/7 & live sports playlists [skip ci]" && git push origin main --force)
