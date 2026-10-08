@@ -156,15 +156,17 @@ def fetch_json_data(endpoint: str):
         return (endpoint, None)
 
 def clean_title_for_norm(title: str) -> str:
-    # Hapus tag status depan: 🔴 [S1], 🔴 LIVE, ⏳ ... WIB, ⏳ Upcoming
-    t = re.sub(r'^[🔴⏳]\s*(\[S\d+\]|LIVE|\d{1,2}/\d{1,2}\s+\d{1,2}:\d{2}\s*WIB|\d{1,2}:\d{2}\s*WIB|Upcoming)?\s*', '', title)
+    # Hapus tag status depan: [S1], LIVE, [LIVE], ⏳ ... WIB, ⏳ Upcoming, 🔴 dll.
+    t = re.sub(r'^([🔴⏳]\s*)?(\[S\d+\]|LIVE|\[LIVE\]|\d{1,2}/\d{1,2}\s+\d{1,2}:\d{2}\s*WIB|\d{1,2}:\d{2}\s*WIB|Upcoming)?\s*', '', title)
     # Hapus tag server belakang jika ada: [Server 1]
     t = re.sub(r'\s*\[Server\s+\d+\]', '', t)
     # Hapus tag turnamen depan: [Turnamen]
     t = re.sub(r'^\[[^\]]+\]\s*', '', t)
     # Hapus bullet separator
     t = t.split('•')[0].strip()
-    return " ".join(t.lower().replace('—', 'vs').replace('-', ' ').split())
+    t = t.lower().replace('—', 'vs').replace('-', ' ')
+    t = re.sub(r'\b(fc|cf|sc|fk)\b', '', t)
+    return " ".join(t.split())
 
 def stream_quality_score(url: str) -> int:
     u = (url or '').lower()
@@ -314,12 +316,18 @@ def parse_all_matches():
                 if not raw_name:
                     continue
 
-                norm_key = " ".join(raw_name.lower().replace('—', 'vs').replace('-', ' ').split())
+                t_norm = raw_name.lower().replace('—', 'vs').replace('-', ' ')
+                t_norm = re.sub(r'\b(fc|cf|sc|fk)\b', '', t_norm)
+                norm_key = " ".join(t_norm.split())
 
                 t_id = item.get('tournament_id')
                 tournament = tourn_map.get(str(t_id), {}).get('name', '') or tourn_map.get(t_id, {}).get('name', '')
+                if tournament:
+                    tournament = re.sub(r'\s*\d{1,2}:\d{2}$', '', tournament).strip()
 
                 status = str(item.get('status', '')).lower()
+                if status in ['closed', 'ended', 'finished', 'cancelled']:
+                    continue
                 is_live = (status == 'live')
 
                 start_iso = item.get('start', '')
@@ -397,9 +405,13 @@ def parse_all_matches():
                 if not raw_name:
                     continue
 
-                norm_key = " ".join(raw_name.lower().replace('—', 'vs').replace('-', ' ').split())
+                t_norm = raw_name.lower().replace('—', 'vs').replace('-', ' ')
+                t_norm = re.sub(r'\b(fc|cf|sc|fk)\b', '', t_norm)
+                norm_key = " ".join(t_norm.split())
                 category = clean_env(str(item.get(cat_k, ''))) or 'Sports'
                 tournament = clean_env(str(item.get(tourn_k, '')))
+                if tournament:
+                    tournament = re.sub(r'\s*\d{1,2}:\d{2}$', '', tournament).strip()
                 time_str = clean_env(str(item.get(time_k, '')))
                 ts_val = item.get(ts_k, 0)
                 try:
@@ -428,11 +440,15 @@ def parse_all_matches():
 
                 is_live = False
                 time_lower = time_str.lower()
+                if any(x in time_lower for x in ['finish', 'ended', 'closed', 'ft', 'postp', 'cancel']):
+                    continue
                 if 'progress' in time_lower or 'live' in time_lower or "'" in time_lower or 'ht' in time_lower or 'quarter' in time_lower:
                     is_live = True
                 elif ts > 0:
                     if (now_ts - 2.5 * 3600) <= ts <= (now_ts + 15 * 60):
                         is_live = True
+                    elif ts < (now_ts - 3 * 3600):
+                        continue
 
                 if not valid_streams:
                     # Upcoming match tanpa stream: sertakan link halaman target
@@ -552,9 +568,9 @@ def generate_m3u(matches: list) -> str:
                 server_num = idx + 1
                 if is_match_live:
                     if total_streams > 1:
-                        entry_title = f"🔴 [S{server_num}] {tourn_prefix}{match_name}"
+                        entry_title = f"[S{server_num}] {tourn_prefix}{match_name}"
                     else:
-                        entry_title = f"🔴 LIVE {tourn_prefix}{match_name}"
+                        entry_title = f"LIVE {tourn_prefix}{match_name}"
                 else:
                     entry_title = f"⏳ {time_label} {tourn_prefix}{match_name}"
 
