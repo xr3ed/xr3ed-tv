@@ -11,6 +11,7 @@ dan fungsi decrypt murni dimuat dari environment variable / GitHub Secrets.
 
 import os
 import sys
+import re
 import json
 import base64
 import urllib.request
@@ -154,6 +155,37 @@ def fetch_json_data(endpoint: str):
         log(f"Gagal mengambil {endpoint}: {e}")
         return (endpoint, None)
 
+def load_existing_playlist_streams(filepath: str) -> dict:
+    if not os.path.exists(filepath):
+        return {}
+    streams_by_match = {}
+    try:
+        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+            lines = [l.strip() for l in f if l.strip()]
+        
+        curr_match = None
+        for line in lines:
+            if line.startswith('#EXTINF'):
+                parts = line.split(',', 1)
+                if len(parts) > 1:
+                    title = parts[1]
+                    title = re.sub(r'\s*\[Server\s+\d+\]', '', title)
+                    title = title.split('•')[0].strip()
+                    title = re.sub(r'^\[[^\]]+\]\s*', '', title)
+                    norm_k = " ".join(title.lower().replace('—', 'vs').replace('-', ' ').split())
+                    curr_match = norm_k
+            elif line.startswith('http') and curr_match:
+                url_clean = line.split('|')[0].strip()
+                if ('sportvideodata' in url_clean or 'vivo155' in url_clean or '.m3u8' in url_clean) and 'api.onsport365' not in url_clean:
+                    if curr_match not in streams_by_match:
+                        streams_by_match[curr_match] = []
+                    if url_clean not in streams_by_match[curr_match]:
+                        streams_by_match[curr_match].append(url_clean)
+                curr_match = None
+    except Exception as e:
+        log(f"Gagal membaca cache playlist sebelumnya: {e}")
+    return streams_by_match
+
 def parse_all_matches():
     log(f"Mengambil data dari {len(ENDPOINTS)} endpoint...")
     all_responses = []
@@ -227,6 +259,7 @@ def parse_all_matches():
 
     now_ts = int(datetime.now(timezone.utc).timestamp())
     parsed_matches = {}
+    existing_cached_streams = load_existing_playlist_streams(OUTPUT_FILE)
 
     for endpoint, data in all_responses:
         # Cek apakah SportPlus format (dict dengan 'items') atau Legacy (list)
@@ -273,6 +306,9 @@ def parse_all_matches():
                     for s_idx, s_url in enumerate(detail_cache[match_id]):
                         if s_url and isinstance(s_url, str) and s_url.startswith('http'):
                             valid_streams.append({'name': f'Stream {s_idx+1}', 'url': s_url})
+                elif is_live and norm_key in existing_cached_streams:
+                    for s_idx, s_url in enumerate(existing_cached_streams[norm_key]):
+                        valid_streams.append({'name': f'Stream {s_idx+1}', 'url': s_url})
 
                 raw_streams = item.get(streams_k, [])
                 if isinstance(raw_streams, list):
