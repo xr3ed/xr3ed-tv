@@ -175,6 +175,36 @@ def parse_all_matches():
     url_k = RULES.get('url_key', 'url')
     stream_name_k = RULES.get('stream_name_key', 'name')
     indo_keywords = [k.lower() for k in RULES.get('indonesia_keywords', [])]
+    detail_api_base = clean_env(str(RULES.get('detail_api_base', '')))
+    live_streams_k = clean_env(str(RULES.get('live_streams_key', 'ls')))
+
+    # Kumpulkan ID match SportPlus yang berstatus live untuk diambil stream aktifnya
+    live_sp_ids = set()
+    for endpoint, data in all_responses:
+        if isinstance(data, dict) and 'items' in data:
+            for it in data.get('items', []):
+                if isinstance(it, dict) and str(it.get('status', '')).lower() == 'live' and it.get('id'):
+                    live_sp_ids.add(it.get('id'))
+
+    detail_cache = {}
+    if detail_api_base and live_sp_ids:
+        log(f"Mengambil stream detail untuk {len(live_sp_ids)} pertandingan live SportPlus...")
+        def fetch_detail_stream(m_id):
+            u = f"{detail_api_base}{m_id}"
+            try:
+                req = urllib.request.Request(u, headers=HTTP_HEADERS)
+                with urllib.request.urlopen(req, timeout=6) as r:
+                    d = json.loads(r.read().decode('utf-8'))
+                    ls = d.get('item', {}).get(live_streams_k, [])
+                    return (m_id, ls if isinstance(ls, list) else [])
+            except Exception:
+                return (m_id, [])
+
+        with ThreadPoolExecutor(max_workers=16) as pool:
+            for m_id, ls in pool.map(fetch_detail_stream, list(live_sp_ids)):
+                if ls:
+                    detail_cache[m_id] = ls
+        log(f"Stream live aktif SportPlus terhubung: {len(detail_cache)} / {len(live_sp_ids)}")
 
     now_ts = int(datetime.now(timezone.utc).timestamp())
     parsed_matches = {}
@@ -217,8 +247,14 @@ def parse_all_matches():
                     except Exception:
                         pass
 
-                # Cek stream jika ada
+                # Cek stream jika ada di detail_cache atau di item
                 valid_streams = []
+                match_id = item.get('id')
+                if match_id and match_id in detail_cache:
+                    for s_idx, s_url in enumerate(detail_cache[match_id]):
+                        if s_url and isinstance(s_url, str) and s_url.startswith('http'):
+                            valid_streams.append({'name': f'Stream {s_idx+1}', 'url': s_url})
+
                 raw_streams = item.get(streams_k, [])
                 if isinstance(raw_streams, list):
                     for s in raw_streams:
@@ -228,10 +264,9 @@ def parse_all_matches():
                             valid_streams.append({'name': 'Stream', 'url': direct_url})
 
                 if not valid_streams:
-                    # Jangan filter upcoming! Berikan link referensi pertandingan
-                    match_id = item.get('id', '')
-                    fallback_stream = f"https://api.onsport365.live/v5/matches/view?lang=en&id={match_id}"
-                    valid_streams.append({'name': 'Match View', 'url': fallback_stream})
+                    # Upcoming match atau match tanpa stream aktif
+                    fallback_stream = f"{BASE_URL}/?match={norm_key.replace(' ', '-')}" if BASE_URL else ""
+                    valid_streams.append({'name': 'Match Info', 'url': fallback_stream or (f"{detail_api_base}{match_id}" if detail_api_base and match_id else "")})
 
                 check_text = f"{raw_name} {tournament}".lower()
                 is_indo = any(kw in check_text for kw in indo_keywords)
@@ -402,8 +437,14 @@ def generate_m3u(matches: list) -> str:
                 entry_title = f"{base_title}{server_label}"
 
                 stream_url = stream['url']
-                # Tentukan referer yang tepat (vivo155 membutuhkan player.787200.com)
-                ref = "https://player.787200.com/" if ("vivo155.com" in stream_url or "787200.com" in stream_url) else referer_header
+                # Tentukan referer yang tepat (vivo155 -> player.787200.com, sportvideodata -> site_referer)
+                site_ref = clean_env(str(RULES.get('site_referer', '')))
+                if "vivo155.com" in stream_url or "787200.com" in stream_url:
+                    ref = "https://player.787200.com/"
+                elif "sportvideodata.com" in stream_url or "onsport365" in stream_url:
+                    ref = site_ref if site_ref else f"{BASE_URL}/"
+                else:
+                    ref = referer_header
 
                 lines.append(f'#EXTINF:-1 tvg-id="event3-{abs(hash(match_name)) % 10000000}" tvg-name="{entry_title}" tvg-logo="{logo}" group-title="{group_title}",{entry_title}')
                 lines.append(f'#EXTVLCOPT:http-referrer={ref}')
