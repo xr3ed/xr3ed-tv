@@ -155,6 +155,46 @@ def fetch_json_data(endpoint: str):
         log(f"Gagal mengambil {endpoint}: {e}")
         return (endpoint, None)
 
+def clean_title_for_norm(title: str) -> str:
+    # Hapus tag status depan: 🔴 [S1], 🔴 LIVE, ⏳ ... WIB, ⏳ Upcoming
+    t = re.sub(r'^[🔴⏳]\s*(\[S\d+\]|LIVE|\d{1,2}/\d{1,2}\s+\d{1,2}:\d{2}\s*WIB|\d{1,2}:\d{2}\s*WIB|Upcoming)?\s*', '', title)
+    # Hapus tag server belakang jika ada: [Server 1]
+    t = re.sub(r'\s*\[Server\s+\d+\]', '', t)
+    # Hapus tag turnamen depan: [Turnamen]
+    t = re.sub(r'^\[[^\]]+\]\s*', '', t)
+    # Hapus bullet separator
+    t = t.split('•')[0].strip()
+    return " ".join(t.lower().replace('—', 'vs').replace('-', ' ').split())
+
+def stream_quality_score(url: str) -> int:
+    u = (url or '').lower()
+    score = 0
+    # Prioritaskan CDN paling stabil, cepat, dan lancar (Tencent / Wangsu / China Sports CDN)
+    if any(k in u for k in ['pulltx.cqsycw.com', 'pullws-ac.yiom1.com', 'pulltx.', 'pullws.']):
+        score += 100
+    elif any(k in u for k in ['klmysrmyy.com', 'yiom1.com', 'cqsycw.com']):
+        score += 90
+    elif 'vivo155.com' in u:
+        score += 60
+    elif 'sportvideodata.com' in u:
+        score += 30
+    elif u.startswith('http') and not any(k in u for k in ['?match=', '?upcoming=', 'api.onsport']):
+        score += 20
+    else:
+        score = -100
+
+    # Prioritaskan kualitas video tertinggi (HD / 1080p / high-bitrate p1)
+    if any(k in u for k in ['1080', 'fhd', 'p1.m3u8']):
+        score += 25
+    elif any(k in u for k in ['720', 'hd', 'p2.m3u8']):
+        score += 15
+    elif 'p4.m3u8' in u:
+        score += 10
+    elif any(k in u for k in ['sd', 'p7.m3u8', 'p8.m3u8', 'p9.m3u8']):
+        score += 5
+
+    return score
+
 def load_existing_playlist_streams(filepath: str) -> dict:
     if not os.path.exists(filepath):
         return {}
@@ -168,12 +208,7 @@ def load_existing_playlist_streams(filepath: str) -> dict:
             if line.startswith('#EXTINF'):
                 parts = line.split(',', 1)
                 if len(parts) > 1:
-                    title = parts[1]
-                    title = re.sub(r'\s*\[Server\s+\d+\]', '', title)
-                    title = title.split('•')[0].strip()
-                    title = re.sub(r'^\[[^\]]+\]\s*', '', title)
-                    norm_k = " ".join(title.lower().replace('—', 'vs').replace('-', ' ').split())
-                    curr_match = norm_k
+                    curr_match = clean_title_for_norm(parts[1])
             elif line.startswith('http') and curr_match:
                 url_clean = line.split('|')[0].strip()
                 if ('sportvideodata' in url_clean or 'vivo155' in url_clean or '.m3u8' in url_clean) and 'api.onsport365' not in url_clean:
@@ -291,8 +326,13 @@ def parse_all_matches():
                 ts = 0
                 time_str = ''
                 if start_iso:
+                    clean_iso = start_iso
+                    if len(clean_iso) >= 5 and clean_iso[-5] in ['+', '-'] and ':' not in clean_iso[-5:]:
+                        clean_iso = clean_iso[:-2] + ':' + clean_iso[-2:]
+                    elif clean_iso.endswith('Z'):
+                        clean_iso = clean_iso[:-1] + '+00:00'
                     try:
-                        dt = datetime.fromisoformat(start_iso)
+                        dt = datetime.fromisoformat(clean_iso)
                         ts = int(dt.timestamp())
                         dt_wib = dt.astimezone(WIB)
                         time_str = dt_wib.strftime('%H:%M WIB')
@@ -463,33 +503,60 @@ def generate_m3u(matches: list) -> str:
     referer_header = HTTP_HEADERS.get('Referer', 'https://player.787200.com/')
 
     def add_match_entries(m_list, group_title, prefix_status):
+        now_dt = datetime.now(WIB)
         for m in m_list:
             match_name = m['name']
             tournament = m['tournament']
             logo = m['logo']
 
+            is_match_live = (prefix_status == 'LIVE' or m['is_live'])
+
+            # Tentukan label waktu untuk upcoming
             time_label = ""
-            if prefix_status == 'LIVE' or m['is_live']:
-                time_label = "🔴 LIVE"
-            elif m['timestamp'] > 0:
-                match_dt = datetime.fromtimestamp(m['timestamp'], tz=WIB)
-                time_label = f"⏳ {match_dt.strftime('%d/%m %H:%M')} WIB"
-            elif m['time_str']:
-                time_label = f"⏳ {m['time_str']}"
+            if not is_match_live:
+                if m['timestamp'] > 0:
+                    match_dt = datetime.fromtimestamp(m['timestamp'], tz=WIB)
+                    if match_dt.date() == now_dt.date():
+                        time_label = match_dt.strftime('%H:%M WIB')
+                    else:
+                        time_label = match_dt.strftime('%d/%m %H:%M WIB')
+                elif m['time_str']:
+                    time_label = m['time_str'] if 'WIB' in m['time_str'] else f"{m['time_str']} WIB"
+                else:
+                    time_label = "Upcoming"
 
-            title_parts = []
-            if tournament:
-                title_parts.append(f"[{tournament}]")
-            title_parts.append(match_name)
-            if time_label:
-                title_parts.append(f"• {time_label}")
+            tourn_prefix = f"[{tournament.strip()}] " if tournament else ""
 
-            base_title = " ".join(title_parts)
+            # Urutkan stream berdasarkan skor kualitas & kestabilan CDN tertinggi
+            seen_urls = set()
+            sorted_streams = []
+            for s in sorted(m['streams'], key=lambda x: stream_quality_score(x.get('url', '')), reverse=True):
+                u_str = s.get('url', '').strip()
+                if u_str and u_str not in seen_urls:
+                    seen_urls.add(u_str)
+                    sorted_streams.append(s)
 
-            for idx, stream in enumerate(m['streams']):
+            if not sorted_streams:
+                continue
+
+            # Batasi server: Jika live ambil max 3 server terbaik (Server 1 paling bening/lancar, S2 & S3 cadangan)
+            # Jika upcoming: ambil 1 link info
+            if is_match_live:
+                streams_to_write = sorted_streams[:3]
+            else:
+                streams_to_write = sorted_streams[:1]
+
+            total_streams = len(streams_to_write)
+
+            for idx, stream in enumerate(streams_to_write):
                 server_num = idx + 1
-                server_label = f" [Server {server_num}]" if len(m['streams']) > 1 else ""
-                entry_title = f"{base_title}{server_label}"
+                if is_match_live:
+                    if total_streams > 1:
+                        entry_title = f"🔴 [S{server_num}] {tourn_prefix}{match_name}"
+                    else:
+                        entry_title = f"🔴 LIVE {tourn_prefix}{match_name}"
+                else:
+                    entry_title = f"⏳ {time_label} {tourn_prefix}{match_name}"
 
                 stream_url = stream['url']
                 # Tentukan referer yang tepat (vivo155 -> player.787200.com, sportvideodata -> site_referer)
