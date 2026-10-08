@@ -6,11 +6,13 @@ Otomatisasi sinkronisasi playlist IPTV terlengkap yang menggabungkan **🔴 Siar
 
 ## 🚀 Fitur Unggulan
 
-- ⚽ **Live Sports Event Terdedikasi (`xr3edtv-liveevent.m3u`)**: Playlist khusus siaran langsung pertandingan olahraga terkini dengan resolusi 720p60 FPS, multi-server alternatif, skor langsung, dan menit pertandingan real-time.
-- 🔴 **Sinkronisasi Otomatis**: GitHub Actions workflow berjalan otomatis setiap 5–10 menit untuk memperbarui jadwal kick-off dan token live stream terbaru.
+- ⚽ **Live Sports Event Terdedikasi (`xr3edtv-liveevent.m3u`)**: Playlist siaran langsung olahraga multi-source dengan failover on-demand dan skor langsung.
+- ⚡ **Live Sports Event 2 (`xr3edtv-liveevent2.m3u`)**: Playlist olahraga RBTV+ dengan prioritas kategori Timnas/Klub Indonesia dan Cloudflare edge resolver.
+- 🌐 **Live Sports Event 3 (`xr3edtv-liveevent3.m3u`)**: Playlist siaran langsung olahraga direct HLS m3u8 (multi-server tanpa proxy) dengan kategori Indonesia, Live, dan Upcoming.
+- 🔴 **Sinkronisasi Otomatis**: GitHub Actions workflow berjalan otomatis setiap 5 menit untuk memperbarui jadwal pertandingan dan token stream live terkini.
 - 📺 **TV Nasional & Internasional 24/7**: Channel TV Indonesia (RCTI, Trans, SCTV, Indosiar, TVRI, dll) dengan sistem cadangan `Server 1`, `Server 2`, `Server 3` dan logo resmi beresolusi tinggi.
 - ⚡ **Multi-Server & Anti-Duplikat**: Menggabungkan beberapa link sumber per channel ke dalam satu nama channel terstruktur, otomatis membuang duplikat mati.
-- 🛡️ **Cloudflare Edge Proxy**: Bypass proteksi Geo-block dan hotlink header secara transparan.
+- 🛡️ **Zero-Leak Secret Engine**: Seluruh logika crawling, endpoint sumber, aturan ekstraksi, dan algoritma decryptor disimpan secara aman di GitHub Secrets.
 - 📑 **Panduan Jadwal TV (EPG XML)**: Terintegrasi dengan XMLTV EPG guide resmi.
 
 ---
@@ -47,7 +49,7 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent2.m3u
 ---
 
 ### 🌐 4. Dedicated Live Sports Event 3 Playlist (Alternative Provider)
-> **Direct HLS Stream Multi-Kategori** — Siaran langsung olahraga harian direct m3u8 (tanpa proxy) dengan kategori: `📢 INFO`, `🇮🇩 Indonesia`, `🔴 Live Event`, dan `⏳ Upcoming Event`.
+> **Direct HLS Stream Multi-Kategori** — Siaran langsung olahraga harian direct m3u8 (multi-server tanpa proxy) dengan kategori: `📢 INFO`, `🇮🇩 Indonesia`, `🔴 Live Event`, dan `⏳ Upcoming Event`.
 
 ```text
 https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent3.m3u
@@ -103,22 +105,31 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
  └── ⏳ Upcoming Event (10 pertandingan mendatang terdekat dengan jadwal WIB)
 ```
 
-### 📺 C. Playlist 24/7 Channels (`nasional.m3u`)
-```
-📂 [nasional.m3u]
- ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
- ├── 🇮🇩 NASIONAL (98 TV Nasional Indonesia)
- ├── ⚽ SPORTS (beIN Sports, SPOTV 24/7)
- └── ... (Kategori Hiburan, Film, Kartun, Berita, Religi, Mancanegara, Musik)
-```
-
-### ⚡ D. Playlist Live Event 2 (RBTV+) (`xr3edtv-liveevent2.m3u`)
+### ⚡ C. Playlist Live Event 2 (RBTV+) (`xr3edtv-liveevent2.m3u`)
 ```
 📂 [xr3edtv-liveevent2.m3u]
  ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
  ├── 🇮🇩 Indonesia (Semua match Indonesia: Live & Upcoming)
  ├── 🔴 Live Event (Match internasional yang SEDANG LIVE)
  └── ⏳ Upcoming Event (Match mendatang terdekat)
+```
+
+### 🌐 D. Playlist Live Event 3 (Alternative Direct) (`xr3edtv-liveevent3.m3u`)
+```
+📂 [xr3edtv-liveevent3.m3u]
+ ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
+ ├── 🇮🇩 Indonesia (Match Indonesia: Timnas & Klub)
+ ├── 🔴 Live Event (Semua cabang olahraga yang SEDANG LIVE)
+ └── ⏳ Upcoming Event (Jadwal match mendatang berurutan waktu WIB)
+```
+
+### 📺 E. Playlist 24/7 Channels (`nasional.m3u`)
+```
+📂 [nasional.m3u]
+ ├── 📢 INFO (Telegram: t.me/CloudstreamXR & Lynk.id: lynk.id/xr3ed)
+ ├── 🇮🇩 NASIONAL (98 TV Nasional Indonesia)
+ ├── ⚽ SPORTS (beIN Sports, SPOTV 24/7)
+ └── ... (Kategori Hiburan, Film, Kartun, Berita, Religi, Mancanegara, Musik)
 ```
 
 ---
@@ -138,5 +149,5 @@ https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/nasional.m3u
 ---
 
 ## ⚡ Otomasi CI/CD
-- **Sync Master, Nasional, Live Event 1 & Live Event 2 (RBTV+)** (`.github/workflows/update_playlist.yml`): Berjalan otomatis tiap 5 menit (`*/5 * * * *`).
-- **GitHub Secrets Protection**: Semua URL dan kredensial sensitif diamankan menggunakan GitHub Actions Secrets.
+- **Sinkronisasi Multi-Playlist** (`.github/workflows/update_playlist.yml`): Berjalan otomatis tiap 5 menit (`*/5 * * * *`) untuk Master (`xr3dtv.m3u8`), 24/7 (`nasional.m3u`), Live Event 1 (`xr3edtv-liveevent.m3u`), Live Event 2 (`xr3edtv-liveevent2.m3u`), dan Live Event 3 (`xr3edtv-liveevent3.m3u`).
+- **GitHub Secrets Protection**: Seluruh kredensial, endpoint target crawling, dan logika decoding diamankan menggunakan GitHub Secrets. Skrip runner bersifat agnostik dan bebas dari bocoran data upstream.
