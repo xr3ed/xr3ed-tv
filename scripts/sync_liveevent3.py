@@ -189,15 +189,21 @@ def parse_all_matches():
     detail_cache = {}
     if detail_api_base and live_sp_ids:
         log(f"Mengambil stream detail untuk {len(live_sp_ids)} pertandingan live SportPlus...")
+        err_samples = []
         def fetch_detail_stream(m_id):
             u = f"{detail_api_base}{m_id}"
             try:
-                req = urllib.request.Request(u, headers=HTTP_HEADERS)
+                headers = dict(HTTP_HEADERS)
+                site_ref = clean_env(str(RULES.get('site_referer', '')))
+                headers['Referer'] = site_ref if site_ref else f"{BASE_URL}/"
+                req = urllib.request.Request(u, headers=headers)
                 with urllib.request.urlopen(req, timeout=6) as r:
                     d = json.loads(r.read().decode('utf-8'))
                     ls = d.get('item', {}).get(live_streams_k, [])
                     return (m_id, ls if isinstance(ls, list) else [])
-            except Exception:
+            except Exception as e:
+                if len(err_samples) < 3:
+                    err_samples.append(f"{m_id}: {e}")
                 return (m_id, [])
 
         with ThreadPoolExecutor(max_workers=16) as pool:
@@ -205,6 +211,8 @@ def parse_all_matches():
                 if ls:
                     detail_cache[m_id] = ls
         log(f"Stream live aktif SportPlus terhubung: {len(detail_cache)} / {len(live_sp_ids)}")
+        if err_samples:
+            log(f"Sample error detail: {', '.join(err_samples)}")
 
     now_ts = int(datetime.now(timezone.utc).timestamp())
     parsed_matches = {}
