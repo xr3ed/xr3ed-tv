@@ -25,6 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install cryptography python-dotenv
 
+      - name: Setup WARP
+        uses: fscarmen/warp-on-actions@v1.3
+
       - name: Sync Master, Nasional & Live Event Playlists
         env:
           XR3EDTV_API_BASE: ${{ secrets.XR3EDTV_API_BASE }}
