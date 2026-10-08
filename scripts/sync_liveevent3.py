@@ -199,7 +199,12 @@ def parse_all_matches():
                 req = urllib.request.Request(u, headers=headers)
                 with urllib.request.urlopen(req, timeout=6) as r:
                     d = json.loads(r.read().decode('utf-8'))
-                    ls = d.get('item', {}).get(live_streams_k, [])
+                    item_data = d.get('item')
+                    if not item_data and len(err_samples) < 3:
+                        err_samples.append(f"{m_id}: no item (resp keys: {list(d.keys())})")
+                    ls = item_data.get(live_streams_k, []) if isinstance(item_data, dict) else []
+                    if item_data and not ls and len(err_samples) < 3:
+                        err_samples.append(f"{m_id}: no ls (item keys: {list(item_data.keys())[:6]})")
                     return (m_id, ls if isinstance(ls, list) else [])
             except Exception as e:
                 if len(err_samples) < 3:
