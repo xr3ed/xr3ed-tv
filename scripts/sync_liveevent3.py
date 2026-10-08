@@ -195,7 +195,13 @@ def parse_all_matches():
             try:
                 headers = dict(HTTP_HEADERS)
                 site_ref = clean_env(str(RULES.get('site_referer', '')))
+                client_ip = clean_env(str(RULES.get('client_ip', '')))
                 headers['Referer'] = site_ref if site_ref else f"{BASE_URL}/"
+                if client_ip:
+                    headers['X-Forwarded-For'] = client_ip
+                    headers['X-Real-IP'] = client_ip
+                    headers['Client-IP'] = client_ip
+                    headers['True-Client-IP'] = client_ip
                 req = urllib.request.Request(u, headers=headers)
                 with urllib.request.urlopen(req, timeout=6) as r:
                     d = json.loads(r.read().decode('utf-8'))
