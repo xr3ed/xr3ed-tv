@@ -130,15 +130,20 @@ def get_dynamic_xor_key_bytes() -> bytes:
         content = fetch_url(url, timeout=8).decode('utf-8', errors='ignore')
         idx = content.find('RESPONSE_SECRET_KEY_CLIENT')
         if idx != -1:
-            idx_ret = content.find('return _0x4eec63', idx)
-            snippet = content[idx:idx_ret]
+            idx_ret = content.find('return ', idx)
+            snippet = content[idx:idx_ret] if idx_ret != -1 else content[idx:idx+8000]
             arr_matches = re.findall(r'\[(0x[0-9a-fA-F,\s0x]+)\]', snippet)
             if len(arr_matches) >= 2:
                 arr1 = [int(x.strip(), 16) for x in arr_matches[0].split(',') if x.strip()]
                 arr2 = [int(x.strip(), 16) for x in arr_matches[1].split(',') if x.strip()]
+
+                f_match = re.search(r'\*\s*(?:0x)?([a-fA-F0-9]+)\s*\+\s*(?:0x)?([a-fA-F0-9]+)\s*&\s*0xffff', snippet, re.IGNORECASE)
+                mult = int(f_match.group(1), 16) if f_match else 0x11
+                add = int(f_match.group(2), 16) if f_match else 0xd842
+
                 chars = []
                 for i in range(len(arr1)):
-                    val = arr1[i] ^ arr2[i % len(arr2)] ^ ((i * 0x11 + 0x99d1) & 0xffff)
+                    val = (arr1[i] ^ arr2[i % len(arr2)] ^ ((i * mult + add) & 0xffff)) & 0xffff
                     chars.append(chr(val))
                 return "".join(chars).encode('utf-8')
     except Exception:
