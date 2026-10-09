@@ -8,20 +8,32 @@ https://t.me/CloudstreamXR
 #EXTINF:-1 tvg-id="xr3ed-coffee" tvg-name="☕ Traktir Kopi: lynk.id/xr3ed" tvg-logo="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/coffee.png" group-title="📢 INFO",☕ Traktir Kopi: lynk.id/xr3ed
 https://lynk.id/xr3ed
 
-#EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 1 (HD AUTO) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔥 Hot Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 1 (HD AUTO) • LIVE 11:40
+#EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 1 (HD [IOS]) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔥 Hot Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 1 (HD [IOS]) • LIVE 11:40
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://playkltratv.elutuna.workers.dev?channel=TNT%202
+https://s2.strea.ru/index.m3u8
 
 #EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 2 (HD AUTO) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔥 Hot Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 2 (HD AUTO) • LIVE 11:40
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://playkltratv.elutuna.workers.dev?channel=FANCODE%20LALIGA
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=82dfca238e8c4b430a3269db71965db9:a00b28caf4ac628e77a553d440c0ddca
+#EXTVLCOPT:inputstream.adaptive.license_type=clearkey
+#EXTVLCOPT:inputstream.adaptive.license_key=82dfca238e8c4b430a3269db71965db9:a00b28caf4ac628e77a553d440c0ddca
+https://otte.cache.aiv-cdn.net/sin-nitro/live/dash/enc/b3b3fkmrbl/out/v1/1084d5c9a97a4c5b9f9554c88f486646/cenc.mpd
 
-#EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD [IOS]) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔥 Hot Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD [IOS]) • LIVE 11:40
+#EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD AUTO) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔥 Hot Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD AUTO) • LIVE 11:40
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://s2.strea.ru/index.m3u8
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+#EXTVLCOPT:inputstream.adaptive.license_type=clearkey
+#EXTVLCOPT:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd
 
 #EXTINF:-1 tvg-id="od_sd-golf~2149" tvg-name="[fight] UFC BJJ 12 Moura vs Fornarino - Server 1 (Worker HLS) • LIVE 08:00" tvg-logo="https://r2.thesportsdb.com/images/media/team/badge/b0rwjq1659455177.png" group-title="🔥 Hot Event",[fight] UFC BJJ 12 Moura vs Fornarino - Server 1 (Worker HLS) • LIVE 08:00
 #EXTVLCOPT:http-referrer=https://damitv.st/
@@ -115,23 +127,23 @@ https://live.vivo155.com/live/sd-1-4481212.m3u8?txSecret=bc8305268a96484acb5ff83
 #EXTINF:-1 tvg-id="kltra_504a2198-8ddb-45ff-8c4c-5664808" tvg-name="[Korean Second Division] Gimpo FC vs Seoul E Land FC - Server 2 (SD W [IOS]) • LIVE 14:30" tvg-logo="https://s.q5qo.com/data/75572b3d146e8dde671f9e5c3a803821.png" group-title="🔴 Live Event",[Korean Second Division] Gimpo FC vs Seoul E Land FC - Server 2 (SD W [IOS]) • LIVE 14:30
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://pull.streamviewk7x.click/livesp/sd-6MvVcmFC4eG1UgMZDU_autosp.m3u8?txSecret=3b6d6163c11e9adc3c1d1cf603efbafe&txTime=6AC9E978
+https://pull.streamviewk7x.click/livesp/sd-6wXrY4W7ashwZVKL3L_autosp.m3u8?txSecret=8023391890948ee3bcf4a58028d1f768&txTime=6AC9E978
 
-#EXTINF:-1 tvg-id="kltra_103c5afc-3022-4e24-b126-5479749" tvg-name="[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 1 (HD J [IOS]) • LIVE 14:30" tvg-logo="https://s.q5qo.com/data/c7bf4f5522d9dcae3a666f318c4a37c8.png" group-title="🔴 Live Event",[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 1 (HD J [IOS]) • LIVE 14:30
+#EXTINF:-1 tvg-id="kltra_103c5afc-3022-4e24-b126-5479749" tvg-name="[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 2 (HD J [IOS]) • LIVE 14:30" tvg-logo="https://s.q5qo.com/data/c7bf4f5522d9dcae3a666f318c4a37c8.png" group-title="🔴 Live Event",[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 2 (HD J [IOS]) • LIVE 14:30
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
 https://live.dyrur1.com/live/73657440_afd9cffaad8396c6d45920f5e1c08425_1080p.m3u8?auth_key=1791544971-0-0-f56d0b75a37c91feb0b37eb883ca676e
 
-#EXTINF:-1 tvg-id="kltra_103c5afc-3022-4e24-b126-5479749" tvg-name="[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 2 (SD V [IOS]) • LIVE 14:30" tvg-logo="https://s.q5qo.com/data/c7bf4f5522d9dcae3a666f318c4a37c8.png" group-title="🔴 Live Event",[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 2 (SD V [IOS]) • LIVE 14:30
+#EXTINF:-1 tvg-id="kltra_103c5afc-3022-4e24-b126-5479749" tvg-name="[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 3 (HD B [IOS]) • LIVE 14:30" tvg-logo="https://s.q5qo.com/data/c7bf4f5522d9dcae3a666f318c4a37c8.png" group-title="🔴 Live Event",[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 3 (HD B [IOS]) • LIVE 14:30
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
+https://pul-tenm.gkykp.com/live/sd-2-3933702.m3u8?txSecret=df1a0dd00ebac1207c802a69a5a56497&txTime=6AC9E631
+
+#EXTINF:-1 tvg-id="kltra_103c5afc-3022-4e24-b126-5479749" tvg-name="[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 4 (SD V [IOS]) • LIVE 14:30" tvg-logo="https://s.q5qo.com/data/c7bf4f5522d9dcae3a666f318c4a37c8.png" group-title="🔴 Live Event",[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 4 (SD V [IOS]) • LIVE 14:30
 #EXTVLCOPT:http-referrer=https://player.online909.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
 https://live.vivo155.com/live/sd-2-3933702.m3u8?txSecret=19d11096581a075fddcb0f459426cc33&txTime=6AC8A9B3
-
-#EXTINF:-1 tvg-id="kltra_103c5afc-3022-4e24-b126-5479749" tvg-name="[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 3 (SD W [IOS]) • LIVE 14:30" tvg-logo="https://s.q5qo.com/data/c7bf4f5522d9dcae3a666f318c4a37c8.png" group-title="🔴 Live Event",[Korean Professional Basketball League] Samsung Thunders vs Anyang Jung Kwan Jang Red Boosters - Server 3 (SD W [IOS]) • LIVE 14:30
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://pull.streamviewk7x.click/livesp/sd-6wXrY4W7ashwZVKL3L_autosp.m3u8?txSecret=8023391890948ee3bcf4a58028d1f768&txTime=6AC9E978
 
 #EXTINF:-1 tvg-id="kltra_e5801c6d-12d9-441f-8283-5693110" tvg-name="[Philippines NCAA] JRU Heavy Bombers vs San Sebastian Golden Stags - Server 1 (SD V [IOS]) • LIVE 14:03" tvg-logo="https://s.q5qo.com/data/dc739261819120e7e82273ed62b03db.png" group-title="🔴 Live Event",[Philippines NCAA] JRU Heavy Bombers vs San Sebastian Golden Stags - Server 1 (SD V [IOS]) • LIVE 14:03
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -160,18 +172,28 @@ https://pull.streamviewk7x.click/livesp/sd-6MxjK7faxHrnFm8UYS_autosp.m3u8?txSecr
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
 https://live5.dyrur1.com/live/74445538_4f5adbb0755bf0fa3e0eefdaf7d6977f_1080p.m3u8?auth_key=1791543453-0-0-d3151ff9a998ea1587286ad4dd2451c6
 
-#EXTINF:-1 tvg-id="kltra_73b87797-6101-4644-899c-5712419" tvg-name="[China CBA Preseason] Tianjin Pioneers vs Guangzhou Loong Lions - Server 2 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/b83764f85811296ef2dc04338bad9baa.png" group-title="🔴 Live Event",[China CBA Preseason] Tianjin Pioneers vs Guangzhou Loong Lions - Server 2 (SD V [IOS]) • LIVE 14:00
+#EXTINF:-1 tvg-id="kltra_73b87797-6101-4644-899c-5712419" tvg-name="[China CBA Preseason] Tianjin Pioneers vs Guangzhou Loong Lions - Server 4 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/b83764f85811296ef2dc04338bad9baa.png" group-title="🔴 Live Event",[China CBA Preseason] Tianjin Pioneers vs Guangzhou Loong Lions - Server 4 (SD V [IOS]) • LIVE 14:00
 #EXTVLCOPT:http-referrer=https://player.online909.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
 https://live.vivo155.com/live/sd-2-3939166.m3u8?txSecret=b51e0e6bd1d7eca98c31ffa646d988e6&txTime=6AC8A2D1
 
-#EXTINF:-1 tvg-id="kltra_b0fd5b04-ddcd-43d7-8704-5712441" tvg-name="[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 1 (HD J [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/e4be7684dc5ce0013b8025adcf9c7bb0.png" group-title="🔴 Live Event",[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 1 (HD J [IOS]) • LIVE 14:00
+#EXTINF:-1 tvg-id="kltra_b0fd5b04-ddcd-43d7-8704-5712441" tvg-name="[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 1 (HD B [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/e4be7684dc5ce0013b8025adcf9c7bb0.png" group-title="🔴 Live Event",[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 1 (HD B [IOS]) • LIVE 14:00
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
+https://pul-tenm.gkykp.com/live/hd-zh-2-3939160.m3u8?txSecret=bbcf8fbbd476aa71cd133d2260173205&txTime=6AC9DEB1
+
+#EXTINF:-1 tvg-id="kltra_b0fd5b04-ddcd-43d7-8704-5712441" tvg-name="[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 2 (SD Y [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/e4be7684dc5ce0013b8025adcf9c7bb0.png" group-title="🔴 Live Event",[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 2 (SD Y [IOS]) • LIVE 14:00
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
+https://yallavoide.yalla-shoot-zhubo.com/sport/201_5771623_1.m3u8?auth_key=1791615947-0-0-266a2ffc9b8651ac5292d22a45e3caeb
+
+#EXTINF:-1 tvg-id="kltra_b0fd5b04-ddcd-43d7-8704-5712441" tvg-name="[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 3 (HD J [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/e4be7684dc5ce0013b8025adcf9c7bb0.png" group-title="🔴 Live Event",[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 3 (HD J [IOS]) • LIVE 14:00
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
 https://live4.dyrur1.com/live/74445540_586858d0705cbeeaf875b2c16f49a275_1080p.m3u8?auth_key=1791543639-0-0-11d338d29e551aee8f0bd9920a9d5365
 
-#EXTINF:-1 tvg-id="kltra_b0fd5b04-ddcd-43d7-8704-5712441" tvg-name="[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 2 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/e4be7684dc5ce0013b8025adcf9c7bb0.png" group-title="🔴 Live Event",[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 2 (SD V [IOS]) • LIVE 14:00
+#EXTINF:-1 tvg-id="kltra_b0fd5b04-ddcd-43d7-8704-5712441" tvg-name="[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 4 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/e4be7684dc5ce0013b8025adcf9c7bb0.png" group-title="🔴 Live Event",[China CBA Preseason] Zhejiang Golden Bulls vs Jiangsu Dragons - Server 4 (SD V [IOS]) • LIVE 14:00
 #EXTVLCOPT:http-referrer=https://player.online909.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
@@ -182,18 +204,38 @@ https://live.vivo155.com/live/sd-2-3939160.m3u8?txSecret=cf9872cf83b923d3782d235
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
 https://live.dyrur1.com/live/74445542_466176720c3bbdc2481208d36fa7ee44_1080p.m3u8?auth_key=1791543453-0-0-0f626e7f1a30423717d0539b1082ec4f
 
-#EXTINF:-1 tvg-id="kltra_f7abcb7c-c150-4805-a45e-5712460" tvg-name="[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 2 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/b7577536e661f3e89f0b689e724aff66.png" group-title="🔴 Live Event",[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 2 (SD V [IOS]) • LIVE 14:00
+#EXTINF:-1 tvg-id="kltra_f7abcb7c-c150-4805-a45e-5712460" tvg-name="[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 2 (SD Y [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/b7577536e661f3e89f0b689e724aff66.png" group-title="🔴 Live Event",[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 2 (SD Y [IOS]) • LIVE 14:00
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
+https://yallavoide.yalla-shoot-zhubo.com/sport/201_5771620_1.m3u8?auth_key=1791615847-0-0-ad5a9a9f8ac928e8b39dffff95cc7c03
+
+#EXTINF:-1 tvg-id="kltra_f7abcb7c-c150-4805-a45e-5712460" tvg-name="[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 3 (HD B [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/b7577536e661f3e89f0b689e724aff66.png" group-title="🔴 Live Event",[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 3 (HD B [IOS]) • LIVE 14:00
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
+https://pul-tenm.gkykp.com/live/hd-zh-2-3939142.m3u8?txSecret=d1af2086f59cd01a17318bbcbf79bea3&txTime=6AC9DFA1
+
+#EXTINF:-1 tvg-id="kltra_f7abcb7c-c150-4805-a45e-5712460" tvg-name="[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 4 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/b7577536e661f3e89f0b689e724aff66.png" group-title="🔴 Live Event",[China CBA Preseason] Fujian Sturgeons vs Sichuan Blue Whales - Server 4 (SD V [IOS]) • LIVE 14:00
 #EXTVLCOPT:http-referrer=https://player.online909.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
 https://live.vivo155.com/live/sd-2-3939142.m3u8?txSecret=980760e427a0f27f50f6948c44491ed0&txTime=6AC8A3BE
 
-#EXTINF:-1 tvg-id="kltra_aec24e7a-e100-4fd4-bee5-5712484" tvg-name="[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 1 (HD J [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/9d204d624712e784c30c77ca8122445b.png" group-title="🔴 Live Event",[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 1 (HD J [IOS]) • LIVE 14:00
+#EXTINF:-1 tvg-id="kltra_aec24e7a-e100-4fd4-bee5-5712484" tvg-name="[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 1 (SD Y [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/9d204d624712e784c30c77ca8122445b.png" group-title="🔴 Live Event",[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 1 (SD Y [IOS]) • LIVE 14:00
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
+https://yallavoide.yalla-shoot-zhubo.com/sport/201_5771622_1.m3u8?auth_key=1791615847-0-0-25989613f6cd41f69f34a2b4a5743d1e
+
+#EXTINF:-1 tvg-id="kltra_aec24e7a-e100-4fd4-bee5-5712484" tvg-name="[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 2 (HD J [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/9d204d624712e784c30c77ca8122445b.png" group-title="🔴 Live Event",[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 2 (HD J [IOS]) • LIVE 14:00
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
 https://live2.dyrur1.com/live/74445544_637cd4a42ef5ca086c06c1c11652ec8b_1080p.m3u8?auth_key=1791543639-0-0-ed3c238354612c9051c5643e10b6e99c
 
-#EXTINF:-1 tvg-id="kltra_aec24e7a-e100-4fd4-bee5-5712484" tvg-name="[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 2 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/9d204d624712e784c30c77ca8122445b.png" group-title="🔴 Live Event",[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 2 (SD V [IOS]) • LIVE 14:00
+#EXTINF:-1 tvg-id="kltra_aec24e7a-e100-4fd4-bee5-5712484" tvg-name="[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 3 (HD B [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/9d204d624712e784c30c77ca8122445b.png" group-title="🔴 Live Event",[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 3 (HD B [IOS]) • LIVE 14:00
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
+https://pul-tenm.gkykp.com/live/hd-zh-2-3939154.m3u8?txSecret=815b6247ede591826434180f4f07e053&txTime=6AC9DFA1
+
+#EXTINF:-1 tvg-id="kltra_aec24e7a-e100-4fd4-bee5-5712484" tvg-name="[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 4 (SD V [IOS]) • LIVE 14:00" tvg-logo="https://s.q5qo.com/data/9d204d624712e784c30c77ca8122445b.png" group-title="🔴 Live Event",[China CBA Preseason] Beijing Royal Fighters vs Nanjing Tongxi Monkey Kings - Server 4 (SD V [IOS]) • LIVE 14:00
 #EXTVLCOPT:http-referrer=https://player.online909.com/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
@@ -309,12 +351,24 @@ https://playkltratv.elutuna.workers.dev?channel=TNT%202
 #EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 2 (HD AUTO) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔴 Live Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 2 (HD AUTO) • LIVE 11:40
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://playkltratv.elutuna.workers.dev?channel=FANCODE%20LALIGA
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=82dfca238e8c4b430a3269db71965db9:a00b28caf4ac628e77a553d440c0ddca
+#EXTVLCOPT:inputstream.adaptive.license_type=clearkey
+#EXTVLCOPT:inputstream.adaptive.license_key=82dfca238e8c4b430a3269db71965db9:a00b28caf4ac628e77a553d440c0ddca
+https://otte.cache.aiv-cdn.net/sin-nitro/live/dash/enc/b3b3fkmrbl/out/v1/1084d5c9a97a4c5b9f9554c88f486646/cenc.mpd
 
-#EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD [IOS]) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔴 Live Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD [IOS]) • LIVE 11:40
+#EXTINF:-1 tvg-id="kltra_28703f58-db4a-4982-bde7-eb8d7937f5c6" tvg-name="[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD AUTO) • LIVE 11:40" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔴 Live Event",[MotoGP: PERTAMINA Grand Prix of Indonesia] - Server 3 (HD AUTO) • LIVE 11:40
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://s2.strea.ru/index.m3u8
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+#EXTVLCOPT:inputstream.adaptive.license_type=clearkey
+#EXTVLCOPT:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd
 
 #EXTINF:-1 tvg-id="od_sd-golf~2149" tvg-name="[fight] UFC BJJ 12 Moura vs Fornarino - Server 1 (Worker HLS) • LIVE 08:00" tvg-logo="https://r2.thesportsdb.com/images/media/team/badge/b0rwjq1659455177.png" group-title="🔴 Live Event",[fight] UFC BJJ 12 Moura vs Fornarino - Server 1 (Worker HLS) • LIVE 08:00
 #EXTVLCOPT:http-referrer=https://damitv.st/
@@ -367,19 +421,15 @@ https://stream-cdn-box.xr3ed-edge.workers.dev/live/6-WOC-_Bo1I0qGhEg_2xSt8CbVUvw
 #EXTINF:-1 tvg-id="kltra_4fc78f3f-df76-4c36-92c6-5bf3d3c56928" tvg-name="[UPCOMING] [Formula 1 Singapore Airlines Singapore Grand Prix 2026] - Server 1 (HD AUTO) • 15:30 WIB" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="⏳ Upcoming Event",[UPCOMING] [Formula 1 Singapore Airlines Singapore Grand Prix 2026] - Server 1 (HD AUTO) • 15:30 WIB
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://playkltratv.elutuna.workers.dev?channel=FANCODE%20F1
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1994b1df7dfd2e8a8d7b9bf3fb900285:22a1444b3da18e139191665b3d652835
+#EXTVLCOPT:inputstream.adaptive.license_type=clearkey
+#EXTVLCOPT:inputstream.adaptive.license_key=1994b1df7dfd2e8a8d7b9bf3fb900285:22a1444b3da18e139191665b3d652835
+https://otte.cache.aiv-cdn.net/sin-nitro/live/dash/enc/avqlywnuzx/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd
 
-#EXTINF:-1 tvg-id="kltra_42c47b4b-6158-46c4-be54-e7863d458dc0" tvg-name="[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 1 (COURT 1 [SD]) • 17:00 WIB" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" group-title="⏳ Upcoming Event",[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 1 (COURT 1 [SD]) • 17:00 WIB
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://tfyi0grauqmtofaauqmt1gy3145djq31unmutqiwsg45ucpzzr3mnp7ozr3d4.100ycdn.com/live1.quickscoreboardz.com/live/channel61.m3u8
-
-#EXTINF:-1 tvg-id="kltra_42c47b4b-6158-46c4-be54-e7863d458dc0" tvg-name="[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 2 (COURT 2 [SD]) • 17:00 WIB" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" group-title="⏳ Upcoming Event",[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 2 (COURT 2 [SD]) • 17:00 WIB
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://tfyi0grauqmtofaauqmt1gy3145djq31unmutqiwsg45ucpzzr3mnp7ozr3d4.100ycdn.com/live1.quickscoreboardz.com/live/channel62.m3u8
-
-#EXTINF:-1 tvg-id="kltra_42c47b4b-6158-46c4-be54-e7863d458dc0" tvg-name="[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 3 (COURT 3 [SD]) • 17:00 WIB" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" group-title="⏳ Upcoming Event",[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 3 (COURT 3 [SD]) • 17:00 WIB
+#EXTINF:-1 tvg-id="kltra_42c47b4b-6158-46c4-be54-e7863d458dc0" tvg-name="[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 1 (COURT 3 [SD]) • 17:00 WIB" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" group-title="⏳ Upcoming Event",[UPCOMING] [CLASH OF CLANS Arctic Open 2026] - Server 1 (COURT 3 [SD]) • 17:00 WIB
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
 https://tfyi0grauqmtofaauqmt1gy3145djq31unmutqiwsg45ucpzzr3mnp7ozr3d4.100ycdn.com/live1.quickscoreboardz.com/live/channel63.m3u8
@@ -447,7 +497,13 @@ https://stream-cdn-box.xr3ed-edge.workers.dev/live/kN-NuWMa-nrXyfyk9G0nc_9NaywEG
 #EXTINF:-1 tvg-id="kltra_3bfa6adc-d115-467a-a604-36c02f73fef2" tvg-name="[UPCOMING] [Formula 1 Singapore Airlines Singapore Grand Prix 2026] - Server 1 (HD AUTO) • 19:30 WIB" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="⏳ Upcoming Event",[UPCOMING] [Formula 1 Singapore Airlines Singapore Grand Prix 2026] - Server 1 (HD AUTO) • 19:30 WIB
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"}
-https://playkltratv.elutuna.workers.dev?channel=FANCODE%20F1
+#KODIPROP:inputstream.adaptive.manifest_type=mpd
+#EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1994b1df7dfd2e8a8d7b9bf3fb900285:22a1444b3da18e139191665b3d652835
+#EXTVLCOPT:inputstream.adaptive.license_type=clearkey
+#EXTVLCOPT:inputstream.adaptive.license_key=1994b1df7dfd2e8a8d7b9bf3fb900285:22a1444b3da18e139191665b3d652835
+https://otte.cache.aiv-cdn.net/sin-nitro/live/dash/enc/avqlywnuzx/out/v1/aefca6420f944a9482e117f315de535f/cenc.mpd
 
 #EXTINF:-1 tvg-id="bs_al-kholood-vs-al-qadisiyah-fc-202609171730" tvg-name="[UPCOMING] [Pro League] Al Kholood vs Al-Qadisiyah FC - Server 1 (FOX DEPORTES) • 20:20 WIB" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/10509.png" group-title="⏳ Upcoming Event",[UPCOMING] [Pro League] Al Kholood vs Al-Qadisiyah FC - Server 1 (FOX DEPORTES) • 20:20 WIB
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
@@ -459,7 +515,7 @@ https://enewl.greenvora.net/FOX-DEPORTES/index.jpg?fastoken=784fd036-0599-4081-b
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/FOX-DEPORTES-BU/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
+https://enewl.greenvora.net/FOX-DEPORTES/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
 
 #EXTINF:-1 tvg-id="bs_al-fateh-vs-al-ahli-jeddah-202609171730" tvg-name="[UPCOMING] [Pro League] Al-Fateh vs Al-Ahli Jeddah - Server 1 (Portugal Sport TV 1 BU) • 21:25 WIB" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/2931.png" group-title="⏳ Upcoming Event",[UPCOMING] [Pro League] Al-Fateh vs Al-Ahli Jeddah - Server 1 (Portugal Sport TV 1 BU) • 21:25 WIB
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
@@ -580,6 +636,24 @@ https://enewl.greenvora.net/Sky-Sports-Main-Event/index.jpg?fastoken=784fd036-05
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
 https://enewl.greenvora.net/Sky-Sports-Main-Event-BU/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
+
+#EXTINF:-1 tvg-id="bs_west-ham-vs-qpr-202610091830" tvg-name="[UPCOMING] [Championship] West Ham vs QPR - Server 2 (Sky Sports Main Event BU) • 01:30 WIB" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/48.png" group-title="⏳ Upcoming Event",[UPCOMING] [Championship] West Ham vs QPR - Server 2 (Sky Sports Main Event BU) • 01:30 WIB
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Sports-Main-Event-BU/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
+
+#EXTINF:-1 tvg-id="bs_west-ham-vs-qpr-202610091830" tvg-name="[UPCOMING] [Championship] West Ham vs QPR - Server 3 (Sky Sports Main Event) • 01:30 WIB" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/48.png" group-title="⏳ Upcoming Event",[UPCOMING] [Championship] West Ham vs QPR - Server 3 (Sky Sports Main Event) • 01:30 WIB
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Sports-Main-Event/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
+
+#EXTINF:-1 tvg-id="bs_west-ham-vs-qpr-202610091830" tvg-name="[UPCOMING] [Championship] West Ham vs QPR - Server 4 (Sky Sports Football BU) • 01:30 WIB" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/48.png" group-title="⏳ Upcoming Event",[UPCOMING] [Championship] West Ham vs QPR - Server 4 (Sky Sports Football BU) • 01:30 WIB
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Sports-Football-BU/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
 
 #EXTINF:-1 tvg-id="od_ligue1/2026-10-09/rcl-lyon" tvg-name="[UPCOMING] [Ligue 1] Lens vs Lyon - Server 1 (Worker HLS) • 01:45 WIB" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/grfy9q1754726714.jpg" group-title="⏳ Upcoming Event",[UPCOMING] [Ligue 1] Lens vs Lyon - Server 1 (Worker HLS) • 01:45 WIB
 #EXTVLCOPT:http-referrer=https://damitv.st/

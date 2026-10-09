@@ -469,7 +469,43 @@ def fetch_ondemand_matches() -> list:
 
     return clean_results
 
-# ─── Fetch Engine 2: Kltra ────────────────────────────────────────────────────
+def resolve_kltra_channel_stream(url: str, hd_map: dict) -> tuple:
+    if not url or ('channel=' not in url and 'playerkltratv' not in url and 'playkltratv' not in url):
+        return url, None
+    try:
+        parsed = urllib.parse.urlparse(url)
+        qs = urllib.parse.parse_qs(parsed.query)
+        ch = qs.get('channel', [''])[0].strip()
+        if not ch:
+            return url, None
+        node = hd_map.get(ch) or hd_map.get(ch.upper()) or hd_map.get(ch.lower())
+        if not node:
+            for k, v in hd_map.items():
+                if k.lower() == ch.lower():
+                    node = v
+                    break
+        if not node or not isinstance(node, dict):
+            return url, None
+        direct = (node.get('url') or '').strip()
+        if not direct:
+            return url, None
+        drm = node.get('drm', {})
+        clearkey = None
+        if isinstance(drm, dict):
+            if 'clearkey' in drm and isinstance(drm['clearkey'], dict):
+                ck = drm['clearkey']
+                kid = ck.get('keyId') or ck.get('kid')
+                k = ck.get('key')
+                if kid and k:
+                    clearkey = f"{kid}:{k}"
+            else:
+                for kid, k in drm.items():
+                    if kid and k and isinstance(k, str):
+                        clearkey = f"{kid}:{k}"
+                        break
+        return direct, clearkey
+    except Exception:
+        return url, None
 
 def fetch_kltra_matches() -> list:
     if not API_BASE:
@@ -511,6 +547,44 @@ def fetch_kltra_matches() -> list:
         r_val = p.get('r') or p.get('id')
         if r_val:
             player_map[r_val] = p.get('servers', [])
+
+    # Load Kltra HD channel and ClearKey map from /jos/usop.json and /jos/sanji.json
+    kltra_hd_map = {}
+    for ep in ["/jos/usop.json", "/vip/liveweb.json"]:
+        try:
+            raw = fetch_url(f"{API_BASE}{ep}?v={ts}", timeout=10).decode('utf-8', errors='ignore').strip()
+            if raw.startswith("[") or raw.startswith("{"):
+                u_data = json.loads(raw)
+            else:
+                u_data = xor_decrypt(raw, key_bytes)
+            if isinstance(u_data, dict):
+                kltra_hd_map.update(u_data)
+                break
+        except Exception:
+            pass
+
+    for ep in ["/jos/sanji.json"]:
+        try:
+            raw = fetch_url(f"{API_BASE}{ep}?v={ts}", timeout=10).decode('utf-8', errors='ignore').strip()
+            if raw.startswith("[") or raw.startswith("{"):
+                s_data = json.loads(raw)
+            else:
+                s_data = xor_decrypt(raw, key_bytes)
+            if isinstance(s_data, list):
+                for item in s_data:
+                    s_url = item.get('url', '')
+                    if 'channel=' in s_url:
+                        parsed = urllib.parse.urlparse(s_url)
+                        qs = urllib.parse.parse_qs(parsed.query)
+                        tch = qs.get('channel', [''])[0].strip()
+                        if tch and tch in kltra_hd_map:
+                            if item.get('id'):
+                                kltra_hd_map[item['id']] = kltra_hd_map[tch]
+                            if item.get('name'):
+                                kltra_hd_map[item['name']] = kltra_hd_map[tch]
+                break
+        except Exception:
+            pass
 
     # Parallel vivo resolver
     vivo_urls = set()
@@ -611,6 +685,24 @@ def fetch_kltra_matches() -> list:
                 except Exception:
                     pass
 
+            if 'src=' in resolved_u:
+                try:
+                    parsed_src = urllib.parse.urlparse(resolved_u)
+                    qs_src = urllib.parse.parse_qs(parsed_src.query)
+                    if 'src' in qs_src and qs_src['src'][0]:
+                        resolved_u = qs_src['src'][0]
+                except Exception:
+                    pass
+
+            clearkey = None
+            if 'channel=' in resolved_u or 'playkltratv' in resolved_u or 'playerkltratv' in resolved_u:
+                direct_u, ck = resolve_kltra_channel_stream(resolved_u, kltra_hd_map)
+                if direct_u and direct_u != resolved_u:
+                    resolved_u = direct_u
+                    clearkey = ck
+                else:
+                    continue
+
             label = s.get('label') or s.get('name') or 'Stream'
 
             was_online909 = 'online909.com' in u or 'online909.com' in resolved_u
@@ -619,7 +711,10 @@ def fetch_kltra_matches() -> list:
             else:
                 ref = None
 
-            k_servers.append({'name': f"Kltra - {label}", 'url': resolved_u, 'referer': ref})
+            srv_dict = {'name': f"Kltra - {label}", 'url': resolved_u, 'referer': ref}
+            if clearkey:
+                srv_dict['clearkey'] = clearkey
+            k_servers.append(srv_dict)
 
         results.append({
             'id': f"kltra_{ev_id}",
@@ -830,7 +925,7 @@ def is_worker_stream(url: str) -> bool:
         return False
     if WORKER_BASE and WORKER_BASE in url:
         return True
-    if 'stream-cdn-box' in url or '.workers.dev' in url:
+    if 'stream-cdn-box' in url:
         return True
     return False
 
@@ -877,6 +972,8 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             base_q = 60
             if 'worker hls' in srv_name or 'server 1' in srv_name:
                 base_q = 100
+            elif 'ios' in srv_name:
+                base_q = 98
             elif 'beesport' in srv_name or 'greenvora' in s.get('url', ''):
                 base_q = 95
             elif ('court' in srv_name or 'table' in srv_name) and 'sd' not in srv_name:
@@ -1164,9 +1261,14 @@ def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict)
     if ref:
         headers_json["Referer"] = ref
     lines.append(f'#EXTHTTP:{json.dumps(headers_json)}')
+    if '.mpd' in server.get('url', '') or server.get('clearkey'):
+        lines.append('#KODIPROP:inputstream.adaptive.manifest_type=mpd')
+        lines.append('#EXTVLCOPT:inputstream.adaptive.manifest_type=mpd')
     if server.get('clearkey'):
         lines.append('#KODIPROP:inputstream.adaptive.license_type=clearkey')
         lines.append(f'#KODIPROP:inputstream.adaptive.license_key={server["clearkey"]}')
+        lines.append('#EXTVLCOPT:inputstream.adaptive.license_type=clearkey')
+        lines.append(f'#EXTVLCOPT:inputstream.adaptive.license_key={server["clearkey"]}')
     lines.append(server['url'])
     return lines
 
