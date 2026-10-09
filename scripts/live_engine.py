@@ -820,15 +820,26 @@ def probe_single_stream(target: tuple) -> tuple:
         lat = int((time.time() - t0) * 1000)
         return url, False, lat, 0
 
+def is_worker_stream(url: str) -> bool:
+    if not url:
+        return False
+    if WORKER_BASE and WORKER_BASE in url:
+        return True
+    if 'stream-cdn-box' in url or '.workers.dev' in url:
+        return True
+    return False
+
 def filter_and_rank_servers(matches_list: list, linear_channels: list, max_servers: int = MAX_SERVERS_PER_MATCH) -> tuple:
     targets = set()
     for m in matches_list + linear_channels:
         for s in m.get('servers', []):
             u = s.get('url')
             if u and u.startswith('http'):
+                if is_worker_stream(u):
+                    continue
                 targets.add((u, s.get('referer')))
 
-    log(f"Memvalidasi kesehatan {len(targets)} server stream secara paralel (timeout 2.0s)...")
+    log(f"Memvalidasi kesehatan {len(targets)} server stream secara paralel (timeout 2.0s, Worker HLS di-bypass)...")
     probe_map = {}
     if targets:
         with ThreadPoolExecutor(max_workers=50) as ex:
@@ -836,6 +847,13 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             for fut in as_completed(futs):
                 url, alive, lat, spd_bonus = fut.result()
                 probe_map[url] = {'alive': alive, 'latency': lat, 'speed_bonus': spd_bonus}
+
+    # Worker HLS: Otomatis valid (bypass HTTP probe untuk hemat 100k kuota Cloudflare/hari)
+    for m in matches_list + linear_channels:
+        for s in m.get('servers', []):
+            u = s.get('url')
+            if u and is_worker_stream(u):
+                probe_map[u] = {'alive': True, 'latency': 30, 'speed_bonus': 30}
 
     alive_total = sum(1 for v in probe_map.values() if v['alive'])
     dead_total = len(probe_map) - alive_total
