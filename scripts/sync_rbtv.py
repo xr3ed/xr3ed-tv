@@ -873,7 +873,7 @@ def main():
             token_payload = f"{m['id']}:{m['sport']}"
             enc_token = encrypt_match_id(token_payload, WORKER_AUTH_KEY)
             resolver_base = RBTV_RESOLVER_URL
-            stream_url = f"{resolver_base}/live/{enc_token}.m3u8?s={s_idx}&proxy_seg=1"
+            stream_url = f"{resolver_base}/live/{enc_token}.m3u8?s={s_idx}"
             m3u_lines.append(stream_url)
             m3u_lines.append("")
 
