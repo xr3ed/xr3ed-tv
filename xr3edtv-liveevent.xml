@@ -24,6 +24,22 @@
     <display-name lang="id">[Court 4] Kumamoto Masters Badminton</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
   </channel>
+  <channel id="kltra_426fc43a-f532-49b1-bc3c-5956695_s1">
+    <display-name lang="id">[S1 Utama] Bangalore Dream United FC vs FC Parikrama</display-name>
+    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
+  </channel>
+  <channel id="kltra_426fc43a-f532-49b1-bc3c-5956695_s2">
+    <display-name lang="id">[S2 Cadangan] Bangalore Dream United FC vs FC Parikrama</display-name>
+    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
+  </channel>
+  <channel id="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s1">
+    <display-name lang="id">[S1 Utama] Deren vs FC Ulaanbaatar</display-name>
+    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
+  </channel>
+  <channel id="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s2">
+    <display-name lang="id">[S2 Cadangan] Deren vs FC Ulaanbaatar</display-name>
+    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
+  </channel>
   <channel id="kltra_0f5f76ef-c66c-4cc9-8f83-5968753_s1">
     <display-name lang="id">[S1 Utama] Sungkyunkwan University vs Korea University</display-name>
     <icon src="https://s.q5qo.com/data/f4414aeaf494d320b7e78b7116ce723d.png" />
@@ -43,22 +59,6 @@
   <channel id="kltra_eb2f26ad-2b46-449c-84da-5956686_s2">
     <display-name lang="id">[S2 Cadangan] Stride vs FC Agniputhra</display-name>
     <icon src="https://s.q5qo.com/data/58b394d78084a8c6608ff47b97cdcb10.png" />
-  </channel>
-  <channel id="kltra_426fc43a-f532-49b1-bc3c-5956695_s1">
-    <display-name lang="id">[S1 Utama] Bangalore Dream United FC vs FC Parikrama</display-name>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </channel>
-  <channel id="kltra_426fc43a-f532-49b1-bc3c-5956695_s2">
-    <display-name lang="id">[S2 Cadangan] Bangalore Dream United FC vs FC Parikrama</display-name>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </channel>
-  <channel id="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s1">
-    <display-name lang="id">[S1 Utama] Deren vs FC Ulaanbaatar</display-name>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
-  </channel>
-  <channel id="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s2">
-    <display-name lang="id">[S2 Cadangan] Deren vs FC Ulaanbaatar</display-name>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
   </channel>
   <channel id="od_espn-401892683_s1">
     <display-name lang="id">[S1 Utama] Toronto Maple Leafs vs Colorado Avalanche</display-name>
@@ -244,6 +244,22 @@
     <display-name lang="id">[S2 Cadangan] Utah Jazz vs Orlando Magic</display-name>
     <icon src="/img/cards/nba/401909973.jpg?v=ghst2nf" />
   </channel>
+  <channel id="od_espn-401909974_s1">
+    <display-name lang="id">[S1 Utama] Houston Rockets vs Golden State Warriors</display-name>
+    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
+  </channel>
+  <channel id="od_espn-401909974_s2">
+    <display-name lang="id">[S2 Cadangan] Houston Rockets vs Golden State Warriors</display-name>
+    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
+  </channel>
+  <channel id="od_espn-401909975_s1">
+    <display-name lang="id">[S1 Utama] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
+  <channel id="od_espn-401909975_s2">
+    <display-name lang="id">[S2 Cadangan] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1 Utama] NFL Network</display-name>
     <icon src="/img/cards/247/247-nfl-network.jpg?v=6" />
@@ -338,6 +354,50 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
   </programme>
+  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_426fc43a-f532-49b1-bc3c-5956695_s1">
+    <title lang="id">Bangalore Dream United FC vs FC Parikrama</title>
+    <sub-title lang="id">[India Bangalore Super Division] [S1 Utama]</sub-title>
+    <desc lang="id">🏆 Kompetisi: India Bangalore Super Division (India Bangalore Super Division)
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Jadwal: 15:00 WIB
+📡 Jalur Server: [S1 Utama] - Kltra - HD B [IOS]
+⚔️ Match: Bangalore Dream United FC vs FC Parikrama</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
+  </programme>
+  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_426fc43a-f532-49b1-bc3c-5956695_s2">
+    <title lang="id">Bangalore Dream United FC vs FC Parikrama</title>
+    <sub-title lang="id">[India Bangalore Super Division] [S2 Cadangan]</sub-title>
+    <desc lang="id">🏆 Kompetisi: India Bangalore Super Division (India Bangalore Super Division)
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Jadwal: 15:00 WIB
+📡 Jalur Server: [S2 Cadangan] - Kltra - SD V [IOS]
+⚔️ Match: Bangalore Dream United FC vs FC Parikrama</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
+  </programme>
+  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s1">
+    <title lang="id">Deren vs FC Ulaanbaatar</title>
+    <sub-title lang="id">[Giai Ngoai Hang Mong Co-Playoff] [S1 Utama]</sub-title>
+    <desc lang="id">🏆 Kompetisi: Giai Ngoai Hang Mong Co-Playoff (Giai Ngoai Hang Mong Co-Playoff)
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Jadwal: 15:00 WIB
+📡 Jalur Server: [S1 Utama] - Kltra - HD B [IOS]
+⚔️ Match: Deren vs FC Ulaanbaatar</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
+  </programme>
+  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s2">
+    <title lang="id">Deren vs FC Ulaanbaatar</title>
+    <sub-title lang="id">[Giai Ngoai Hang Mong Co-Playoff] [S2 Cadangan]</sub-title>
+    <desc lang="id">🏆 Kompetisi: Giai Ngoai Hang Mong Co-Playoff (Giai Ngoai Hang Mong Co-Playoff)
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Jadwal: 15:00 WIB
+📡 Jalur Server: [S2 Cadangan] - Kltra - SD V [IOS]
+⚔️ Match: Deren vs FC Ulaanbaatar</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
+  </programme>
   <programme start="20261110142100 +0700" stop="20261110175100 +0700" channel="kltra_0f5f76ef-c66c-4cc9-8f83-5968753_s1">
     <title lang="id">Sungkyunkwan University vs Korea University</title>
     <sub-title lang="id">[Korean College Basketball Tourn] [S1 Utama]</sub-title>
@@ -392,50 +452,6 @@
 ⚔️ Match: Stride vs FC Agniputhra</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/58b394d78084a8c6608ff47b97cdcb10.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_426fc43a-f532-49b1-bc3c-5956695_s1">
-    <title lang="id">Bangalore Dream United FC vs FC Parikrama</title>
-    <sub-title lang="id">[India Bangalore Super Division] [S1 Utama]</sub-title>
-    <desc lang="id">🏆 Kompetisi: India Bangalore Super Division (India Bangalore Super Division)
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 15:00 WIB
-📡 Jalur Server: [S1 Utama] - Kltra - HD B [IOS]
-⚔️ Match: Bangalore Dream United FC vs FC Parikrama</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_426fc43a-f532-49b1-bc3c-5956695_s2">
-    <title lang="id">Bangalore Dream United FC vs FC Parikrama</title>
-    <sub-title lang="id">[India Bangalore Super Division] [S2 Cadangan]</sub-title>
-    <desc lang="id">🏆 Kompetisi: India Bangalore Super Division (India Bangalore Super Division)
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 15:00 WIB
-📡 Jalur Server: [S2 Cadangan] - Kltra - SD V [IOS]
-⚔️ Match: Bangalore Dream United FC vs FC Parikrama</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s1">
-    <title lang="id">Deren vs FC Ulaanbaatar</title>
-    <sub-title lang="id">[Giai Ngoai Hang Mong Co-Playoff] [S1 Utama]</sub-title>
-    <desc lang="id">🏆 Kompetisi: Giai Ngoai Hang Mong Co-Playoff (Giai Ngoai Hang Mong Co-Playoff)
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 15:00 WIB
-📡 Jalur Server: [S1 Utama] - Kltra - HD B [IOS]
-⚔️ Match: Deren vs FC Ulaanbaatar</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s2">
-    <title lang="id">Deren vs FC Ulaanbaatar</title>
-    <sub-title lang="id">[Giai Ngoai Hang Mong Co-Playoff] [S2 Cadangan]</sub-title>
-    <desc lang="id">🏆 Kompetisi: Giai Ngoai Hang Mong Co-Playoff (Giai Ngoai Hang Mong Co-Playoff)
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 15:00 WIB
-📡 Jalur Server: [S2 Cadangan] - Kltra - SD V [IOS]
-⚔️ Match: Deren vs FC Ulaanbaatar</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
   </programme>
   <programme start="20261111070000 +0700" stop="20261111103000 +0700" channel="od_espn-401892683_s1">
     <title lang="id">Toronto Maple Leafs vs Colorado Avalanche</title>
@@ -942,6 +958,50 @@
 ⚔️ Match: Utah Jazz vs Orlando Magic</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909973.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112093000 +0700" stop="20261112130000 +0700" channel="od_espn-401909974_s1">
+    <title lang="id">Houston Rockets vs Golden State Warriors</title>
+    <sub-title lang="id">[NBA] [S1 Utama]</sub-title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association (NBA)
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 09:30 WIB
+📡 Jalur Server: [S1 Utama] - Server 1 (Worker HLS)
+⚔️ Match: Houston Rockets vs Golden State Warriors</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112093000 +0700" stop="20261112130000 +0700" channel="od_espn-401909974_s2">
+    <title lang="id">Houston Rockets vs Golden State Warriors</title>
+    <sub-title lang="id">[NBA] [S2 Cadangan]</sub-title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association (NBA)
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 09:30 WIB
+📡 Jalur Server: [S2 Cadangan] - Server 2 (SD | ESPN+ EN)
+⚔️ Match: Houston Rockets vs Golden State Warriors</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s1">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <sub-title lang="id">[NBA] [S1 Utama]</sub-title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association (NBA)
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 10:00 WIB
+📡 Jalur Server: [S1 Utama] - Server 1 (Worker HLS)
+⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s2">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <sub-title lang="id">[NBA] [S2 Cadangan]</sub-title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association (NBA)
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 10:00 WIB
+📡 Jalur Server: [S2 Cadangan] - Server 3 (HD | Away EN)
+⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
   </programme>
   <programme start="20261110000000 +0700" stop="20261111000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">NFL Network</title>
