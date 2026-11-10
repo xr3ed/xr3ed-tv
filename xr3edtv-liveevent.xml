@@ -8,6 +8,10 @@
     <display-name lang="id">[S1] SOOP Supers (W) vs IBK Altos (W)</display-name>
     <icon src="https://s.q5qo.com/data/68bd153818fda9247e6584694a2223.png" />
   </channel>
+  <channel id="kltra_1f0b8f56-dbe9-4e58-a8a6-5975074_s1">
+    <display-name lang="id">[S1] Vanta Black Dragons vs Philippine Aces United</display-name>
+    <icon src="https://s.q5qo.com/data/207d9f09fb71382c5f4333671642aa1f.png" />
+  </channel>
   <channel id="kltra_d3f1edbf-8587-4f97-aca1-5956702_s1">
     <display-name lang="id">[S1] FC Bengaluru United vs FC Real Bengaluru</display-name>
     <icon src="https://s.q5qo.com/data/e2d569585b002e98a4717716892f6530.png" />
@@ -55,26 +59,6 @@
   <channel id="kltra_31846cb3-7a05-436e-8355-5932393_s1">
     <display-name lang="id">[S1] San Beda Red Lions vs CSB Blazers</display-name>
     <icon src="https://s.q5qo.com/data/7c1975e319fb31612f101256be4909e0.png" />
-  </channel>
-  <channel id="kltra_426fc43a-f532-49b1-bc3c-5956695_s1">
-    <display-name lang="id">[S1] Bangalore Dream United FC vs FC Parikrama</display-name>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </channel>
-  <channel id="kltra_426fc43a-f532-49b1-bc3c-5956695_s2">
-    <display-name lang="id">[S2] Bangalore Dream United FC vs FC Parikrama</display-name>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </channel>
-  <channel id="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s1">
-    <display-name lang="id">[S1] Deren vs FC Ulaanbaatar</display-name>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
-  </channel>
-  <channel id="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s2">
-    <display-name lang="id">[S2] Deren vs FC Ulaanbaatar</display-name>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
-  </channel>
-  <channel id="kltra_1f0b8f56-dbe9-4e58-a8a6-5975074_s1">
-    <display-name lang="id">[S1] Vanta Black Dragons vs Philippine Aces United</display-name>
-    <icon src="https://s.q5qo.com/data/207d9f09fb71382c5f4333671642aa1f.png" />
   </channel>
   <channel id="od_espn-401892683_s1">
     <display-name lang="id">[S1] Toronto Maple Leafs vs Colorado Avalanche</display-name>
@@ -268,6 +252,14 @@
     <display-name lang="id">[S2] Houston Rockets vs Golden State Warriors</display-name>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
   </channel>
+  <channel id="od_espn-401909975_s1">
+    <display-name lang="id">[S1] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
+  <channel id="od_espn-401909975_s2">
+    <display-name lang="id">[S2] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1] NFL Network</display-name>
     <icon src="/img/cards/247/247-nfl-network.jpg?v=6" />
@@ -315,6 +307,16 @@
 📡 Jalur: [S1] - Kltra - HD AUTO</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/68bd153818fda9247e6584694a2223.png" />
+  </programme>
+  <programme start="20261110180000 +0700" stop="20261110213000 +0700" channel="kltra_1f0b8f56-dbe9-4e58-a8a6-5975074_s1">
+    <title lang="id">Vanta Black Dragons vs Philippine Aces United</title>
+    <desc lang="id">🏆 Kompetisi: The Asian Tournament
+⚔️ Pertandingan: Vanta Black Dragons vs Philippine Aces United
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 18:00 WIB
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/207d9f09fb71382c5f4333671642aa1f.png" />
   </programme>
   <programme start="20261110173000 +0700" stop="20261110210000 +0700" channel="kltra_d3f1edbf-8587-4f97-aca1-5956702_s1">
     <title lang="id">FC Bengaluru United vs FC Real Bengaluru</title>
@@ -435,56 +437,6 @@
 📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/7c1975e319fb31612f101256be4909e0.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_426fc43a-f532-49b1-bc3c-5956695_s1">
-    <title lang="id">Bangalore Dream United FC vs FC Parikrama</title>
-    <desc lang="id">🏆 Kompetisi: India Bangalore Super Division
-⚔️ Pertandingan: Bangalore Dream United FC vs FC Parikrama
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 15:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_426fc43a-f532-49b1-bc3c-5956695_s2">
-    <title lang="id">Bangalore Dream United FC vs FC Parikrama</title>
-    <desc lang="id">🏆 Kompetisi: India Bangalore Super Division
-⚔️ Pertandingan: Bangalore Dream United FC vs FC Parikrama
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 15:00 WIB
-📡 Jalur: [S2] - Kltra - SD Y [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/ad87d4e452dd7149988e5df894453bf6.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s1">
-    <title lang="id">Deren vs FC Ulaanbaatar</title>
-    <desc lang="id">🏆 Kompetisi: Giai Ngoai Hang Mong Co-Playoff
-⚔️ Pertandingan: Deren vs FC Ulaanbaatar
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 15:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
-  </programme>
-  <programme start="20261110150000 +0700" stop="20261110183000 +0700" channel="kltra_5dd8c15a-4a0e-41d9-9480-5910057_s2">
-    <title lang="id">Deren vs FC Ulaanbaatar</title>
-    <desc lang="id">🏆 Kompetisi: Giai Ngoai Hang Mong Co-Playoff
-⚔️ Pertandingan: Deren vs FC Ulaanbaatar
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 15:00 WIB
-📡 Jalur: [S2] - Kltra - SD Y [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
-  </programme>
-  <programme start="20261110180000 +0700" stop="20261110213000 +0700" channel="kltra_1f0b8f56-dbe9-4e58-a8a6-5975074_s1">
-    <title lang="id">Vanta Black Dragons vs Philippine Aces United</title>
-    <desc lang="id">🏆 Kompetisi: The Asian Tournament
-⚔️ Pertandingan: Vanta Black Dragons vs Philippine Aces United
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 18:00 WIB
-📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/207d9f09fb71382c5f4333671642aa1f.png" />
   </programme>
   <programme start="20261111070000 +0700" stop="20261111103000 +0700" channel="od_espn-401892683_s1">
     <title lang="id">Toronto Maple Leafs vs Colorado Avalanche</title>
@@ -965,6 +917,26 @@
 📡 Jalur: [S2] - Server 2 (SD | ESPN+ EN)</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s1">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association
+⚔️ Pertandingan: Portland Trail Blazers vs Oklahoma City Thunder
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:00 WIB
+📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s2">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association
+⚔️ Pertandingan: Portland Trail Blazers vs Oklahoma City Thunder
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:00 WIB
+📡 Jalur: [S2] - Server 3 (HD | Away EN)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
   </programme>
   <programme start="20261110000000 +0700" stop="20261111000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">NFL Network</title>
