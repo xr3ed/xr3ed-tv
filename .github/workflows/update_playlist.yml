@@ -83,5 +83,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git rebase -X ours origin/main || git rebase --abort
           git add -A
-          git diff --staged --quiet || (git commit -m "Sync master, 24/7 & live sports playlists [skip ci]" && git push origin main --force)
+          git diff --staged --quiet || (git commit -m "Sync master, 24/7 & live sports playlists [skip ci]" && git push origin main)
