@@ -8,6 +8,14 @@
     <display-name lang="id">[S1] SOOP Supers (W) vs IBK Altos (W)</display-name>
     <icon src="https://s.q5qo.com/data/68bd153818fda9247e6584694a2223.png" />
   </channel>
+  <channel id="kltra_83a40635-f3f7-4f07-a576-5294645_s1">
+    <display-name lang="id">[S1] Santa Clara U23 vs SCU Torreense U23</display-name>
+    <icon src="https://s.q5qo.com/data/121a9e6c8291e0cc52b321926f56ed1.png" />
+  </channel>
+  <channel id="kltra_83a40635-f3f7-4f07-a576-5294645_s2">
+    <display-name lang="id">[S2] Santa Clara U23 vs SCU Torreense U23</display-name>
+    <icon src="https://s.q5qo.com/data/121a9e6c8291e0cc52b321926f56ed1.png" />
+  </channel>
   <channel id="kltra_7109e36d-db1c-4944-9120-5957700_s1">
     <display-name lang="id">[S1] Barangay Ginebra San Miguel vs San Miguel Beermen</display-name>
     <icon src="https://s.q5qo.com/data/ead6d017853820f41c0a5039d4930bf2.png" />
@@ -43,18 +51,6 @@
   <channel id="kltra_dd965e29-e1b6-4aa4-9d18-5010649_s1">
     <display-name lang="id">[S1] Perth Lynx (W) vs Bendigo Spirit (W)</display-name>
     <icon src="https://s.q5qo.com/data/f7f2b7cfa88707e68d61c9d8a8fff795.png" />
-  </channel>
-  <channel id="kltra_ea3f8221-b7c6-446a-b4ce-5975069_s1">
-    <display-name lang="id">[S1] Toronto JC Trans vs Guangzhou Long Lions (Res)</display-name>
-    <icon src="https://s.q5qo.com/data/319a9cef39b9462eca8bbd916154cb58.jpg" />
-  </channel>
-  <channel id="kltra_31846cb3-7a05-436e-8355-5932393_s1">
-    <display-name lang="id">[S1] San Beda Red Lions vs CSB Blazers</display-name>
-    <icon src="https://s.q5qo.com/data/7c1975e319fb31612f101256be4909e0.png" />
-  </channel>
-  <channel id="kltra_83a40635-f3f7-4f07-a576-5294645_s1">
-    <display-name lang="id">[S1] Santa Clara U23 vs SCU Torreense U23</display-name>
-    <icon src="https://s.q5qo.com/data/121a9e6c8291e0cc52b321926f56ed1.png" />
   </channel>
   <channel id="od_espn-401892683_s1">
     <display-name lang="id">[S1] Toronto Maple Leafs vs Colorado Avalanche</display-name>
@@ -248,6 +244,14 @@
     <display-name lang="id">[S2] Houston Rockets vs Golden State Warriors</display-name>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
   </channel>
+  <channel id="od_espn-401909975_s1">
+    <display-name lang="id">[S1] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
+  <channel id="od_espn-401909975_s2">
+    <display-name lang="id">[S2] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1] NFL Network</display-name>
     <icon src="/img/cards/247/247-nfl-network.jpg?v=6" />
@@ -295,6 +299,26 @@
 📡 Jalur: [S1] - Kltra - HD AUTO</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/68bd153818fda9247e6584694a2223.png" />
+  </programme>
+  <programme start="20261110190000 +0700" stop="20261110223000 +0700" channel="kltra_83a40635-f3f7-4f07-a576-5294645_s1">
+    <title lang="id">Santa Clara U23 vs SCU Torreense U23</title>
+    <desc lang="id">🏆 Kompetisi: Portugal's U23 Liga Next Gen tournament
+⚔️ Pertandingan: Santa Clara U23 vs SCU Torreense U23
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 19:00 WIB
+📡 Jalur: [S1] - Kltra - SD W [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/121a9e6c8291e0cc52b321926f56ed1.png" />
+  </programme>
+  <programme start="20261110190000 +0700" stop="20261110223000 +0700" channel="kltra_83a40635-f3f7-4f07-a576-5294645_s2">
+    <title lang="id">Santa Clara U23 vs SCU Torreense U23</title>
+    <desc lang="id">🏆 Kompetisi: Portugal's U23 Liga Next Gen tournament
+⚔️ Pertandingan: Santa Clara U23 vs SCU Torreense U23
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 19:00 WIB
+📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/121a9e6c8291e0cc52b321926f56ed1.png" />
   </programme>
   <programme start="20261110183000 +0700" stop="20261110220000 +0700" channel="kltra_7109e36d-db1c-4944-9120-5957700_s1">
     <title lang="id">Barangay Ginebra San Miguel vs San Miguel Beermen</title>
@@ -385,36 +409,6 @@
 📡 Jalur: [S1] - Kltra - SD W [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/f7f2b7cfa88707e68d61c9d8a8fff795.png" />
-  </programme>
-  <programme start="20261110160000 +0700" stop="20261110193000 +0700" channel="kltra_ea3f8221-b7c6-446a-b4ce-5975069_s1">
-    <title lang="id">Toronto JC Trans vs Guangzhou Long Lions (Res)</title>
-    <desc lang="id">🏆 Kompetisi: The Asian Tournament
-⚔️ Pertandingan: Toronto JC Trans vs Guangzhou Long Lions (Res)
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 16:00 WIB
-📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/319a9cef39b9462eca8bbd916154cb58.jpg" />
-  </programme>
-  <programme start="20261110160000 +0700" stop="20261110193000 +0700" channel="kltra_31846cb3-7a05-436e-8355-5932393_s1">
-    <title lang="id">San Beda Red Lions vs CSB Blazers</title>
-    <desc lang="id">🏆 Kompetisi: Philippines NCAA
-⚔️ Pertandingan: San Beda Red Lions vs CSB Blazers
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 16:00 WIB
-📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/7c1975e319fb31612f101256be4909e0.png" />
-  </programme>
-  <programme start="20261110190000 +0700" stop="20261110223000 +0700" channel="kltra_83a40635-f3f7-4f07-a576-5294645_s1">
-    <title lang="id">Santa Clara U23 vs SCU Torreense U23</title>
-    <desc lang="id">🏆 Kompetisi: Portugal's U23 Liga Next Gen tournament
-⚔️ Pertandingan: Santa Clara U23 vs SCU Torreense U23
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 19:00 WIB
-📡 Jalur: [S1] - Kltra - SD W [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/121a9e6c8291e0cc52b321926f56ed1.png" />
   </programme>
   <programme start="20261111070000 +0700" stop="20261111103000 +0700" channel="od_espn-401892683_s1">
     <title lang="id">Toronto Maple Leafs vs Colorado Avalanche</title>
@@ -895,6 +889,26 @@
 📡 Jalur: [S2] - Server 2 (SD | ESPN+ EN)</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s1">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association
+⚔️ Pertandingan: Portland Trail Blazers vs Oklahoma City Thunder
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:00 WIB
+📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s2">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association
+⚔️ Pertandingan: Portland Trail Blazers vs Oklahoma City Thunder
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:00 WIB
+📡 Jalur: [S2] - Server 3 (HD | Away EN)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
   </programme>
   <programme start="20261110000000 +0700" stop="20261111000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">NFL Network</title>
