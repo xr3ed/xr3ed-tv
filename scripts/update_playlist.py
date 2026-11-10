@@ -54,7 +54,7 @@ from live_engine import (
 
 def generate_playlist():
     log("=== update_playlist.py dimulai ===")
-    merged_data = fetch_merged_matches()
+    merged_data = fetch_merged_matches(force_refresh=True)
 
     hot_entries = []
     live_event_entries = []
@@ -139,7 +139,7 @@ def generate_playlist():
         nasional_categories[sports_grp] = linear_entries + nasional_categories[sports_grp]
 
     # 7. Susun Playlist Master Final
-    final_lines = ['#EXTM3U url-tvg="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml"']
+    final_lines = ['#EXTM3U url-tvg="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml,https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml"']
 
     # 0. 📢 INFO (Paling Atas)
     if '📢 INFO' in nasional_categories:
