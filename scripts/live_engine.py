@@ -205,6 +205,10 @@ def get_event_hidden_id(uuid_str: str, salt: str) -> str:
     raw = parts[2] + s1 + parts[4] + s2 + parts[0]
     return hashlib.sha256(raw.encode('utf-8')).hexdigest()[:16]
 
+def is_no_referrer_domain(url_or_host: str) -> bool:
+    low = (url_or_host or '').lower()
+    return any(k in low for k in ['streamview', 'smtcdns', 'jorvakstreamcache', 'livedoomovies', 'domainkqt', 'njscwh', 'tiktokcdn', 'stream-cdn-box', 'damitv', 'ondemand', 'huya'])
+
 def resolve_vivo_redirect(url: str) -> str:
     if 'resolve-web' not in url and 'livevent.elutuna.workers.dev' not in url:
         return url
@@ -212,7 +216,7 @@ def resolve_vivo_redirect(url: str) -> str:
         def redirect_request(self, req, fp, code, msg, headers, newurl):
             return None
     opener = urllib.request.build_opener(NoRedirect)
-    headers = {'User-Agent': DESKTOP_UA, 'Referer': DEFAULT_REFERER or 'https://playerkltratv.pages.dev/'}
+    headers = {'User-Agent': DESKTOP_UA, 'Referer': 'https://player.online909.com/'}
     req = urllib.request.Request(url, headers=headers)
     try:
         res = opener.open(req, timeout=4)
@@ -896,11 +900,13 @@ def fetch_kltra_matches() -> list:
 
             was_online909 = 'online909.com' in u or 'online909.com' in resolved_u
             lower_u = resolved_u.lower()
-            if 'weibisai' in lower_u:
+            if is_no_referrer_domain(lower_u):
+                ref = None
+            elif 'weibisai' in lower_u:
                 ref = 'https://play.cbalive.weibisai.com/'
             elif 'quickscoreboardz' in lower_u or '100ycdn' in lower_u:
                 ref = 'https://live1.quickscoreboardz.com/'
-            elif was_online909:
+            elif was_online909 or 'vivo' in lower_u:
                 ref = 'https://player.online909.com/'
             elif playback_token:
                 ref = 'https://kltratvplay.elutuna.workers.dev/'
@@ -1100,7 +1106,7 @@ def probe_single_stream(target: tuple) -> tuple:
     headers = {
         'User-Agent': DESKTOP_UA,
     }
-    if ref and 'tiktokcdn' not in url and 'stream-cdn-box' not in url and 'damitv' not in url and 'ondemand' not in url:
+    if ref and not is_no_referrer_domain(url) and 'ondemand' not in url:
         headers['Referer'] = ref
     if token:
         headers['X-KLTRA-Playback'] = token
@@ -1308,41 +1314,39 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
     used_kltra_ids = set()
     used_bs_ids = set()
 
-    # Step 1: OnDemand sebagai Primary Anchor
-    for od in od_matches:
-        if od.get('is_linear'):
-            linear_channels.append(od)
+    # Step 1: Kltra sebagai Prioritas Utama (100% Selaras Situs live.kltratv.site)
+    used_od_ids = set()
+    for km in kltra_matches:
+        if km.get('is_linear'):
+            linear_channels.append(km)
             continue
 
-        combined_servers = []
-        combined_is_hot = od.get('is_hot', False)
+        combined_servers = list(km.get('servers', []))
+        combined_is_hot = km.get('is_hot', False)
 
-        # Merge Kltra yang cocok (Kltra server diutamakan)
-        matched_km = None
-        for km in kltra_matches:
-            if km['id'] not in used_kltra_ids and is_same_match(od, km):
-                matched_km = km
-                used_kltra_ids.add(km['id'])
-                combined_is_hot = combined_is_hot or km.get('is_hot', False)
-                combined_servers.extend(km.get('servers', []))
+        # Merge OnDemand yang cocok sebagai server cadangan
+        matched_od = None
+        for od in od_matches:
+            if od['id'] not in used_od_ids and is_same_match(km, od):
+                matched_od = od
+                used_od_ids.add(od['id'])
+                combined_is_hot = combined_is_hot or od.get('is_hot', False)
+                combined_servers.extend(od.get('servers', []))
                 break
-
-        # Server OnDemand
-        combined_servers.extend(od.get('servers', []))
 
         # Merge Beesport yang cocok
         matched_bs = None
         for bs in bs_matches:
-            if bs['id'] not in used_bs_ids and is_same_match(od, bs):
+            if bs['id'] not in used_bs_ids and is_same_match(km, bs):
                 matched_bs = bs
                 used_bs_ids.add(bs['id'])
                 combined_is_hot = True
                 combined_servers.extend(bs.get('servers', []))
                 break
 
-        is_live = od['is_live'] or (matched_km and matched_km['is_live']) or (matched_bs and matched_bs['is_live'])
-        is_upcoming = False if is_live else (od['is_upcoming'] or (matched_km and matched_km['is_upcoming']) or (matched_bs and matched_bs['is_upcoming']))
-        ts = od['timestamp_ms'] or (matched_km and matched_km['timestamp_ms']) or (matched_bs and matched_bs['timestamp_ms']) or 0
+        is_live = km['is_live'] or (matched_od and matched_od['is_live']) or (matched_bs and matched_bs['is_live'])
+        is_upcoming = False if is_live else (km['is_upcoming'] or (matched_od and matched_od['is_upcoming']) or (matched_bs and matched_bs['is_upcoming']))
+        ts = km['timestamp_ms'] or (matched_od and matched_od['timestamp_ms']) or (matched_bs and matched_bs['timestamp_ms']) or 0
 
         # Deduplikasi server URL
         final_servers = []
@@ -1353,7 +1357,7 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
                 final_servers.append(s)
 
         merged_results.append({
-            **od,
+            **km,
             'servers': final_servers,
             'is_live': is_live,
             'is_upcoming': is_upcoming,
@@ -1361,29 +1365,29 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
             'timestamp_ms': ts
         })
 
-    # Step 2: Kltra matches yang belum di-merge ke OnDemand
-    for km in kltra_matches:
-        if km['id'] in used_kltra_ids:
+    # Step 2: OnDemand matches yang belum ter-merge
+    for od in od_matches:
+        if od['id'] in used_od_ids:
             continue
-        if km.get('is_linear'):
-            linear_channels.append(km)
+        if od.get('is_linear'):
+            linear_channels.append(od)
             continue
 
-        combined_servers = list(km.get('servers', []))
-        combined_is_hot = km.get('is_hot', False)
+        combined_servers = list(od.get('servers', []))
+        combined_is_hot = od.get('is_hot', False)
 
         matched_bs = None
         for bs in bs_matches:
-            if bs['id'] not in used_bs_ids and is_same_match(km, bs):
+            if bs['id'] not in used_bs_ids and is_same_match(od, bs):
                 matched_bs = bs
                 used_bs_ids.add(bs['id'])
                 combined_is_hot = True
                 combined_servers.extend(bs.get('servers', []))
                 break
 
-        is_live = km['is_live'] or (matched_bs and matched_bs['is_live'])
-        is_upcoming = False if is_live else (km['is_upcoming'] or (matched_bs and matched_bs['is_upcoming']))
-        ts = km['timestamp_ms'] or (matched_bs and matched_bs['timestamp_ms']) or 0
+        is_live = od['is_live'] or (matched_bs and matched_bs['is_live'])
+        is_upcoming = False if is_live else (od['is_upcoming'] or (matched_bs and matched_bs['is_upcoming']))
+        ts = od['timestamp_ms'] or (matched_bs and matched_bs['timestamp_ms']) or 0
 
         final_servers = []
         seen_s_urls = set()
@@ -1393,7 +1397,7 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
                 final_servers.append(s)
 
         merged_results.append({
-            **km,
+            **od,
             'servers': final_servers,
             'is_live': is_live,
             'is_upcoming': is_upcoming,
@@ -1508,16 +1512,7 @@ def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict)
 
     ref = server.get('referer') or ''
     # Strip referer for sources that return 403 Forbidden with foreign Referer
-    is_no_ref = (
-        not ref or
-        server.get('source') == 'ondemand' or
-        'stream-cdn-box' in server.get('url', '') or
-        'tiktokcdn' in server.get('url', '') or
-        'damitv' in server.get('url', '') or
-        'ondemand' in server.get('url', '') or
-        'smtcdns' in server.get('url', '') or
-        'huya' in server.get('url', '')
-    )
+    is_no_ref = not ref or is_no_referrer_domain(server.get('url', '')) or server.get('source') == 'ondemand'
     if not is_no_ref and ref:
         lines.append(f'#EXTVLCOPT:http-referrer={ref}')
     lines.append(f'#EXTVLCOPT:http-user-agent={DESKTOP_UA}')
@@ -1655,11 +1650,17 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
         elif ts_ms > 0:
             start_dt = datetime.fromtimestamp(ts_ms / 1000, tz=WIB)
             stop_dt = start_dt + timedelta(hours=3.5)
-            if is_live and start_dt > now_dt:
-                start_dt = now_dt - timedelta(minutes=15)
+            if is_live:
+                if stop_dt <= now_dt:
+                    stop_dt = now_dt + timedelta(hours=3.5)
+                if start_dt > now_dt:
+                    start_dt = now_dt - timedelta(minutes=15)
         else:
             start_dt = now_dt - timedelta(hours=1) if is_live else now_dt
             stop_dt = start_dt + timedelta(hours=3.5)
+
+        if is_live and stop_dt <= now_dt:
+            stop_dt = now_dt + timedelta(hours=3.5)
 
         start_str = start_dt.strftime('%Y%m%d%H%M%S +0700')
         stop_str = stop_dt.strftime('%Y%m%d%H%M%S +0700')
@@ -1670,16 +1671,15 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
             status_text = "SIARAN 24/7"
 
         desc_text = (
-            f"🏆 Kompetisi: {league} ({abbr_league})\n"
+            f"🏆 Kompetisi: {league}\n"
             f"⚡ Status: {status_text}\n"
             f"⏰ Jadwal: {kickoff_wib}\n"
-            f"📡 Jalur Server: {s_tag} - {srv.get('name', 'Direct Stream')}\n"
+            f"📡 Jalur: {s_tag} - {srv.get('name', 'Direct Stream')}\n"
             f"⚔️ Match: {title}"
         )
 
         xml_lines.append(f'  <programme start="{start_str}" stop="{stop_str}" channel="{saxutils.escape(tvg_id)}">')
-        xml_lines.append(f'    <title lang="id">{saxutils.escape(title)}</title>')
-        xml_lines.append(f'    <sub-title lang="id">[{saxutils.escape(abbr_league)}] {saxutils.escape(s_tag)}</sub-title>')
+        xml_lines.append(f'    <title lang="id">🏆 {saxutils.escape(league)}</title>')
         xml_lines.append(f'    <desc lang="id">{saxutils.escape(desc_text)}</desc>')
         xml_lines.append(f'    <category lang="id">Sports</category>')
         if logo:
