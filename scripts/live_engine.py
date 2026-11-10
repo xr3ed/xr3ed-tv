@@ -1627,7 +1627,8 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
     for tvg_id, m, s_idx, srv, s_tag in all_entries:
         league = m.get('league') or 'Sports'
         abbr_league = clean_league_name(league)
-        title = m.get('title') or league
+        raw_title = m.get('title') or league
+        title = re.sub(r'^\[[^\]]+\]\s*', '', raw_title).strip() or raw_title
         logo = m.get('logo') or ''
         is_live = m.get('is_live', False)
         is_linear = m.get('is_linear', False)
@@ -1668,7 +1669,7 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
         )
 
         xml_lines.append(f'  <programme start="{start_str}" stop="{stop_str}" channel="{saxutils.escape(tvg_id)}">')
-        xml_lines.append(f'    <title lang="id">🏆 {saxutils.escape(league)}</title>')
+        xml_lines.append(f'    <title lang="id">{saxutils.escape(title)}</title>')
         xml_lines.append(f'    <desc lang="id">{saxutils.escape(desc_text)}</desc>')
         xml_lines.append(f'    <category lang="id">Sports</category>')
         if logo:
