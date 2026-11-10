@@ -8,7 +8,8 @@ Merges OnDemand + Kltra + Beesport with:
 - Cross-provider matching & multi-server merging
 - Detection & filtering of 24/7 linear sports channels & cartoons
 - Multi-server failover: Worker HLS, SD, Substreams, TV Channels, Kltra, Beesport
-- Dynamic key extraction from testa.js for modern Kltra /jos/ endpoints
+- Dynamic probing & XOR decryption for modern Kltra /bro/ endpoints
+- TikTok CDN Referer stripping to prevent HTTP 403 Forbidden buffering
 - Strict security: 100% environment-driven variables without hardcoded fallbacks
 """
 
@@ -25,7 +26,6 @@ import urllib.error
 import http.cookiejar
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
-import subprocess
 
 # Ensure UTF-8 output on Windows
 try:
@@ -40,7 +40,7 @@ except ImportError:
 
 # WIB Timezone (UTC+7)
 WIB = timezone(timedelta(hours=7))
-DESKTOP_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+DESKTOP_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 
 # Load local .env if available
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -80,6 +80,7 @@ COFFEE_LINK = "https://lynk.id/xr3ed"
 COFFEE_LOGO = "https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/coffee.png"
 
 GROUP_INFO = "📢 INFO"
+GROUP_INDONESIA = "🇮🇩 Indonesia"
 GROUP_HOT_EVENT = "🔥 Hot Event"
 GROUP_LIVE_EVENT = "🔴 Live Event"
 GROUP_UPCOMING_EVENT = "⏳ Upcoming Event"
@@ -97,6 +98,19 @@ GENERIC_PLACEHOLDERS = {
     'table tennis', 'tennis', 'soccer', 'football', 'basketball',
     'baseball', 'billiards', 'badminton', 'volleyball'
 }
+
+INDO_KEYWORDS = [
+    "indonesia", "timnas", "persija", "persib", "persebaya", "bali united",
+    "arema", "psm", "borneo", "madura", "psis", "persis", "barito", "dewa united",
+    "bhfc", "garuda", "liga 1", "liga 2", "liga 3", "piala presiden", "piala ibl",
+    "satria muda", "pelita jaya", "rajawali", "bumi borneo", "pacific caesar",
+    "kesatria bengawan", "rasta", "hangtuah", "tangerang hawks", "amartha hangtuah",
+    "satya wacana", "bima perkasa", "proliga", "indonesia cup"
+]
+
+def is_indonesia_match(title: str, league: str = "", home: str = "", away: str = "") -> bool:
+    check = f"{title} {league} {home} {away}".lower()
+    return any(kw in check for kw in INDO_KEYWORDS)
 
 def log(msg):
     now_str = datetime.now(WIB).strftime('%H:%M:%S')
@@ -125,83 +139,52 @@ def encrypt_match_id(match_id: str, secret: str) -> str:
     return base64.urlsafe_b64encode(iv + encrypted_with_tag).decode('utf-8').rstrip('=')
 
 def get_dynamic_xor_key_bytes() -> bytes:
-    """Dynamically generates client XOR key directly from config.js or testa.js matching modern web app."""
-    try:
-        node_script = '''
-        const https = require('https');
-        https.get('https://kltraid.pages.dev/js/config.js', { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
-            let data = '';
-            res.on('data', chunk => data += chunk);
-            res.on('end', () => {
-                const window = {};
-                const document = { createElement: () => ({}), head: { appendChild: () => {} } };
-                const location = { pathname: '/' };
-                eval(data);
-                if (window.KLTRA_CONFIG && window.KLTRA_CONFIG.FEED_MATERIAL_V2) {
-                    process.stdout.write(window.KLTRA_CONFIG.FEED_MATERIAL_V2);
-                }
-            });
-        });
-        '''
-        proc = subprocess.run(['node', '-e', node_script], capture_output=True, text=True, timeout=8)
-        if proc.returncode == 0 and proc.stdout.strip():
-            return proc.stdout.strip().encode('utf-8')
-    except Exception:
-        pass
-
-    try:
-        url = "https://kltraid.pages.dev/js/testa.js"
-        content = fetch_url(url, timeout=8).decode('utf-8', errors='ignore')
-        idx = content.find('RESPONSE_SECRET_KEY_CLIENT')
-        if idx != -1:
-            idx_ret = content.find('return ', idx)
-            snippet = content[idx:idx_ret] if idx_ret != -1 else content[idx:idx+8000]
-            arr_matches = re.findall(r'\[(0x[0-9a-fA-F,\s0x]+)\]', snippet)
-            if len(arr_matches) >= 2:
-                arr1 = [int(x.strip(), 16) for x in arr_matches[0].split(',') if x.strip()]
-                arr2 = [int(x.strip(), 16) for x in arr_matches[1].split(',') if x.strip()]
-
-                f_match = re.search(r'\*\s*(?:0x)?([a-fA-F0-9]+)\s*\+\s*(?:0x)?([a-fA-F0-9]+)\s*&\s*0xffff', snippet, re.IGNORECASE)
-                mult = int(f_match.group(1), 16) if f_match else 0x11
-                add = int(f_match.group(2), 16) if f_match else 0xd842
-
-                chars = []
-                for i in range(len(arr1)):
-                    val = (arr1[i] ^ arr2[i % len(arr2)] ^ ((i * mult + add) & 0xffff)) & 0xffff
-                    chars.append(chr(val))
-                return "".join(chars).encode('utf-8')
-    except Exception:
-        pass
-
+    """Reads XOR key purely from environment variable (zero hardcoded fallback)."""
     if XOR_KEY:
         return XOR_KEY.encode('utf-8')
     return b""
 
-def get_dynamic_kltra_api_base() -> str:
-    """Dynamically fetches current active API_ORIGIN from config.js."""
-    try:
-        node_script = '''
-        const https = require('https');
-        https.get('https://kltraid.pages.dev/js/config.js', { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
-            let data = '';
-            res.on('data', chunk => data += chunk);
-            res.on('end', () => {
-                const window = {};
-                const document = { createElement: () => ({}), head: { appendChild: () => {} } };
-                const location = { pathname: '/' };
-                eval(data);
-                if (window.KLTRA_CONFIG && window.KLTRA_CONFIG.API_ORIGIN) {
-                    process.stdout.write(window.KLTRA_CONFIG.API_ORIGIN);
-                }
-            });
-        });
-        '''
-        proc = subprocess.run(['node', '-e', node_script], capture_output=True, text=True, timeout=8)
-        if proc.returncode == 0 and proc.stdout.strip():
-            return proc.stdout.strip().rstrip('/')
-    except Exception:
-        pass
-    return API_BASE
+def resolve_kltra_config() -> dict:
+    """Dynamically probes active Kltra landing site and preconnect API origin matching Cloudstream."""
+    landing_url = "https://live.kltratv.site"
+    api_origin = API_BASE
+    blogspots = [
+        "https://kltratv13.blogspot.com/",
+        "https://kltratv14.blogspot.com/",
+        "https://kltratv15.blogspot.com/",
+        "https://kltratv12.blogspot.com/",
+        "https://kltratv11.blogspot.com/"
+    ]
+    for b_url in blogspots:
+        try:
+            html = fetch_url(b_url, timeout=4).decode('utf-8', errors='ignore')
+            m = re.search(r'id=["\']landingUrl["\']\s+value=["\'](https?://[^"\'\s]+)["\']', html, re.I) or \
+                re.search(r'value=["\'](https?://[^"\'\s]+)["\']\s+id=["\']landingUrl["\']', html, re.I)
+            if m:
+                landing_url = m.group(1).rstrip('/')
+                break
+        except Exception:
+            continue
+
+    if landing_url:
+        try:
+            landing_html = fetch_url(f"{landing_url}/", timeout=4).decode('utf-8', errors='ignore')
+            m_pre = re.search(r'<link\s+rel=["\']preconnect["\']\s+href=["\'](https?://[^"\'\s]+)["\']', landing_html, re.I)
+            if m_pre:
+                discovered = m_pre.group(1).rstrip('/')
+                if discovered.startswith('http'):
+                    api_origin = discovered
+        except Exception:
+            pass
+
+    return {
+        'landing_url': landing_url,
+        'api_origin': api_origin,
+        'events_path': '/bro/f-82c6a419.json',
+        'servers_path': '/bro/f-b4d9037e.json',
+        'live_tv_path': '/bro/f-1e7a5c92.json',
+        'hd_auto_path': '/bro/f-60d8f3ab.json'
+    }
 
 def xor_decrypt(encrypted_b64: str, key_bytes: bytes) -> list:
     if not encrypted_b64 or not key_bytes:
@@ -439,14 +422,14 @@ def fetch_ondemand_matches() -> list:
             dt = datetime.fromtimestamp(ts_ms / 1000, tz=WIB)
             kickoff_str = f"LIVE {dt.strftime('%H:%M')}" if is_live else f"{dt.strftime('%H:%M')} WIB"
 
-        # Build servers
+        # Build servers (Empty referer: TikTok CDN / Worker blocks damitv.st with 403 Forbidden)
         servers = []
         seen_urls = set()
         if WORKER_BASE and WORKER_AUTH_KEY:
             # Server 1 HD
             enc_primary = encrypt_match_id(mid, WORKER_AUTH_KEY)
             p_url = f"{WORKER_BASE}/live/{enc_primary}.m3u8"
-            servers.append({'name': 'Server 1 (Worker HLS)', 'url': p_url, 'referer': ONDEMAND_REFERER, 'source': 'ondemand'})
+            servers.append({'name': 'Server 1 (Worker HLS)', 'url': p_url, 'referer': '', 'source': 'ondemand'})
             seen_urls.add(p_url)
 
             # Substreams
@@ -460,7 +443,7 @@ def fetch_ondemand_matches() -> list:
                     if s_url not in seen_urls:
                         seen_urls.add(s_url)
                         label = f"Server {len(servers) + 1} ({sub_name} {sub_loc})".strip()
-                        servers.append({'name': label, 'url': s_url, 'referer': ONDEMAND_REFERER, 'source': 'ondemand'})
+                        servers.append({'name': label, 'url': s_url, 'referer': '', 'source': 'ondemand'})
 
             # TV Channels
             for tv in (m.get('tvChannels') or []):
@@ -472,7 +455,7 @@ def fetch_ondemand_matches() -> list:
                     if t_url not in seen_urls:
                         seen_urls.add(t_url)
                         label = f"Server {len(servers) + 1} ({tv_name})"
-                        servers.append({'name': label, 'url': t_url, 'referer': ONDEMAND_REFERER, 'source': 'ondemand'})
+                        servers.append({'name': label, 'url': t_url, 'referer': '', 'source': 'ondemand'})
 
         is_hot = bool(m.get('popular') or m.get('trending') or (m.get('viewers', 0) or 0) >= 10) or any(pl in league.lower() for pl in PREMIUM_LEAGUES)
 
@@ -594,7 +577,9 @@ def resolve_kltra_hybrid_stream(url: str, ttl: int = 86400) -> tuple:
     return url, None
 
 def fetch_kltra_matches() -> list:
-    active_api_base = get_dynamic_kltra_api_base() or API_BASE
+    cfg = resolve_kltra_config()
+    landing_url = cfg.get('landing_url', '')
+    active_api_base = cfg.get('api_origin', '') or API_BASE
     if not active_api_base:
         return []
     ts = int(time.time() * 1000)
@@ -604,10 +589,11 @@ def fetch_kltra_matches() -> list:
 
     events_data = []
     players_data = []
-    # Try modern /bro/ and /jos/ endpoints first, fallback to /vip/
-    for ep in ["/bro/luffy.json", "/jos/luffy.json", "/vip/eventweb.json"]:
+
+    # Probing candidates for events (modern /bro/f-82c6a419.json first)
+    for ep in [cfg.get('events_path', '/bro/f-82c6a419.json'), "/bro/f-82c6a419.json", "/bro/luffy.json", "/jos/luffy.json", "/vip/eventweb.json"]:
         try:
-            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", timeout=10).decode('utf-8', errors='ignore').strip()
+            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", referer=f"{landing_url}/" if landing_url else None, timeout=10).decode('utf-8', errors='ignore').strip()
             if raw.startswith("[") or raw.startswith("{"):
                 events_data = json.loads(raw)
             else:
@@ -617,9 +603,9 @@ def fetch_kltra_matches() -> list:
         except Exception:
             pass
 
-    for ep in ["/bro/zoro.json", "/jos/zoro.json", "/vip/sdplayer.json"]:
+    for ep in [cfg.get('servers_path', '/bro/f-b4d9037e.json'), "/bro/f-b4d9037e.json", "/bro/zoro.json", "/jos/zoro.json", "/vip/sdplayer.json"]:
         try:
-            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", timeout=10).decode('utf-8', errors='ignore').strip()
+            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", referer=f"{landing_url}/" if landing_url else None, timeout=10).decode('utf-8', errors='ignore').strip()
             if raw.startswith("[") or raw.startswith("{"):
                 players_data = json.loads(raw)
             else:
@@ -635,40 +621,30 @@ def fetch_kltra_matches() -> list:
         if r_val:
             player_map[r_val] = p.get('servers', [])
 
-    # Load Kltra HD channel and ClearKey map from /bro/usop.json and /bro/sanji.json
+    # Load Kltra HD channel and ClearKey map
     kltra_hd_map = {}
-    for ep in ["/bro/usop.json", "/jos/usop.json", "/vip/liveweb.json"]:
+    for ep in [cfg.get('hd_auto_path', '/bro/f-60d8f3ab.json'), "/bro/f-60d8f3ab.json", "/bro/sanji.json", "/jos/sanji.json"]:
         try:
-            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", timeout=10).decode('utf-8', errors='ignore').strip()
+            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", referer=f"{landing_url}/" if landing_url else None, timeout=10).decode('utf-8', errors='ignore').strip()
+            if raw.startswith("[") or raw.startswith("{"):
+                h_data = json.loads(raw)
+            else:
+                h_data = xor_decrypt(raw, key_bytes)
+            if isinstance(h_data, dict):
+                kltra_hd_map.update(h_data)
+                break
+        except Exception:
+            pass
+
+    for ep in [cfg.get('live_tv_path', '/bro/f-1e7a5c92.json'), "/bro/f-1e7a5c92.json", "/bro/usop.json", "/jos/usop.json", "/vip/liveweb.json"]:
+        try:
+            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", referer=f"{landing_url}/" if landing_url else None, timeout=10).decode('utf-8', errors='ignore').strip()
             if raw.startswith("[") or raw.startswith("{"):
                 u_data = json.loads(raw)
             else:
                 u_data = xor_decrypt(raw, key_bytes)
             if isinstance(u_data, dict):
                 kltra_hd_map.update(u_data)
-                break
-        except Exception:
-            pass
-
-    for ep in ["/bro/sanji.json", "/jos/sanji.json"]:
-        try:
-            raw = fetch_url(f"{active_api_base}{ep}?v={ts}", timeout=10).decode('utf-8', errors='ignore').strip()
-            if raw.startswith("[") or raw.startswith("{"):
-                s_data = json.loads(raw)
-            else:
-                s_data = xor_decrypt(raw, key_bytes)
-            if isinstance(s_data, list):
-                for item in s_data:
-                    s_url = item.get('url', '')
-                    if 'channel=' in s_url:
-                        parsed = urllib.parse.urlparse(s_url)
-                        qs = urllib.parse.parse_qs(parsed.query)
-                        tch = qs.get('channel', [''])[0].strip()
-                        if tch and tch in kltra_hd_map:
-                            if item.get('id'):
-                                kltra_hd_map[item['id']] = kltra_hd_map[tch]
-                            if item.get('name'):
-                                kltra_hd_map[item['name']] = kltra_hd_map[tch]
                 break
         except Exception:
             pass
@@ -799,10 +775,17 @@ def fetch_kltra_matches() -> list:
             label = s.get('label') or s.get('name') or 'Stream'
 
             was_online909 = 'online909.com' in u or 'online909.com' in resolved_u
-            if was_online909:
+            lower_u = resolved_u.lower()
+            if 'weibisai' in lower_u:
+                ref = 'https://play.cbalive.weibisai.com/'
+            elif 'quickscoreboardz' in lower_u or '100ycdn' in lower_u:
+                ref = 'https://live1.quickscoreboardz.com/'
+            elif was_online909:
                 ref = 'https://player.online909.com/'
             elif playback_token:
                 ref = 'https://kltratvplay.elutuna.workers.dev/'
+            elif landing_url:
+                ref = f"{landing_url}/"
             else:
                 ref = None
 
@@ -997,7 +980,7 @@ def probe_single_stream(target: tuple) -> tuple:
     headers = {
         'User-Agent': DESKTOP_UA,
     }
-    if ref:
+    if ref and 'tiktokcdn' not in url and 'stream-cdn-box' not in url and 'damitv' not in url and 'ondemand' not in url:
         headers['Referer'] = ref
     if token:
         headers['X-KLTRA-Playback'] = token
@@ -1008,45 +991,37 @@ def probe_single_stream(target: tuple) -> tuple:
             lat = int((time.time() - t0) * 1000)
             if res.status not in (200, 206):
                 return url, False, lat, 0
-
-            chunk = res.read(1024).decode('utf-8', errors='ignore')
-            if '<!doctype' in chunk.lower() or '<html' in chunk.lower():
-                return url, False, lat, 0
-
-            if '#EXTM3U' not in chunk and '#EXT-X' not in chunk and '.mpd' not in url:
-                return url, False, lat, 0
-
-            speed_bonus = max(0, int(30 - (lat / 100)))
-            return url, True, lat, speed_bonus
+            raw = res.read(1024)
+            if b'EXTM3U' in raw or len(raw) > 100:
+                spd_bonus = 50 if lat < 400 else (20 if lat < 1000 else 0)
+                return url, True, lat, spd_bonus
+            return url, False, lat, 0
     except Exception:
-        lat = int((time.time() - t0) * 1000)
-        return url, False, lat, 0
+        return url, False, 9999, 0
 
 def is_worker_stream(url: str) -> bool:
     if not url:
         return False
-    if WORKER_BASE and WORKER_BASE in url:
-        return True
-    if 'stream-cdn-box' in url:
-        return True
-    return False
+    return (WORKER_BASE and url.startswith(WORKER_BASE)) or 'xr3ed-edge.workers.dev' in url
 
 def filter_and_rank_servers(matches_list: list, linear_channels: list, max_servers: int = MAX_SERVERS_PER_MATCH) -> tuple:
-    targets = set()
+    probe_targets = []
+    seen_urls = set()
+
     for m in matches_list + linear_channels:
         for s in m.get('servers', []):
             u = s.get('url')
-            if u and u.startswith('http'):
-                if is_worker_stream(u):
-                    continue
-                targets.add((u, s.get('referer'), s.get('playback_token')))
+            if u and u not in seen_urls:
+                seen_urls.add(u)
+                if not is_worker_stream(u):
+                    probe_targets.append((u, s.get('referer'), s.get('playback_token')))
 
-    log(f"Memvalidasi kesehatan {len(targets)} server stream secara paralel (timeout 2.0s, Worker HLS di-bypass)...")
+    log(f"Menguji keaktifan {len(probe_targets)} server upstream secara paralel...")
     probe_map = {}
-    if targets:
-        with ThreadPoolExecutor(max_workers=50) as ex:
-            futs = [ex.submit(probe_single_stream, t) for t in targets]
-            for fut in as_completed(futs):
+    if probe_targets:
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            fut_to_url = {executor.submit(probe_single_stream, t): t[0] for t in probe_targets}
+            for fut in as_completed(fut_to_url):
                 url, alive, lat, spd_bonus = fut.result()
                 probe_map[url] = {'alive': alive, 'latency': lat, 'speed_bonus': spd_bonus}
 
@@ -1107,10 +1082,6 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
                 return 'beesport'
             return 'other'
 
-        # Aturan User:
-        # - 3 Sumber: OnDemand (Worker HLS), Kltra, Beesport
-        # - 1 Web = Maksimal 2 server terbaik yang BENAR-BENAR NYALA (alive == True)
-        # - Total maksimal 6 server jika semua ada. Jika salah satu web tidak ada/mati, tetap ambil yang ada saja (< 6)
         grouped_by_src = {
             'ondemand': [],
             'kltra': [],
@@ -1146,58 +1117,21 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             return (prio, -item[3])
 
         chosen_candidates.sort(key=server_priority_key)
-        chosen = [x[0] for x in chosen_candidates[:6]] # Maksimal 6 server total
+        chosen = [x[0] for x in chosen_candidates[:match_max_servers]]
 
-        renamed_servers = []
-        for idx, s in enumerate(chosen):
-            clean_s = dict(s)
-            orig_name = s.get('name') or ''
-            src = detect_source(s)
-            
-            src_tag = {
-                'ondemand': 'Worker HLS',
-                'kltra': 'Kltra',
-                'beesport': 'Beesport',
-                'other': 'Alt'
-            }.get(src, 'Server')
-            
-            clean_label = orig_name
-            for prefix in ('Kltra - ', 'OnDemand - ', 'Beesport - ', 'Worker '):
-                if clean_label.startswith(prefix):
-                    clean_label = clean_label[len(prefix):]
-            clean_label = clean_label.replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').replace('Server 4', '').replace('Worker HLS', '').strip(' -()')
-            
-            if clean_label:
-                clean_s['name'] = f"Server {idx + 1} ({src_tag} - {clean_label})"
-            else:
-                clean_s['name'] = f"Server {idx + 1} ({src_tag})"
-                
-            clean_s['source_tag'] = src_tag
-            renamed_servers.append(clean_s)
-
-        m['servers'] = renamed_servers
-        filtered_matches.append(m)
+        if chosen:
+            filtered_matches.append({**m, 'servers': chosen})
 
     filtered_linear = []
     for m in linear_channels:
-        scored = []
-        for s in m.get('servers', []):
-            p_info = probe_map.get(s['url'], {'alive': False, 'latency': 9999, 'speed_bonus': 0})
+        servers = m.get('servers', [])
+        valid_s = []
+        for s in servers:
+            p_info = probe_map.get(s['url'], {'alive': False})
             if p_info['alive']:
-                scored.append((s, p_info['speed_bonus']))
-        if not scored:
-            m['servers'] = m.get('servers', [])[:1]
-            filtered_linear.append(m)
-        else:
-            scored.sort(key=lambda x: x[1], reverse=True)
-            chosen_linear = [x[0] for x in scored[:3]]
-            renamed = []
-            for idx, s in enumerate(chosen_linear):
-                cs = dict(s)
-                tl = s['name'].replace('Server 1', '').replace('Server 2', '').replace('Server 3', '').strip(' -()') or 'Live'
-                cs['name'] = f"Server {idx + 1} ({tl})"
-                renamed.append(cs)
-            m['servers'] = renamed
+                valid_s.append(s)
+        if valid_s:
+            m['servers'] = valid_s[:2]
             filtered_linear.append(m)
 
     return filtered_matches, filtered_linear
@@ -1343,10 +1277,38 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
     # Step 4: Health Check & Filter Top Servers (max 5)
     filtered_results, filtered_linear = filter_and_rank_servers(merged_results, linear_channels)
 
-    # Pisahkan ke Hot, Live, Upcoming
-    hot_matches = [m for m in filtered_results if m['is_live'] and m['is_hot']]
-    live_matches = [m for m in filtered_results if m['is_live']]
-    upcoming_matches = [m for m in filtered_results if m['is_upcoming']]
+    # Pisahkan ke Indo, Hot, Live, Upcoming
+    indo_matches = []
+    hot_matches = []
+    live_matches = []
+    upcoming_matches = []
+
+    for m in filtered_results:
+        title = m.get('title', '')
+        league = m.get('league', '')
+        home = m.get('home', '')
+        away = m.get('away', '')
+        is_indo = is_indonesia_match(title, league, home, away)
+        m['is_indo'] = is_indo
+        if is_indo:
+            indo_matches.append(m)
+
+        if m['is_live'] and m['is_hot']:
+            hot_matches.append(m)
+        if m['is_live']:
+            live_matches.append(m)
+        elif m['is_upcoming']:
+            upcoming_matches.append(m)
+
+    # Sort Indo: Live di paling atas (terbaru di atas), disusul Upcoming urut waktu kickoff terdekat (ASC)
+    def indo_sort_key(item):
+        if item.get('is_live'):
+            return (0, -item.get('timestamp_ms', 0))
+        else:
+            t = item.get('timestamp_ms', 0)
+            return (1, t if t > 0 else 9999999999999)
+
+    indo_matches.sort(key=indo_sort_key)
 
     # Live & Hot: Urutkan DESCENDING (terbaru / kickoff paling baru di paling atas)
     hot_matches.sort(key=lambda x: x.get('timestamp_ms', 0) or 0, reverse=True)
@@ -1355,10 +1317,11 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
     # Upcoming: Urutkan ASCENDING (kickoff paling dekat di paling atas)
     upcoming_matches.sort(key=lambda x: x['timestamp_ms'] if x.get('timestamp_ms', 0) > 0 else 9999999999999)
 
-    log(f"Hasil Akhir: Live={len(live_matches)} (Hot={len(hot_matches)}), Upcoming={len(upcoming_matches)}, Linear 24/7={len(filtered_linear)}")
+    log(f"Hasil Akhir: Indonesia={len(indo_matches)}, Live={len(live_matches)} (Hot={len(hot_matches)}), Upcoming={len(upcoming_matches)}, Linear 24/7={len(filtered_linear)}")
 
     result_data = {
         'all_matches': filtered_results,
+        'indo_matches': indo_matches,
         'hot_matches': hot_matches,
         'live_matches': live_matches,
         'upcoming_matches': upcoming_matches,
@@ -1376,34 +1339,60 @@ def fetch_merged_matches(force_refresh: bool = False) -> dict:
 # ─── M3U Generator Helper ─────────────────────────────────────────────────────
 
 def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict) -> list:
-    time_str = ""
-    if not match.get('is_linear') and match.get('timestamp_ms', 0) > 0:
+    now_dt = datetime.now(WIB)
+    time_label = ""
+    if match.get('timestamp_ms', 0) > 0:
         dt = datetime.fromtimestamp(match['timestamp_ms'] / 1000, tz=WIB)
-        time_str = f" • LIVE {dt.strftime('%H:%M')}" if match['is_live'] else f" • {dt.strftime('%H:%M')} WIB"
+        if dt.date() == now_dt.date():
+            time_label = dt.strftime("%H:%M WIB")
+        else:
+            time_label = dt.strftime("%d/%m %H:%M WIB")
+    elif match.get('kickoff_str'):
+        time_label = match['kickoff_str']
+    else:
+        time_label = "Upcoming"
 
-    s_name = server.get('name') or f"Server {server_idx}"
-    prefix = "" if (match.get('is_linear') or match.get('is_live')) else "[UPCOMING] "
     league = (match.get('league') or '').strip()
     title = (match.get('title') or '').strip()
     if league and title and league.lower() == title.lower():
         match_display = f"[{title}]"
-    elif league:
+    elif league and not title.lower().startswith(league.lower()):
         match_display = f"[{league}] {title}"
     else:
         match_display = title
 
-    server_prefix = "" if match.get('is_linear') else f"[S{server_idx}] "
-    full_title = f"{server_prefix}{prefix}{match_display} - {s_name}{time_str}".strip()
+    if match.get('is_linear'):
+        status_prefix = ""
+    elif match.get('is_live'):
+        status_prefix = "🔴 LIVE "
+    else:
+        status_prefix = f"⏳ {time_label} "
+
+    s_name = server.get('name') or f"Server {server_idx}"
+    if match.get('is_linear'):
+        full_title = f"{match_display} - {s_name}".strip()
+    else:
+        full_title = f"{status_prefix}{match_display} - {s_name}".strip()
 
     extinf = f'#EXTINF:-1 tvg-id="{match.get("id", "")}" tvg-name="{full_title}" tvg-logo="{match.get("logo", "")}" group-title="{grp_title}",{full_title}'
     lines = [extinf]
-    ref = server.get('referer')
-    if ref:
+
+    ref = server.get('referer') or ''
+    # TikTok CDN / Worker HLS / OnDemand streams block Referer with 403 Forbidden
+    is_no_ref = (
+        not ref or
+        server.get('source') == 'ondemand' or
+        'stream-cdn-box' in server.get('url', '') or
+        'tiktokcdn' in server.get('url', '') or
+        'damitv' in server.get('url', '') or
+        'ondemand' in server.get('url', '')
+    )
+    if not is_no_ref and ref:
         lines.append(f'#EXTVLCOPT:http-referrer={ref}')
     lines.append(f'#EXTVLCOPT:http-user-agent={DESKTOP_UA}')
 
     headers_json = {"User-Agent": DESKTOP_UA}
-    if ref:
+    if not is_no_ref and ref:
         headers_json["Referer"] = ref
     playback_token = server.get('playback_token')
     if playback_token:
@@ -1426,7 +1415,7 @@ def generate_liveevent_m3u(merged_data: dict, max_upcoming: int = 25) -> str:
     lines = [
         "#EXTM3U",
         f"# XR3ED LIVE SPORTS PLAYLIST — Updated: {now_str}",
-        "# Categories: 📢 INFO | 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event | ⚽ 24/7 Sports Channels",
+        "# Categories: 📢 INFO | 🇮🇩 Indonesia | 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event | ⚽ 24/7 Sports Channels",
         "",
         f'#EXTINF:-1 tvg-id="xr3ed-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="{TG_LOGO}" group-title="{GROUP_INFO}",📢 Gabung Telegram: t.me/CloudstreamXR',
         TG_LINK,
@@ -1436,26 +1425,32 @@ def generate_liveevent_m3u(merged_data: dict, max_upcoming: int = 25) -> str:
         ""
     ]
 
-    # 1. Hot Event
+    # 1. Indonesia Category (jika ada)
+    for m in merged_data.get('indo_matches', []):
+        for idx, srv in enumerate(m.get('servers', [])):
+            lines.extend(render_m3u_entry(GROUP_INDONESIA, m, idx + 1, srv))
+            lines.append("")
+
+    # 2. Hot Event
     for m in merged_data.get('hot_matches', []):
         for idx, srv in enumerate(m.get('servers', [])):
             lines.extend(render_m3u_entry(GROUP_HOT_EVENT, m, idx + 1, srv))
             lines.append("")
 
-    # 2. Live Event
+    # 3. Live Event
     for m in merged_data.get('live_matches', []):
         for idx, srv in enumerate(m.get('servers', [])):
             lines.extend(render_m3u_entry(GROUP_LIVE_EVENT, m, idx + 1, srv))
             lines.append("")
 
-    # 3. Upcoming Event (Top N terdekat)
+    # 4. Upcoming Event (Top N terdekat)
     upcoming_list = merged_data.get('upcoming_matches', [])[:max_upcoming]
     for m in upcoming_list:
         for idx, srv in enumerate(m.get('servers', [])):
             lines.extend(render_m3u_entry(GROUP_UPCOMING_EVENT, m, idx + 1, srv))
             lines.append("")
 
-    # 4. 24/7 Linear Sports Channels
+    # 5. 24/7 Linear Sports Channels
     for m in merged_data.get('linear_channels', []):
         for idx, srv in enumerate(m.get('servers', [])):
             lines.extend(render_m3u_entry("⚽ 24/7 Sports Channels", m, idx + 1, srv))
@@ -1464,5 +1459,5 @@ def generate_liveevent_m3u(merged_data: dict, max_upcoming: int = 25) -> str:
     return "\n".join(lines)
 
 if __name__ == '__main__':
-    data = fetch_merged_matches()
-    print(f"Total live: {len(data['live_matches'])}, Upcoming: {len(data['upcoming_matches'])}, Linear: {len(data['linear_channels'])}")
+    data = fetch_merged_matches(force_refresh=True)
+    print(f"Total Indonesia: {len(data['indo_matches'])}, Live: {len(data['live_matches'])}, Upcoming: {len(data['upcoming_matches'])}, Linear: {len(data['linear_channels'])}")
