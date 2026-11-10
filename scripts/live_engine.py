@@ -410,6 +410,34 @@ def format_server_tag(server_idx: int, server: dict) -> str:
 
     return f"[S{server_idx}]"
 
+def get_channel_display_title(m: dict, server_idx: int, server: dict, now_dt: datetime = None) -> str:
+    if now_dt is None:
+        now_dt = datetime.now(WIB)
+    server_tag = format_server_tag(server_idx, server)
+    league_raw = m.get('league') or ''
+    league_clean = clean_league_name(league_raw) or league_raw or 'Sports'
+
+    if m.get('is_linear'):
+        raw_title = m.get('title') or league_clean
+        return f"{server_tag} {raw_title}".strip()
+
+    time_label = ""
+    if m.get('timestamp_ms', 0) > 0:
+        dt = datetime.fromtimestamp(m['timestamp_ms'] / 1000, tz=WIB)
+        if dt.date() == now_dt.date():
+            time_label = dt.strftime("%H:%M")
+        else:
+            time_label = dt.strftime("%d/%m %H:%M")
+    elif m.get('kickoff_str'):
+        time_label = m['kickoff_str'].replace('LIVE ', '').replace(' WIB', '').strip()
+    else:
+        time_label = "Upcoming"
+
+    if m.get('is_live'):
+        return f"🔴 {server_tag} {league_clean}".strip()
+    else:
+        return f"⏳ {time_label} {server_tag} {league_clean}".strip()
+
 def format_match_display(league: str, title: str) -> str:
     t = (title or '').strip()
     if not t:
@@ -1481,15 +1509,7 @@ def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict)
     else:
         time_label = "Upcoming"
 
-    match_display = format_match_display(match.get('league', ''), match.get('title', ''))
-    server_tag = format_server_tag(server_idx, server)
-
-    if match.get('is_linear'):
-        display_title = f"{server_tag} {match_display}".strip()
-    elif match.get('is_live'):
-        display_title = f"🔴 {server_tag} {match_display}".strip()
-    else:
-        display_title = f"⏳ {time_label} {server_tag} {match_display}".strip()
+    display_title = get_channel_display_title(match, server_idx, server, now_dt)
 
     # TVG ID & Name
     m_court = re.search(r'(court|table)\s*(\d+)', (server.get('name') or '').lower())
@@ -1526,9 +1546,12 @@ def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict)
     return lines
 
 def generate_liveevent_m3u(merged_data: dict, max_upcoming: int = 25) -> str:
-    now_str = datetime.now(WIB).strftime('%Y-%m-%d %H:%M WIB')
+    now_dt = datetime.now(WIB)
+    now_str = now_dt.strftime('%Y-%m-%d %H:%M WIB')
+    ts_epoch = int(now_dt.timestamp())
+    epg_url = f"https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml?t={ts_epoch}"
     lines = [
-        '#EXTM3U url-tvg="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml"',
+        f'#EXTM3U url-tvg="{epg_url}" x-tvg-url="{epg_url}"',
         f"# XR3ED LIVE SPORTS PLAYLIST — Updated: {now_str}",
         "# Categories: 📢 INFO | 🇮🇩 Indonesia | 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event | ⚽ 24/7 Sports Channels",
         "",
@@ -1614,11 +1637,12 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
             continue
         seen_channel_ids.add(tvg_id)
 
-        display_name = f"{s_tag} {format_match_display(m.get('league', ''), m.get('title', ''))}".strip()
+        display_name = get_channel_display_title(m, s_idx, srv, now_dt)
         logo = m.get('logo', '')
 
         xml_lines.append(f'  <channel id="{saxutils.escape(tvg_id)}">')
         xml_lines.append(f'    <display-name lang="id">{saxutils.escape(display_name)}</display-name>')
+        xml_lines.append(f'    <display-name>{saxutils.escape(display_name)}</display-name>')
         if logo:
             xml_lines.append(f'    <icon src="{saxutils.escape(logo)}" />')
         xml_lines.append('  </channel>')
@@ -1640,17 +1664,15 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
         elif ts_ms > 0:
             start_dt = datetime.fromtimestamp(ts_ms / 1000, tz=WIB)
             stop_dt = start_dt + timedelta(hours=3.5)
-            if is_live:
-                if stop_dt <= now_dt:
-                    stop_dt = now_dt + timedelta(hours=3.5)
-                if start_dt > now_dt:
-                    start_dt = now_dt - timedelta(minutes=15)
         else:
             start_dt = now_dt - timedelta(hours=1) if is_live else now_dt
             stop_dt = start_dt + timedelta(hours=3.5)
 
-        if is_live and stop_dt <= now_dt:
-            stop_dt = now_dt + timedelta(hours=3.5)
+        if is_live:
+            if start_dt >= now_dt:
+                start_dt = now_dt - timedelta(minutes=30)
+            if stop_dt <= now_dt:
+                stop_dt = now_dt + timedelta(hours=3.5)
 
         start_str = start_dt.strftime('%Y%m%d%H%M%S +0700')
         stop_str = stop_dt.strftime('%Y%m%d%H%M%S +0700')
@@ -1668,8 +1690,21 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
             f"📡 Jalur: {s_tag} - {srv.get('name', 'Direct Stream')}"
         )
 
+        # Jika upcoming dan kickoff di masa depan, isi slot aktif sekarang agar TIDAK No EPG teleguide
+        if not is_live and not is_linear and start_dt > now_dt:
+            pre_start_str = (now_dt - timedelta(hours=2)).strftime('%Y%m%d%H%M%S +0700')
+            xml_lines.append(f'  <programme start="{pre_start_str}" stop="{start_str}" channel="{saxutils.escape(tvg_id)}">')
+            xml_lines.append(f'    <title lang="id">⏳ Kickoff {kickoff_wib}: {saxutils.escape(title)}</title>')
+            xml_lines.append(f'    <title>⏳ Kickoff {kickoff_wib}: {saxutils.escape(title)}</title>')
+            xml_lines.append(f'    <desc lang="id">{saxutils.escape(desc_text)}</desc>')
+            xml_lines.append(f'    <category lang="id">Sports</category>')
+            if logo:
+                xml_lines.append(f'    <icon src="{saxutils.escape(logo)}" />')
+            xml_lines.append('  </programme>')
+
         xml_lines.append(f'  <programme start="{start_str}" stop="{stop_str}" channel="{saxutils.escape(tvg_id)}">')
         xml_lines.append(f'    <title lang="id">{saxutils.escape(title)}</title>')
+        xml_lines.append(f'    <title>{saxutils.escape(title)}</title>')
         xml_lines.append(f'    <desc lang="id">{saxutils.escape(desc_text)}</desc>')
         xml_lines.append(f'    <category lang="id">Sports</category>')
         if logo:
