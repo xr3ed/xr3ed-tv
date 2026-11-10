@@ -15,6 +15,7 @@ Merges OnDemand + Kltra + Beesport with:
 
 import os
 import sys
+import subprocess
 import json
 import base64
 import hashlib
@@ -378,10 +379,27 @@ LEAGUE_ABBR = {
     "motogp": "MotoGP"
 }
 
+def format_slug_league(slug: str) -> str:
+    if not slug:
+        return "Sports"
+    words = slug.replace('_', '-').split('-')
+    cleaned_words = []
+    for w in words:
+        w_low = w.lower()
+        if w_low in ('usa', 'uk', 'u23', 'u21', 'u19', 'atp', 'wta', 'itf', 'tt', 'wtt', 'cba', 'nba', 'nfl', 'nhl', 'mlb', 'ufc'):
+            cleaned_words.append(w.upper())
+        elif w_low == 'pl':
+            cleaned_words.append('PL')
+        else:
+            cleaned_words.append(w.capitalize())
+    return " ".join(cleaned_words)
+
 def clean_league_name(league: str) -> str:
     if not league:
         return ""
     clean = league.strip()
+    if '-' in clean and ' ' not in clean:
+        clean = format_slug_league(clean)
     low = clean.lower()
     if low in LEAGUE_ABBR:
         return LEAGUE_ABBR[low]
@@ -416,6 +434,11 @@ def get_channel_display_title(m: dict, server_idx: int, server: dict, now_dt: da
     server_tag = format_server_tag(server_idx, server)
     league_raw = m.get('league') or ''
     league_clean = clean_league_name(league_raw) or league_raw or 'Sports'
+
+    m_title = (m.get('title') or '').strip()
+    if league_clean.lower() == m_title.lower() or ' vs ' in league_clean.lower() or ' @ ' in league_clean.lower():
+        sport = (m.get('sport') or 'Sports').capitalize()
+        league_clean = sport
 
     if m.get('is_linear'):
         raw_title = m.get('title') or league_clean
@@ -880,6 +903,8 @@ def fetch_kltra_matches() -> list:
         for s in active_servers:
             u = s.get('url', '')
             resolved_u = vivo_map.get(u, u)
+            if any(k in resolved_u.lower() for k in ('/animation/', 'sport-radar', 'mode=video', 'radar', 'tracker')):
+                continue
             if 'liveUrl=' in resolved_u:
                 try:
                     parsed_live = urllib.parse.urlparse(resolved_u)
@@ -955,6 +980,117 @@ def fetch_kltra_matches() -> list:
             'kickoff_str': kickoff_str,
             'timestamp_ms': ts_ms,
             'servers': k_servers
+        })
+
+    # Worker multi-sport events (live.kltratv.site)
+    worker_items = []
+    try:
+        w_url = "https://kltra-event-api.elutuna.workers.dev/events.json"
+        w_req = urllib.request.Request(w_url, headers={
+            'User-Agent': DESKTOP_UA,
+            'Origin': 'https://live.kltratv.site',
+            'Referer': 'https://live.kltratv.site/'
+        })
+        with urllib.request.urlopen(w_req, timeout=8) as w_resp:
+            w_json = json.loads(w_resp.read().decode('utf-8'))
+            worker_items = w_json.get('items', []) if isinstance(w_json, dict) else []
+    except Exception as e:
+        log(f"Warning fetch worker events: {e}")
+
+    resolved_worker_streams = {}
+    js_resolver = os.path.join(script_dir, 'resolve_kltra_live.js')
+    if os.path.exists(js_resolver) and worker_items:
+        try:
+            log("Menjalankan resolver stream CDP untuk pertandingan Kltra live...")
+            res_p = subprocess.run(
+                ['node', js_resolver],
+                capture_output=True,
+                text=True,
+                timeout=60
+            )
+            if res_p.stdout.strip():
+                resolved_worker_streams = json.loads(res_p.stdout.strip())
+                log(f"Resolver CDP berhasil menemukan {len(resolved_worker_streams)} stream m3u8 aktif.")
+        except Exception as e:
+            log(f"Warning CDP resolver: {e}")
+
+    now_ms = int(time.time() * 1000)
+    for it in worker_items:
+        it_id = str(it.get('id') or '')
+        if not it_id:
+            continue
+        if any(r['id'] == f"kltra_{it_id}" or r['id'] == f"kltra_liveevents_{it_id}" for r in results):
+            continue
+
+        home = (it.get('home') or '').strip()
+        away = (it.get('away') or '').strip()
+        if home and away:
+            w_title = f"{home} vs {away}"
+        else:
+            w_title = (it.get('title') or '').replace(' - ', ' vs ').strip()
+
+        raw_league = it.get('league') or it.get('sport') or 'Sports'
+        w_league = format_slug_league(raw_league)
+        sport = it.get('sport') or 'Sports'
+
+        start_ms = it.get('start', 0) or 0
+        w_live = False
+        w_upcoming = False
+        w_kickoff = ""
+
+        if start_ms > 0:
+            if start_ms <= now_ms < start_ms + int(3.5 * 3600 * 1000):
+                w_live = True
+                dt_k = datetime.fromtimestamp(start_ms / 1000, tz=WIB)
+                w_kickoff = f"LIVE {dt_k.strftime('%H:%M')}"
+            elif now_ms < start_ms:
+                if start_ms > now_ms + 24 * 3600 * 1000:
+                    continue
+                w_upcoming = True
+                dt_k = datetime.fromtimestamp(start_ms / 1000, tz=WIB)
+                w_kickoff = f"{dt_k.strftime('%H:%M')} WIB"
+            else:
+                continue
+
+        w_servers = []
+        if it_id in resolved_worker_streams:
+            direct_hls = resolved_worker_streams[it_id]
+            w_servers.append({
+                'name': 'Kltra - S1',
+                'url': direct_hls,
+                'referer': '',
+                'source': 'kltra'
+            })
+        elif w_live:
+            pass
+        elif w_upcoming:
+            w_servers.append({
+                'name': 'Kltra - S1',
+                'url': f"https://live.kltratv.site/playersd?key=liveevents-{it_id}-1",
+                'referer': 'https://live.kltratv.site/',
+                'source': 'kltra'
+            })
+
+        if not w_servers and w_live:
+            continue
+
+        results.append({
+            'id': f"kltra_liveevents_{it_id}",
+            'source': 'kltra',
+            'title': w_title,
+            'league': w_league,
+            'sport': sport,
+            'home': home,
+            'away': away,
+            'logo': it.get('icon') or '',
+            'status': 'live' if w_live else 'upcoming',
+            'is_live': w_live,
+            'is_upcoming': w_upcoming,
+            'is_hot': any(pl in w_league.lower() for pl in PREMIUM_LEAGUES),
+            'is_linear': False,
+            'kickoff_str': w_kickoff,
+            'timestamp_ms': start_ms,
+            'servers': w_servers
         })
 
     return results
@@ -1119,6 +1255,11 @@ def probe_single_stream(target: tuple) -> tuple:
     url = target[0]
     ref = target[1] if len(target) > 1 else None
     token = target[2] if len(target) > 2 else None
+
+    lower_u = url.lower()
+    if any(k in lower_u for k in ('/animation/', 'sport-radar', 'mode=video', 'radar', 'tracker')):
+        return url, False, 9999, 0
+
     t0 = time.time()
     headers = {
         'User-Agent': DESKTOP_UA,
@@ -1130,12 +1271,25 @@ def probe_single_stream(target: tuple) -> tuple:
 
     req = urllib.request.Request(url, headers=headers)
     try:
-        with urllib.request.urlopen(req, timeout=2.5) as res:
+        with urllib.request.urlopen(req, timeout=3.0) as res:
             lat = int((time.time() - t0) * 1000)
             if res.status not in (200, 206):
                 return url, False, lat, 0
+
+            c_type = (res.headers.get('Content-Type') or '').lower()
+            if 'text/html' in c_type:
+                return url, False, lat, 0
+
             raw = res.read(1024)
-            if b'EXTM3U' in raw or len(raw) > 100:
+            is_valid_media = (
+                b'#EXTM3U' in raw or
+                b'#EXT-X-' in raw or
+                b'<MPD' in raw or
+                'video/' in c_type or
+                'application/vnd.apple.mpegurl' in c_type or
+                'application/dash+xml' in c_type
+            )
+            if is_valid_media:
                 spd_bonus = 50 if lat < 400 else (20 if lat < 1000 else 0)
                 return url, True, lat, spd_bonus
             return url, False, lat, 0
@@ -1250,8 +1404,9 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             # Server Utama: OnDemand Worker HLS atau best alive stream
             alive_candidates = [x for x in scored_servers if x[1]]
             if not alive_candidates:
-                # Jika probe gagal / timeout, jangan buang match; gunakan top candidates
-                alive_candidates = list(scored_servers)
+                # Jika probe gagal / timeout, hanya selamatkan untuk UPCOMING, JANGAN untuk LIVE
+                if not is_live:
+                    alive_candidates = list(scored_servers)
 
             def primary_sort_key(item):
                 s_obj = item[0]
