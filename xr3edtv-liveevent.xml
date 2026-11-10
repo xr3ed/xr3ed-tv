@@ -24,6 +24,10 @@
     <display-name lang="id">[Court 4] Kumamoto Masters Badminton</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
   </channel>
+  <channel id="kltra_664e1800-94e5-4287-b523-5932392_s1">
+    <display-name lang="id">[S1 Utama] Letran Knights vs Perpetual Altas</display-name>
+    <icon src="https://s.q5qo.com/data/b200e6cf2589c72cfe178fd764050630.png" />
+  </channel>
   <channel id="kltra_eb2f26ad-2b46-449c-84da-5956686_s1">
     <display-name lang="id">[S1 Utama] Stride vs FC Agniputhra</display-name>
     <icon src="https://s.q5qo.com/data/58b394d78084a8c6608ff47b97cdcb10.png" />
@@ -31,10 +35,6 @@
   <channel id="kltra_eb2f26ad-2b46-449c-84da-5956686_s2">
     <display-name lang="id">[S2 Cadangan] Stride vs FC Agniputhra</display-name>
     <icon src="https://s.q5qo.com/data/58b394d78084a8c6608ff47b97cdcb10.png" />
-  </channel>
-  <channel id="kltra_664e1800-94e5-4287-b523-5932392_s1">
-    <display-name lang="id">[S1 Utama] Letran Knights vs Perpetual Altas</display-name>
-    <icon src="https://s.q5qo.com/data/b200e6cf2589c72cfe178fd764050630.png" />
   </channel>
   <channel id="od_espn-401892683_s1">
     <display-name lang="id">[S1 Utama] Toronto Maple Leafs vs Colorado Avalanche</display-name>
@@ -228,6 +228,14 @@
     <display-name lang="id">[S2 Cadangan] Houston Rockets vs Golden State Warriors</display-name>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
   </channel>
+  <channel id="od_espn-401909975_s1">
+    <display-name lang="id">[S1 Utama] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
+  <channel id="od_espn-401909975_s2">
+    <display-name lang="id">[S2 Cadangan] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1 Utama] NFL Network</display-name>
     <icon src="/img/cards/247/247-nfl-network.jpg?v=6" />
@@ -322,6 +330,17 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
   </programme>
+  <programme start="20261110140000 +0700" stop="20261110173000 +0700" channel="kltra_664e1800-94e5-4287-b523-5932392_s1">
+    <title lang="id">Letran Knights vs Perpetual Altas</title>
+    <sub-title lang="id">[Philippines NCAA] [S1 Utama]</sub-title>
+    <desc lang="id">🏆 Kompetisi: Philippines NCAA (Philippines NCAA)
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Jadwal: 14:00 WIB
+📡 Jalur Server: [S1 Utama] - Kltra - SD V [IOS]
+⚔️ Match: Letran Knights vs Perpetual Altas</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/b200e6cf2589c72cfe178fd764050630.png" />
+  </programme>
   <programme start="20261110123000 +0700" stop="20261110160000 +0700" channel="kltra_eb2f26ad-2b46-449c-84da-5956686_s1">
     <title lang="id">Stride vs FC Agniputhra</title>
     <sub-title lang="id">[India Bangalore Super Division] [S1 Utama]</sub-title>
@@ -343,17 +362,6 @@
 ⚔️ Match: Stride vs FC Agniputhra</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/58b394d78084a8c6608ff47b97cdcb10.png" />
-  </programme>
-  <programme start="20261110140000 +0700" stop="20261110173000 +0700" channel="kltra_664e1800-94e5-4287-b523-5932392_s1">
-    <title lang="id">Letran Knights vs Perpetual Altas</title>
-    <sub-title lang="id">[Philippines NCAA] [S1 Utama]</sub-title>
-    <desc lang="id">🏆 Kompetisi: Philippines NCAA (Philippines NCAA)
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 14:00 WIB
-📡 Jalur Server: [S1 Utama] - Kltra - SD V [IOS]
-⚔️ Match: Letran Knights vs Perpetual Altas</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.q5qo.com/data/b200e6cf2589c72cfe178fd764050630.png" />
   </programme>
   <programme start="20261111070000 +0700" stop="20261111103000 +0700" channel="od_espn-401892683_s1">
     <title lang="id">Toronto Maple Leafs vs Colorado Avalanche</title>
@@ -882,6 +890,28 @@
 ⚔️ Match: Houston Rockets vs Golden State Warriors</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s1">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <sub-title lang="id">[NBA] [S1 Utama]</sub-title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association (NBA)
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 10:00 WIB
+📡 Jalur Server: [S1 Utama] - Server 1 (Worker HLS)
+⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
+  </programme>
+  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s2">
+    <title lang="id">Portland Trail Blazers vs Oklahoma City Thunder</title>
+    <sub-title lang="id">[NBA] [S2 Cadangan]</sub-title>
+    <desc lang="id">🏆 Kompetisi: National Basketball Association (NBA)
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 10:00 WIB
+📡 Jalur Server: [S2 Cadangan] - Server 3 (HD | Away EN)
+⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
   </programme>
   <programme start="20261110000000 +0700" stop="20261111000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">NFL Network</title>
