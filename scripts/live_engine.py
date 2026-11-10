@@ -1061,18 +1061,13 @@ def fetch_kltra_matches() -> list:
                 'referer': '',
                 'source': 'kltra'
             })
-        elif w_live:
-            pass
-        elif w_upcoming:
+        else:
             w_servers.append({
                 'name': 'Kltra - S1',
                 'url': f"https://live.kltratv.site/playersd?key=liveevents-{it_id}-1",
                 'referer': 'https://live.kltratv.site/',
                 'source': 'kltra'
             })
-
-        if not w_servers and w_live:
-            continue
 
         results.append({
             'id': f"kltra_liveevents_{it_id}",
@@ -1404,9 +1399,8 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             # Server Utama: OnDemand Worker HLS atau best alive stream
             alive_candidates = [x for x in scored_servers if x[1]]
             if not alive_candidates:
-                # Jika probe gagal / timeout, hanya selamatkan untuk UPCOMING, JANGAN untuk LIVE
-                if not is_live:
-                    alive_candidates = list(scored_servers)
+                # Jika probe gagal / timeout, pertahankan server teratas agar match tidak hilang
+                alive_candidates = list(scored_servers)
 
             def primary_sort_key(item):
                 s_obj = item[0]

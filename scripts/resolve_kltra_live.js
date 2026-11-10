@@ -2,24 +2,58 @@ const { spawn } = require('child_process');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const WS = globalThis.WebSocket || (() => {
+    try { return require('undici').WebSocket; } catch (e) { return null; }
+})();
 
 async function fetchJson(url, headers = {}) {
     return new Promise((resolve) => {
-        const u = new URL(url);
-        const lib = u.protocol === 'https:' ? https : http;
-        const req = lib.request(url, { headers }, res => {
-            let data = '';
-            res.on('data', c => data += c);
-            res.on('end', () => {
-                try { resolve(JSON.parse(data)); } catch (e) { resolve(null); }
+        try {
+            const u = new URL(url);
+            const lib = u.protocol === 'https:' ? https : http;
+            const req = lib.request(url, { headers }, res => {
+                let data = '';
+                res.on('data', c => data += c);
+                res.on('end', () => {
+                    try { resolve(JSON.parse(data)); } catch (e) { resolve(null); }
+                });
             });
-        });
-        req.on('error', () => resolve(null));
-        req.end();
+            req.on('error', () => resolve(null));
+            req.setTimeout(5000, () => { req.destroy(); resolve(null); });
+            req.end();
+        } catch (e) {
+            resolve(null);
+        }
     });
 }
 
+async function waitForChrome(port, maxTries = 25) {
+    for (let i = 0; i < maxTries; i++) {
+        try {
+            const ok = await new Promise((res) => {
+                const req = http.get(`http://127.0.0.1:${port}/json/version`, r => {
+                    res(r.statusCode === 200);
+                });
+                req.on('error', () => res(false));
+                req.setTimeout(600, () => { req.destroy(); res(false); });
+            });
+            if (ok) return true;
+        } catch (e) {}
+        await new Promise(r => setTimeout(r, 200));
+    }
+    return false;
+}
+
 async function main() {
+    if (!WS) {
+        console.error("Error: WebSocket not available in Node runtime.");
+        console.log("{}");
+        return;
+    }
+
     const workerUrl = 'https://kltra-event-api.elutuna.workers.dev/events.json';
     const evData = await fetchJson(workerUrl, {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -72,24 +106,40 @@ async function main() {
     }
 
     if (!chromeBin) {
-        console.error("Chrome not found, skipping CDP stream resolution.");
+        console.error("Chrome binary not found.");
         console.log("{}");
         return;
     }
 
     const port = 9235;
-    const profileDir = require('path').join(__dirname, '..', 'scratch', 'chrome_cdp_live');
+    const profileDir = path.join(os.tmpdir(), 'chrome_cdp_kltra_live');
+    try { fs.mkdirSync(profileDir, { recursive: true }); } catch (e) {}
+
     const chrome = spawn(chromeBin, [
         '--headless=new',
         `--remote-debugging-port=${port}`,
         '--disable-gpu',
         '--no-sandbox',
         '--disable-dev-shm-usage',
+        '--disable-software-rasterizer',
         `--user-data-dir=${profileDir}`,
         '--no-first-run'
     ]);
 
-    await new Promise(r => setTimeout(r, 2000));
+    chrome.stderr.on('data', d => {
+        const msg = d.toString();
+        if (msg.includes('ERROR') || msg.includes('FATAL')) {
+            console.error('[CHROME LOG]', msg.trim());
+        }
+    });
+
+    const ready = await waitForChrome(port);
+    if (!ready) {
+        console.error("Chrome failed to bind remote debugging port.");
+        try { chrome.kill(); } catch (e) {}
+        console.log("{}");
+        return;
+    }
 
     function resolveOne(id) {
         return new Promise((resolve) => {
@@ -108,24 +158,33 @@ async function main() {
                     if (!page || !page.webSocketDebuggerUrl) return resolve(null);
 
                     let finished = false;
+                    let timeout = null;
+                    let ws = null;
+
                     const cleanup = () => {
                         if (finished) return;
                         finished = true;
                         clearTimeout(timeout);
-                        try { ws.close(); } catch (e) {}
-                        if (page.id) {
+                        if (ws) {
+                            try { ws.close(); } catch (e) {}
+                        }
+                        if (page && page.id) {
                             const closeReq = http.request({ host: '127.0.0.1', port: port, path: '/json/close/' + page.id, method: 'PUT' });
                             closeReq.on('error', () => {});
                             closeReq.end();
                         }
                     };
 
-                    const ws = new WebSocket(page.webSocketDebuggerUrl);
-                    let msgId = 1;
+                    try {
+                        ws = new WS(page.webSocketDebuggerUrl);
+                    } catch (e) {
+                        cleanup();
+                        return resolve(null);
+                    }
 
+                    let msgId = 1;
                     ws.onopen = () => {
                         ws.send(JSON.stringify({ id: msgId++, method: 'Network.enable' }));
-                        ws.send(JSON.stringify({ id: msgId++, method: 'Page.enable' }));
                     };
 
                     ws.onmessage = async (event) => {
@@ -139,7 +198,6 @@ async function main() {
                                     return resolve({ id, streamUrl: r.url });
                                 }
                                 if (r.url.includes('video-translations.top-parser.com/sm/iframe')) {
-                                    // Fetch iframe to get direct m3u8
                                     const iframeRes = await new Promise(resDone => {
                                         https.get(r.url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, res2 => {
                                             let h = '';
@@ -157,10 +215,15 @@ async function main() {
                         } catch (e) {}
                     };
 
-                    const timeout = setTimeout(() => {
+                    ws.onerror = () => {
                         cleanup();
                         resolve(null);
-                    }, 6000);
+                    };
+
+                    timeout = setTimeout(() => {
+                        cleanup();
+                        resolve(null);
+                    }, 7000);
                 });
             });
             req.on('error', () => resolve(null));
@@ -169,8 +232,8 @@ async function main() {
     }
 
     const resultMap = {};
-    const queue = liveItems.slice(0, 15);
-    const concurrency = 5;
+    const queue = liveItems.slice(0, 30);
+    const concurrency = 6;
     for (let i = 0; i < queue.length; i += concurrency) {
         const batch = queue.slice(i, i + concurrency);
         const resolved = await Promise.all(batch.map(it => resolveOne(it.id)));
