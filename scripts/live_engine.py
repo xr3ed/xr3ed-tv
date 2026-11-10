@@ -305,6 +305,126 @@ def is_fight_match(league: str, title: str = "") -> bool:
     keywords = ['fight', 'combat', 'ufc', 'boxing', 'mma', 'wrestling', 'wwe', 'aew', 'tna', 'kickboxing', 'bellator', 'one championship']
     return any(k in text for k in keywords)
 
+# ─── Singkatan Liga & Format Judul Ringkas ───────────────────────────────────
+
+LEAGUE_ABBR = {
+    # Basketball
+    "national basketball association": "NBA",
+    "american college basketball tournament": "NCAA",
+    "american women's college basketball tournament": "NCAA-W",
+    "women's national basketball association": "WNBA",
+    "piala ibl indonesia": "IBL",
+    "ibl indonesia": "IBL",
+    "ibl": "IBL",
+    "euroleague basketball": "EuroLeague",
+    "cba": "CBA",
+
+    # Soccer / Sepak Bola
+    "premier league": "EPL",
+    "english premier league": "EPL",
+    "uefa champions league": "UCL",
+    "uefa europa league": "UEL",
+    "uefa conference league": "UECL",
+    "uefa nations league": "Nations League",
+    "la liga": "LaLiga",
+    "laliga": "LaLiga",
+    "laliga ea sports": "LaLiga",
+    "segunda división": "LaLiga 2",
+    "segunda division": "LaLiga 2",
+    "serie a": "Serie A",
+    "bundesliga": "Bundesliga",
+    "ligue 1": "Ligue 1",
+    "liga 1 indonesia": "Liga 1",
+    "liga 1": "Liga 1",
+    "liga 2 indonesia": "Liga 2",
+    "liga 2": "Liga 2",
+    "piala presiden": "Piala Presiden",
+    "indonesia cup": "Piala Indonesia",
+    "afc champions league elite": "ACL Elite",
+    "afc champions league two": "ACL 2",
+    "afc champions league": "ACL",
+    "liga mx": "Liga MX",
+    "eredivisie": "Eredivisie",
+    "major league soccer": "MLS",
+    "saudi pro league": "Saudi Pro",
+    "mongolian premier league": "Mongolia PL",
+
+    # Combat & Wrestling
+    "ultimate fighting championship": "UFC",
+    "ufc": "UFC",
+    "world wrestling entertainment": "WWE",
+    "wwe": "WWE",
+    "all elite wrestling": "AEW",
+    "aew": "AEW",
+    "one championship": "ONE Champ",
+    "boxing": "Tinju",
+
+    # Badminton, Tennis & Other Sports
+    "kumamoto masters badminton": "BWF Kumamoto",
+    "japan masters": "BWF Kumamoto",
+    "bwf world tour": "BWF",
+    "badminton": "BWF",
+    "national hockey league": "NHL",
+    "national football league": "NFL",
+    "major league baseball": "MLB",
+    "ncaa - football": "NCAA-F",
+    "formula 1": "F1",
+    "formula one": "F1",
+    "motogp world championship": "MotoGP",
+    "motogp": "MotoGP"
+}
+
+def clean_league_name(league: str) -> str:
+    if not league:
+        return ""
+    clean = league.strip()
+    low = clean.lower()
+    if low in LEAGUE_ABBR:
+        return LEAGUE_ABBR[low]
+    for k, v in LEAGUE_ABBR.items():
+        if k in low:
+            return v
+    clean = re.sub(r'(?i)\bassociation\b', 'Assoc', clean)
+    clean = re.sub(r'(?i)\btournament\b', 'Tourn', clean)
+    clean = re.sub(r'(?i)\bchampionship\b', 'Champ', clean)
+    return clean
+
+def format_server_tag(server_idx: int, server: dict) -> str:
+    s_name = (server.get('name') or '').strip()
+    low = s_name.lower()
+
+    m_court = re.search(r'court\s*(\d+)', low)
+    if m_court:
+        c_num = m_court.group(1)
+        is_alt = 'android' in low or 'flv' in low or 'alt' in low
+        return f"[Court {c_num} Alt]" if is_alt else f"[Court {c_num}]"
+
+    m_table = re.search(r'table\s*(\d+)', low)
+    if m_table:
+        t_num = m_table.group(1)
+        return f"[Table {t_num}]"
+
+    if server_idx == 1:
+        return "[S1 Utama]"
+    elif server_idx == 2:
+        return "[S2 Cadangan]"
+    else:
+        return f"[S{server_idx}]"
+
+def format_match_display(league: str, title: str) -> str:
+    abbr = clean_league_name(league)
+    t = (title or '').strip()
+    if not abbr:
+        return t
+    low_t = t.lower()
+    low_abbr = abbr.lower()
+    if low_t == low_abbr or low_t == (league or '').lower():
+        return f"[{abbr}]"
+    if low_t.startswith(f"[{low_abbr}]") or low_t.startswith(f"{abbr} "):
+        return t
+    return f"[{abbr}] {t}"
+
+
 # ─── Matching Helpers (Token Overlap Persis Cloudstream) ──────────────────────
 
 def name_tokens(s: str) -> set:
@@ -1066,58 +1186,74 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             scored_servers.append((s, p_info['alive'], p_info['latency'], total_score))
 
         has_multi_court = any(('court' in (s.get('name') or '').lower() or 'table' in (s.get('name') or '').lower()) for s in servers)
-        match_max_servers = max(max_servers, len(servers)) if has_multi_court else max_servers
 
-        def detect_source(srv):
-            src = srv.get('source')
-            if src:
-                return src.lower()
-            u = srv.get('url', '')
-            n = (srv.get('name') or '').lower()
-            if is_worker_stream(u) or 'worker' in n or 'ondemand' in n:
-                return 'ondemand'
-            elif 'kltra' in n or 'online909' in str(srv) or 'kltratv' in str(srv):
-                return 'kltra'
-            elif 'beesport' in n or 'twinspeed' in str(srv) or 'greenvora' in str(srv):
-                return 'beesport'
-            return 'other'
+        if has_multi_court:
+            # Multi-court (Badminton/Tennis): Pertahankan 1 stream terbaik per court (prioritaskan HLS .m3u8 & alive)
+            court_map = {}
+            for item in scored_servers:
+                s_obj, alive, lat, score = item
+                s_name = (s_obj.get('name') or '').lower()
+                m_c = re.search(r'(court|table)\s*(\d+)', s_name)
+                c_key = f"{m_c.group(1)}_{m_c.group(2)}" if m_c else s_obj.get('name')
 
-        grouped_by_src = {
-            'ondemand': [],
-            'kltra': [],
-            'beesport': [],
-            'other': []
-        }
+                is_m3u8 = '.m3u8' in s_obj.get('url', '')
+                pref_score = score + (100 if alive else 0) + (50 if is_m3u8 else 0)
 
-        for item in scored_servers:
-            s_obj = item[0]
-            src = detect_source(s_obj)
-            if src not in grouped_by_src:
-                grouped_by_src[src] = []
-            grouped_by_src[src].append(item)
+                if c_key not in court_map or pref_score > court_map[c_key][1]:
+                    court_map[c_key] = (s_obj, pref_score)
 
-        chosen_candidates = []
-        for src_key in ['ondemand', 'kltra', 'beesport', 'other']:
-            bucket = grouped_by_src[src_key]
-            # Utamakan server yang terbukti aktif & nyala (alive == True)
-            alive_in_bucket = [x for x in bucket if x[1]]
-            if alive_in_bucket:
-                alive_in_bucket.sort(key=lambda x: x[3], reverse=True)
-                chosen_candidates.extend(alive_in_bucket[:2])
-            elif not is_live:
-                # Untuk upcoming (belum live), ambil max 2 server prioritas tertinggi agar siap saat kick-off
-                bucket.sort(key=lambda x: x[3], reverse=True)
-                chosen_candidates.extend(bucket[:2])
+            def court_sort_key(k_tuple):
+                m_num = re.search(r'\d+', k_tuple[0])
+                return int(m_num.group(0)) if m_num else 99
 
-        # Urutkan server: OnDemand (Worker HLS) terdepan (paling stabil), disusul Kltra, lalu Beesport
-        def server_priority_key(item):
-            s_obj = item[0]
-            src = detect_source(s_obj)
-            prio = {'ondemand': 0, 'kltra': 1, 'beesport': 2, 'other': 3}.get(src, 9)
-            return (prio, -item[3])
+            sorted_courts = sorted(court_map.items(), key=court_sort_key)
+            chosen = [item[1][0] for item in sorted_courts]
+        else:
+            # Regular match: Maksimal 2 server (1 S1 Utama + 1 S2 Cadangan)
+            def detect_source(srv):
+                src = srv.get('source')
+                if src:
+                    return src.lower()
+                u = srv.get('url', '')
+                n = (srv.get('name') or '').lower()
+                if is_worker_stream(u) or 'worker' in n or 'ondemand' in n:
+                    return 'ondemand'
+                elif 'kltra' in n or 'online909' in str(srv) or 'kltratv' in str(srv):
+                    return 'kltra'
+                elif 'beesport' in n or 'twinspeed' in str(srv) or 'greenvora' in str(srv):
+                    return 'beesport'
+                return 'other'
 
-        chosen_candidates.sort(key=server_priority_key)
-        chosen = [x[0] for x in chosen_candidates[:match_max_servers]]
+            # Server Utama: OnDemand Worker HLS atau best alive stream
+            alive_candidates = [x for x in scored_servers if x[1]]
+            if not alive_candidates:
+                # Jika probe gagal / timeout, jangan buang match; gunakan top candidates
+                alive_candidates = list(scored_servers)
+
+            def primary_sort_key(item):
+                s_obj = item[0]
+                src = detect_source(s_obj)
+                prio = {'ondemand': 0, 'kltra': 1, 'beesport': 2, 'other': 3}.get(src, 9)
+                return (prio, -item[3])
+
+            alive_candidates.sort(key=primary_sort_key)
+            primary_srv = alive_candidates[0][0] if alive_candidates else None
+
+            # Server Cadangan: Cross-provider failover (dari provider berbeda atau second best)
+            backup_srv = None
+            if primary_srv and len(alive_candidates) > 1:
+                p_src = detect_source(primary_srv)
+                diff_src_cands = [x for x in alive_candidates[1:] if detect_source(x[0]) != p_src]
+                if diff_src_cands:
+                    backup_srv = diff_src_cands[0][0]
+                else:
+                    backup_srv = alive_candidates[1][0]
+
+            chosen = []
+            if primary_srv:
+                chosen.append(primary_srv)
+            if backup_srv and backup_srv['url'] != primary_srv['url']:
+                chosen.append(backup_srv)
 
         if chosen:
             filtered_matches.append({**m, 'servers': chosen})
@@ -1130,13 +1266,13 @@ def filter_and_rank_servers(matches_list: list, linear_channels: list, max_serve
             p_info = probe_map.get(s['url'], {'alive': False})
             if p_info['alive']:
                 valid_s.append(s)
+        if not valid_s and servers:
+            valid_s = servers[:2]
         if valid_s:
             m['servers'] = valid_s[:2]
             filtered_linear.append(m)
 
     return filtered_matches, filtered_linear
-
-# ─── Unified Merge Engine (Persis Cloudstream) ────────────────────────────────
 
 def fetch_merged_matches(force_refresh: bool = False) -> dict:
     if not force_refresh and os.path.exists(CACHE_FILE):
@@ -1344,48 +1480,43 @@ def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict)
     if match.get('timestamp_ms', 0) > 0:
         dt = datetime.fromtimestamp(match['timestamp_ms'] / 1000, tz=WIB)
         if dt.date() == now_dt.date():
-            time_label = dt.strftime("%H:%M WIB")
+            time_label = dt.strftime("%H:%M")
         else:
-            time_label = dt.strftime("%d/%m %H:%M WIB")
+            time_label = dt.strftime("%d/%m %H:%M")
     elif match.get('kickoff_str'):
-        time_label = match['kickoff_str']
+        time_label = match['kickoff_str'].replace('LIVE ', '').replace(' WIB', '').strip()
     else:
         time_label = "Upcoming"
 
-    league = (match.get('league') or '').strip()
-    title = (match.get('title') or '').strip()
-    if league and title and league.lower() == title.lower():
-        match_display = f"[{title}]"
-    elif league and not title.lower().startswith(league.lower()):
-        match_display = f"[{league}] {title}"
-    else:
-        match_display = title
+    match_display = format_match_display(match.get('league', ''), match.get('title', ''))
+    server_tag = format_server_tag(server_idx, server)
 
     if match.get('is_linear'):
-        status_prefix = ""
+        display_title = f"{server_tag} {match_display}".strip()
     elif match.get('is_live'):
-        status_prefix = "🔴 LIVE "
+        display_title = f"🔴 {server_tag} {match_display}".strip()
     else:
-        status_prefix = f"⏳ {time_label} "
+        display_title = f"⏳ {time_label} {server_tag} {match_display}".strip()
 
-    s_name = server.get('name') or f"Server {server_idx}"
-    if match.get('is_linear'):
-        full_title = f"{match_display} - {s_name}".strip()
-    else:
-        full_title = f"{status_prefix}{match_display} - {s_name}".strip()
+    # TVG ID & Name
+    m_court = re.search(r'(court|table)\s*(\d+)', (server.get('name') or '').lower())
+    c_suffix = f"_c{m_court.group(2)}" if m_court else f"_s{server_idx}"
+    tvg_id = f"{match.get('id', '')}{c_suffix}"
 
-    extinf = f'#EXTINF:-1 tvg-id="{match.get("id", "")}" tvg-name="{full_title}" tvg-logo="{match.get("logo", "")}" group-title="{grp_title}",{full_title}'
+    extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" tvg-name="{display_title}" tvg-logo="{match.get("logo", "")}" group-title="{grp_title}",{display_title}'
     lines = [extinf]
 
     ref = server.get('referer') or ''
-    # TikTok CDN / Worker HLS / OnDemand streams block Referer with 403 Forbidden
+    # Strip referer for sources that return 403 Forbidden with foreign Referer
     is_no_ref = (
         not ref or
         server.get('source') == 'ondemand' or
         'stream-cdn-box' in server.get('url', '') or
         'tiktokcdn' in server.get('url', '') or
         'damitv' in server.get('url', '') or
-        'ondemand' in server.get('url', '')
+        'ondemand' in server.get('url', '') or
+        'smtcdns' in server.get('url', '') or
+        'huya' in server.get('url', '')
     )
     if not is_no_ref and ref:
         lines.append(f'#EXTVLCOPT:http-referrer={ref}')
@@ -1413,7 +1544,7 @@ def render_m3u_entry(grp_title: str, match: dict, server_idx: int, server: dict)
 def generate_liveevent_m3u(merged_data: dict, max_upcoming: int = 25) -> str:
     now_str = datetime.now(WIB).strftime('%Y-%m-%d %H:%M WIB')
     lines = [
-        "#EXTM3U",
+        '#EXTM3U url-tvg="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml"',
         f"# XR3ED LIVE SPORTS PLAYLIST — Updated: {now_str}",
         "# Categories: 📢 INFO | 🇮🇩 Indonesia | 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event | ⚽ 24/7 Sports Channels",
         "",
@@ -1458,6 +1589,103 @@ def generate_liveevent_m3u(merged_data: dict, max_upcoming: int = 25) -> str:
 
     return "\n".join(lines)
 
-if __name__ == '__main__':
-    data = fetch_merged_matches(force_refresh=True)
-    print(f"Total Indonesia: {len(data['indo_matches'])}, Live: {len(data['live_matches'])}, Upcoming: {len(data['upcoming_matches'])}, Linear: {len(data['linear_channels'])}")
+def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
+    import xml.sax.saxutils as saxutils
+    now_dt = datetime.now(WIB)
+
+    xml_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<tv generator-info-name="xr3ed-tv" generator-info-url="https://github.com/xr3ed/xr3ed-tv">'
+    ]
+
+    # Kumpulkan semua channels dan programmes unik
+    match_pool = []
+    seen_m_ids = set()
+
+    for m in (
+        merged_data.get('indo_matches', []) +
+        merged_data.get('hot_matches', []) +
+        merged_data.get('live_matches', []) +
+        merged_data.get('upcoming_matches', [])[:max_upcoming] +
+        merged_data.get('linear_channels', [])
+    ):
+        mid = m.get('id')
+        if mid and mid not in seen_m_ids:
+            seen_m_ids.add(mid)
+            match_pool.append(m)
+
+    all_entries = []
+    for m in match_pool:
+        for idx, srv in enumerate(m.get('servers', [])):
+            m_court = re.search(r'(court|table)\s*(\d+)', (srv.get('name') or '').lower())
+            c_suffix = f"_c{m_court.group(2)}" if m_court else f"_s{idx + 1}"
+            tvg_id = f"{m.get('id', '')}{c_suffix}"
+            server_tag = format_server_tag(idx + 1, srv)
+            all_entries.append((tvg_id, m, idx + 1, srv, server_tag))
+
+    # 1. Deklarasi Channels
+    seen_channel_ids = set()
+    for tvg_id, m, s_idx, srv, s_tag in all_entries:
+        if tvg_id in seen_channel_ids:
+            continue
+        seen_channel_ids.add(tvg_id)
+
+        display_name = f"{s_tag} {m.get('title', '')}".strip()
+        logo = m.get('logo', '')
+
+        xml_lines.append(f'  <channel id="{saxutils.escape(tvg_id)}">')
+        xml_lines.append(f'    <display-name lang="id">{saxutils.escape(display_name)}</display-name>')
+        if logo:
+            xml_lines.append(f'    <icon src="{saxutils.escape(logo)}" />')
+        xml_lines.append('  </channel>')
+
+    # 2. Deklarasi Programmes
+    for tvg_id, m, s_idx, srv, s_tag in all_entries:
+        league = m.get('league') or 'Sports'
+        abbr_league = clean_league_name(league)
+        title = m.get('title') or league
+        logo = m.get('logo') or ''
+        is_live = m.get('is_live', False)
+        is_linear = m.get('is_linear', False)
+        ts_ms = m.get('timestamp_ms', 0)
+
+        if is_linear:
+            start_dt = now_dt.replace(hour=0, minute=0, second=0, microsecond=0)
+            stop_dt = start_dt + timedelta(days=1)
+        elif ts_ms > 0:
+            start_dt = datetime.fromtimestamp(ts_ms / 1000, tz=WIB)
+            stop_dt = start_dt + timedelta(hours=3.5)
+            if is_live and start_dt > now_dt:
+                start_dt = now_dt - timedelta(minutes=15)
+        else:
+            start_dt = now_dt - timedelta(hours=1) if is_live else now_dt
+            stop_dt = start_dt + timedelta(hours=3.5)
+
+        start_str = start_dt.strftime('%Y%m%d%H%M%S +0700')
+        stop_str = stop_dt.strftime('%Y%m%d%H%M%S +0700')
+        kickoff_wib = start_dt.strftime('%H:%M WIB') if ts_ms > 0 else 'Live'
+
+        status_text = "SEDANG BERLANGSUNG (LIVE)" if is_live else "AKAN DATANG (UPCOMING)"
+        if is_linear:
+            status_text = "SIARAN 24/7"
+
+        desc_text = (
+            f"🏆 Kompetisi: {league} ({abbr_league})\n"
+            f"⚡ Status: {status_text}\n"
+            f"⏰ Jadwal: {kickoff_wib}\n"
+            f"📡 Jalur Server: {s_tag} - {srv.get('name', 'Direct Stream')}\n"
+            f"⚔️ Match: {title}"
+        )
+
+        xml_lines.append(f'  <programme start="{start_str}" stop="{stop_str}" channel="{saxutils.escape(tvg_id)}">')
+        xml_lines.append(f'    <title lang="id">{saxutils.escape(title)}</title>')
+        xml_lines.append(f'    <sub-title lang="id">[{saxutils.escape(abbr_league)}] {saxutils.escape(s_tag)}</sub-title>')
+        xml_lines.append(f'    <desc lang="id">{saxutils.escape(desc_text)}</desc>')
+        xml_lines.append(f'    <category lang="id">Sports</category>')
+        if logo:
+            xml_lines.append(f'    <icon src="{saxutils.escape(logo)}" />')
+        xml_lines.append('  </programme>')
+
+    xml_lines.append('</tv>')
+    return "\n".join(xml_lines)
+

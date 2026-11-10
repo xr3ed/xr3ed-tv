@@ -23,14 +23,14 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 if script_dir not in sys.path:
     sys.path.insert(0, script_dir)
 
-from live_engine import fetch_merged_matches, generate_liveevent_m3u, log
+from live_engine import fetch_merged_matches, generate_liveevent_m3u, generate_liveevent_xml, log
 
 OUTPUT_FILE = os.environ.get('LIVEEVENT_OUTPUT', 'xr3edtv-liveevent.m3u').strip() or 'xr3edtv-liveevent.m3u'
 MAX_UPCOMING = int(os.environ.get('LIVEEVENT_MAX_UPCOMING', '25'))
 
 def main():
     log("=== sync_liveevent.py dimulai ===")
-    merged_data = fetch_merged_matches()
+    merged_data = fetch_merged_matches(force_refresh=True)
 
     if not merged_data.get('all_matches') and not merged_data.get('linear_channels'):
         log("Tidak ada pertandingan yang ditemukan.")
@@ -43,12 +43,20 @@ def main():
     else:
         out_path = os.path.normpath(os.path.join(script_dir, OUTPUT_FILE))
 
+    xml_content = generate_liveevent_xml(merged_data, max_upcoming=MAX_UPCOMING)
+
     with open(out_path, 'w', encoding='utf-8', newline='\n') as f:
         f.write(m3u_content)
 
+    xml_path = os.path.splitext(out_path)[0] + '.xml'
+    with open(xml_path, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(xml_content)
+
     file_size_kb = os.path.getsize(out_path) / 1024
+    xml_size_kb = os.path.getsize(xml_path) / 1024
     total_streams = m3u_content.count('http://') + m3u_content.count('https://') - 2
     log(f"File M3U berhasil disimpan: {out_path} ({file_size_kb:.1f} KB, ~{total_streams} streams)")
+    log(f"File EPG XML berhasil disimpan: {xml_path} ({xml_size_kb:.1f} KB)")
     log("=== sync_liveevent.py selesai ===")
 
 if __name__ == '__main__':
