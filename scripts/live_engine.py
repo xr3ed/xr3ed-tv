@@ -408,25 +408,14 @@ def format_server_tag(server_idx: int, server: dict) -> str:
         t_num = m_table.group(1)
         return f"[Table {t_num}]"
 
-    if server_idx == 1:
-        return "[S1 Utama]"
-    elif server_idx == 2:
-        return "[S2 Cadangan]"
-    else:
-        return f"[S{server_idx}]"
+    return f"[S{server_idx}]"
 
 def format_match_display(league: str, title: str) -> str:
-    abbr = clean_league_name(league)
     t = (title or '').strip()
-    if not abbr:
-        return t
-    low_t = t.lower()
-    low_abbr = abbr.lower()
-    if low_t == low_abbr or low_t == (league or '').lower():
-        return f"[{abbr}]"
-    if low_t.startswith(f"[{low_abbr}]") or low_t.startswith(f"{abbr} "):
-        return t
-    return f"[{abbr}] {t}"
+    if not t:
+        return (league or '').strip()
+    t = re.sub(r'^\[[^\]]+\]\s*', '', t).strip()
+    return t
 
 
 # ─── Matching Helpers (Token Overlap Persis Cloudstream) ──────────────────────
@@ -1625,7 +1614,7 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
             continue
         seen_channel_ids.add(tvg_id)
 
-        display_name = f"{s_tag} {m.get('title', '')}".strip()
+        display_name = f"{s_tag} {format_match_display(m.get('league', ''), m.get('title', ''))}".strip()
         logo = m.get('logo', '')
 
         xml_lines.append(f'  <channel id="{saxutils.escape(tvg_id)}">')
@@ -1672,10 +1661,10 @@ def generate_liveevent_xml(merged_data: dict, max_upcoming: int = 25) -> str:
 
         desc_text = (
             f"🏆 Kompetisi: {league}\n"
+            f"⚔️ Pertandingan: {title}\n"
             f"⚡ Status: {status_text}\n"
-            f"⏰ Jadwal: {kickoff_wib}\n"
-            f"📡 Jalur: {s_tag} - {srv.get('name', 'Direct Stream')}\n"
-            f"⚔️ Match: {title}"
+            f"⏰ Kickoff: {kickoff_wib}\n"
+            f"📡 Jalur: {s_tag} - {srv.get('name', 'Direct Stream')}"
         )
 
         xml_lines.append(f'  <programme start="{start_str}" stop="{stop_str}" channel="{saxutils.escape(tvg_id)}">')
