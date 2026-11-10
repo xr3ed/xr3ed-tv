@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tv generator-info-name="xr3ed-tv" generator-info-url="https://github.com/xr3ed/xr3ed-tv">
+  <channel id="kltra_b0ba25ee-5e6b-435f-9d8a-5689370_s1">
+    <display-name lang="id">[S1 Utama] Daejeon Bluefangs vs Suwon Vixtorm</display-name>
+    <icon src="https://s.q5qo.com/data/c3d39bb4959404e786efb698d34b0342.png" />
+  </channel>
+  <channel id="kltra_26f68e5b-e4fc-4e26-8351-5765027_s1">
+    <display-name lang="id">[S1 Utama] SOOP Supers (W) vs IBK Altos (W)</display-name>
+    <icon src="https://s.q5qo.com/data/68bd153818fda9247e6584694a2223.png" />
+  </channel>
   <channel id="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c1">
     <display-name lang="id">[Court 1] Kumamoto Masters Badminton</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
@@ -51,6 +59,14 @@
   <channel id="kltra_664e1800-94e5-4287-b523-5932392_s1">
     <display-name lang="id">[S1 Utama] Letran Knights vs Perpetual Altas</display-name>
     <icon src="https://s.q5qo.com/data/b200e6cf2589c72cfe178fd764050630.png" />
+  </channel>
+  <channel id="kltra_1e179a2d-882b-4765-8640-5721636_s1">
+    <display-name lang="id">[S1 Utama] Mobis Phoebus vs Goyang Sono Skygunners</display-name>
+    <icon src="https://s.q5qo.com/data/70d15b39630147f00b043c331d8e0135.png" />
+  </channel>
+  <channel id="kltra_dd965e29-e1b6-4aa4-9d18-5010649_s1">
+    <display-name lang="id">[S1 Utama] Perth Lynx (W) vs Bendigo Spirit (W)</display-name>
+    <icon src="https://s.q5qo.com/data/f7f2b7cfa88707e68d61c9d8a8fff795.png" />
   </channel>
   <channel id="od_espn-401892683_s1">
     <display-name lang="id">[S1 Utama] Toronto Maple Leafs vs Colorado Avalanche</display-name>
@@ -236,22 +252,6 @@
     <display-name lang="id">[S2 Cadangan] Utah Jazz vs Orlando Magic</display-name>
     <icon src="/img/cards/nba/401909973.jpg?v=ghst2nf" />
   </channel>
-  <channel id="od_espn-401909974_s1">
-    <display-name lang="id">[S1 Utama] Houston Rockets vs Golden State Warriors</display-name>
-    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
-  </channel>
-  <channel id="od_espn-401909974_s2">
-    <display-name lang="id">[S2 Cadangan] Houston Rockets vs Golden State Warriors</display-name>
-    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
-  </channel>
-  <channel id="od_espn-401909975_s1">
-    <display-name lang="id">[S1 Utama] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
-  </channel>
-  <channel id="od_espn-401909975_s2">
-    <display-name lang="id">[S2 Cadangan] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
-  </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1 Utama] NFL Network</display-name>
     <icon src="/img/cards/247/247-nfl-network.jpg?v=6" />
@@ -280,7 +280,27 @@
     <display-name lang="id">[S1 Utama] Rally TV</display-name>
     <icon src="/img/cards/247/247-rally-tv.jpg?v=6" />
   </channel>
-  <programme start="20261110060000 +0700" stop="20261110201642 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c1">
+  <programme start="20261110165000 +0700" stop="20261110202000 +0700" channel="kltra_b0ba25ee-5e6b-435f-9d8a-5689370_s1">
+    <title lang="id">🏆 Korea V League</title>
+    <desc lang="id">🏆 Kompetisi: Korea V League
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Jadwal: 16:50 WIB
+📡 Jalur: [S1 Utama] - Kltra - HD AUTO
+⚔️ Match: Daejeon Bluefangs vs Suwon Vixtorm</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/c3d39bb4959404e786efb698d34b0342.png" />
+  </programme>
+  <programme start="20261110165000 +0700" stop="20261110202000 +0700" channel="kltra_26f68e5b-e4fc-4e26-8351-5765027_s1">
+    <title lang="id">🏆 Korea V League Women</title>
+    <desc lang="id">🏆 Kompetisi: Korea V League Women
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Jadwal: 16:50 WIB
+📡 Jalur: [S1 Utama] - Kltra - HD AUTO
+⚔️ Match: SOOP Supers (W) vs IBK Altos (W)</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/68bd153818fda9247e6584694a2223.png" />
+  </programme>
+  <programme start="20261110060000 +0700" stop="20261110202140 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c1">
     <title lang="id">🏆 Kumamoto Masters Badminton</title>
     <desc lang="id">🏆 Kompetisi: Kumamoto Masters Badminton
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
@@ -290,7 +310,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
   </programme>
-  <programme start="20261110060000 +0700" stop="20261110201642 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c2">
+  <programme start="20261110060000 +0700" stop="20261110202140 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c2">
     <title lang="id">🏆 Kumamoto Masters Badminton</title>
     <desc lang="id">🏆 Kompetisi: Kumamoto Masters Badminton
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
@@ -300,7 +320,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
   </programme>
-  <programme start="20261110060000 +0700" stop="20261110201642 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c3">
+  <programme start="20261110060000 +0700" stop="20261110202140 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c3">
     <title lang="id">🏆 Kumamoto Masters Badminton</title>
     <desc lang="id">🏆 Kompetisi: Kumamoto Masters Badminton
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
@@ -310,7 +330,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" />
   </programme>
-  <programme start="20261110060000 +0700" stop="20261110201642 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c4">
+  <programme start="20261110060000 +0700" stop="20261110202140 +0700" channel="kltra_21193c9e-b9f4-43c0-ae97-420aa493905c_c4">
     <title lang="id">🏆 Kumamoto Masters Badminton</title>
     <desc lang="id">🏆 Kompetisi: Kumamoto Masters Badminton
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
@@ -409,6 +429,26 @@
 ⚔️ Match: Letran Knights vs Perpetual Altas</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/b200e6cf2589c72cfe178fd764050630.png" />
+  </programme>
+  <programme start="20261110170000 +0700" stop="20261110203000 +0700" channel="kltra_1e179a2d-882b-4765-8640-5721636_s1">
+    <title lang="id">🏆 Korean Professional Basketball League</title>
+    <desc lang="id">🏆 Kompetisi: Korean Professional Basketball League
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 17:00 WIB
+📡 Jalur: [S1 Utama] - Kltra - SD W [IOS]
+⚔️ Match: Mobis Phoebus vs Goyang Sono Skygunners</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/70d15b39630147f00b043c331d8e0135.png" />
+  </programme>
+  <programme start="20261110170000 +0700" stop="20261110203000 +0700" channel="kltra_dd965e29-e1b6-4aa4-9d18-5010649_s1">
+    <title lang="id">🏆 Australian National Women's Basketball Tournament</title>
+    <desc lang="id">🏆 Kompetisi: Australian National Women's Basketball Tournament
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 17:00 WIB
+📡 Jalur: [S1 Utama] - Kltra - SD W [IOS]
+⚔️ Match: Perth Lynx (W) vs Bendigo Spirit (W)</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/f7f2b7cfa88707e68d61c9d8a8fff795.png" />
   </programme>
   <programme start="20261111070000 +0700" stop="20261111103000 +0700" channel="od_espn-401892683_s1">
     <title lang="id">🏆 National Hockey League</title>
@@ -869,46 +909,6 @@
 ⚔️ Match: Utah Jazz vs Orlando Magic</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909973.jpg?v=ghst2nf" />
-  </programme>
-  <programme start="20261112093000 +0700" stop="20261112130000 +0700" channel="od_espn-401909974_s1">
-    <title lang="id">🏆 National Basketball Association</title>
-    <desc lang="id">🏆 Kompetisi: National Basketball Association
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 09:30 WIB
-📡 Jalur: [S1 Utama] - Server 1 (Worker HLS)
-⚔️ Match: Houston Rockets vs Golden State Warriors</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
-  </programme>
-  <programme start="20261112093000 +0700" stop="20261112130000 +0700" channel="od_espn-401909974_s2">
-    <title lang="id">🏆 National Basketball Association</title>
-    <desc lang="id">🏆 Kompetisi: National Basketball Association
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 09:30 WIB
-📡 Jalur: [S2 Cadangan] - Server 2 (SD | ESPN+ EN)
-⚔️ Match: Houston Rockets vs Golden State Warriors</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
-  </programme>
-  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s1">
-    <title lang="id">🏆 National Basketball Association</title>
-    <desc lang="id">🏆 Kompetisi: National Basketball Association
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 10:00 WIB
-📡 Jalur: [S1 Utama] - Server 1 (Worker HLS)
-⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
-  </programme>
-  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s2">
-    <title lang="id">🏆 National Basketball Association</title>
-    <desc lang="id">🏆 Kompetisi: National Basketball Association
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 10:00 WIB
-📡 Jalur: [S2 Cadangan] - Server 3 (HD | Away EN)
-⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
   </programme>
   <programme start="20261110000000 +0700" stop="20261111000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">🏆 American Football</title>
