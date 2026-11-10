@@ -68,6 +68,10 @@
     <display-name lang="id">[S2 Cadangan] Deren vs FC Ulaanbaatar</display-name>
     <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
   </channel>
+  <channel id="kltra_d3f1edbf-8587-4f97-aca1-5956702_s1">
+    <display-name lang="id">[S1 Utama] FC Bengaluru United vs FC Real Bengaluru</display-name>
+    <icon src="https://s.q5qo.com/data/e2d569585b002e98a4717716892f6530.png" />
+  </channel>
   <channel id="od_espn-401892683_s1">
     <display-name lang="id">[S1 Utama] Toronto Maple Leafs vs Colorado Avalanche</display-name>
     <icon src="/img/cards/nhl/401892683.jpg?v=spl2nf" />
@@ -259,14 +263,6 @@
   <channel id="od_espn-401909974_s2">
     <display-name lang="id">[S2 Cadangan] Houston Rockets vs Golden State Warriors</display-name>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
-  </channel>
-  <channel id="od_espn-401909975_s1">
-    <display-name lang="id">[S1 Utama] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
-  </channel>
-  <channel id="od_espn-401909975_s2">
-    <display-name lang="id">[S2 Cadangan] Portland Trail Blazers vs Oklahoma City Thunder</display-name>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
   </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1 Utama] NFL Network</display-name>
@@ -465,6 +461,16 @@
 ⚔️ Match: Deren vs FC Ulaanbaatar</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/5233f726bf4b7b954afd6761433bc9d6.png" />
+  </programme>
+  <programme start="20261110173000 +0700" stop="20261110210000 +0700" channel="kltra_d3f1edbf-8587-4f97-aca1-5956702_s1">
+    <title lang="id">🏆 India Bangalore Super Division</title>
+    <desc lang="id">🏆 Kompetisi: India Bangalore Super Division
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Jadwal: 17:30 WIB
+📡 Jalur: [S1 Utama] - Kltra - SD V [IOS]
+⚔️ Match: FC Bengaluru United vs FC Real Bengaluru</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/e2d569585b002e98a4717716892f6530.png" />
   </programme>
   <programme start="20261111070000 +0700" stop="20261111103000 +0700" channel="od_espn-401892683_s1">
     <title lang="id">🏆 National Hockey League</title>
@@ -945,26 +951,6 @@
 ⚔️ Match: Houston Rockets vs Golden State Warriors</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909974.jpg?v=ghst2nf" />
-  </programme>
-  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s1">
-    <title lang="id">🏆 National Basketball Association</title>
-    <desc lang="id">🏆 Kompetisi: National Basketball Association
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 10:00 WIB
-📡 Jalur: [S1 Utama] - Server 1 (Worker HLS)
-⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
-  </programme>
-  <programme start="20261112100000 +0700" stop="20261112133000 +0700" channel="od_espn-401909975_s2">
-    <title lang="id">🏆 National Basketball Association</title>
-    <desc lang="id">🏆 Kompetisi: National Basketball Association
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Jadwal: 10:00 WIB
-📡 Jalur: [S2 Cadangan] - Server 3 (HD | Away EN)
-⚔️ Match: Portland Trail Blazers vs Oklahoma City Thunder</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/nba/401909975.jpg?v=ghst2nf" />
   </programme>
   <programme start="20261110000000 +0700" stop="20261111000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">🏆 American Football</title>
