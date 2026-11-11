@@ -998,6 +998,22 @@ def fetch_kltra_matches() -> list:
         log(f"Warning fetch worker events: {e}")
 
     resolved_worker_streams = {}
+    cache_stream_file = os.path.join(script_dir, '.cache_kltra_streams.json')
+    cached_streams = {}
+    if os.path.exists(cache_stream_file):
+        try:
+            with open(cache_stream_file, 'r', encoding='utf-8') as f:
+                c_data = json.load(f)
+                now_epoch = time.time()
+                for k, v in c_data.items():
+                    if isinstance(v, dict):
+                        if now_epoch - v.get('ts', 0) < 3.5 * 3600 and v.get('url'):
+                            cached_streams[k] = v['url']
+                    elif isinstance(v, str) and v.startswith('http'):
+                        cached_streams[k] = v
+        except Exception:
+            pass
+
     js_resolver = os.path.join(script_dir, 'resolve_kltra_live.js')
     if os.path.exists(js_resolver) and worker_items:
         try:
@@ -1011,10 +1027,47 @@ def fetch_kltra_matches() -> list:
             if res_p.stderr.strip():
                 log(f"[CDP Resolver Log] {res_p.stderr.strip()[:1000]}")
             if res_p.stdout.strip():
-                resolved_worker_streams = json.loads(res_p.stdout.strip())
-                log(f"Resolver CDP berhasil menemukan {len(resolved_worker_streams)} stream m3u8 aktif.")
+                newly_resolved = json.loads(res_p.stdout.strip())
+                log(f"Resolver CDP berhasil menemukan {len(newly_resolved)} stream m3u8 aktif.")
+                resolved_worker_streams.update(newly_resolved)
         except Exception as e:
             log(f"Warning CDP resolver: {e}")
+
+    # Simpan & perbarui cache jika ada hasil resolver baru
+    if resolved_worker_streams:
+        now_epoch = time.time()
+        to_save = {}
+        for k, u in resolved_worker_streams.items():
+            to_save[k] = {'url': u, 'ts': now_epoch}
+        for k, u in cached_streams.items():
+            if k not in to_save:
+                to_save[k] = {'url': u, 'ts': now_epoch}
+        try:
+            with open(cache_stream_file, 'w', encoding='utf-8') as f:
+                json.dump(to_save, f)
+        except Exception:
+            pass
+    elif cached_streams:
+        log(f"Resolver 0 stream (geo-block runner?), menggunakan {len(cached_streams)} stream dari cache.")
+        resolved_worker_streams.update(cached_streams)
+
+    # Fallback ekstra: jika cache kosong dan resolver 0 stream (misal CI runner US bersih),
+    # ekstrak stream yang masih aktif dari file xr3edtv-liveevent.m3u yang sudah ada di disk
+    if not resolved_worker_streams:
+        m3u_disk = os.path.normpath(os.path.join(script_dir, '..', 'xr3edtv-liveevent.m3u'))
+        if os.path.exists(m3u_disk):
+            try:
+                with open(m3u_disk, 'r', encoding='utf-8', errors='ignore') as f:
+                    disk_content = f.read()
+                matches_disk = re.findall(r'#EXTINF:[^\n]*tvg-id="kltra_liveevents_(\d+)_s1"[^\n]*\n(?:[^\n]*\n)*?(https?://\S+)', disk_content)
+                for eid, stream_url in matches_disk:
+                    clean_u = stream_url.strip()
+                    if '.m3u8' in clean_u and not clean_u.endswith('.html'):
+                        resolved_worker_streams[eid] = clean_u
+                if resolved_worker_streams:
+                    log(f"Mempertahankan {len(resolved_worker_streams)} stream Kltra valid dari file M3U disk.")
+            except Exception:
+                pass
 
     now_ms = int(time.time() * 1000)
     for it in worker_items:

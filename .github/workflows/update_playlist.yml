@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: sync-playlist
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -96,6 +100,6 @@ jobs:
           git add -A
           if ! git diff --staged --quiet; then
             git commit -m "Sync master, 24/7 & live sports playlists [skip ci]"
-            git pull --rebase origin main || (git rebase -X theirs origin/main || git rebase --abort)
+            git pull --rebase -X theirs origin main || (git rebase --abort; git pull --no-rebase -X ours origin/main)
             git push origin main
           fi

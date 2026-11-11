@@ -424,10 +424,10 @@ async function main() {
     let resultMap = await resolvePureHttp(liveItems);
     console.error(`[Pure HTTP] Successfully resolved ${Object.keys(resultMap).length} / ${liveItems.length} streams.`);
 
-    // Step 2: Fallback to CDP for remaining matches if needed
+    // Step 2: Fallback to CDP for remaining matches only if explicitly enabled
     const resolvedIds = Object.keys(resultMap);
     const missingIds = liveItems.map(it => String(it.id)).filter(id => !resolvedIds.includes(id));
-    if (missingIds.length > 0 && resolvedIds.length < 5) {
+    if (missingIds.length > 0 && resolvedIds.length < 5 && process.env.ENABLE_CDP_FALLBACK === 'true') {
         const cdpMap = await resolveCdpFallback(liveItems, missingIds);
         resultMap = { ...resultMap, ...cdpMap };
     }
