@@ -10,8 +10,6 @@
  * - Obtains TopParser gateway session token
  * - Resolves direct iframe and extracts playable .m3u8 stream URL
  * - Fallback to Chrome CDP if pure HTTP resolution fails
- *
- * Runs in ~10-12s for 30+ live events with zero browser overhead.
  */
 
 const fs = require('fs');
@@ -22,6 +20,7 @@ const http = require('http');
 const https = require('https');
 
 const crypto = globalThis.crypto;
+const DESKTOP_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
 
 function base64url(buf) {
     return Buffer.from(buf).toString('base64')
@@ -39,30 +38,40 @@ async function fetchJson(url, headers = {}) {
 }
 
 async function createVisitorSession() {
-    const keyPair = await crypto.subtle.generateKey(
-        { name: 'ECDSA', namedCurve: 'P-256' },
-        true,
-        ['sign', 'verify']
-    );
-    const pubJwk = await crypto.subtle.exportKey('jwk', keyPair.publicKey);
-    const vRes = await fetch('https://kltra-event-api.elutuna.workers.dev/visitor', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Origin': 'https://live.kltratv.site'
-        },
-        body: JSON.stringify({
-            publicKey: {
-                kty: pubJwk.kty,
-                crv: pubJwk.crv,
-                x: pubJwk.x,
-                y: pubJwk.y
-            }
-        })
-    });
-    if (!vRes.ok) return null;
-    const vData = await vRes.json();
-    return { token: vData.accessToken, keyPair };
+    try {
+        const keyPair = await crypto.subtle.generateKey(
+            { name: 'ECDSA', namedCurve: 'P-256' },
+            true,
+            ['sign', 'verify']
+        );
+        const pubJwk = await crypto.subtle.exportKey('jwk', keyPair.publicKey);
+        const vRes = await fetch('https://kltra-event-api.elutuna.workers.dev/visitor', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'User-Agent': DESKTOP_UA,
+                'Origin': 'https://live.kltratv.site',
+                'Referer': 'https://live.kltratv.site/'
+            },
+            body: JSON.stringify({
+                publicKey: {
+                    kty: pubJwk.kty,
+                    crv: pubJwk.crv,
+                    x: pubJwk.x,
+                    y: pubJwk.y
+                }
+            })
+        });
+        if (!vRes.ok) {
+            console.error(`[Visitor Error] status=${vRes.status}`);
+            return null;
+        }
+        const vData = await vRes.json();
+        return { token: vData.accessToken, keyPair };
+    } catch (e) {
+        console.error(`[Visitor Exception] ${e.message}`);
+        return null;
+    }
 }
 
 async function resolvePureHttp(liveItems) {
@@ -111,8 +120,10 @@ async function resolvePureHttp(liveItems) {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'User-Agent': DESKTOP_UA,
                         'Authorization': `Bearer ${s.token}`,
-                        'Origin': 'https://live.kltratv.site'
+                        'Origin': 'https://live.kltratv.site',
+                        'Referer': 'https://live.kltratv.site/'
                     },
                     body: JSON.stringify({
                         eventId: String(it.id),
@@ -121,17 +132,22 @@ async function resolvePureHttp(liveItems) {
                     })
                 });
             } catch (e) {
+                console.error(`[Session Fetch Err ${it.id}] ${e.message}`);
                 return null;
             }
 
             if (sRes.status === 429) {
-                await new Promise(r => setTimeout(r, 350));
+                await new Promise(r => setTimeout(r, 400));
                 const newS = await createVisitorSession();
                 if (newS) s = newS;
                 continue;
             }
 
-            if (!sRes.ok) return null;
+            if (!sRes.ok) {
+                const errTxt = await sRes.text();
+                console.error(`[Session Err ${it.id}] status=${sRes.status} body=${errTxt.substring(0, 100)}`);
+                return null;
+            }
             const sData = await sRes.json();
             const sessionToken = sData.sessionToken;
             if (!sessionToken) return null;
@@ -142,34 +158,48 @@ async function resolvePureHttp(liveItems) {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'User-Agent': DESKTOP_UA,
                         'X-External-Partner-Id': '44ba10e5-7df2-47ab-a44d-dc93803c7a6e',
                         'Token': sessionToken,
                         'X-Lang': 'en-001',
                         'X-User-Location': 'ID',
-                        'Origin': 'https://live.kltratv.site'
+                        'Origin': 'https://live.kltratv.site',
+                        'Referer': 'https://live.kltratv.site/'
                     },
                     body: JSON.stringify({ id: it.broadcastId })
                 });
             } catch (e) {
+                console.error(`[TopParser Fetch Err ${it.id}] ${e.message}`);
                 return null;
             }
 
-            if (!tpRes.ok) return null;
+            if (!tpRes.ok) {
+                const errTxt = await tpRes.text();
+                console.error(`[TopParser Err ${it.id}] status=${tpRes.status} body=${errTxt.substring(0, 100)}`);
+                return null;
+            }
             const tpData = await tpRes.json();
             const iframeUrl = tpData.url || (tpData.result && tpData.result.url);
             if (!iframeUrl) return null;
 
             try {
                 const iframeRes = await fetch(iframeUrl, {
-                    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+                    headers: {
+                        'User-Agent': DESKTOP_UA,
+                        'Referer': 'https://live.kltratv.site/'
+                    }
                 });
                 const html = await iframeRes.text();
                 const m = html.match(/hls\.loadSource\(['"]([^'"]+)['"]\)/) || html.match(/video\.src\s*=\s*['"]([^'"]+)['"]/);
                 if (m) {
                     console.error(`[RESOLVED PURE] ${it.id} -> ${m[1].substring(0, 60)}...`);
                     return { id: it.id, url: m[1] };
+                } else {
+                    console.error(`[Iframe No M3U8 ${it.id}] html=${html.substring(0, 120)}`);
                 }
-            } catch (e) {}
+            } catch (e) {
+                console.error(`[Iframe Fetch Err ${it.id}] ${e.message}`);
+            }
             return null;
         }
         return null;
@@ -185,7 +215,7 @@ async function resolvePureHttp(liveItems) {
                 resultMap[r.id] = r.url;
             }
         }
-        await new Promise(r => setTimeout(r, 120));
+        await new Promise(r => setTimeout(r, 150));
     }
     return resultMap;
 }
@@ -248,7 +278,7 @@ async function resolveCdpFallback(liveItems, missingIds) {
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
         '--no-first-run',
-        '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        `--user-agent=${DESKTOP_UA}`,
         `--user-data-dir=${profileDir}`
     ]);
 
@@ -325,7 +355,7 @@ async function resolveCdpFallback(liveItems, missingIds) {
                                 }
                                 if (r.url.includes('video-translations.top-parser.com/sm/iframe')) {
                                     const iframeRes = await fetch(r.url, {
-                                        headers: { 'User-Agent': 'Mozilla/5.0' }
+                                        headers: { 'User-Agent': DESKTOP_UA }
                                     });
                                     const html = await iframeRes.text();
                                     const m = html.match(/hls\.loadSource\(['"]([^'"]+)['"]\)/) || html.match(/video\.src\s*=\s*['"]([^'"]+)['"]/);
@@ -368,8 +398,9 @@ async function resolveCdpFallback(liveItems, missingIds) {
 async function main() {
     const workerUrl = 'https://kltra-event-api.elutuna.workers.dev/events.json';
     const evData = await fetchJson(workerUrl, {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        'Origin': 'https://live.kltratv.site'
+        'User-Agent': DESKTOP_UA,
+        'Origin': 'https://live.kltratv.site',
+        'Referer': 'https://live.kltratv.site/'
     });
 
     if (!evData || !evData.items) {
