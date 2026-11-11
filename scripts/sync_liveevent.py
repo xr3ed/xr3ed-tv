@@ -30,7 +30,7 @@ MAX_UPCOMING = int(os.environ.get('LIVEEVENT_MAX_UPCOMING', '25'))
 
 def main():
     log("=== sync_liveevent.py dimulai ===")
-    merged_data = fetch_merged_matches(force_refresh=True)
+    merged_data = fetch_merged_matches(force_refresh=False)
 
     if not merged_data.get('all_matches') and not merged_data.get('linear_channels'):
         log("Tidak ada pertandingan yang ditemukan.")

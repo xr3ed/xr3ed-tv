@@ -1006,8 +1006,10 @@ def fetch_kltra_matches() -> list:
                 ['node', js_resolver],
                 capture_output=True,
                 text=True,
-                timeout=60
+                timeout=120
             )
+            if res_p.stderr.strip():
+                log(f"[CDP Resolver Log] {res_p.stderr.strip()[:1000]}")
             if res_p.stdout.strip():
                 resolved_worker_streams = json.loads(res_p.stdout.strip())
                 log(f"Resolver CDP berhasil menemukan {len(resolved_worker_streams)} stream m3u8 aktif.")
@@ -1061,13 +1063,7 @@ def fetch_kltra_matches() -> list:
                 'referer': '',
                 'source': 'kltra'
             })
-        else:
-            w_servers.append({
-                'name': 'Kltra - S1',
-                'url': f"https://live.kltratv.site/playersd?key=liveevents-{it_id}-1",
-                'referer': 'https://live.kltratv.site/',
-                'source': 'kltra'
-            })
+        # Note: Do not add playersd HTML URL fallback. M3U entries must strictly be media streams (.m3u8).
 
         results.append({
             'id': f"kltra_liveevents_{it_id}",
