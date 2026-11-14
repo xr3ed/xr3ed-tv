@@ -55,6 +55,11 @@
     <display-name>🔴 [S1] International Friendly Matches</display-name>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/8Cr5Gw-79PpIX2rIEZ7Pvg_96x96.png" />
   </channel>
+  <channel id="bs_real-sociedad-ii-vs-sporting-gijon-202611151530_s1">
+    <display-name lang="id">🔴 [S1] LaLiga 2</display-name>
+    <display-name>🔴 [S1] LaLiga 2</display-name>
+    <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/9585.png" />
+  </channel>
   <channel id="kltra_63713c11-cb11-4988-855e-5991384_s1">
     <display-name lang="id">🔴 [S1] Giai Vo Dich Bong Da Nam A (Tai Bangladesh)</display-name>
     <display-name>🔴 [S1] Giai Vo Dich Bong Da Nam A (Tai Bangladesh)</display-name>
@@ -165,6 +170,11 @@
     <display-name>🔴 [S1] LaLiga 2</display-name>
     <icon src="https://s.q5qo.com/data/b223d6e3d8073de09a3c31152f03defe.png" />
   </channel>
+  <channel id="kltra_782bdb21-99c5-4d6f-afbd-5910835_s2">
+    <display-name lang="id">🔴 [S2] LaLiga 2</display-name>
+    <display-name>🔴 [S2] LaLiga 2</display-name>
+    <icon src="https://s.q5qo.com/data/b223d6e3d8073de09a3c31152f03defe.png" />
+  </channel>
   <channel id="kltra_7965a831-3f81-4788-bba9-5939481_s1">
     <display-name lang="id">🔴 [S1] Uruguay National Champ</display-name>
     <display-name>🔴 [S1] Uruguay National Champ</display-name>
@@ -248,12 +258,7 @@
   <channel id="od_cr-afghanistan-zimbabwe_s1">
     <display-name lang="id">🔴 [S1] 2nd test day 2</display-name>
     <display-name>🔴 [S1] 2nd test day 2</display-name>
-    <icon src="https://flagcdn.com/w320/af.png" />
-  </channel>
-  <channel id="bs_real-sociedad-ii-vs-sporting-gijon-202611151530_s1">
-    <display-name lang="id">⏳ 21:45 [S1] LaLiga 2</display-name>
-    <display-name>⏳ 21:45 [S1] LaLiga 2</display-name>
-    <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/9585.png" />
+    <icon src="/img/cards/m/4cd2bac049c2b8ec.jpg?v=3nf.t2" />
   </channel>
   <channel id="kltra_0551048f-f8a8-4ace-8fa1-5758576_s1">
     <display-name lang="id">⏳ 21:50 [S1] LKL Lithuania Basketball Tourn</display-name>
@@ -283,6 +288,11 @@
   <channel id="od_mm-own-003be6ef11_s1">
     <display-name lang="id">⏳ 22:00 [S1] League One</display-name>
     <display-name>⏳ 22:00 [S1] League One</display-name>
+    <icon src="https://r2.thesportsdb.com/images/media/event/thumb/150xto1782465830.jpg" />
+  </channel>
+  <channel id="od_mm-own-003be6ef11_s2">
+    <display-name lang="id">⏳ 22:00 [S2] League One</display-name>
+    <display-name>⏳ 22:00 [S2] League One</display-name>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/150xto1782465830.jpg" />
   </channel>
   <channel id="od_mm-own-35fff59361_s1">
@@ -400,6 +410,16 @@
     <display-name>⏳ 15/11 00:00 [S2] NCAA-F</display-name>
     <icon src="/img/cards/college-football/401858296.jpg?v=nf2nf" />
   </channel>
+  <channel id="od_espn-401858301_s1">
+    <display-name lang="id">⏳ 15/11 00:00 [S1] NCAA-F</display-name>
+    <display-name>⏳ 15/11 00:00 [S1] NCAA-F</display-name>
+    <icon src="/img/cards/college-football/401858301.jpg?v=nf2nf" />
+  </channel>
+  <channel id="od_espn-401858301_s2">
+    <display-name lang="id">⏳ 15/11 00:00 [S2] NCAA-F</display-name>
+    <display-name>⏳ 15/11 00:00 [S2] NCAA-F</display-name>
+    <icon src="/img/cards/college-football/401858301.jpg?v=nf2nf" />
+  </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1] NFL Network</display-name>
     <display-name>[S1] NFL Network</display-name>
@@ -445,7 +465,7 @@
     <display-name>[S1] Sky Sports Golf</display-name>
     <icon src="/img/cards/247/247-dl-70.jpg?v=6" />
   </channel>
-  <programme start="20261114194153 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s1">
+  <programme start="20261114194649 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s1">
     <title lang="id">⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <title>⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <desc lang="id">🏆 Kompetisi: Bundesliga
@@ -576,6 +596,17 @@
 📡 Jalur: [S1] - Kltra - HD AUTO</desc>
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/8Cr5Gw-79PpIX2rIEZ7Pvg_96x96.png" />
+  </programme>
+  <programme start="20261114214500 +0700" stop="20261115011500 +0700" channel="bs_real-sociedad-ii-vs-sporting-gijon-202611151530_s1">
+    <title lang="id">Real Sociedad II vs Sporting Gijon</title>
+    <title>Real Sociedad II vs Sporting Gijon</title>
+    <desc lang="id">🏆 Kompetisi: Segunda División
+⚔️ Pertandingan: Real Sociedad II vs Sporting Gijon
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 21:45 WIB
+📡 Jalur: [S1] - Beesport - LaLiga Hypermotion</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/9585.png" />
   </programme>
   <programme start="20261114213000 +0700" stop="20261115010000 +0700" channel="kltra_63713c11-cb11-4988-855e-5991384_s1">
     <title lang="id">Bangladesh vs Pakistan</title>
@@ -815,7 +846,18 @@
 ⚔️ Pertandingan: Real Valladolid vs CD Castellon
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
 ⏰ Kickoff: 20:00 WIB
-📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
+📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.q5qo.com/data/b223d6e3d8073de09a3c31152f03defe.png" />
+  </programme>
+  <programme start="20261114200000 +0700" stop="20261114233000 +0700" channel="kltra_782bdb21-99c5-4d6f-afbd-5910835_s2">
+    <title lang="id">Real Valladolid vs CD Castellon</title>
+    <title>Real Valladolid vs CD Castellon</title>
+    <desc lang="id">🏆 Kompetisi: Segunda Division
+⚔️ Pertandingan: Real Valladolid vs CD Castellon
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 20:00 WIB
+📡 Jalur: [S2] - Kltra - SD Y [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/b223d6e3d8073de09a3c31152f03defe.png" />
   </programme>
@@ -995,7 +1037,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/4852aa57192bcf08aad625308e2bfa86.png" />
   </programme>
-  <programme start="20261114130000 +0700" stop="20261115011153 +0700" channel="od_cr-afghanistan-zimbabwe_s1">
+  <programme start="20261114130000 +0700" stop="20261115011649 +0700" channel="od_cr-afghanistan-zimbabwe_s1">
     <title lang="id">afghanistan vs zimbabwe</title>
     <title>afghanistan vs zimbabwe</title>
     <desc lang="id">🏆 Kompetisi: 2nd test day 2
@@ -1004,31 +1046,9 @@
 ⏰ Kickoff: 13:00 WIB
 📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
     <category lang="id">Sports</category>
-    <icon src="https://flagcdn.com/w320/af.png" />
+    <icon src="/img/cards/m/4cd2bac049c2b8ec.jpg?v=3nf.t2" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114214500 +0700" channel="bs_real-sociedad-ii-vs-sporting-gijon-202611151530_s1">
-    <title lang="id">⏳ Kickoff 21:45 WIB: Real Sociedad II vs Sporting Gijon</title>
-    <title>⏳ Kickoff 21:45 WIB: Real Sociedad II vs Sporting Gijon</title>
-    <desc lang="id">🏆 Kompetisi: Segunda División
-⚔️ Pertandingan: Real Sociedad II vs Sporting Gijon
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 21:45 WIB
-📡 Jalur: [S1] - Beesport - LaLiga Hypermotion</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/9585.png" />
-  </programme>
-  <programme start="20261114214500 +0700" stop="20261115011500 +0700" channel="bs_real-sociedad-ii-vs-sporting-gijon-202611151530_s1">
-    <title lang="id">Real Sociedad II vs Sporting Gijon</title>
-    <title>Real Sociedad II vs Sporting Gijon</title>
-    <desc lang="id">🏆 Kompetisi: Segunda División
-⚔️ Pertandingan: Real Sociedad II vs Sporting Gijon
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 21:45 WIB
-📡 Jalur: [S1] - Beesport - LaLiga Hypermotion</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/9585.png" />
-  </programme>
-  <programme start="20261114194153 +0700" stop="20261114215000 +0700" channel="kltra_0551048f-f8a8-4ace-8fa1-5758576_s1">
+  <programme start="20261114194649 +0700" stop="20261114215000 +0700" channel="kltra_0551048f-f8a8-4ace-8fa1-5758576_s1">
     <title lang="id">⏳ Kickoff 21:50 WIB: BC Siauliai vs Gargzdai SC</title>
     <title>⏳ Kickoff 21:50 WIB: BC Siauliai vs Gargzdai SC</title>
     <desc lang="id">🏆 Kompetisi: LKL Lithuania Basketball Tournament
@@ -1050,7 +1070,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.q5qo.com/data/a7e303df7386edb4dc3a851e34dafe01.png" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_espn-401932237_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_espn-401932237_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Palestine vs Iran</title>
     <title>⏳ Kickoff 22:00 WIB: Palestine vs Iran</title>
     <desc lang="id">🏆 Kompetisi: International Friendly
@@ -1072,7 +1092,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/99f9b3591ad18a3c.jpg?v=3nf.t2" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-d3026cb690_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-d3026cb690_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: AFC Wimbledon vs Blackpool</title>
     <title>⏳ Kickoff 22:00 WIB: AFC Wimbledon vs Blackpool</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1094,7 +1114,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/ygjh8w1782465831.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-049b605296_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-049b605296_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Doncaster Rovers vs Leyton Orient</title>
     <title>⏳ Kickoff 22:00 WIB: Doncaster Rovers vs Leyton Orient</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1116,7 +1136,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/0krrgn1782465834.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-5a47d78306_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-5a47d78306_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Milton Keynes Dons vs Burton Albion</title>
     <title>⏳ Kickoff 22:00 WIB: Milton Keynes Dons vs Burton Albion</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1138,7 +1158,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/rfzgh81782465832.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-003be6ef11_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-003be6ef11_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Sheffield Wednesday vs Plymouth Argyle</title>
     <title>⏳ Kickoff 22:00 WIB: Sheffield Wednesday vs Plymouth Argyle</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1160,7 +1180,29 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/150xto1782465830.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-35fff59361_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-003be6ef11_s2">
+    <title lang="id">⏳ Kickoff 22:00 WIB: Sheffield Wednesday vs Plymouth Argyle</title>
+    <title>⏳ Kickoff 22:00 WIB: Sheffield Wednesday vs Plymouth Argyle</title>
+    <desc lang="id">🏆 Kompetisi: League One
+⚔️ Pertandingan: Sheffield Wednesday vs Plymouth Argyle
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 22:00 WIB
+📡 Jalur: [S2] - Server 2 (SD | Sky Sports EN-GB)</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://r2.thesportsdb.com/images/media/event/thumb/150xto1782465830.jpg" />
+  </programme>
+  <programme start="20261114220000 +0700" stop="20261115013000 +0700" channel="od_mm-own-003be6ef11_s2">
+    <title lang="id">Sheffield Wednesday vs Plymouth Argyle</title>
+    <title>Sheffield Wednesday vs Plymouth Argyle</title>
+    <desc lang="id">🏆 Kompetisi: League One
+⚔️ Pertandingan: Sheffield Wednesday vs Plymouth Argyle
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 22:00 WIB
+📡 Jalur: [S2] - Server 2 (SD | Sky Sports EN-GB)</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://r2.thesportsdb.com/images/media/event/thumb/150xto1782465830.jpg" />
+  </programme>
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-35fff59361_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Stevenage vs Mansfield Town</title>
     <title>⏳ Kickoff 22:00 WIB: Stevenage vs Mansfield Town</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1182,7 +1224,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/02gjva1782465837.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-35fff59361_s2">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-35fff59361_s2">
     <title lang="id">⏳ Kickoff 22:00 WIB: Stevenage vs Mansfield Town</title>
     <title>⏳ Kickoff 22:00 WIB: Stevenage vs Mansfield Town</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1204,7 +1246,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/02gjva1782465837.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-c912654abe_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-c912654abe_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Stockport County vs Reading</title>
     <title>⏳ Kickoff 22:00 WIB: Stockport County vs Reading</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1226,7 +1268,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/vmd1op1782465839.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-9a409e4072_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-9a409e4072_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Wigan Athletic vs Barnsley</title>
     <title>⏳ Kickoff 22:00 WIB: Wigan Athletic vs Barnsley</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -1248,7 +1290,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/7r2rsm1782465829.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-e1b94a26be_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-e1b94a26be_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Bristol Rovers vs Chesterfield</title>
     <title>⏳ Kickoff 22:00 WIB: Bristol Rovers vs Chesterfield</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1270,7 +1312,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/zyzdwf1782464107.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-e1b94a26be_s2">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-e1b94a26be_s2">
     <title lang="id">⏳ Kickoff 22:00 WIB: Bristol Rovers vs Chesterfield</title>
     <title>⏳ Kickoff 22:00 WIB: Bristol Rovers vs Chesterfield</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1292,7 +1334,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/zyzdwf1782464107.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-d03338c06c_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-d03338c06c_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Colchester United vs Gillingham</title>
     <title>⏳ Kickoff 22:00 WIB: Colchester United vs Gillingham</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1314,7 +1356,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/ncq9fz1782464113.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-19ac10a5c8_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-19ac10a5c8_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Crewe Alexandra vs Newport County</title>
     <title>⏳ Kickoff 22:00 WIB: Crewe Alexandra vs Newport County</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1336,7 +1378,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/md1wvz1782464114.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-df4afcaa90_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-df4afcaa90_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Port Vale vs Accrington Stanley</title>
     <title>⏳ Kickoff 22:00 WIB: Port Vale vs Accrington Stanley</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1358,7 +1400,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/f8afvf1782464111.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-05f53db21f_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-05f53db21f_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Rochdale vs York City</title>
     <title>⏳ Kickoff 22:00 WIB: Rochdale vs York City</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1380,7 +1422,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/4qorz01782464109.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-05f53db21f_s2">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-05f53db21f_s2">
     <title lang="id">⏳ Kickoff 22:00 WIB: Rochdale vs York City</title>
     <title>⏳ Kickoff 22:00 WIB: Rochdale vs York City</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1402,7 +1444,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/4qorz01782464109.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-acc61fe7f0_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-acc61fe7f0_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Shrewsbury Town vs Oldham Athletic</title>
     <title>⏳ Kickoff 22:00 WIB: Shrewsbury Town vs Oldham Athletic</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1424,7 +1466,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/ue6bka1782464112.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-acc61fe7f0_s2">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-acc61fe7f0_s2">
     <title lang="id">⏳ Kickoff 22:00 WIB: Shrewsbury Town vs Oldham Athletic</title>
     <title>⏳ Kickoff 22:00 WIB: Shrewsbury Town vs Oldham Athletic</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1446,7 +1488,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/ue6bka1782464112.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-191d9f5343_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-191d9f5343_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Walsall vs Barnet</title>
     <title>⏳ Kickoff 22:00 WIB: Walsall vs Barnet</title>
     <desc lang="id">🏆 Kompetisi: League Two
@@ -1468,7 +1510,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/o1t0p71782464110.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-849610d527_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-849610d527_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Tottenham Hotspur vs Everton</title>
     <title>⏳ Kickoff 22:00 WIB: Tottenham Hotspur vs Everton</title>
     <desc lang="id">🏆 Kompetisi: Women's Super League
@@ -1490,7 +1532,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/zxqrvb1757101620.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-9010618b10_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-9010618b10_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Ayr United vs Raith Rovers</title>
     <title>⏳ Kickoff 22:00 WIB: Ayr United vs Raith Rovers</title>
     <desc lang="id">🏆 Kompetisi: Scottish Championship
@@ -1512,7 +1554,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/v7er7s1782193620.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-ae36e4c47b_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-ae36e4c47b_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Livingston vs Greenock Morton</title>
     <title>⏳ Kickoff 22:00 WIB: Livingston vs Greenock Morton</title>
     <desc lang="id">🏆 Kompetisi: Scottish Championship
@@ -1534,7 +1576,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/ndwtr01782193618.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-eff978e482_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-eff978e482_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Partick Thistle vs Inverness Caledonian Thistle</title>
     <title>⏳ Kickoff 22:00 WIB: Partick Thistle vs Inverness Caledonian Thistle</title>
     <desc lang="id">🏆 Kompetisi: Scottish Championship
@@ -1556,7 +1598,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/rmsuvb1782193619.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114220000 +0700" channel="od_mm-own-5cb67b5b65_s1">
+  <programme start="20261114194649 +0700" stop="20261114220000 +0700" channel="od_mm-own-5cb67b5b65_s1">
     <title lang="id">⏳ Kickoff 22:00 WIB: Stenhousemuir vs Queen's Park</title>
     <title>⏳ Kickoff 22:00 WIB: Stenhousemuir vs Queen's Park</title>
     <desc lang="id">🏆 Kompetisi: Scottish Championship
@@ -1578,7 +1620,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/96b6f71782193621.jpg" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114222000 +0700" channel="kltra_f068ed68-9e8d-4f89-9942-d6e6be432162_s1">
+  <programme start="20261114194649 +0700" stop="20261114222000 +0700" channel="kltra_f068ed68-9e8d-4f89-9942-d6e6be432162_s1">
     <title lang="id">⏳ Kickoff 22:20 WIB: Bangladesh U17 vs Bhutan U17</title>
     <title>⏳ Kickoff 22:20 WIB: Bangladesh U17 vs Bhutan U17</title>
     <desc lang="id">🏆 Kompetisi: AFC U-17 Asian Cup
@@ -1600,7 +1642,7 @@
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/uTQstsRqQKZC-VUZWaNi0w_96x96.png" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261114223000 +0700" channel="od_mm-own-69ff646b27_s1">
+  <programme start="20261114194649 +0700" stop="20261114223000 +0700" channel="od_mm-own-69ff646b27_s1">
     <title lang="id">⏳ Kickoff 22:30 WIB: NAC Breda vs FC Emmen</title>
     <title>⏳ Kickoff 22:30 WIB: NAC Breda vs FC Emmen</title>
     <desc lang="id">🏆 Kompetisi: Eerste Divisie
@@ -1622,7 +1664,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ned.2/401875854.jpg?v=3nf" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261115000000 +0700" channel="od_espn-401858296_s1">
+  <programme start="20261114194649 +0700" stop="20261115000000 +0700" channel="od_espn-401858296_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Miami Hurricanes vs Duke Blue Devils</title>
     <title>⏳ Kickoff 00:00 WIB: Miami Hurricanes vs Duke Blue Devils</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1644,7 +1686,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401858296.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261114194153 +0700" stop="20261115000000 +0700" channel="od_espn-401858296_s2">
+  <programme start="20261114194649 +0700" stop="20261115000000 +0700" channel="od_espn-401858296_s2">
     <title lang="id">⏳ Kickoff 00:00 WIB: Miami Hurricanes vs Duke Blue Devils</title>
     <title>⏳ Kickoff 00:00 WIB: Miami Hurricanes vs Duke Blue Devils</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1665,6 +1707,50 @@
 📡 Jalur: [S2] - Server 3 (HD | SkyCast EN)</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401858296.jpg?v=nf2nf" />
+  </programme>
+  <programme start="20261114194649 +0700" stop="20261115000000 +0700" channel="od_espn-401858301_s1">
+    <title lang="id">⏳ Kickoff 00:00 WIB: SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <title>⏳ Kickoff 00:00 WIB: SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <desc lang="id">🏆 Kompetisi: NCAA - Football
+⚔️ Pertandingan: SMU Mustangs vs Wake Forest Demon Deacons
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 00:00 WIB
+📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/college-football/401858301.jpg?v=nf2nf" />
+  </programme>
+  <programme start="20261115000000 +0700" stop="20261115033000 +0700" channel="od_espn-401858301_s1">
+    <title lang="id">SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <title>SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <desc lang="id">🏆 Kompetisi: NCAA - Football
+⚔️ Pertandingan: SMU Mustangs vs Wake Forest Demon Deacons
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 00:00 WIB
+📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/college-football/401858301.jpg?v=nf2nf" />
+  </programme>
+  <programme start="20261114194649 +0700" stop="20261115000000 +0700" channel="od_espn-401858301_s2">
+    <title lang="id">⏳ Kickoff 00:00 WIB: SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <title>⏳ Kickoff 00:00 WIB: SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <desc lang="id">🏆 Kompetisi: NCAA - Football
+⚔️ Pertandingan: SMU Mustangs vs Wake Forest Demon Deacons
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 00:00 WIB
+📡 Jalur: [S2] - Server 3 (HD | SkyCast EN)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/college-football/401858301.jpg?v=nf2nf" />
+  </programme>
+  <programme start="20261115000000 +0700" stop="20261115033000 +0700" channel="od_espn-401858301_s2">
+    <title lang="id">SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <title>SMU Mustangs vs Wake Forest Demon Deacons</title>
+    <desc lang="id">🏆 Kompetisi: NCAA - Football
+⚔️ Pertandingan: SMU Mustangs vs Wake Forest Demon Deacons
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 00:00 WIB
+📡 Jalur: [S2] - Server 3 (HD | SkyCast EN)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/college-football/401858301.jpg?v=nf2nf" />
   </programme>
   <programme start="20261114000000 +0700" stop="20261115000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">NFL Network</title>
