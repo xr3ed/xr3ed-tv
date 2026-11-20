@@ -90,14 +90,24 @@
     <display-name>🔴 [S2] Sports</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Tennis.png" />
   </channel>
+  <channel id="kltra_liveevents_43518768_s1">
+    <display-name lang="id">🔴 [S1] TT Cup</display-name>
+    <display-name>🔴 [S1] TT Cup</display-name>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
+  </channel>
   <channel id="kltra_liveevents_43539200_s1">
     <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
     <display-name>🔴 [S1] Men Setka Cup</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
   </channel>
-  <channel id="kltra_liveevents_43487945_s1">
+  <channel id="kltra_liveevents_43521946_s1">
     <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
     <display-name>🔴 [S1] Men Setka Cup</display-name>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
+  </channel>
+  <channel id="kltra_liveevents_43488540_s1">
+    <display-name lang="id">🔴 [S1] Women Setka Cup</display-name>
+    <display-name>🔴 [S1] Women Setka Cup</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
   </channel>
   <channel id="kltra_f14f0c5f-30aa-44a1-bb9f-5970074_s1">
@@ -365,6 +375,11 @@
     <display-name>⏳ 01:00 [S1] EPL</display-name>
     <icon src="https://s.312977.com/data/a22fa027423c41949974b3717cdbd6bb.png" />
   </channel>
+  <channel id="kltra_a27c2dd1-78fa-413d-9efe-5968876_s2">
+    <display-name lang="id">⏳ 01:00 [S2] EPL</display-name>
+    <display-name>⏳ 01:00 [S2] EPL</display-name>
+    <icon src="https://s.312977.com/data/a22fa027423c41949974b3717cdbd6bb.png" />
+  </channel>
   <channel id="kltra_11dfec5f-1f9c-42dd-81d2-5974188_s1">
     <display-name lang="id">⏳ 01:00 [S1] Germany 3. Liga</display-name>
     <display-name>⏳ 01:00 [S1] Germany 3. Liga</display-name>
@@ -375,24 +390,19 @@
     <display-name>⏳ 01:00 [S1] Norwegian National Champ</display-name>
     <icon src="https://s.312977.com/data/3d934a5a9bac91b22c72c57212d70a0f.png" />
   </channel>
+  <channel id="kltra_f9f28dd9-d029-4e90-bd95-5977334_s2">
+    <display-name lang="id">⏳ 01:00 [S2] Norwegian National Champ</display-name>
+    <display-name>⏳ 01:00 [S2] Norwegian National Champ</display-name>
+    <icon src="https://s.312977.com/data/3d934a5a9bac91b22c72c57212d70a0f.png" />
+  </channel>
   <channel id="kltra_722115e2-84eb-4ebd-af19-5979582_s1">
     <display-name lang="id">⏳ 01:00 [S1] Danish First Division</display-name>
     <display-name>⏳ 01:00 [S1] Danish First Division</display-name>
     <icon src="https://s.312977.com/data/ded27fcbc84e4d38678d6170e7c6588e.png" />
   </channel>
-  <channel id="kltra_722115e2-84eb-4ebd-af19-5979582_s2">
-    <display-name lang="id">⏳ 01:00 [S2] Danish First Division</display-name>
-    <display-name>⏳ 01:00 [S2] Danish First Division</display-name>
-    <icon src="https://s.312977.com/data/ded27fcbc84e4d38678d6170e7c6588e.png" />
-  </channel>
   <channel id="kltra_1ad47f59-840a-4bf9-b83e-5979584_s1">
     <display-name lang="id">⏳ 01:00 [S1] Danish First Division</display-name>
     <display-name>⏳ 01:00 [S1] Danish First Division</display-name>
-    <icon src="https://s.312977.com/data/9bcd02572d03a45dfd92bff610fa4764.png" />
-  </channel>
-  <channel id="kltra_1ad47f59-840a-4bf9-b83e-5979584_s2">
-    <display-name lang="id">⏳ 01:00 [S2] Danish First Division</display-name>
-    <display-name>⏳ 01:00 [S2] Danish First Division</display-name>
     <icon src="https://s.312977.com/data/9bcd02572d03a45dfd92bff610fa4764.png" />
   </channel>
   <channel id="kltra_11b364a5-56cd-4445-8def-5985797_s1">
@@ -590,7 +600,7 @@
     <display-name>[S1] Sky Sports Golf</display-name>
     <icon src="/img/cards/247/247-dl-70.jpg?v=6" />
   </channel>
-  <programme start="20261120225242 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s1">
+  <programme start="20261120225814 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s1">
     <title lang="id">⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <title>⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <desc lang="id">🏆 Kompetisi: Bundesliga
@@ -612,7 +622,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ger.1/401884732.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s2">
+  <programme start="20261120225814 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s2">
     <title lang="id">⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <title>⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <desc lang="id">🏆 Kompetisi: Bundesliga
@@ -766,7 +776,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/e7fc7332c62fe8323b14181183de9b4.png" />
   </programme>
-  <programme start="20261120185100 +0700" stop="20261121042242 +0700" channel="kltra_feef96e7-a2fd-48da-992a-ee02f54eb5b7_s1">
+  <programme start="20261120185100 +0700" stop="20261121042814 +0700" channel="kltra_feef96e7-a2fd-48da-992a-ee02f54eb5b7_s1">
     <title lang="id">REPSOL Grand Prix of Portugal</title>
     <title>REPSOL Grand Prix of Portugal</title>
     <desc lang="id">🏆 Kompetisi: REPSOL Grand Prix of Portugal
@@ -777,7 +787,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </programme>
-  <programme start="20261120185100 +0700" stop="20261121042242 +0700" channel="kltra_feef96e7-a2fd-48da-992a-ee02f54eb5b7_s2">
+  <programme start="20261120185100 +0700" stop="20261121042814 +0700" channel="kltra_feef96e7-a2fd-48da-992a-ee02f54eb5b7_s2">
     <title lang="id">REPSOL Grand Prix of Portugal</title>
     <title>REPSOL Grand Prix of Portugal</title>
     <desc lang="id">🏆 Kompetisi: REPSOL Grand Prix of Portugal
@@ -788,7 +798,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </programme>
-  <programme start="20261120172500 +0700" stop="20261121042242 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s1">
+  <programme start="20261120172500 +0700" stop="20261121042814 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s1">
     <title lang="id">ATP Finals</title>
     <title>ATP Finals</title>
     <desc lang="id">🏆 Kompetisi: ATP Finals
@@ -799,7 +809,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Tennis.png" />
   </programme>
-  <programme start="20261120172500 +0700" stop="20261121042242 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s2">
+  <programme start="20261120172500 +0700" stop="20261121042814 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s2">
     <title lang="id">ATP Finals</title>
     <title>ATP Finals</title>
     <desc lang="id">🏆 Kompetisi: ATP Finals
@@ -809,6 +819,17 @@
 📡 Jalur: [S2] - Kltra - HD AUTO</desc>
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Tennis.png" />
+  </programme>
+  <programme start="20261121005500 +0700" stop="20261121042500 +0700" channel="kltra_liveevents_43518768_s1">
+    <title lang="id">Ondrej Kadavy vs Lukas Soucek</title>
+    <title>Ondrej Kadavy vs Lukas Soucek</title>
+    <desc lang="id">🏆 Kompetisi: TT Cup
+⚔️ Pertandingan: Ondrej Kadavy vs Lukas Soucek
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 00:55 WIB
+📡 Jalur: [S1] - Kltra - S1</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
   </programme>
   <programme start="20261121004500 +0700" stop="20261121041500 +0700" channel="kltra_liveevents_43539200_s1">
     <title lang="id">Tomas Hanke vs Jachym Juppa</title>
@@ -821,13 +842,24 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
   </programme>
-  <programme start="20261121004000 +0700" stop="20261121041000 +0700" channel="kltra_liveevents_43487945_s1">
-    <title lang="id">Volodymyr Voronenkov vs Vladyslav Mishchenko</title>
-    <title>Volodymyr Voronenkov vs Vladyslav Mishchenko</title>
+  <programme start="20261121003500 +0700" stop="20261121040500 +0700" channel="kltra_liveevents_43521946_s1">
+    <title lang="id">Yaroslav Kravets vs Valerii Vlasenko</title>
+    <title>Yaroslav Kravets vs Valerii Vlasenko</title>
     <desc lang="id">🏆 Kompetisi: Men Setka Cup
-⚔️ Pertandingan: Volodymyr Voronenkov vs Vladyslav Mishchenko
+⚔️ Pertandingan: Yaroslav Kravets vs Valerii Vlasenko
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 00:40 WIB
+⏰ Kickoff: 00:35 WIB
+📡 Jalur: [S1] - Kltra - S1</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
+  </programme>
+  <programme start="20261121003500 +0700" stop="20261121040500 +0700" channel="kltra_liveevents_43488540_s1">
+    <title lang="id">Hanna Lapa vs Anna Gorchakova</title>
+    <title>Hanna Lapa vs Anna Gorchakova</title>
+    <desc lang="id">🏆 Kompetisi: Women Setka Cup
+⚔️ Pertandingan: Hanna Lapa vs Anna Gorchakova
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 00:35 WIB
 📡 Jalur: [S1] - Kltra - S1</desc>
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
@@ -1382,7 +1414,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Volleyball.png" />
   </programme>
-  <programme start="20261120190000 +0700" stop="20261121042242 +0700" channel="od_cr-india-a-nepal-a_s1">
+  <programme start="20261120190000 +0700" stop="20261121042814 +0700" channel="od_cr-india-a-nepal-a_s1">
     <title lang="id">india a vs nepal a</title>
     <title>india a vs nepal a</title>
     <desc lang="id">🏆 Kompetisi: acc men's asia cup rising stars 2026
@@ -1393,7 +1425,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/24734775b744f0e8.jpg?v=3nf.t2s" />
   </programme>
-  <programme start="20261120151000 +0700" stop="20261121042242 +0700" channel="od_cr-adelaide-w-melbourne-renegades-w_s1">
+  <programme start="20261120151000 +0700" stop="20261121042814 +0700" channel="od_cr-adelaide-w-melbourne-renegades-w_s1">
     <title lang="id">adelaide w vs melbourne renegades w</title>
     <title>adelaide w vs melbourne renegades w</title>
     <desc lang="id">🏆 Kompetisi: big bash league women
@@ -1404,7 +1436,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/0eba6558e4f45d7f.jpg?v=3nf.t2" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121010000 +0700" channel="kltra_a27c2dd1-78fa-413d-9efe-5968876_s1">
+  <programme start="20261120225814 +0700" stop="20261121010000 +0700" channel="kltra_a27c2dd1-78fa-413d-9efe-5968876_s1">
     <title lang="id">⏳ Kickoff 01:00 WIB: AGF Aarhus vs Lyngby BK</title>
     <title>⏳ Kickoff 01:00 WIB: AGF Aarhus vs Lyngby BK</title>
     <desc lang="id">🏆 Kompetisi: Danish Premier League
@@ -1426,7 +1458,29 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/a22fa027423c41949974b3717cdbd6bb.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121010000 +0700" channel="kltra_11dfec5f-1f9c-42dd-81d2-5974188_s1">
+  <programme start="20261120225814 +0700" stop="20261121010000 +0700" channel="kltra_a27c2dd1-78fa-413d-9efe-5968876_s2">
+    <title lang="id">⏳ Kickoff 01:00 WIB: AGF Aarhus vs Lyngby BK</title>
+    <title>⏳ Kickoff 01:00 WIB: AGF Aarhus vs Lyngby BK</title>
+    <desc lang="id">🏆 Kompetisi: Danish Premier League
+⚔️ Pertandingan: AGF Aarhus vs Lyngby BK
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 01:00 WIB
+📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.312977.com/data/a22fa027423c41949974b3717cdbd6bb.png" />
+  </programme>
+  <programme start="20261121010000 +0700" stop="20261121043000 +0700" channel="kltra_a27c2dd1-78fa-413d-9efe-5968876_s2">
+    <title lang="id">AGF Aarhus vs Lyngby BK</title>
+    <title>AGF Aarhus vs Lyngby BK</title>
+    <desc lang="id">🏆 Kompetisi: Danish Premier League
+⚔️ Pertandingan: AGF Aarhus vs Lyngby BK
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 01:00 WIB
+📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.312977.com/data/a22fa027423c41949974b3717cdbd6bb.png" />
+  </programme>
+  <programme start="20261120225814 +0700" stop="20261121010000 +0700" channel="kltra_11dfec5f-1f9c-42dd-81d2-5974188_s1">
     <title lang="id">⏳ Kickoff 01:00 WIB: TSV Havelse vs FC Viktoria Cologne</title>
     <title>⏳ Kickoff 01:00 WIB: TSV Havelse vs FC Viktoria Cologne</title>
     <desc lang="id">🏆 Kompetisi: Germany 3. Liga
@@ -1448,7 +1502,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/9df9c660a0a46780c16bd69af00a5358.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121010000 +0700" channel="kltra_f9f28dd9-d029-4e90-bd95-5977334_s1">
+  <programme start="20261120225814 +0700" stop="20261121010000 +0700" channel="kltra_f9f28dd9-d029-4e90-bd95-5977334_s1">
     <title lang="id">⏳ Kickoff 01:00 WIB: Molde FK vs Bodo/Glimt</title>
     <title>⏳ Kickoff 01:00 WIB: Molde FK vs Bodo/Glimt</title>
     <desc lang="id">🏆 Kompetisi: Norwegian National Championship
@@ -1470,14 +1524,36 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/3d934a5a9bac91b22c72c57212d70a0f.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121010000 +0700" channel="kltra_722115e2-84eb-4ebd-af19-5979582_s1">
+  <programme start="20261120225814 +0700" stop="20261121010000 +0700" channel="kltra_f9f28dd9-d029-4e90-bd95-5977334_s2">
+    <title lang="id">⏳ Kickoff 01:00 WIB: Molde FK vs Bodo/Glimt</title>
+    <title>⏳ Kickoff 01:00 WIB: Molde FK vs Bodo/Glimt</title>
+    <desc lang="id">🏆 Kompetisi: Norwegian National Championship
+⚔️ Pertandingan: Molde FK vs Bodo/Glimt
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 01:00 WIB
+📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.312977.com/data/3d934a5a9bac91b22c72c57212d70a0f.png" />
+  </programme>
+  <programme start="20261121010000 +0700" stop="20261121043000 +0700" channel="kltra_f9f28dd9-d029-4e90-bd95-5977334_s2">
+    <title lang="id">Molde FK vs Bodo/Glimt</title>
+    <title>Molde FK vs Bodo/Glimt</title>
+    <desc lang="id">🏆 Kompetisi: Norwegian National Championship
+⚔️ Pertandingan: Molde FK vs Bodo/Glimt
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 01:00 WIB
+📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://s.312977.com/data/3d934a5a9bac91b22c72c57212d70a0f.png" />
+  </programme>
+  <programme start="20261120225814 +0700" stop="20261121010000 +0700" channel="kltra_722115e2-84eb-4ebd-af19-5979582_s1">
     <title lang="id">⏳ Kickoff 01:00 WIB: Aarhus Fremad vs Hobro IK</title>
     <title>⏳ Kickoff 01:00 WIB: Aarhus Fremad vs Hobro IK</title>
     <desc lang="id">🏆 Kompetisi: Danish First Division
 ⚔️ Pertandingan: Aarhus Fremad vs Hobro IK
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/ded27fcbc84e4d38678d6170e7c6588e.png" />
   </programme>
@@ -1488,40 +1564,18 @@
 ⚔️ Pertandingan: Aarhus Fremad vs Hobro IK
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/ded27fcbc84e4d38678d6170e7c6588e.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121010000 +0700" channel="kltra_722115e2-84eb-4ebd-af19-5979582_s2">
-    <title lang="id">⏳ Kickoff 01:00 WIB: Aarhus Fremad vs Hobro IK</title>
-    <title>⏳ Kickoff 01:00 WIB: Aarhus Fremad vs Hobro IK</title>
-    <desc lang="id">🏆 Kompetisi: Danish First Division
-⚔️ Pertandingan: Aarhus Fremad vs Hobro IK
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.312977.com/data/ded27fcbc84e4d38678d6170e7c6588e.png" />
-  </programme>
-  <programme start="20261121010000 +0700" stop="20261121043000 +0700" channel="kltra_722115e2-84eb-4ebd-af19-5979582_s2">
-    <title lang="id">Aarhus Fremad vs Hobro IK</title>
-    <title>Aarhus Fremad vs Hobro IK</title>
-    <desc lang="id">🏆 Kompetisi: Danish First Division
-⚔️ Pertandingan: Aarhus Fremad vs Hobro IK
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.312977.com/data/ded27fcbc84e4d38678d6170e7c6588e.png" />
-  </programme>
-  <programme start="20261120225242 +0700" stop="20261121010000 +0700" channel="kltra_1ad47f59-840a-4bf9-b83e-5979584_s1">
+  <programme start="20261120225814 +0700" stop="20261121010000 +0700" channel="kltra_1ad47f59-840a-4bf9-b83e-5979584_s1">
     <title lang="id">⏳ Kickoff 01:00 WIB: Kolding IF vs Aalborg BK</title>
     <title>⏳ Kickoff 01:00 WIB: Kolding IF vs Aalborg BK</title>
     <desc lang="id">🏆 Kompetisi: Danish First Division
 ⚔️ Pertandingan: Kolding IF vs Aalborg BK
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/9bcd02572d03a45dfd92bff610fa4764.png" />
   </programme>
@@ -1532,33 +1586,11 @@
 ⚔️ Pertandingan: Kolding IF vs Aalborg BK
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/9bcd02572d03a45dfd92bff610fa4764.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121010000 +0700" channel="kltra_1ad47f59-840a-4bf9-b83e-5979584_s2">
-    <title lang="id">⏳ Kickoff 01:00 WIB: Kolding IF vs Aalborg BK</title>
-    <title>⏳ Kickoff 01:00 WIB: Kolding IF vs Aalborg BK</title>
-    <desc lang="id">🏆 Kompetisi: Danish First Division
-⚔️ Pertandingan: Kolding IF vs Aalborg BK
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.312977.com/data/9bcd02572d03a45dfd92bff610fa4764.png" />
-  </programme>
-  <programme start="20261121010000 +0700" stop="20261121043000 +0700" channel="kltra_1ad47f59-840a-4bf9-b83e-5979584_s2">
-    <title lang="id">Kolding IF vs Aalborg BK</title>
-    <title>Kolding IF vs Aalborg BK</title>
-    <desc lang="id">🏆 Kompetisi: Danish First Division
-⚔️ Pertandingan: Kolding IF vs Aalborg BK
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 01:00 WIB
-📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.312977.com/data/9bcd02572d03a45dfd92bff610fa4764.png" />
-  </programme>
-  <programme start="20261120225242 +0700" stop="20261121010400 +0700" channel="kltra_11b364a5-56cd-4445-8def-5985797_s1">
+  <programme start="20261120225814 +0700" stop="20261121010400 +0700" channel="kltra_11b364a5-56cd-4445-8def-5985797_s1">
     <title lang="id">⏳ Kickoff 01:04 WIB: Jamtland Basket vs Norrkoping Dolphins</title>
     <title>⏳ Kickoff 01:04 WIB: Jamtland Basket vs Norrkoping Dolphins</title>
     <desc lang="id">🏆 Kompetisi: Swedish Basketball League
@@ -1580,7 +1612,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/bf51172f3aaba971ba0242a0908596a8.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121013000 +0700" channel="bs_heracles-vs-jong-psv-u21-202611201830_s1">
+  <programme start="20261120225814 +0700" stop="20261121013000 +0700" channel="bs_heracles-vs-jong-psv-u21-202611201830_s1">
     <title lang="id">⏳ Kickoff 01:30 WIB: Heracles vs Jong PSV U21</title>
     <title>⏳ Kickoff 01:30 WIB: Heracles vs Jong PSV U21</title>
     <desc lang="id">🏆 Kompetisi: Eerste Divisie
@@ -1602,7 +1634,7 @@
     <category lang="id">Sports</category>
     <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/206.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121013000 +0700" channel="bs_fc-volendam-vs-jong-ajax-202611201830_s1">
+  <programme start="20261120225814 +0700" stop="20261121013000 +0700" channel="bs_fc-volendam-vs-jong-ajax-202611201830_s1">
     <title lang="id">⏳ Kickoff 01:30 WIB: FC Volendam vs Jong Ajax</title>
     <title>⏳ Kickoff 01:30 WIB: FC Volendam vs Jong Ajax</title>
     <desc lang="id">🏆 Kompetisi: Eerste Divisie
@@ -1624,7 +1656,7 @@
     <category lang="id">Sports</category>
     <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/416.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-67a877b314_s1">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-67a877b314_s1">
     <title lang="id">⏳ Kickoff 02:00 WIB: Annecy vs Clermont Foot</title>
     <title>⏳ Kickoff 02:00 WIB: Annecy vs Clermont Foot</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1646,7 +1678,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876691.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-67a877b314_s2">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-67a877b314_s2">
     <title lang="id">⏳ Kickoff 02:00 WIB: Annecy vs Clermont Foot</title>
     <title>⏳ Kickoff 02:00 WIB: Annecy vs Clermont Foot</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1668,7 +1700,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876691.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-b569873c70_s1">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-b569873c70_s1">
     <title lang="id">⏳ Kickoff 02:00 WIB: AS Nancy Lorraine vs Dijon FCO</title>
     <title>⏳ Kickoff 02:00 WIB: AS Nancy Lorraine vs Dijon FCO</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1690,7 +1722,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876687.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-b569873c70_s2">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-b569873c70_s2">
     <title lang="id">⏳ Kickoff 02:00 WIB: AS Nancy Lorraine vs Dijon FCO</title>
     <title>⏳ Kickoff 02:00 WIB: AS Nancy Lorraine vs Dijon FCO</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1712,7 +1744,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876687.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-f63548da2b_s1">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-f63548da2b_s1">
     <title lang="id">⏳ Kickoff 02:00 WIB: Guingamp vs Rodez Aveyron</title>
     <title>⏳ Kickoff 02:00 WIB: Guingamp vs Rodez Aveyron</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1734,7 +1766,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876690.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-f63548da2b_s2">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-f63548da2b_s2">
     <title lang="id">⏳ Kickoff 02:00 WIB: Guingamp vs Rodez Aveyron</title>
     <title>⏳ Kickoff 02:00 WIB: Guingamp vs Rodez Aveyron</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1756,7 +1788,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876690.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-e0a16e175e_s1">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-e0a16e175e_s1">
     <title lang="id">⏳ Kickoff 02:00 WIB: Metz vs Boulogne</title>
     <title>⏳ Kickoff 02:00 WIB: Metz vs Boulogne</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1778,7 +1810,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876688.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-e0a16e175e_s2">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-e0a16e175e_s2">
     <title lang="id">⏳ Kickoff 02:00 WIB: Metz vs Boulogne</title>
     <title>⏳ Kickoff 02:00 WIB: Metz vs Boulogne</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1800,7 +1832,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876688.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-4df07717a8_s1">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-4df07717a8_s1">
     <title lang="id">⏳ Kickoff 02:00 WIB: Red Star FC 93 vs Pau</title>
     <title>⏳ Kickoff 02:00 WIB: Red Star FC 93 vs Pau</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1822,7 +1854,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876685.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-4df07717a8_s2">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-4df07717a8_s2">
     <title lang="id">⏳ Kickoff 02:00 WIB: Red Star FC 93 vs Pau</title>
     <title>⏳ Kickoff 02:00 WIB: Red Star FC 93 vs Pau</title>
     <desc lang="id">🏆 Kompetisi: Ligue 2
@@ -1844,7 +1876,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.2/401876685.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-3350042065_s1">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-3350042065_s1">
     <title lang="id">⏳ Kickoff 02:00 WIB: FC Den Bosch vs VVV-Venlo</title>
     <title>⏳ Kickoff 02:00 WIB: FC Den Bosch vs VVV-Venlo</title>
     <desc lang="id">🏆 Kompetisi: Eerste Divisie
@@ -1866,7 +1898,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ned.2/401875844.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="od_mm-own-3350042065_s2">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="od_mm-own-3350042065_s2">
     <title lang="id">⏳ Kickoff 02:00 WIB: FC Den Bosch vs VVV-Venlo</title>
     <title>⏳ Kickoff 02:00 WIB: FC Den Bosch vs VVV-Venlo</title>
     <desc lang="id">🏆 Kompetisi: Eerste Divisie
@@ -1888,7 +1920,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ned.2/401875844.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121020000 +0700" channel="bs_fc-andorra-vs-leganes-202611221530_s1">
+  <programme start="20261120225814 +0700" stop="20261121020000 +0700" channel="bs_fc-andorra-vs-leganes-202611221530_s1">
     <title lang="id">⏳ Kickoff 02:00 WIB: FC Andorra vs Leganes</title>
     <title>⏳ Kickoff 02:00 WIB: FC Andorra vs Leganes</title>
     <desc lang="id">🏆 Kompetisi: Segunda División
@@ -1910,7 +1942,7 @@
     <category lang="id">Sports</category>
     <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/8157.png" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121021500 +0700" channel="od_mm-el-E2026-130_s1">
+  <programme start="20261120225814 +0700" stop="20261121021500 +0700" channel="od_mm-el-E2026-130_s1">
     <title lang="id">⏳ Kickoff 02:15 WIB: Olympiacos Piraeus vs Real Madrid</title>
     <title>⏳ Kickoff 02:15 WIB: Olympiacos Piraeus vs Real Madrid</title>
     <desc lang="id">🏆 Kompetisi: EuroLeague
@@ -1932,7 +1964,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/chlogos/el4-E2026-130.jpg" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121023000 +0700" channel="od_mm-el-E2026-128_s1">
+  <programme start="20261120225814 +0700" stop="20261121023000 +0700" channel="od_mm-el-E2026-128_s1">
     <title lang="id">⏳ Kickoff 02:30 WIB: FC Barcelona vs Crvena Zvezda Meridianbet Belgrade</title>
     <title>⏳ Kickoff 02:30 WIB: FC Barcelona vs Crvena Zvezda Meridianbet Belgrade</title>
     <desc lang="id">🏆 Kompetisi: EuroLeague
@@ -1954,7 +1986,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/chlogos/el4-E2026-128.jpg" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121023000 +0700" channel="od_mm-own-ea37d7a842_s1">
+  <programme start="20261120225814 +0700" stop="20261121023000 +0700" channel="od_mm-own-ea37d7a842_s1">
     <title lang="id">⏳ Kickoff 02:30 WIB: Bayern Munich vs FC Cologne</title>
     <title>⏳ Kickoff 02:30 WIB: Bayern Munich vs FC Cologne</title>
     <desc lang="id">🏆 Kompetisi: Bundesliga
@@ -1976,7 +2008,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ger.1/401884736.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121023000 +0700" channel="od_mm-own-ea37d7a842_s2">
+  <programme start="20261120225814 +0700" stop="20261121023000 +0700" channel="od_mm-own-ea37d7a842_s2">
     <title lang="id">⏳ Kickoff 02:30 WIB: Bayern Munich vs FC Cologne</title>
     <title>⏳ Kickoff 02:30 WIB: Bayern Munich vs FC Cologne</title>
     <desc lang="id">🏆 Kompetisi: Bundesliga
@@ -1998,7 +2030,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ger.1/401884736.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121023000 +0700" channel="od_mm-own-cfc9b25d1b_s1">
+  <programme start="20261120225814 +0700" stop="20261121023000 +0700" channel="od_mm-own-cfc9b25d1b_s1">
     <title lang="id">⏳ Kickoff 02:30 WIB: Hellas Verona vs Cesena</title>
     <title>⏳ Kickoff 02:30 WIB: Hellas Verona vs Cesena</title>
     <desc lang="id">🏆 Kompetisi: Serie B
@@ -2020,7 +2052,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ita.2/401899543.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121024500 +0700" channel="od_mm-el-E2026-129_s1">
+  <programme start="20261120225814 +0700" stop="20261121024500 +0700" channel="od_mm-el-E2026-129_s1">
     <title lang="id">⏳ Kickoff 02:45 WIB: Partizan Mozzart Bet Belgrade vs Besiktas Fuzul Istanbul</title>
     <title>⏳ Kickoff 02:45 WIB: Partizan Mozzart Bet Belgrade vs Besiktas Fuzul Istanbul</title>
     <desc lang="id">🏆 Kompetisi: EuroLeague
@@ -2042,7 +2074,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/chlogos/el4-E2026-129.jpg" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121024500 +0700" channel="od_mm-own-0b22df16c2_s1">
+  <programme start="20261120225814 +0700" stop="20261121024500 +0700" channel="od_mm-own-0b22df16c2_s1">
     <title lang="id">⏳ Kickoff 02:45 WIB: Troyes vs Le Havre AC</title>
     <title>⏳ Kickoff 02:45 WIB: Troyes vs Le Havre AC</title>
     <desc lang="id">🏆 Kompetisi: Ligue 1
@@ -2064,7 +2096,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.1/401876395.jpg?v=blu1nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121024500 +0700" channel="od_mm-own-0b22df16c2_s2">
+  <programme start="20261120225814 +0700" stop="20261121024500 +0700" channel="od_mm-own-0b22df16c2_s2">
     <title lang="id">⏳ Kickoff 02:45 WIB: Troyes vs Le Havre AC</title>
     <title>⏳ Kickoff 02:45 WIB: Troyes vs Le Havre AC</title>
     <desc lang="id">🏆 Kompetisi: Ligue 1
@@ -2086,7 +2118,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/fra.1/401876395.jpg?v=blu1nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121024500 +0700" channel="od_mm-own-4b602c349b_s1">
+  <programme start="20261120225814 +0700" stop="20261121024500 +0700" channel="od_mm-own-4b602c349b_s1">
     <title lang="id">⏳ Kickoff 02:45 WIB: Cercle Brugge KSV vs KVC Westerlo</title>
     <title>⏳ Kickoff 02:45 WIB: Cercle Brugge KSV vs KVC Westerlo</title>
     <desc lang="id">🏆 Kompetisi: Belgian Pro League
@@ -2108,7 +2140,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/bel.1/401878937.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121030000 +0700" channel="od_mm-own-2a023fc20b_s1">
+  <programme start="20261120225814 +0700" stop="20261121030000 +0700" channel="od_mm-own-2a023fc20b_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Athletic Club vs Espanyol</title>
     <title>⏳ Kickoff 03:00 WIB: Athletic Club vs Espanyol</title>
     <desc lang="id">🏆 Kompetisi: LaLiga
@@ -2130,7 +2162,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/esp.1/401882805.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121030000 +0700" channel="od_mm-own-2a023fc20b_s2">
+  <programme start="20261120225814 +0700" stop="20261121030000 +0700" channel="od_mm-own-2a023fc20b_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Athletic Club vs Espanyol</title>
     <title>⏳ Kickoff 03:00 WIB: Athletic Club vs Espanyol</title>
     <desc lang="id">🏆 Kompetisi: LaLiga
@@ -2152,7 +2184,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/esp.1/401882805.jpg?v=3nf" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121030000 +0700" channel="od_mm-own-6a22c3537e_s1">
+  <programme start="20261120225814 +0700" stop="20261121030000 +0700" channel="od_mm-own-6a22c3537e_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Barnsley vs Sheffield Wednesday</title>
     <title>⏳ Kickoff 03:00 WIB: Barnsley vs Sheffield Wednesday</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -2174,7 +2206,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/ccmfdn1782465842.jpg" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121030000 +0700" channel="od_mm-own-6a22c3537e_s2">
+  <programme start="20261120225814 +0700" stop="20261121030000 +0700" channel="od_mm-own-6a22c3537e_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Barnsley vs Sheffield Wednesday</title>
     <title>⏳ Kickoff 03:00 WIB: Barnsley vs Sheffield Wednesday</title>
     <desc lang="id">🏆 Kompetisi: League One
@@ -2196,7 +2228,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/ccmfdn1782465842.jpg" />
   </programme>
-  <programme start="20261120225242 +0700" stop="20261121040000 +0700" channel="od_mm-own-8a32d5539a_s1">
+  <programme start="20261120225814 +0700" stop="20261121040000 +0700" channel="od_mm-own-8a32d5539a_s1">
     <title lang="id">⏳ Kickoff 04:00 WIB: Cobresal vs Audax Italiano</title>
     <title>⏳ Kickoff 04:00 WIB: Cobresal vs Audax Italiano</title>
     <desc lang="id">🏆 Kompetisi: Chilean Primera
