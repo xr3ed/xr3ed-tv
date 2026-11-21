@@ -1,5 +1,5 @@
-#EXTM3U url-tvg="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml?t=1795260509" x-tvg-url="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml?t=1795260509"
-# XR3ED LIVE SPORTS PLAYLIST — Updated: 2026-11-21 18:28 WIB
+#EXTM3U url-tvg="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml?t=1795260811" x-tvg-url="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/xr3edtv-liveevent.xml?t=1795260811"
+# XR3ED LIVE SPORTS PLAYLIST — Updated: 2026-11-21 18:33 WIB
 # Categories: 📢 INFO | 🇮🇩 Indonesia | 🔥 Hot Event | 🔴 Live Event | ⏳ Upcoming Event | ⚽ 24/7 Sports Channels
 
 #EXTINF:-1 tvg-id="xr3ed-telegram" tvg-name="📢 Gabung Telegram: t.me/CloudstreamXR" tvg-logo="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/telegram.png" group-title="📢 INFO",📢 Gabung Telegram: t.me/CloudstreamXR
@@ -7,6 +7,17 @@ https://t.me/CloudstreamXR
 
 #EXTINF:-1 tvg-id="xr3ed-coffee" tvg-name="☕ Traktir Kopi: lynk.id/xr3ed" tvg-logo="https://raw.githubusercontent.com/xr3ed/xr3ed-tv/main/assets/coffee.png" group-title="📢 INFO",☕ Traktir Kopi: lynk.id/xr3ed
 https://lynk.id/xr3ed
+
+#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s1" tvg-name="🔴 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🇮🇩 Indonesia",🔴 [S1] Bundesliga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/cYFk_UqBrTh0xtSUKbPOzXgvGU0C1yeBpEeFTlXwZSlQgFYxmw7XdOgdPAPL.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s2" tvg-name="🔴 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🇮🇩 Indonesia",🔴 [S2] Bundesliga
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Bundesliga-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
 
 #EXTINF:-1 tvg-id="kltra_75582191-a218-4339-94d9-83b07959e3a6_s1" tvg-name="⏳ 19:00 [S1] BRI Super League" tvg-logo="https://ssl.gstatic.com/onebox/media/sports/logos/1-PbIEfjB_RIrtqlxGEK7w_96x96.png" group-title="🇮🇩 Indonesia",⏳ 19:00 [S1] BRI Super League
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
@@ -18,38 +29,71 @@ https://live2.jorvakstreamcache.com/live/channel20.m3u8
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
 https://live2.jorvakstreamcache.com/live/channel7.m3u8
 
-#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s1" tvg-name="⏳ 19:00 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🇮🇩 Indonesia",⏳ 19:00 [S1] Bundesliga
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/F1HEzSvdSpG8D_VQj1b4_MbRm0DE0PgUt6yaFhFXQMpWvOBZXwBhio1Z71i4.m3u8
-
-#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s2" tvg-name="⏳ 19:00 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🇮🇩 Indonesia",⏳ 19:00 [S2] Bundesliga
-#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/Sky-Bundesliga-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
-
 #EXTINF:-1 tvg-id="od_mm-own-6749873543_s1" tvg-name="⏳ 21:30 [S1] Bundesliga" tvg-logo="/img/cards/ger.1/401884732.jpg?v=3nf" group-title="🇮🇩 Indonesia",⏳ 21:30 [S1] Bundesliga
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/7aPB3y8zqwqzZuUGP509969cm5-2waGk2LFgKta1eKMqZPBIYc0VPVcmnDLI.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/F2CxDmhY5KrjX95p70wtt7eKohIi8hubAyin7g3wjzwWsIz2LDNyXoy3IiGq.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-6749873543_s2" tvg-name="⏳ 21:30 [S2] Bundesliga" tvg-logo="/img/cards/ger.1/401884732.jpg?v=3nf" group-title="🇮🇩 Indonesia",⏳ 21:30 [S2] Bundesliga
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/Sky-Bundesliga-4/index.jpg
+https://enewl.greenvora.net/Sky-Bundesliga-4/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
 
 #EXTINF:-1 tvg-id="od_mm-own-60c8ecc8d2_s1" tvg-name="⏳ 22/11 03:30 [S1] Liga 1" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/id9x821784358792.jpg" group-title="🇮🇩 Indonesia",⏳ 22/11 03:30 [S1] Liga 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/2rW9Jpnww6X3VNXS9Iy6cLwG6n43wil5X3_p5x2WqsYuPwlWaAW3vtVEtO67.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/fwOVuMJXF-AjbnLsmNXHRTXGGhstJKxucPrvAFGYKj6U7mbW3JdVQo8QPKvg.m3u8
 
 #EXTINF:-1 tvg-id="bs_1-fc-kaiserslautern-vs-dynamo-dresden-202611211200_s1" tvg-name="⏳ 22/11 19:00 [S1] Bundesliga" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/745.png" group-title="🇮🇩 Indonesia",⏳ 22/11 19:00 [S1] Bundesliga
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
 https://enewl.greenvora.net/Sky-Bundesliga-2/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
+
+#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s1" tvg-name="🔴 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🔥 Hot Event",🔴 [S1] Bundesliga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/cYFk_UqBrTh0xtSUKbPOzXgvGU0C1yeBpEeFTlXwZSlQgFYxmw7XdOgdPAPL.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s2" tvg-name="🔴 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🔥 Hot Event",🔴 [S2] Bundesliga
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Bundesliga-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
+
+#EXTINF:-1 tvg-id="od_mm-own-80f0c381cb_s1" tvg-name="🔴 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885054.jpg?v=3nf" group-title="🔥 Hot Event",🔴 [S1] Bundesliga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/noxS1y5nCauWk03VXsSo2sbfkieG-mcM6KNLEX9SWMBxu6PWInKe_syCwmGt.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-80f0c381cb_s2" tvg-name="🔴 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885054.jpg?v=3nf" group-title="🔥 Hot Event",🔴 [S2] Bundesliga
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Bundesliga-4/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
+
+#EXTINF:-1 tvg-id="od_mm-own-dcf72fc863_s1" tvg-name="🔴 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885056.jpg?v=3nf" group-title="🔥 Hot Event",🔴 [S1] Bundesliga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/FFiQ5bQGB6mUe55uY0leDD9wrtXC9W4fVzequfNr7nGhicjzuOf1rUDxauRH.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-dcf72fc863_s2" tvg-name="🔴 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885056.jpg?v=3nf" group-title="🔥 Hot Event",🔴 [S2] Bundesliga
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Bundesliga-3/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
+
+#EXTINF:-1 tvg-id="kltra_e503b246-2ab4-4350-a6fd-6007504_s1" tvg-name="🔴 [S1] Serie A" tvg-logo="https://s.312977.com/data/c993b321e982721067b3e43bc659b1d3.png" group-title="🔥 Hot Event",🔴 [S1] Serie A
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/0GoV2PcALOozQjR-WDoSK9UV0EDbO4z0DpnRvbw-lGJvYvCYJYV_mh4r88oi.m3u8
+
+#EXTINF:-1 tvg-id="kltra_e503b246-2ab4-4350-a6fd-6007504_s2" tvg-name="🔴 [S2] Serie A" tvg-logo="https://s.312977.com/data/c993b321e982721067b3e43bc659b1d3.png" group-title="🔥 Hot Event",🔴 [S2] Serie A
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-1-4595254.m3u8?txSecret=ac9e3434d60ed9acc6b4f2df07498a5e&txTime=6B0192A9
 
 #EXTINF:-1 tvg-id="kltra_a3db6e68-ed9d-4a7d-9cfe-6008159_s1" tvg-name="🔴 [S1] EPL" tvg-logo="https://s.312977.com/data/5bb6233f3e1433c632feeec56ee66c.png" group-title="🔥 Hot Event",🔴 [S1] EPL
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -76,15 +120,21 @@ https://live.vivo155.com/live/sd-1-4569724.m3u8?txSecret=3724f9ee3bc5c325c48e17e
 https://live.vivo155.com/live/sd-1-4502980.m3u8?txSecret=0dda8a6601b81b42fff8b44511ee6ff9&txTime=6B018B9A
 
 #EXTINF:-1 tvg-id="kltra_f9ab3070-91d6-4ef6-8a56-6008160_s1" tvg-name="🔴 [S1] EPL" tvg-logo="https://s.312977.com/data/e38fc567c2b859fe44554be7b4fe9aff.png" group-title="🔥 Hot Event",🔴 [S1] EPL
-#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-referrer=https://live.kltratv.site/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-1-4502976.m3u8?txSecret=bb3460e3b817e88be5b0021c7ecb38f9&txTime=6B018BF5
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://live.kltratv.site/"}
+https://pul-tenm.gkykp.com/live/sd-1-4502976.m3u8?txSecret=65c9e67438f95b9500e9dbb0947fba53&txTime=6B02C771
+
+#EXTINF:-1 tvg-id="kltra_f9ab3070-91d6-4ef6-8a56-6008160_s2" tvg-name="🔴 [S2] EPL" tvg-logo="https://s.312977.com/data/e38fc567c2b859fe44554be7b4fe9aff.png" group-title="🔥 Hot Event",🔴 [S2] EPL
+#EXTVLCOPT:http-referrer=https://live.kltratv.site/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://live.kltratv.site/"}
+https://pul-tenm.gkykp.com/live/sd-1-4502976.m3u8?txSecret=913ef23041e4444e34ae0bb9b5903156&txTime=6B02CC21
 
 #EXTINF:-1 tvg-id="od_mm-own-afae6eb3ec_s1" tvg-name="🔴 [S1] Liga F" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/1jlae31783192091.jpg" group-title="🔥 Hot Event",🔴 [S1] Liga F
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/l7aW2g6vz_D7F3tTdxBhHAydrnCIajX0c5CoYlphXjXT-dY8DB3288Q3u5lU.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/VWbRjgeMdZb2ExRwg9BuAdMq91Pqy3K8TZw8D4yAQePbx6HzfwDNpkoIDf2I.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-afae6eb3ec_s2" tvg-name="🔴 [S2] Liga F" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/1jlae31783192091.jpg" group-title="🔥 Hot Event",🔴 [S2] Liga F
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
@@ -99,10 +149,10 @@ https://enewl.greenvora.net/Premier-Sports-1/index.jpg?fastoken=784fd036-0599-40
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+#KODIPROP:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
 #EXTVLCOPT:inputstream.adaptive.license_type=clearkey
-#EXTVLCOPT:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
-https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd
+#EXTVLCOPT:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
+https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/wjeweupwyc/out/v1/8197c8e055c94a868623653ac55c10bf/cenc.mpd
 
 #EXTINF:-1 tvg-id="kltra_2547d4c7-6fc3-46e3-b294-dd65aa49d30e_s2" tvg-name="🔴 [S2] Sports" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔥 Hot Event",🔴 [S2] Sports
 #EXTVLCOPT:http-referrer=https://live.kltratv.site/
@@ -111,10 +161,10 @@ https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
+#KODIPROP:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
 #EXTVLCOPT:inputstream.adaptive.license_type=clearkey
-#EXTVLCOPT:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
-https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/wjeweupwyc/out/v1/8197c8e055c94a868623653ac55c10bf/cenc.mpd
+#EXTVLCOPT:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd
 
 #EXTINF:-1 tvg-id="kltra_f847b91e-a349-424d-9df1-6008123_s1" tvg-name="🔴 [S1] EPL" tvg-logo="https://s.312977.com/data/730352da125b3d9cb55a6ff3c35de516.png" group-title="🔥 Hot Event",🔴 [S1] EPL
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -155,7 +205,7 @@ https://live.vivo155.com/live/sd-1-4564215.m3u8?txSecret=3ce86056f521a0788a50133
 #EXTINF:-1 tvg-id="od_mm-mot-dl-1fb0c520f1_s1" tvg-name="🔴 [S1] Sports" tvg-logo="/img/chlogos/mot2-0a07d22f71d5.jpg" group-title="🔥 Hot Event",🔴 [S1] Sports
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/iHlbmXOdED2P-IdK0RzHihDoNjSdZYkuOuP6kRx-SW1j7EshoxiOGAorRByCxOJ5.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/op4mHjkKMQa49smNw6-g_kfuC-0kG913wMlEh570KDZjQClT43r9BySM6VHuu579.m3u8
 
 #EXTINF:-1 tvg-id="kltra_4217f960-12be-4936-8a91-5904414_s1" tvg-name="🔴 [S1] Australian Football Champ" tvg-logo="https://s.312977.com/data/c3475cf67f28ec2e2274ada817ad58e8.png" group-title="🔥 Hot Event",🔴 [S1] Australian Football Champ
 #EXTVLCOPT:http-referrer=https://live.kltratv.site/
@@ -167,17 +217,114 @@ https://yallavoide.yalla-shoot-zhubo.com/sport/202_5677547_1.m3u8?auth_key=17953
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/TNT-Sports-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
+https://enewl.greenvora.net/TNT-Sports-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
 
 #EXTINF:-1 tvg-id="kltra_3ba6e989-1f65-472e-9981-cff44d4f942e_c1" tvg-name="🔴 [Court 1] BWF" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" group-title="🔥 Hot Event",🔴 [Court 1] BWF
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
 https://052d33b4b506ff051775da149c5848eb.v.smtcdns.net/play.cbalive.weibisai.com/live/4374824130304061_AiSD.m3u8?txSecret=85e9b1d011bfd97bb046539f5dd44de3&txTime=6B0268C0
 
-#EXTINF:-1 tvg-id="kltra_liveevents_43581873_s1" tvg-name="🔴 [S1] TT Cup" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" group-title="🔴 Live Event",🔴 [S1] TT Cup
+#EXTINF:-1 tvg-id="od_cr-bangladesh-a-afghanistan-a_s1" tvg-name="🔴 [S1] acc men's asia cup rising stars 2026" tvg-logo="/img/cards/m/7a93a4db83822f1a.jpg?v=3nf.t2s" group-title="🔴 Live Event",🔴 [S1] acc men's asia cup rising stars 2026
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://w1.soft4game.com/o18/stream320/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjEvMjAyNiAxMToyNjozNSBBTSZoYXNoX3ZhbHVlPWo5a2ZIYkdSaUwyTEwyaFZFTlJrb0E9PSZ2YWxpZG1pbnV0ZXM9MjAmaWQ9MTg=
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/XNLGVWu2JKYjodXf17gZ88wdlZ5fUIM4hITcm_5q2ClOAOFuidN1qnDruOf_HE-k_VfOKgD6KGC9.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s1" tvg-name="🔴 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🔴 Live Event",🔴 [S1] Bundesliga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/cYFk_UqBrTh0xtSUKbPOzXgvGU0C1yeBpEeFTlXwZSlQgFYxmw7XdOgdPAPL.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s2" tvg-name="🔴 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="🔴 Live Event",🔴 [S2] Bundesliga
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Bundesliga-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
+
+#EXTINF:-1 tvg-id="od_mm-own-80f0c381cb_s1" tvg-name="🔴 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885054.jpg?v=3nf" group-title="🔴 Live Event",🔴 [S1] Bundesliga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/noxS1y5nCauWk03VXsSo2sbfkieG-mcM6KNLEX9SWMBxu6PWInKe_syCwmGt.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-80f0c381cb_s2" tvg-name="🔴 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885054.jpg?v=3nf" group-title="🔴 Live Event",🔴 [S2] Bundesliga
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Bundesliga-4/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
+
+#EXTINF:-1 tvg-id="od_mm-own-dcf72fc863_s1" tvg-name="🔴 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885056.jpg?v=3nf" group-title="🔴 Live Event",🔴 [S1] Bundesliga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/FFiQ5bQGB6mUe55uY0leDD9wrtXC9W4fVzequfNr7nGhicjzuOf1rUDxauRH.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-dcf72fc863_s2" tvg-name="🔴 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885056.jpg?v=3nf" group-title="🔴 Live Event",🔴 [S2] Bundesliga
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Bundesliga-3/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
+
+#EXTINF:-1 tvg-id="kltra_0d184972-4960-4e68-a7a9-5766357_s1" tvg-name="🔴 [S1] VTB United League" tvg-logo="https://s.312977.com/data/ae7164716fc15e5ea2c17d13673ea2b1.png" group-title="🔴 Live Event",🔴 [S1] VTB United League
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-2-3936410.m3u8?txSecret=0166da1117ade84e149119baf049fa79&txTime=6B01927A
+
+#EXTINF:-1 tvg-id="kltra_2d3f7596-da16-47d1-bc0d-6008174_s1" tvg-name="🔴 [S1] CBA" tvg-logo="https://s.312977.com/data/bc293dcb34e233fce004fdc021c8ffbb.png" group-title="🔴 Live Event",🔴 [S1] CBA
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-2-3958898.m3u8?txSecret=a2979be9d6288d0ca438b82311bedf1d&txTime=6B0192AC
+
+#EXTINF:-1 tvg-id="kltra_cdc36a72-3ad6-4af5-845a-6008175_s1" tvg-name="🔴 [S1] CBA" tvg-logo="https://s.312977.com/data/b6f8d391df8b8573e92b9779570b47c2.png" group-title="🔴 Live Event",🔴 [S1] CBA
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-2-3958899.m3u8?txSecret=ad185ba0a1fa4981c047602442c02e35&txTime=6B0192AF
+
+#EXTINF:-1 tvg-id="kltra_50b242a4-05b7-4d58-9d12-6008176_s1" tvg-name="🔴 [S1] CBA" tvg-logo="https://s.312977.com/data/db9e332cf92b86c389b47cb9fb8e6155.png" group-title="🔴 Live Event",🔴 [S1] CBA
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-2-3958900.m3u8?txSecret=12622fa6b801ba995dbaed3545816c0e&txTime=6B019272
+
+#EXTINF:-1 tvg-id="kltra_97823244-644f-4554-8c50-5639696_s1" tvg-name="🔴 [S1] Indian National Champ" tvg-logo="https://s.312977.com/data/f88137aa1d2e8dfbde8b86659d9426bc.png" group-title="🔴 Live Event",🔴 [S1] Indian National Champ
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-1-4655870.m3u8?txSecret=ee8dd05d5ee384007471f486682a9fe5&txTime=6B019275
+
+#EXTINF:-1 tvg-id="kltra_37bd5896-b05c-4ef0-aa3f-5968600_s1" tvg-name="🔴 [S1] Singapore National Champ" tvg-logo="https://s.312977.com/data/5d5834d61cd27d87a699ea2649d12b64.png" group-title="🔴 Live Event",🔴 [S1] Singapore National Champ
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-1-4600618.m3u8?txSecret=0a34aadde135b0a07bb836728e76b535&txTime=6B019278
+
+#EXTINF:-1 tvg-id="kltra_e503b246-2ab4-4350-a6fd-6007504_s1" tvg-name="🔴 [S1] Serie A" tvg-logo="https://s.312977.com/data/c993b321e982721067b3e43bc659b1d3.png" group-title="🔴 Live Event",🔴 [S1] Serie A
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/0GoV2PcALOozQjR-WDoSK9UV0EDbO4z0DpnRvbw-lGJvYvCYJYV_mh4r88oi.m3u8
+
+#EXTINF:-1 tvg-id="kltra_e503b246-2ab4-4350-a6fd-6007504_s2" tvg-name="🔴 [S2] Serie A" tvg-logo="https://s.312977.com/data/c993b321e982721067b3e43bc659b1d3.png" group-title="🔴 Live Event",🔴 [S2] Serie A
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-1-4595254.m3u8?txSecret=ac9e3434d60ed9acc6b4f2df07498a5e&txTime=6B0192A9
+
+#EXTINF:-1 tvg-id="kltra_140b2f08-4fce-486c-a3ac-6008166_s1" tvg-name="🔴 [S1] Thai League 1" tvg-logo="https://s.312977.com/8d595f9a34dcdf871aee96a6dc173d74.png" group-title="🔴 Live Event",🔴 [S1] Thai League 1
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-1-4591798.m3u8?txSecret=7d7239c6542570c01f06f87c65abe538&txTime=6B0192B2
+
+#EXTINF:-1 tvg-id="kltra_6c05b1de-1520-405b-a97e-6008168_s1" tvg-name="🔴 [S1] Thailand Second Division" tvg-logo="https://s.312977.com/data/be5021c997af035021efb66d1b7d937a.png" group-title="🔴 Live Event",🔴 [S1] Thailand Second Division
+#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
+https://live.vivo155.com/live/sd-1-4600377.m3u8?txSecret=94c3885c9dad4c484b362e6a315ace47&txTime=6B01930F
+
+#EXTINF:-1 tvg-id="kltra_liveevents_43547272_s1" tvg-name="🔴 [S1] Men Setka Cup" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" group-title="🔴 Live Event",🔴 [S1] Men Setka Cup
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://w1.soft4game.com/o18/stream319/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjEvMjAyNiAxMTozMToyNSBBTSZoYXNoX3ZhbHVlPW9rZWZxbnVnYkE1ckdKRUZaSE53Rnc9PSZ2YWxpZG1pbnV0ZXM9MjAmaWQ9MTg=
 
 #EXTINF:-1 tvg-id="kltra_652b9cc5-628e-4600-8718-6043979_s1" tvg-name="🔴 [S1] Turkish Basketball Federation" tvg-logo="https://s.312977.com/data/32b5079e6eee1073d7c6f3035b38bde5.png" group-title="🔴 Live Event",🔴 [S1] Turkish Basketball Federation
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -188,12 +335,7 @@ https://live.vivo155.com/live/sd-2-3930418.m3u8?txSecret=59dbd4db38dabafdab4a476
 #EXTINF:-1 tvg-id="kltra_liveevents_43547488_s1" tvg-name="🔴 [S1] Men Setka Cup" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" group-title="🔴 Live Event",🔴 [S1] Men Setka Cup
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://w1.soft4game.com/o18/stream312/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjEvMjAyNiAxMToyNjozNCBBTSZoYXNoX3ZhbHVlPU00Y3dEWHNZVHFtUVNSNnc1bVY5SVE9PSZ2YWxpZG1pbnV0ZXM9MjAmaWQ9MTg=
-
-#EXTINF:-1 tvg-id="kltra_liveevents_43547093_s1" tvg-name="🔴 [S1] Men Setka Cup" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" group-title="🔴 Live Event",🔴 [S1] Men Setka Cup
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://w1.soft4game.com/o18/stream552/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjEvMjAyNiAxMToyNjozNiBBTSZoYXNoX3ZhbHVlPVIxZ3I4aWp3dFlTTVhOQktkQXlrMEE9PSZ2YWxpZG1pbnV0ZXM9MjAmaWQ9MTg=
+https://w1.soft4game.com/o18/stream312/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjEvMjAyNiAxMTozMToyNSBBTSZoYXNoX3ZhbHVlPW9rZWZxbnVnYkE1ckdKRUZaSE53Rnc9PSZ2YWxpZG1pbnV0ZXM9MjAmaWQ9MTg=
 
 #EXTINF:-1 tvg-id="kltra_ee7fb851-1456-4018-aff3-6008157_s1" tvg-name="🔴 [S1] Portuguese Football Cup" tvg-logo="https://s.312977.com/data/c2d20d19c4c8cbc388b16d06ae889ba6.png" group-title="🔴 Live Event",🔴 [S1] Portuguese Football Cup
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -280,15 +422,21 @@ https://live.vivo155.com/live/sd-1-4636610.m3u8?txSecret=fa773c68e3d259f243f6edc
 https://live.vivo155.com/live/sd-1-4502980.m3u8?txSecret=0dda8a6601b81b42fff8b44511ee6ff9&txTime=6B018B9A
 
 #EXTINF:-1 tvg-id="kltra_f9ab3070-91d6-4ef6-8a56-6008160_s1" tvg-name="🔴 [S1] EPL" tvg-logo="https://s.312977.com/data/e38fc567c2b859fe44554be7b4fe9aff.png" group-title="🔴 Live Event",🔴 [S1] EPL
-#EXTVLCOPT:http-referrer=https://player.online909.com/
+#EXTVLCOPT:http-referrer=https://live.kltratv.site/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-1-4502976.m3u8?txSecret=bb3460e3b817e88be5b0021c7ecb38f9&txTime=6B018BF5
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://live.kltratv.site/"}
+https://pul-tenm.gkykp.com/live/sd-1-4502976.m3u8?txSecret=65c9e67438f95b9500e9dbb0947fba53&txTime=6B02C771
+
+#EXTINF:-1 tvg-id="kltra_f9ab3070-91d6-4ef6-8a56-6008160_s2" tvg-name="🔴 [S2] EPL" tvg-logo="https://s.312977.com/data/e38fc567c2b859fe44554be7b4fe9aff.png" group-title="🔴 Live Event",🔴 [S2] EPL
+#EXTVLCOPT:http-referrer=https://live.kltratv.site/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://live.kltratv.site/"}
+https://pul-tenm.gkykp.com/live/sd-1-4502976.m3u8?txSecret=913ef23041e4444e34ae0bb9b5903156&txTime=6B02CC21
 
 #EXTINF:-1 tvg-id="od_mm-own-afae6eb3ec_s1" tvg-name="🔴 [S1] Liga F" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/1jlae31783192091.jpg" group-title="🔴 Live Event",🔴 [S1] Liga F
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/l7aW2g6vz_D7F3tTdxBhHAydrnCIajX0c5CoYlphXjXT-dY8DB3288Q3u5lU.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/VWbRjgeMdZb2ExRwg9BuAdMq91Pqy3K8TZw8D4yAQePbx6HzfwDNpkoIDf2I.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-afae6eb3ec_s2" tvg-name="🔴 [S2] Liga F" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/1jlae31783192091.jpg" group-title="🔴 Live Event",🔴 [S2] Liga F
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
@@ -303,10 +451,10 @@ https://enewl.greenvora.net/Premier-Sports-1/index.jpg?fastoken=784fd036-0599-40
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+#KODIPROP:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
 #EXTVLCOPT:inputstream.adaptive.license_type=clearkey
-#EXTVLCOPT:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
-https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd
+#EXTVLCOPT:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
+https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/wjeweupwyc/out/v1/8197c8e055c94a868623653ac55c10bf/cenc.mpd
 
 #EXTINF:-1 tvg-id="kltra_2547d4c7-6fc3-46e3-b294-dd65aa49d30e_s2" tvg-name="🔴 [S2] Sports" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" group-title="🔴 Live Event",🔴 [S2] Sports
 #EXTVLCOPT:http-referrer=https://live.kltratv.site/
@@ -315,10 +463,10 @@ https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1
 #KODIPROP:inputstream.adaptive.manifest_type=mpd
 #EXTVLCOPT:inputstream.adaptive.manifest_type=mpd
 #KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
+#KODIPROP:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
 #EXTVLCOPT:inputstream.adaptive.license_type=clearkey
-#EXTVLCOPT:inputstream.adaptive.license_key=e03f302ec4dabcccca82cc9f76731ec9:53ea1027d2bf2893a552cf15bc0366de
-https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/wjeweupwyc/out/v1/8197c8e055c94a868623653ac55c10bf/cenc.mpd
+#EXTVLCOPT:inputstream.adaptive.license_key=f3df7843080ae743bf865dc5fdf64c68:567c863bc12eb74788ea74888c042e1b
+https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/puehlftk5j/out/v1/f7f0da1ee112481ca0024e6d4dd97f4a/cenc.mpd
 
 #EXTINF:-1 tvg-id="kltra_db70d691-2dd8-4da4-9094-5969091_s1" tvg-name="🔴 [S1] Russian First Division" tvg-logo="https://s.312977.com/data/c050cc07fc4bc7fdc9d99eb1442fb8ea.png" group-title="🔴 Live Event",🔴 [S1] Russian First Division
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -329,7 +477,7 @@ https://live.vivo155.com/live/sd-1-4576565.m3u8?txSecret=61b32356a6c89d9767eb8a1
 #EXTINF:-1 tvg-id="kltra_f24bfed3-7d3a-4c8a-903e-5969550_s1" tvg-name="🔴 [S1] Turkey Super Lig" tvg-logo="https://s.312977.com/data/f15002c8309aa196479d7e613a7c2c3d.png" group-title="🔴 Live Event",🔴 [S1] Turkey Super Lig
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/ihcri0mZZtZxxpIILn7uDz7MT_ArdVdmK2J9eVzOf3nxFePLVnEKSs0Mecy9.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/5j1bp2LSH_6HiqYCXDZKRXa8t2Huh-GKFOUwO_bkFZtJxJEo3pDZSiz8F2UX.m3u8
 
 #EXTINF:-1 tvg-id="kltra_f24bfed3-7d3a-4c8a-903e-5969550_s2" tvg-name="🔴 [S2] Turkey Super Lig" tvg-logo="https://s.312977.com/data/f15002c8309aa196479d7e613a7c2c3d.png" group-title="🔴 Live Event",🔴 [S2] Turkey Super Lig
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -406,7 +554,7 @@ https://live.vivo155.com/live/sd-1-4564215.m3u8?txSecret=3ce86056f521a0788a50133
 #EXTINF:-1 tvg-id="od_mm-mot-dl-1fb0c520f1_s1" tvg-name="🔴 [S1] Sports" tvg-logo="/img/chlogos/mot2-0a07d22f71d5.jpg" group-title="🔴 Live Event",🔴 [S1] Sports
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/iHlbmXOdED2P-IdK0RzHihDoNjSdZYkuOuP6kRx-SW1j7EshoxiOGAorRByCxOJ5.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/op4mHjkKMQa49smNw6-g_kfuC-0kG913wMlEh570KDZjQClT43r9BySM6VHuu579.m3u8
 
 #EXTINF:-1 tvg-id="kltra_e1bad4c4-31ef-4ec5-bbd6-6008078_s1" tvg-name="🔴 [S1] Myanmar National Champ" tvg-logo="https://s.312977.com/data/1b5a30f23fa344c9a86383a8fd4d2fab.png" group-title="🔴 Live Event",🔴 [S1] Myanmar National Champ
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -429,7 +577,7 @@ https://yallavoide.yalla-shoot-zhubo.com/sport/201_5726974_1.m3u8?auth_key=17953
 #EXTINF:-1 tvg-id="od_mm-mot-dl-45f8a3e8f2_s1" tvg-name="🔴 [S1] Motorsport" tvg-logo="/img/chlogos/mot2-7356798ce8c9.jpg" group-title="🔴 Live Event",🔴 [S1] Motorsport
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/4sn2q5qNcaeSI0YIv751vlN2dGR2aKwAQ2TMPTXzxF0GAtkRotj26Kwep31WoBxv.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/0cPxdWxpuy6OudD3UKau0aOgFkyjMEgc2XZ8PFgyoJCknUs0s7ogIW_BPW3TTk_9.m3u8
 
 #EXTINF:-1 tvg-id="kltra_38bcf780-d4cc-4a92-88c3-6008071_s1" tvg-name="🔴 [S1] Myanmar National Champ" tvg-logo="https://s.312977.com/data/be79648b1d181d6d29984f6ab628d47d.png" group-title="🔴 Live Event",🔴 [S1] Myanmar National Champ
 #EXTVLCOPT:http-referrer=https://live.kltratv.site/
@@ -446,12 +594,12 @@ https://live.vivo155.com/live/sd-1-4640979.m3u8?txSecret=3fbfe143b6d3f1aff04eab3
 #EXTINF:-1 tvg-id="kltra_liveevents_43534266_s1" tvg-name="🔴 [S1] Women Shakeys Super League" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Volleyball.png" group-title="🔴 Live Event",🔴 [S1] Women Shakeys Super League
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/uju9JI2EWvPrMRy7jbp9mLNNhsDN8jcMm9EtzsARVF-zHIaCHMd_wuTLhBhV.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/TA_vZBBxu6wBwXv1mA2U0LsfCqLkVREhi9zmR0kLYYD599UKXNwaVuchyH_W.m3u8
 
 #EXTINF:-1 tvg-id="kltra_liveevents_43534266_s2" tvg-name="🔴 [S2] Women Shakeys Super League" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Volleyball.png" group-title="🔴 Live Event",🔴 [S2] Women Shakeys Super League
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://w1.soft4game.com/o18/stream87/playlist.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTEvMjEvMjAyNiAxMToyNjo0MiBBTSZoYXNoX3ZhbHVlPUV6Y09GTVVHeUlkZGJ4WEtSNklBRWc9PSZ2YWxpZG1pbnV0ZXM9MjAmaWQ9MTg=
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/u91HT4vHh41_drL5HzHFMjrzhzUC2gTvjauLTf9edV9DZcCIl8TK1kjksWaV.m3u8
 
 #EXTINF:-1 tvg-id="kltra_56c2daf8-8ba9-4ef2-a632-6008065_s1" tvg-name="🔴 [S1] National First Division Football Tourn" tvg-logo="https://s.312977.com/data/c9f0e3ecbf07aa45a6719355446b2200.png" group-title="🔴 Live Event",🔴 [S1] National First Division Football Tourn
 #EXTVLCOPT:http-referrer=https://player.online909.com/
@@ -487,7 +635,7 @@ https://yallavoide.yalla-shoot-zhubo.com/sport/202_5677547_1.m3u8?auth_key=17953
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/TNT-Sports-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
+https://enewl.greenvora.net/TNT-Sports-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
 
 #EXTINF:-1 tvg-id="kltra_7068671e-dca0-4cbb-b864-6020150_s1" tvg-name="🔴 [S1] Japan B. League One" tvg-logo="https://s.312977.com/data/11899799a5103f57f33fe06c320c8358.png" group-title="🔴 Live Event",🔴 [S1] Japan B. League One
 #EXTVLCOPT:http-referrer=https://live.kltratv.site/
@@ -501,30 +649,15 @@ https://pul-tenm.gkykp.com/live/sd-2-3935019.m3u8?txSecret=3f3dd8f9f1e85b3b36b5f
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
 https://live.vivo155.com/live/sd-2-3935019.m3u8?txSecret=e7dd2ead9b4383962fbadd70611e7789&txTime=6B01696E
 
-#EXTINF:-1 tvg-id="kltra_74d2ba92-48f3-406e-ae94-5805026_s1" tvg-name="🔴 [S1] Australian National Basketball League" tvg-logo="https://s.312977.com/data/2bafdc01b88b479cf695243c58b41723.png" group-title="🔴 Live Event",🔴 [S1] Australian National Basketball League
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/AIDd1yNjh3R_Q9sjcDYnqdpHt9CnifpMzYdejyT8yTTeHtu0mA7Zz4hfyzkXmZo.m3u8
-
-#EXTINF:-1 tvg-id="kltra_74d2ba92-48f3-406e-ae94-5805026_s2" tvg-name="🔴 [S2] Australian National Basketball League" tvg-logo="https://s.312977.com/data/2bafdc01b88b479cf695243c58b41723.png" group-title="🔴 Live Event",🔴 [S2] Australian National Basketball League
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/DIf7kPWSTho4PtIHJxmWYqxQQQxloNRif9OoWqbO2EG1mWNOlNf03rl3-7VswxMuAx9cFGJUQw.m3u8
-
-#EXTINF:-1 tvg-id="od_mm-mot-dl-b20dc455b7_s1" tvg-name="🔴 [S1] Motorsport" tvg-logo="/img/chlogos/mot2-4560adeb53d1.jpg" group-title="🔴 Live Event",🔴 [S1] Motorsport
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/lEgRoux9d8-QNknxYpKywdymGOMeAdEZkeRcYnkurOBL3O2DTrYQSlP3Acvm5CPZ.m3u8
-
 #EXTINF:-1 tvg-id="od_mm-cric-dl-c3972f9d50_s1" tvg-name="🔴 [S1] Big Bash League Women" tvg-logo="/img/chlogos/cricdl-850c58e60369-nf.jpg" group-title="🔴 Live Event",🔴 [S1] Big Bash League Women
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/DwgsZRCw3zMGFJ8690ll8mcyLCaelGrE3mE4KQrghbOQNFlDuU6xtyAkjs7dfztz8A.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/CgTm-9WBzMmNWHLBkVtqC4ILLa8ITwzaYYN8pipOPDV2dFxVWzX4WkcltR8KN22LQQ.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-cric-dl-e37737475f_s1" tvg-name="🔴 [S1] 1st T20" tvg-logo="/img/chlogos/cricdl-0147c5e16cc9-nf.jpg" group-title="🔴 Live Event",🔴 [S1] 1st T20
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/Cq27pUaBo1hE7ngCs9N9hHfdoqUQtyPIoDZkLYSsoRWcSDsyDhkWHUgu9YkVPlTitQ.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/cGy8tl5ShFC1Cn0OEhJ-OvjZ7OTUSqSEFtyQvfNWYyXN__uahqMrel3d3C5aUJnhdg.m3u8
 
 #EXTINF:-1 tvg-id="kltra_3ba6e989-1f65-472e-9981-cff44d4f942e_c1" tvg-name="🔴 [Court 1] BWF" tvg-logo="https://kltraid.pages.dev/images/sportsicon/Main_Badminton.png" group-title="🔴 Live Event",🔴 [Court 1] BWF
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
@@ -534,77 +667,12 @@ https://052d33b4b506ff051775da149c5848eb.v.smtcdns.net/play.cbalive.weibisai.com
 #EXTINF:-1 tvg-id="od_cr-sydney-sixers-w-perth-w_s1" tvg-name="🔴 [S1] big bash league women" tvg-logo="/img/cards/m/4f09b2f583817397.jpg?v=3nf.t2" group-title="🔴 Live Event",🔴 [S1] big bash league women
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/kHJda8H5QTI5TkOGOb_3NSjzyUXVqP3HT2nY2nq8b0_-gg4NF2okDGg-HBhjZgEECGOHKFpu.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/lkt2bZlZxIsQsMpndOP0EffU3IWui_K5yHWyVxNCTo1FL4mIznj8DQVQRRhkLgIEOsSXB-mi.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-cric-dl-8e02915351_s1" tvg-name="🔴 [S1] 2nd Test Day 5" tvg-logo="/img/chlogos/cricdl-03c86ba20de7-nf.jpg" group-title="🔴 Live Event",🔴 [S1] 2nd Test Day 5
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/FifQaYuceQ-l51Th92WTE-oT19Qnx3Ubyrun4fQ-vmvuS6Lkxkk1TmlwnMXeFx6Sgg.m3u8
-
-#EXTINF:-1 tvg-id="kltra_0d184972-4960-4e68-a7a9-5766357_s1" tvg-name="⏳ 18:30 [S1] VTB United League" tvg-logo="https://s.312977.com/data/ae7164716fc15e5ea2c17d13673ea2b1.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] VTB United League
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-2-3936410.m3u8?txSecret=0166da1117ade84e149119baf049fa79&txTime=6B01927A
-
-#EXTINF:-1 tvg-id="kltra_2d3f7596-da16-47d1-bc0d-6008174_s1" tvg-name="⏳ 18:30 [S1] CBA" tvg-logo="https://s.312977.com/data/bc293dcb34e233fce004fdc021c8ffbb.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] CBA
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-2-3958898.m3u8?txSecret=a2979be9d6288d0ca438b82311bedf1d&txTime=6B0192AC
-
-#EXTINF:-1 tvg-id="kltra_cdc36a72-3ad6-4af5-845a-6008175_s1" tvg-name="⏳ 18:30 [S1] CBA" tvg-logo="https://s.312977.com/data/b6f8d391df8b8573e92b9779570b47c2.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] CBA
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-2-3958899.m3u8?txSecret=ad185ba0a1fa4981c047602442c02e35&txTime=6B0192AF
-
-#EXTINF:-1 tvg-id="kltra_50b242a4-05b7-4d58-9d12-6008176_s1" tvg-name="⏳ 18:30 [S1] CBA" tvg-logo="https://s.312977.com/data/db9e332cf92b86c389b47cb9fb8e6155.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] CBA
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-2-3958900.m3u8?txSecret=12622fa6b801ba995dbaed3545816c0e&txTime=6B019272
-
-#EXTINF:-1 tvg-id="kltra_97823244-644f-4554-8c50-5639696_s1" tvg-name="⏳ 18:30 [S1] Indian National Champ" tvg-logo="https://s.312977.com/data/f88137aa1d2e8dfbde8b86659d9426bc.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] Indian National Champ
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-1-4655870.m3u8?txSecret=ee8dd05d5ee384007471f486682a9fe5&txTime=6B019275
-
-#EXTINF:-1 tvg-id="kltra_37bd5896-b05c-4ef0-aa3f-5968600_s1" tvg-name="⏳ 18:30 [S1] Singapore National Champ" tvg-logo="https://s.312977.com/data/5d5834d61cd27d87a699ea2649d12b64.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] Singapore National Champ
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-1-4600618.m3u8?txSecret=0a34aadde135b0a07bb836728e76b535&txTime=6B019278
-
-#EXTINF:-1 tvg-id="kltra_e503b246-2ab4-4350-a6fd-6007504_s1" tvg-name="⏳ 18:30 [S1] Serie A" tvg-logo="https://s.312977.com/data/c993b321e982721067b3e43bc659b1d3.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] Serie A
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/jXNEnku1jAojxnBt0sKyEbPCrlla_-WJ0aOX5V0oy_QU9XYjEJdmUIteeVk3.m3u8
-
-#EXTINF:-1 tvg-id="kltra_e503b246-2ab4-4350-a6fd-6007504_s2" tvg-name="⏳ 18:30 [S2] Serie A" tvg-logo="https://s.312977.com/data/c993b321e982721067b3e43bc659b1d3.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S2] Serie A
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-1-4595254.m3u8?txSecret=ac9e3434d60ed9acc6b4f2df07498a5e&txTime=6B0192A9
-
-#EXTINF:-1 tvg-id="kltra_140b2f08-4fce-486c-a3ac-6008166_s1" tvg-name="⏳ 18:30 [S1] Thai League 1" tvg-logo="https://s.312977.com/8d595f9a34dcdf871aee96a6dc173d74.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] Thai League 1
-#EXTVLCOPT:http-referrer=https://live.kltratv.site/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://live.kltratv.site/"}
-https://pul-tenm.gkykp.com/live/sd-1-4591798.m3u8?txSecret=0b4d2f6443cf3722b482957d896e0d0e&txTime=6B02CE79
-
-#EXTINF:-1 tvg-id="kltra_140b2f08-4fce-486c-a3ac-6008166_s2" tvg-name="⏳ 18:30 [S2] Thai League 1" tvg-logo="https://s.312977.com/8d595f9a34dcdf871aee96a6dc173d74.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S2] Thai League 1
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-1-4591798.m3u8?txSecret=7d7239c6542570c01f06f87c65abe538&txTime=6B0192B2
-
-#EXTINF:-1 tvg-id="kltra_6c05b1de-1520-405b-a97e-6008168_s1" tvg-name="⏳ 18:30 [S1] Thailand Second Division" tvg-logo="https://s.312977.com/data/be5021c997af035021efb66d1b7d937a.png" group-title="⏳ Upcoming Event",⏳ 18:30 [S1] Thailand Second Division
-#EXTVLCOPT:http-referrer=https://player.online909.com/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://player.online909.com/"}
-https://live.vivo155.com/live/sd-1-4600377.m3u8?txSecret=94c3885c9dad4c484b362e6a315ace47&txTime=6B01930F
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/tKyqg8gYWN7oTUHP_8lbdfhdcf8ggK6ZSyVya-9S3jeXKIb60QM5mkrGYqpb0yR_ng.m3u8
 
 #EXTINF:-1 tvg-id="kltra_75582191-a218-4339-94d9-83b07959e3a6_s1" tvg-name="⏳ 19:00 [S1] BRI Super League" tvg-logo="https://ssl.gstatic.com/onebox/media/sports/logos/1-PbIEfjB_RIrtqlxGEK7w_96x96.png" group-title="⏳ Upcoming Event",⏳ 19:00 [S1] BRI Super League
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
@@ -628,147 +696,209 @@ https://kltratvplay.elutuna.workers.dev/player/hybrid-4501040-1?src=https%3A%2F%
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://live.kltratv.site/"}
 https://kltratvplay.elutuna.workers.dev/player/hybrid-4501655-1?src=https%3A%2F%2Fgreen-bush-d67f.elutuna.workers.dev%2Fstream%2Fhybrid-4501655-1%2F12fe6839f0de8d326f3c%2Findex.m3u8%3FmatchId%3D4501655%26sportType%3D1&ttl=300
 
-#EXTINF:-1 tvg-id="od_cr-bangladesh-a-afghanistan-a_s1" tvg-name="⏳ 19:00 [S1] acc men's asia cup rising stars 2026" tvg-logo="/img/cards/m/7a93a4db83822f1a.jpg?v=3nf.t2s" group-title="⏳ Upcoming Event",⏳ 19:00 [S1] acc men's asia cup rising stars 2026
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/pX6KER086oYRMkmFqfbwtQ6HqkM36A84X3gW9A8DSaN2uyyXXYv1jfVs-wkmSOu2JdqcolLmPU4v.m3u8
-
-#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s1" tvg-name="⏳ 19:00 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:00 [S1] Bundesliga
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/F1HEzSvdSpG8D_VQj1b4_MbRm0DE0PgUt6yaFhFXQMpWvOBZXwBhio1Z71i4.m3u8
-
-#EXTINF:-1 tvg-id="od_mm-own-61d7166997_s2" tvg-name="⏳ 19:00 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885051-r.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:00 [S2] Bundesliga
-#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/Sky-Bundesliga-5/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
-
-#EXTINF:-1 tvg-id="od_mm-own-80f0c381cb_s1" tvg-name="⏳ 19:00 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885054.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:00 [S1] Bundesliga
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/W1za1WL0qRGCHwQOdGtYj9mxZ2BSBHAioeMJI-37vVHcWsQa2MtCHqurP0j4.m3u8
-
-#EXTINF:-1 tvg-id="od_mm-own-80f0c381cb_s2" tvg-name="⏳ 19:00 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885054.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:00 [S2] Bundesliga
-#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/Sky-Bundesliga-4/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
-
-#EXTINF:-1 tvg-id="od_mm-own-dcf72fc863_s1" tvg-name="⏳ 19:00 [S1] Bundesliga" tvg-logo="/img/cards/ger.2/401885056.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:00 [S1] Bundesliga
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/MfaGHWn2ooxQL2WP45k6IeuVl7o0eGdwcnduRyLq5mTzdYd0oefakE7DOtzW.m3u8
-
-#EXTINF:-1 tvg-id="od_mm-own-dcf72fc863_s2" tvg-name="⏳ 19:00 [S2] Bundesliga" tvg-logo="/img/cards/ger.2/401885056.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:00 [S2] Bundesliga
-#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/Sky-Bundesliga-3/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
-
 #EXTINF:-1 tvg-id="od_mm-own-79b807f220_s1" tvg-name="⏳ 19:15 [S1] EPL" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/ju81qk1784894825.jpg" group-title="⏳ Upcoming Event",⏳ 19:15 [S1] EPL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/ICT4S7y8sxdZDgoPDRVGJj8uXdv9UihRciL-nOilUParxV1DJsuR9k9Y4b5o.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/7oIbd5ztN58TVnJdG6dAsJvvWS3A4IBz76n8AOWu3oVxnSzo-VmkeQKByfal.m3u8
+
+#EXTINF:-1 tvg-id="bs_liverpool-w-vs-chelsea-w-202611221330_s1" tvg-name="⏳ 19:15 [S1] FA WSL" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/1847.png" group-title="⏳ Upcoming Event",⏳ 19:15 [S1] FA WSL
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Sports-Premier-League/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
+
+#EXTINF:-1 tvg-id="bs_liverpool-w-vs-chelsea-w-202611221330_s2" tvg-name="⏳ 19:15 [S2] FA WSL" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/1847.png" group-title="⏳ Upcoming Event",⏳ 19:15 [S2] FA WSL
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/Sky-Sports-Mix/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea2
 
 #EXTINF:-1 tvg-id="od_mm-own-a95385b9b7_s1" tvg-name="⏳ 19:30 [S1] EPL" tvg-logo="/img/cards/eng.1/401879233.jpg?v=grn2nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] EPL
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/UEQ9H3Rd2s2Eit29itOccGTrqrcgdqrWOeWSSR4EcQqyHzP2As_qG6jaR679.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/O_rTsJmNuPB1VXg49PRfnuwtJdG-DpMEdsDcpfb-eSvctjaF6TMx7qb3XO7e.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-a95385b9b7_s2" tvg-name="⏳ 19:30 [S2] EPL" tvg-logo="/img/cards/eng.1/401879233.jpg?v=grn2nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S2] EPL
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/TNT-Sports-1/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
+https://enewl.greenvora.net/TNT-Sports-1/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
 
 #EXTINF:-1 tvg-id="od_mm-own-28cd09472f_s1" tvg-name="⏳ 19:30 [S1] Champ" tvg-logo="/img/cards/eng.2/401880156.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] Champ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/I4nqdC1oekrZ35pwGotkS4Ij5Tt7MoxmLvwsPH9IYPGEU1YUBfYMNbYM3GM7.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/d-Ea4DjJ_fWDknBROQuzYqqihtBVAZeFjSNcsr8rBpaj3XaU4H0-qJ7rKxxA.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-28cd09472f_s2" tvg-name="⏳ 19:30 [S2] Champ" tvg-logo="/img/cards/eng.2/401880156.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S2] Champ
 #EXTVLCOPT:http-referrer=https://new-player.greenvora.net
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
-https://enewl.greenvora.net/Sky-Sports-Main-Event/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea0
+https://enewl.greenvora.net/Sky-Sports-Main-Event/index.jpg?fastoken=784fd036-0599-4081-b39a-4d562abadea1
 
 #EXTINF:-1 tvg-id="od_mm-own-a28a2c74a2_s1" tvg-name="⏳ 19:30 [S1] Champ" tvg-logo="/img/cards/eng.2/401880155.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] Champ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/f_9103zscVI6XeFZPqOGQcVuJhYfasCnTKhHp29f5dzB5JVpGMJJA9qs4dVX.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/-iXcLS4heh0XjsL3yEwIBl3RqPG8ovEBs8_CD0lw-8w62gWAiGwDiaXG_DYw.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-a28a2c74a2_s2" tvg-name="⏳ 19:30 [S2] Champ" tvg-logo="/img/cards/eng.2/401880155.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S2] Champ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/4VByh-1fqJvsunaOppg-mwp3f20W6b5HYOHvTK0ZtXhlisBJNz892RcbIs2_uLGqAo-U2dEtpBRO0FJ6s07mjEmxfoQ.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/emKpaFB_LgcHvofBz1cJe3IMhLfG3NCUkBC_zqUFxtnOC1sCVyBOeVKFnS_zXHb9iakq5fQo6jJdF6IPpm3Pxk40Tq0.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-fd8dcd01dc_s1" tvg-name="⏳ 19:30 [S1] Champ" tvg-logo="/img/cards/eng.2/401880153.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] Champ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/gPbkrHYWXMfGwhGwTTzynYlwaM31S6WuXvthBBjGqmYGHSEXE9jdWKiJwPwz.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/Q6Ov6laxOrUZWNAZVqif39Zzc-Mu4k31dZTh8bTZys5gFpLrCinDlyzT2k3-.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-fd8dcd01dc_s2" tvg-name="⏳ 19:30 [S2] Champ" tvg-logo="/img/cards/eng.2/401880153.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 19:30 [S2] Champ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/QRT3ZKMU07Wk-4qh-g8keq5r35kz6fR5iwgNrYdu91iICAvIHIhemK6t-8PppIzWkIsDvcUhOPRMCoEyzYJ1N68MXuo.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/y9McqzZrPYY0FcrK-E93tAso0-N6PKp6jGH0bKaXnzgkmasZDXoudkjMdPvNNiToqJfJTZFGQex46IU4h47fIKQL7LA.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-94950053af_s1" tvg-name="⏳ 19:30 [S1] League One" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/3ncwx21782465847.jpg" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] League One
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/vDJjpwPHe9-Tn663aNWH1_MdXmfuIt_90ascUuxsJTqQv8MKkEFFl8_CmlIh.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/XXL0JhddAB0dTFHWOBkcjcEvIeslSe6w2vcY96A67f3B5732f4EeaVXuWCkj.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-35aefbcb44_s1" tvg-name="⏳ 19:30 [S1] League One" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/o60ax21782465841.jpg" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] League One
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/vObaCKKeZ07YCWI3n0XbFqU3Z039lvvrGiupoosmHKaz-pxKDIZGBeKkg7fv.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/XYP48tgMBaBhaLeAbt7QoCfSTgsmVUJYH1rXuHvyVz7qP3pNL20UJwsscnnb.m3u8
 
 #EXTINF:-1 tvg-id="od_mm-own-81fea4ddba_s1" tvg-name="⏳ 19:30 [S1] League Two" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/223arj1782464119.jpg" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] League Two
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/zlMfJWW2f-CVTEJrEQ1PAxeHdHEclNIPnkLht-TSX0I2qUyPB_FPjlQ-8ANV.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/dJQxa-yVJWqNI5i_TvgNHMUFK2-n30qYHlpg-WnG7hE4s1gQ_6mXtrJ7PyVq.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-83243560d1_s1" tvg-name="⏳ 19:30 [S1] League Two" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/mamzjq1782464123.jpg" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] League Two
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/ONlEZAw6BLaKz-AptSVMySu-iwgrys0D5dzTFmlJV9mLjbvJCmiVkXqk9BEr.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-83243560d1_s2" tvg-name="⏳ 19:30 [S2] League Two" tvg-logo="https://r2.thesportsdb.com/images/media/event/thumb/mamzjq1782464123.jpg" group-title="⏳ Upcoming Event",⏳ 19:30 [S2] League Two
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/7NdP2kQQAfvv6OyTRJp4G7lgOjPZ7CQ5HNkziqUIppq4oZ2kUwXrRyGyM-9w.m3u8
+
+#EXTINF:-1 tvg-id="bs_sabadell-vs-granada-cf-202611221530_s1" tvg-name="⏳ 19:30 [S1] LaLiga 2" tvg-logo="https://i0.wp.com/static.cdnpro.sbs//football/teams/9593.png" group-title="⏳ Upcoming Event",⏳ 19:30 [S1] LaLiga 2
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/LaLiga-Hypermotion/index.jpg
+
+#EXTINF:-1 tvg-id="od_mm-mot-dl-608cb79477_s1" tvg-name="⏳ 19:45 [S1] Motorsport" tvg-logo="/img/chlogos/mot2-36db3873d924.jpg" group-title="⏳ Upcoming Event",⏳ 19:45 [S1] Motorsport
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/uv-Y_bQaQRaENgX6E1sRqLrzriHvypB0Aac-nEUg9bYhnRGzb09pbb9elCDOxLDu.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-400f6c87d0_s1" tvg-name="⏳ 20:00 [S1] LaLiga" tvg-logo="/img/cards/esp.1/401882806-r.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 20:00 [S1] LaLiga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/HbIEMZ4JKvj803gCXFMdQNB0fVMemZ9pKgI70aSNBzT8HRZdDF1ibNpf1UC-.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-400f6c87d0_s2" tvg-name="⏳ 20:00 [S2] LaLiga" tvg-logo="/img/cards/esp.1/401882806-r.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 20:00 [S2] LaLiga
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/bchtp226sSGie04ERb_wpF0BYHONfRBOczIkSviXwYtGrQY7cGDNIaO7-Y-clJZiHj9jgrllgopicQ.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-9c81b0809c_s1" tvg-name="⏳ 20:00 [S1] Süper Lig" tvg-logo="/img/cards/tur.1/401888369.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 20:00 [S1] Süper Lig
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/Z7GWIxQb5MsO3KRNq-f0J1tWWbq-beLCsxfc6B6DR4K3iOeX0ztK9q0quzGV.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-ad310bba57_s1" tvg-name="⏳ 20:00 [S1] Süper Lig" tvg-logo="/img/cards/tur.1/401888245.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 20:00 [S1] Süper Lig
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/itZjC3u71BCpzIBJCnxnKlR3SuuqNqPjo3QT-o1g9bZmzzJG_kotPnOXSB25.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-c43e76cdcc_s1" tvg-name="⏳ 20:00 [S1] Ligue 2" tvg-logo="/img/cards/fra.2/401876689.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 20:00 [S1] Ligue 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/4ii4wyGpJ8tR3C0zMbhkW7c4yNrFeOarBOgyeg9rOQQtxOb0k_FS9qMm8C71.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-c43e76cdcc_s2" tvg-name="⏳ 20:00 [S2] Ligue 2" tvg-logo="/img/cards/fra.2/401876689.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 20:00 [S2] Ligue 2
+#EXTVLCOPT:http-referrer=https://new-player.greenvora.net
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://new-player.greenvora.net"}
+https://enewl.greenvora.net/BEIN-SPORTS-1/index.jpg
+
+#EXTINF:-1 tvg-id="od_mm-own-8bba725715_s1" tvg-name="⏳ 20:00 [S1] Eliteserien" tvg-logo="/img/cards/nor.1/401843483.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 20:00 [S1] Eliteserien
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/hYXQ_gnYXKeqCv_gUrFpneJPJaMqu86OCftwDKbL9j-HrvIU1B-mJqgSI221.m3u8
+
+#EXTINF:-1 tvg-id="kltra_97b84918-9de9-4241-885c-f7aaa4c8be9e_s1" tvg-name="⏳ 20:30 [S1] Pegadaian Champ" tvg-logo="https://www.gstatic.com/onebox/sports/logos/crest_48dp.png" group-title="⏳ Upcoming Event",⏳ 20:30 [S1] Pegadaian Champ
+#EXTVLCOPT:http-referrer=https://live.kltratv.site/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", "Referer": "https://live.kltratv.site/"}
+https://kltratvplay.elutuna.workers.dev/player/hybrid-4500995-1?src=https%3A%2F%2Fgreen-bush-d67f.elutuna.workers.dev%2Fstream%2Fhybrid-4500995-1%2Fd42f2b0617d2efaa548b%2Findex.m3u8%3FmatchId%3D4500995%26sportType%3D1&ttl=300
+
+#EXTINF:-1 tvg-id="od_mm-own-20b6f6f3b9_s1" tvg-name="⏳ 21:00 [S1] Serie A" tvg-logo="/img/cards/ita.1/401875056.jpg?v=light1nf" group-title="⏳ Upcoming Event",⏳ 21:00 [S1] Serie A
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/GrnkK_DMnPxQ8izYSJ8mVEpP919M4SGJqYLoLEUvUGfEiJw2BwYVZ4mznCyC.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-20b6f6f3b9_s2" tvg-name="⏳ 21:00 [S2] Serie A" tvg-logo="/img/cards/ita.1/401875056.jpg?v=light1nf" group-title="⏳ Upcoming Event",⏳ 21:00 [S2] Serie A
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/w09oqGWhzTVNmSXijKOEvnWHnBhSCDZyzU_FHuaogZmJAuxL3K_OlUxp1GhYOYs46wuZ-9bNSSB9SJA.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-5218055670_s1" tvg-name="⏳ 21:00 [S1] Serie A" tvg-logo="/img/cards/ita.1/401874981.jpg?v=light1nf" group-title="⏳ Upcoming Event",⏳ 21:00 [S1] Serie A
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/awr8aiRo5M3Lp6c_PKUvShqsyWyYYy3zNRxT-EFqKqLc864Eo0yybMaP89_N.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-5218055670_s2" tvg-name="⏳ 21:00 [S2] Serie A" tvg-logo="/img/cards/ita.1/401874981.jpg?v=light1nf" group-title="⏳ Upcoming Event",⏳ 21:00 [S2] Serie A
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/QxzDykc3s8c0NFrlOLvEw6n47CC9jhTA_yXC_KJV39OOP115lpa7NXezquTKNTiYpgiTydx3ltHmyA.m3u8
+
+#EXTINF:-1 tvg-id="od_mm-own-a91e85884a_s1" tvg-name="⏳ 21:00 [S1] Serie B" tvg-logo="/img/cards/ita.2/401899548.jpg?v=3nf" group-title="⏳ Upcoming Event",⏳ 21:00 [S1] Serie B
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/LGohUT4Jlc70ep65xJ7OPqbdqR8_zVfCsLmao8UG8BEP1ohQ3vvUUPWENN21.m3u8
 
 #EXTINF:-1 tvg-id="od_247-nfl-network_s1" tvg-name="[S1] NFL Network" tvg-logo="/img/cards/247/247-nfl-network.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] NFL Network
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/OZbDDB_M8ZaMbWEQu5Mu0cCZuOyBK_r_zOD0cMbA-xxarG8KLEE6wa9KGA.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/JnK-CLeZXProBWi1fH_8N53ZN0-sSoVUFltdhgKg1DYwPueaTt8jda8AvA.m3u8
 
 #EXTINF:-1 tvg-id="od_247-247-fox-footy_s1" tvg-name="[S1] Fox Footy" tvg-logo="/img/cards/247/247-247-fox-footy.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] Fox Footy
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/j4hKgxGvpHB0tcXZFSwzPkXONTYVTHWKWnsfSkydDJmD3RQiBxLDZnYPSfKh.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/Wm35rbd1hasUEHGH4z59MeyzwL7OWxYoIVd2oHA_h5XFUHPDr2zX0yV6aP1Z.m3u8
 
 #EXTINF:-1 tvg-id="od_247-247-willow_s1" tvg-name="[S1] Willow" tvg-logo="/img/cards/247/247-247-willow.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] Willow
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/TsdYqRrcRp-Xau7oHqjTKyQ3_3IVdK3gmaDcAIMTIj-4grDUgQlbSuDm.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/JJxWVWTVBqoe03JywcjZZHPQHlD15vkermrojarnEDoDJWbwQarS26k0.m3u8
 
 #EXTINF:-1 tvg-id="od_247-247-fox-cricket_s1" tvg-name="[S1] Fox Cricket" tvg-logo="/img/cards/247/247-247-fox-cricket.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] Fox Cricket
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/veL_K90zd6a_COjAKxM7HlyJCKm4IhZfPYsU_Oip4sc73ODCc1CWM74QsK0iX6E.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/O51YDN49kd6YNDAzmooLLkcxq6DRW3Yup0i4gARkfCOr5-TpwFVn958M5-I44CY.m3u8
 
 #EXTINF:-1 tvg-id="od_247-nhl-network-29780_s1" tvg-name="[S1] NHL Network" tvg-logo="/img/cards/247/247-nhl-network-29780.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] NHL Network
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/hfEcq7Y7l8kV1m_JsW90uXdhH8V9yAa_e7KIZIjAisBPO4eR1ngXolBwjq9xoFcERQ.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/KupvhyfxLV3cC8Nh7GIveRrjSAx49QXHzBl11M14HoxRpE-2UwWvGv5uzfVHHUDtkg.m3u8
 
 #EXTINF:-1 tvg-id="od_247-247-fox-league_s1" tvg-name="[S1] Fox League" tvg-logo="/img/cards/247/247-247-fox-league.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] Fox League
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/TgMp5k23DS2MpDZ5P_tsfHrUXP-bETv2MPlSZ36Zk9-v3KZsTHkaRbHg_vBCoQ.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/hwqEeTc43au_eF7WhTG3IklfD967qTy-Fl6WsCPSZdXww1ZJVp6lWYQ5bN2Oxg.m3u8
 
 #EXTINF:-1 tvg-id="od_247-rally-tv_s1" tvg-name="[S1] Rally TV" tvg-logo="/img/cards/247/247-rally-tv.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] Rally TV
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/15t7hTb_Mz3FKCzOwfQK2-aiaLLaMYqXiutSIKjPP31ivDglX4TU8Q.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/GGfxbAjcVugAzrDDkCCAwVz_Lr2i2H3mt34fpxDNlvAMZaXNnCGGDw.m3u8
 
 #EXTINF:-1 tvg-id="od_247-dl-40_s1" tvg-name="[S1] Tennis Channel" tvg-logo="/img/cards/247/247-dl-40.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] Tennis Channel
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/bMCe09RI46u8xoTnRkgSqquIpNvy2v9lX2xkEdqNHz8RGiB4Uw.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/xJWjiKHx8-gln9bLcYJ0Us36ggTPpG3l-JMHmID5TmKsAoeyVw.m3u8
 
 #EXTINF:-1 tvg-id="od_247-dl-70_s1" tvg-name="[S1] Sky Sports Golf" tvg-logo="/img/cards/247/247-dl-70.jpg?v=6" group-title="⚽ 24/7 Sports Channels",[S1] Sky Sports Golf
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 #EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
-https://stream-cdn-box.xr3ed-edge.workers.dev/live/NoB0nevNR3AubNwCSgyOELBGsHZF9jQlOvTBGv5lspbP9wljNw.m3u8
+https://stream-cdn-box.xr3ed-edge.workers.dev/live/3v388hlpuAA3vAK3ZbG0Mb3Ge0euBpYfDVqQL1G4pEMHisI0LQ.m3u8
