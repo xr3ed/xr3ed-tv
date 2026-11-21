@@ -30,7 +30,17 @@
     <display-name>🔴 [S2] Sports</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Tennis.png" />
   </channel>
-  <channel id="kltra_liveevents_43489353_s1">
+  <channel id="od_espn-401906852_s1">
+    <display-name lang="id">🔴 [S1] NCAA Men's Basketball</display-name>
+    <display-name>🔴 [S1] NCAA Men's Basketball</display-name>
+    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
+  </channel>
+  <channel id="od_espn-401906852_s2">
+    <display-name lang="id">🔴 [S2] NCAA Men's Basketball</display-name>
+    <display-name>🔴 [S2] NCAA Men's Basketball</display-name>
+    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
+  </channel>
+  <channel id="kltra_liveevents_43488931_s1">
     <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
     <display-name>🔴 [S1] Men Setka Cup</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
@@ -110,16 +120,6 @@
     <display-name>⏳ 07:00 [S2] NCAA Men's Basketball</display-name>
     <icon src="/img/cards/mens-college-basketball/401920427.jpg?v=3nf" />
   </channel>
-  <channel id="od_espn-401906852_s1">
-    <display-name lang="id">⏳ 07:00 [S1] NCAA Men's Basketball</display-name>
-    <display-name>⏳ 07:00 [S1] NCAA Men's Basketball</display-name>
-    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
-  </channel>
-  <channel id="od_espn-401906852_s2">
-    <display-name lang="id">⏳ 07:00 [S2] NCAA Men's Basketball</display-name>
-    <display-name>⏳ 07:00 [S2] NCAA Men's Basketball</display-name>
-    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
-  </channel>
   <channel id="kltra_637b55f6-7e33-47f3-9964-c27357184207_s1">
     <display-name lang="id">⏳ 07:30 [S1] F1</display-name>
     <display-name>⏳ 07:30 [S1] F1</display-name>
@@ -170,12 +170,12 @@
     <display-name>⏳ 07:30 [S1] NCAA-F</display-name>
     <icon src="/img/cards/college-football/401866468.jpg?v=nf2nf" />
   </channel>
-  <channel id="od_ev-f1-2026-las-vegas-fp3_s1">
+  <channel id="od_mm-mot-f1-600057449-fp3_s1">
     <display-name lang="id">⏳ 07:30 [S1] F1</display-name>
     <display-name>⏳ 07:30 [S1] F1</display-name>
     <icon src="/img/f1-generic.webp" />
   </channel>
-  <channel id="od_ev-f1-2026-las-vegas-fp3_s2">
+  <channel id="od_mm-mot-f1-600057449-fp3_s2">
     <display-name lang="id">⏳ 07:30 [S2] F1</display-name>
     <display-name>⏳ 07:30 [S2] F1</display-name>
     <icon src="/img/f1-generic.webp" />
@@ -330,6 +330,16 @@
     <display-name>⏳ 10:10 [S2] Liga MX</display-name>
     <icon src="/img/cards/mex.1/401877052.jpg?v=ghost1nf" />
   </channel>
+  <channel id="bs_auckland-vs-melbourne-victory-202611210330_s1">
+    <display-name lang="id">⏳ 10:30 [S1] A League</display-name>
+    <display-name>⏳ 10:30 [S1] A League</display-name>
+    <icon src="https://media.api-sports.io/football/teams/24608.png" />
+  </channel>
+  <channel id="bs_auckland-vs-melbourne-victory-202611210330_s2">
+    <display-name lang="id">⏳ 10:30 [S2] A League</display-name>
+    <display-name>⏳ 10:30 [S2] A League</display-name>
+    <icon src="https://media.api-sports.io/football/teams/24608.png" />
+  </channel>
   <channel id="od_247-nfl-network_s1">
     <display-name lang="id">[S1] NFL Network</display-name>
     <display-name>[S1] NFL Network</display-name>
@@ -375,7 +385,7 @@
     <display-name>[S1] Sky Sports Golf</display-name>
     <icon src="/img/cards/247/247-dl-70.jpg?v=6" />
   </channel>
-  <programme start="20261121050305 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s1">
+  <programme start="20261121050747 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s1">
     <title lang="id">⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <title>⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <desc lang="id">🏆 Kompetisi: Bundesliga
@@ -397,7 +407,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ger.1/401884732.jpg?v=3nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s2">
+  <programme start="20261121050747 +0700" stop="20261121213000 +0700" channel="od_mm-own-6749873543_s2">
     <title lang="id">⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <title>⏳ Kickoff 21:30 WIB: 1. FC Union Berlin vs RB Leipzig</title>
     <desc lang="id">🏆 Kompetisi: Bundesliga
@@ -437,11 +447,11 @@
 ⚔️ Pertandingan: Atlanta Hawks vs Charlotte Hornets
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
 ⏰ Kickoff: 07:00 WIB
-📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
+📡 Jalur: [S2] - Kltra - HD AUTO</desc>
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/pm5l5mtY1elOQAl9ZEcm2A_96x96.png" />
   </programme>
-  <programme start="20261120172500 +0700" stop="20261121103305 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s1">
+  <programme start="20261120172500 +0700" stop="20261121103747 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s1">
     <title lang="id">ATP Finals</title>
     <title>ATP Finals</title>
     <desc lang="id">🏆 Kompetisi: ATP Finals
@@ -452,7 +462,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Tennis.png" />
   </programme>
-  <programme start="20261120172500 +0700" stop="20261121103305 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s2">
+  <programme start="20261120172500 +0700" stop="20261121103747 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s2">
     <title lang="id">ATP Finals</title>
     <title>ATP Finals</title>
     <desc lang="id">🏆 Kompetisi: ATP Finals
@@ -463,13 +473,35 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Tennis.png" />
   </programme>
-  <programme start="20261121070000 +0700" stop="20261121103000 +0700" channel="kltra_liveevents_43489353_s1">
-    <title lang="id">Ivan Kozachuk vs Denys Scherbak</title>
-    <title>Ivan Kozachuk vs Denys Scherbak</title>
-    <desc lang="id">🏆 Kompetisi: Men Setka Cup
-⚔️ Pertandingan: Ivan Kozachuk vs Denys Scherbak
+  <programme start="20261121070000 +0700" stop="20261121103000 +0700" channel="od_espn-401906852_s1">
+    <title lang="id">Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
+    <title>Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
+    <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
+⚔️ Pertandingan: Tennessee Volunteers vs Coastal Carolina Chanticleers
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
 ⏰ Kickoff: 07:00 WIB
+📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
+  </programme>
+  <programme start="20261121070000 +0700" stop="20261121103000 +0700" channel="od_espn-401906852_s2">
+    <title lang="id">Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
+    <title>Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
+    <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
+⚔️ Pertandingan: Tennessee Volunteers vs Coastal Carolina Chanticleers
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 07:00 WIB
+📡 Jalur: [S2] - Server 2 (SD | SECN+ EN)</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
+  </programme>
+  <programme start="20261121065500 +0700" stop="20261121102500 +0700" channel="kltra_liveevents_43488931_s1">
+    <title lang="id">Oleksandr Dukhovenko vs Yevhen Pysmennyi</title>
+    <title>Oleksandr Dukhovenko vs Yevhen Pysmennyi</title>
+    <desc lang="id">🏆 Kompetisi: Men Setka Cup
+⚔️ Pertandingan: Oleksandr Dukhovenko vs Yevhen Pysmennyi
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 06:55 WIB
 📡 Jalur: [S1] - Kltra - S1</desc>
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
@@ -639,29 +671,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401920427.jpg?v=3nf" />
   </programme>
-  <programme start="20261121070000 +0700" stop="20261121103000 +0700" channel="od_espn-401906852_s1">
-    <title lang="id">Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
-    <title>Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
-    <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
-⚔️ Pertandingan: Tennessee Volunteers vs Coastal Carolina Chanticleers
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 07:00 WIB
-📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
-  </programme>
-  <programme start="20261121070000 +0700" stop="20261121103000 +0700" channel="od_espn-401906852_s2">
-    <title lang="id">Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
-    <title>Tennessee Volunteers vs Coastal Carolina Chanticleers</title>
-    <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
-⚔️ Pertandingan: Tennessee Volunteers vs Coastal Carolina Chanticleers
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 07:00 WIB
-📡 Jalur: [S2] - Server 2 (SD | SECN+ EN)</desc>
-    <category lang="id">Sports</category>
-    <icon src="/img/cards/mens-college-basketball/401906852.jpg?v=3nf" />
-  </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="kltra_637b55f6-7e33-47f3-9964-c27357184207_s1">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="kltra_637b55f6-7e33-47f3-9964-c27357184207_s1">
     <title lang="id">⏳ Kickoff 07:30 WIB: Formula 1 Las Vegas Grand Prix 2026</title>
     <title>⏳ Kickoff 07:30 WIB: Formula 1 Las Vegas Grand Prix 2026</title>
     <desc lang="id">🏆 Kompetisi: Formula 1 Las Vegas Grand Prix 2026
@@ -683,7 +693,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="kltra_637b55f6-7e33-47f3-9964-c27357184207_s2">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="kltra_637b55f6-7e33-47f3-9964-c27357184207_s2">
     <title lang="id">⏳ Kickoff 07:30 WIB: Formula 1 Las Vegas Grand Prix 2026</title>
     <title>⏳ Kickoff 07:30 WIB: Formula 1 Las Vegas Grand Prix 2026</title>
     <desc lang="id">🏆 Kompetisi: Formula 1 Las Vegas Grand Prix 2026
@@ -705,7 +715,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401909306_s1">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401909306_s1">
     <title lang="id">⏳ Kickoff 07:30 WIB: Brooklyn Nets vs Orlando Magic</title>
     <title>⏳ Kickoff 07:30 WIB: Brooklyn Nets vs Orlando Magic</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -727,7 +737,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909306.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401909306_s2">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401909306_s2">
     <title lang="id">⏳ Kickoff 07:30 WIB: Brooklyn Nets vs Orlando Magic</title>
     <title>⏳ Kickoff 07:30 WIB: Brooklyn Nets vs Orlando Magic</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -749,7 +759,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909306.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401909307_s1">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401909307_s1">
     <title lang="id">⏳ Kickoff 07:30 WIB: Cleveland Cavaliers vs Indiana Pacers</title>
     <title>⏳ Kickoff 07:30 WIB: Cleveland Cavaliers vs Indiana Pacers</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -771,7 +781,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909307.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401909307_s2">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401909307_s2">
     <title lang="id">⏳ Kickoff 07:30 WIB: Cleveland Cavaliers vs Indiana Pacers</title>
     <title>⏳ Kickoff 07:30 WIB: Cleveland Cavaliers vs Indiana Pacers</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -793,7 +803,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909307.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401909308_s1">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401909308_s1">
     <title lang="id">⏳ Kickoff 07:30 WIB: Detroit Pistons vs Toronto Raptors</title>
     <title>⏳ Kickoff 07:30 WIB: Detroit Pistons vs Toronto Raptors</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -815,7 +825,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909308.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401909308_s2">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401909308_s2">
     <title lang="id">⏳ Kickoff 07:30 WIB: Detroit Pistons vs Toronto Raptors</title>
     <title>⏳ Kickoff 07:30 WIB: Detroit Pistons vs Toronto Raptors</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -837,7 +847,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909308.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401858303_s1">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401858303_s1">
     <title lang="id">⏳ Kickoff 07:30 WIB: Duke Blue Devils vs Clemson Tigers</title>
     <title>⏳ Kickoff 07:30 WIB: Duke Blue Devils vs Clemson Tigers</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -859,7 +869,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401858303.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_espn-401866468_s1">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_espn-401866468_s1">
     <title lang="id">⏳ Kickoff 07:30 WIB: Toledo Rockets vs Bowling Green Falcons</title>
     <title>⏳ Kickoff 07:30 WIB: Toledo Rockets vs Bowling Green Falcons</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -881,7 +891,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401866468.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_ev-f1-2026-las-vegas-fp3_s1">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_mm-mot-f1-600057449-fp3_s1">
     <title lang="id">⏳ Kickoff 07:30 WIB: Las Vegas Grand Prix - Practice 3</title>
     <title>⏳ Kickoff 07:30 WIB: Las Vegas Grand Prix - Practice 3</title>
     <desc lang="id">🏆 Kompetisi: Formula 1
@@ -892,7 +902,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/f1-generic.webp" />
   </programme>
-  <programme start="20261121073000 +0700" stop="20261121110000 +0700" channel="od_ev-f1-2026-las-vegas-fp3_s1">
+  <programme start="20261121073000 +0700" stop="20261121110000 +0700" channel="od_mm-mot-f1-600057449-fp3_s1">
     <title lang="id">Las Vegas Grand Prix - Practice 3</title>
     <title>Las Vegas Grand Prix - Practice 3</title>
     <desc lang="id">🏆 Kompetisi: Formula 1
@@ -903,7 +913,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/f1-generic.webp" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121073000 +0700" channel="od_ev-f1-2026-las-vegas-fp3_s2">
+  <programme start="20261121050747 +0700" stop="20261121073000 +0700" channel="od_mm-mot-f1-600057449-fp3_s2">
     <title lang="id">⏳ Kickoff 07:30 WIB: Las Vegas Grand Prix - Practice 3</title>
     <title>⏳ Kickoff 07:30 WIB: Las Vegas Grand Prix - Practice 3</title>
     <desc lang="id">🏆 Kompetisi: Formula 1
@@ -914,7 +924,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/f1-generic.webp" />
   </programme>
-  <programme start="20261121073000 +0700" stop="20261121110000 +0700" channel="od_ev-f1-2026-las-vegas-fp3_s2">
+  <programme start="20261121073000 +0700" stop="20261121110000 +0700" channel="od_mm-mot-f1-600057449-fp3_s2">
     <title lang="id">Las Vegas Grand Prix - Practice 3</title>
     <title>Las Vegas Grand Prix - Practice 3</title>
     <desc lang="id">🏆 Kompetisi: Formula 1
@@ -925,7 +935,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/f1-generic.webp" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401909309_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401909309_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: Chicago Bulls vs Washington Wizards</title>
     <title>⏳ Kickoff 08:00 WIB: Chicago Bulls vs Washington Wizards</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -947,7 +957,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909309.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401909309_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401909309_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: Chicago Bulls vs Washington Wizards</title>
     <title>⏳ Kickoff 08:00 WIB: Chicago Bulls vs Washington Wizards</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -969,7 +979,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909309.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401909310_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401909310_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: Oklahoma City Thunder vs New Orleans Pelicans</title>
     <title>⏳ Kickoff 08:00 WIB: Oklahoma City Thunder vs New Orleans Pelicans</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -991,7 +1001,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909310.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401909310_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401909310_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: Oklahoma City Thunder vs New Orleans Pelicans</title>
     <title>⏳ Kickoff 08:00 WIB: Oklahoma City Thunder vs New Orleans Pelicans</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1013,7 +1023,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909310.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401921757_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401921757_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: Vanderbilt Commodores vs UCF Knights</title>
     <title>⏳ Kickoff 08:00 WIB: Vanderbilt Commodores vs UCF Knights</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1035,7 +1045,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401921757.jpg?v=3nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401921757_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401921757_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: Vanderbilt Commodores vs UCF Knights</title>
     <title>⏳ Kickoff 08:00 WIB: Vanderbilt Commodores vs UCF Knights</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1057,7 +1067,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401921757.jpg?v=3nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401925740_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401925740_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: Arkansas Razorbacks vs Mississippi Valley State Delta Devils</title>
     <title>⏳ Kickoff 08:00 WIB: Arkansas Razorbacks vs Mississippi Valley State Delta Devils</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1079,7 +1089,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401925740.jpg?v=3nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401925740_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401925740_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: Arkansas Razorbacks vs Mississippi Valley State Delta Devils</title>
     <title>⏳ Kickoff 08:00 WIB: Arkansas Razorbacks vs Mississippi Valley State Delta Devils</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1101,7 +1111,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401925740.jpg?v=3nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401858529_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401858529_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: Michigan State Spartans vs Oregon Ducks</title>
     <title>⏳ Kickoff 08:00 WIB: Michigan State Spartans vs Oregon Ducks</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1123,7 +1133,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401858529.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401858529_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401858529_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: Michigan State Spartans vs Oregon Ducks</title>
     <title>⏳ Kickoff 08:00 WIB: Michigan State Spartans vs Oregon Ducks</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1145,7 +1155,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401858529.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_espn-401864545_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_espn-401864545_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: Air Force Falcons vs UTEP Miners</title>
     <title>⏳ Kickoff 08:00 WIB: Air Force Falcons vs UTEP Miners</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1167,7 +1177,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401864545.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_ev-wwe-2026-11-20_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_ev-wwe-2026-11-20_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: WWE Friday Night Smackdown</title>
     <title>⏳ Kickoff 08:00 WIB: WWE Friday Night Smackdown</title>
     <desc lang="id">🏆 Kompetisi: WWE
@@ -1189,7 +1199,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/league/poster/iauzdn1485816852.jpg" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_ev-wwe-2026-11-20_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_ev-wwe-2026-11-20_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: WWE Friday Night Smackdown</title>
     <title>⏳ Kickoff 08:00 WIB: WWE Friday Night Smackdown</title>
     <desc lang="id">🏆 Kompetisi: WWE
@@ -1211,7 +1221,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/league/poster/iauzdn1485816852.jpg" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_cr-hobart-w-sydney-thunder-w_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_cr-hobart-w-sydney-thunder-w_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: hobart w vs sydney thunder w</title>
     <title>⏳ Kickoff 08:00 WIB: hobart w vs sydney thunder w</title>
     <desc lang="id">🏆 Kompetisi: big bash league women
@@ -1233,7 +1243,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/team/badge/vdcla41492606553.png" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_cr-hobart-w-sydney-thunder-w_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_cr-hobart-w-sydney-thunder-w_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: hobart w vs sydney thunder w</title>
     <title>⏳ Kickoff 08:00 WIB: hobart w vs sydney thunder w</title>
     <desc lang="id">🏆 Kompetisi: big bash league women
@@ -1255,7 +1265,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/team/badge/vdcla41492606553.png" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_mm-own-a025a9df2b_s1">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_mm-own-a025a9df2b_s1">
     <title lang="id">⏳ Kickoff 08:00 WIB: Puebla vs Atlético de San Luis</title>
     <title>⏳ Kickoff 08:00 WIB: Puebla vs Atlético de San Luis</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -1277,7 +1287,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877054.jpg?v=ghost1nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121080000 +0700" channel="od_mm-own-a025a9df2b_s2">
+  <programme start="20261121050747 +0700" stop="20261121080000 +0700" channel="od_mm-own-a025a9df2b_s2">
     <title lang="id">⏳ Kickoff 08:00 WIB: Puebla vs Atlético de San Luis</title>
     <title>⏳ Kickoff 08:00 WIB: Puebla vs Atlético de San Luis</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -1299,7 +1309,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877054.jpg?v=ghost1nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121090000 +0700" channel="od_espn-401913529_s1">
+  <programme start="20261121050747 +0700" stop="20261121090000 +0700" channel="od_espn-401913529_s1">
     <title lang="id">⏳ Kickoff 09:00 WIB: Illinois Fighting Illini vs Eastern Illinois Panthers</title>
     <title>⏳ Kickoff 09:00 WIB: Illinois Fighting Illini vs Eastern Illinois Panthers</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1321,7 +1331,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401913529.jpg?v=3nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121090000 +0700" channel="od_espn-401913529_s2">
+  <programme start="20261121050747 +0700" stop="20261121090000 +0700" channel="od_espn-401913529_s2">
     <title lang="id">⏳ Kickoff 09:00 WIB: Illinois Fighting Illini vs Eastern Illinois Panthers</title>
     <title>⏳ Kickoff 09:00 WIB: Illinois Fighting Illini vs Eastern Illinois Panthers</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1343,7 +1353,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401913529.jpg?v=3nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121090000 +0700" channel="od_espn-401864542_s1">
+  <programme start="20261121050747 +0700" stop="20261121090000 +0700" channel="od_espn-401864542_s1">
     <title lang="id">⏳ Kickoff 09:00 WIB: Wyoming Cowboys vs New Mexico Lobos</title>
     <title>⏳ Kickoff 09:00 WIB: Wyoming Cowboys vs New Mexico Lobos</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1365,7 +1375,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401864542.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121093000 +0700" channel="od_espn-401909311_s1">
+  <programme start="20261121050747 +0700" stop="20261121093000 +0700" channel="od_espn-401909311_s1">
     <title lang="id">⏳ Kickoff 09:30 WIB: Utah Jazz vs Phoenix Suns</title>
     <title>⏳ Kickoff 09:30 WIB: Utah Jazz vs Phoenix Suns</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1387,7 +1397,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909311.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121093000 +0700" channel="od_espn-401909311_s2">
+  <programme start="20261121050747 +0700" stop="20261121093000 +0700" channel="od_espn-401909311_s2">
     <title lang="id">⏳ Kickoff 09:30 WIB: Utah Jazz vs Phoenix Suns</title>
     <title>⏳ Kickoff 09:30 WIB: Utah Jazz vs Phoenix Suns</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1409,7 +1419,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909311.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121100000 +0700" channel="od_espn-401909312_s1">
+  <programme start="20261121050747 +0700" stop="20261121100000 +0700" channel="od_espn-401909312_s1">
     <title lang="id">⏳ Kickoff 10:00 WIB: Denver Nuggets vs Houston Rockets</title>
     <title>⏳ Kickoff 10:00 WIB: Denver Nuggets vs Houston Rockets</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1431,7 +1441,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909312.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121100000 +0700" channel="od_espn-401909312_s2">
+  <programme start="20261121050747 +0700" stop="20261121100000 +0700" channel="od_espn-401909312_s2">
     <title lang="id">⏳ Kickoff 10:00 WIB: Denver Nuggets vs Houston Rockets</title>
     <title>⏳ Kickoff 10:00 WIB: Denver Nuggets vs Houston Rockets</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1453,7 +1463,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909312.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121100000 +0700" channel="od_espn-401909313_s1">
+  <programme start="20261121050747 +0700" stop="20261121100000 +0700" channel="od_espn-401909313_s1">
     <title lang="id">⏳ Kickoff 10:00 WIB: Los Angeles Lakers vs Sacramento Kings</title>
     <title>⏳ Kickoff 10:00 WIB: Los Angeles Lakers vs Sacramento Kings</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1475,7 +1485,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909313.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121100000 +0700" channel="od_espn-401909313_s2">
+  <programme start="20261121050747 +0700" stop="20261121100000 +0700" channel="od_espn-401909313_s2">
     <title lang="id">⏳ Kickoff 10:00 WIB: Los Angeles Lakers vs Sacramento Kings</title>
     <title>⏳ Kickoff 10:00 WIB: Los Angeles Lakers vs Sacramento Kings</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1497,7 +1507,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401909313.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121100000 +0700" channel="od_mm-own-d0b9cddb1f_s1">
+  <programme start="20261121050747 +0700" stop="20261121100000 +0700" channel="od_mm-own-d0b9cddb1f_s1">
     <title lang="id">⏳ Kickoff 10:00 WIB: FC Juárez vs Atlas</title>
     <title>⏳ Kickoff 10:00 WIB: FC Juárez vs Atlas</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -1519,7 +1529,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877053-r.jpg?v=ghost1nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121100000 +0700" channel="od_mm-own-d0b9cddb1f_s2">
+  <programme start="20261121050747 +0700" stop="20261121100000 +0700" channel="od_mm-own-d0b9cddb1f_s2">
     <title lang="id">⏳ Kickoff 10:00 WIB: FC Juárez vs Atlas</title>
     <title>⏳ Kickoff 10:00 WIB: FC Juárez vs Atlas</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -1541,7 +1551,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877053-r.jpg?v=ghost1nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121101000 +0700" channel="od_mm-own-ff9727b1b5_s1">
+  <programme start="20261121050747 +0700" stop="20261121101000 +0700" channel="od_mm-own-ff9727b1b5_s1">
     <title lang="id">⏳ Kickoff 10:10 WIB: Tijuana vs Atlante</title>
     <title>⏳ Kickoff 10:10 WIB: Tijuana vs Atlante</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -1563,7 +1573,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877052.jpg?v=ghost1nf" />
   </programme>
-  <programme start="20261121050305 +0700" stop="20261121101000 +0700" channel="od_mm-own-ff9727b1b5_s2">
+  <programme start="20261121050747 +0700" stop="20261121101000 +0700" channel="od_mm-own-ff9727b1b5_s2">
     <title lang="id">⏳ Kickoff 10:10 WIB: Tijuana vs Atlante</title>
     <title>⏳ Kickoff 10:10 WIB: Tijuana vs Atlante</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -1584,6 +1594,50 @@
 📡 Jalur: [S2] - Server 2 (SD | TUDN ES-US)</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877052.jpg?v=ghost1nf" />
+  </programme>
+  <programme start="20261121050747 +0700" stop="20261121103000 +0700" channel="bs_auckland-vs-melbourne-victory-202611210330_s1">
+    <title lang="id">⏳ Kickoff 10:30 WIB: Auckland vs Melbourne Victory</title>
+    <title>⏳ Kickoff 10:30 WIB: Auckland vs Melbourne Victory</title>
+    <desc lang="id">🏆 Kompetisi: A-League
+⚔️ Pertandingan: Auckland vs Melbourne Victory
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:30 WIB
+📡 Jalur: [S1] - Beesport - TNT Sports 1</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://media.api-sports.io/football/teams/24608.png" />
+  </programme>
+  <programme start="20261121103000 +0700" stop="20261121140000 +0700" channel="bs_auckland-vs-melbourne-victory-202611210330_s1">
+    <title lang="id">Auckland vs Melbourne Victory</title>
+    <title>Auckland vs Melbourne Victory</title>
+    <desc lang="id">🏆 Kompetisi: A-League
+⚔️ Pertandingan: Auckland vs Melbourne Victory
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:30 WIB
+📡 Jalur: [S1] - Beesport - TNT Sports 1</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://media.api-sports.io/football/teams/24608.png" />
+  </programme>
+  <programme start="20261121050747 +0700" stop="20261121103000 +0700" channel="bs_auckland-vs-melbourne-victory-202611210330_s2">
+    <title lang="id">⏳ Kickoff 10:30 WIB: Auckland vs Melbourne Victory</title>
+    <title>⏳ Kickoff 10:30 WIB: Auckland vs Melbourne Victory</title>
+    <desc lang="id">🏆 Kompetisi: A-League
+⚔️ Pertandingan: Auckland vs Melbourne Victory
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:30 WIB
+📡 Jalur: [S2] - Beesport - TNT Sports 1 BU</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://media.api-sports.io/football/teams/24608.png" />
+  </programme>
+  <programme start="20261121103000 +0700" stop="20261121140000 +0700" channel="bs_auckland-vs-melbourne-victory-202611210330_s2">
+    <title lang="id">Auckland vs Melbourne Victory</title>
+    <title>Auckland vs Melbourne Victory</title>
+    <desc lang="id">🏆 Kompetisi: A-League
+⚔️ Pertandingan: Auckland vs Melbourne Victory
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 10:30 WIB
+📡 Jalur: [S2] - Beesport - TNT Sports 1 BU</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://media.api-sports.io/football/teams/24608.png" />
   </programme>
   <programme start="20261121000000 +0700" stop="20261122000000 +0700" channel="od_247-nfl-network_s1">
     <title lang="id">NFL Network</title>
