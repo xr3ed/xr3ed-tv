@@ -218,37 +218,31 @@ https://v10.siar.us/rctv/live/playlist.m3u8
 
 #EXTINF:-1 group-logo="https://i.pinimg.com/1200x/8b/0a/66/8b0a66e4a31ae8c1a8f1823a92b65936.jpg"
 
-#EXTINF:-1 tvg-logo="https://images.indihometv.com/assets/logo_rcti_hd.png" group-title="🇮🇩 NASIONAL 2",RCTI
-#EXTVLCOPT:http-user-agent=android-R+
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=hls
-#KODIPROP:contentlookup=false
+#EXTINF:-1 tvg-id="4" tvg-logo="https://www.visionplus.id/images/repository/373/437373-SNAPSHOT-l.png" group-title="🇮🇩 NASIONAL 2",RCTI 
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-https://bintangstreaming.my.id/000/rcti.php/.m3u8?id=rcti
+#EXTVLCOPT:http-origin=https://www.rctiplus.com
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://bandeltv.xyz/sc1980/2025/Kvision/v/drm1.php?id=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIxIiwiaWQiOiIxIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.0KrYWLJvg0uJssWM2t4z9I2EJDQZszD7Z6AYuYpzrr0
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://bandeltv.xyz/sc1980/2025/Kvision/v/mpd1.php/.mpd?id=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIxIiwiaWQiOiIxIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.0KrYWLJvg0uJssWM2t4z9I2EJDQZszD7Z6AYuYpzrr0
 
-#EXTINF:-1 tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_82.png" group-title="🇮🇩 NASIONAL 2",MNCTV
-#EXTVLCOPT:http-user-agent=android-R+
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=hls
-#KODIPROP:contentlookup=false
-#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-https://bintangstreaming.my.id/000/rcti.php/.m3u8?id=mnctv
+#EXTINF:-1 group-title="🇮🇩 NASIONAL 2" tvg-logo="https://www.visionplus.id/images/repository/376/437376-SNAPSHOT-l.png", GTV (V+)
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://bandeltv.xyz/sc1980/2025/Kvision/v/drm1.php?id=3&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIzIiwiaWQiOiIzIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.CKpa3Q2QcohM-xIGRfsIYjmiu6Ife9a4zZaq5wPV5B4
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://bandeltv.xyz/sc1980/2025/Kvision/v/mpd1.php/.mpd?id=3&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIzIiwiaWQiOiIzIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.CKpa3Q2QcohM-xIGRfsIYjmiu6Ife9a4zZaq5wPV5B4
 
-#EXTINF:-1 tvg-logo="https://images.indihometv.com/assets/logo_gtv_hd.png" group-title="🇮🇩 NASIONAL 2",GTV
-#EXTVLCOPT:http-user-agent=android-R+
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=hls
-#KODIPROP:contentlookup=false
-#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-https://bintangstreaming.my.id/000/rcti.php/.m3u8?id=gtv
-
-#EXTINF:-1 group-title="🇮🇩 NASIONAL 2" tvg-logo="https://www.visionplus.id/images/repository/792/513792-LOGO-m.png",INEWS
-#EXTVLCOPT:http-user-agent=android-R+
-#KODIPROP:inputstream=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=hls
-#KODIPROP:contentlookup=false
-#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-https://bintangstreaming.my.id/000/rcti.php/.m3u8?id=inews
+#EXTINF:-1 tvg-id="Lokal" group-title="🇮🇩 NASIONAL 2" tvg-logo="https://www.visionplus.id/images/repository/374/437374-SNAPSHOT-l.png" ch-number="2", MNC TV (V+)
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
+#KODIPROP:inputstream.adaptive.license_key=https://bandeltv.xyz/sc1980/2025/Kvision/v/drm1.php?id=2&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIyIiwiaWQiOiIyIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.eZrV7bbU7BDqN30NSMdvRTKRNoHAjo-mH0kqHESjF2Y
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://bandeltv.xyz/sc1980/2025/Kvision/v/mpd1.php/.mpd?id=2&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIyIiwiaWQiOiIyIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.eZrV7bbU7BDqN30NSMdvRTKRNoHAjo-mH0kqHESjF2Y
 
 #EXTINF:-1 tvg-id="TransTV.id@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://thumbor.prod.vidiocdn.com/__j35q7LPpcS2EgkR7v8GpE4USQ=/230x230/filters:quality(70)/vidio-web-prod-livestreaming/uploads/livestreaming/square_image/733/ecaa60.png" group-title="🇮🇩 NASIONAL 2",TransTV HD 
 #EXTVLCOPT:http-referer=https://www.cnbcindonesia.com/
@@ -261,7 +255,6 @@ https://live.cnbcindonesia.com/transtv/smil:transtv.smil/playlist.m3u8
 #EXTVLCOPT:http-origin=https://20.detik.com
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
 https://live.cnbcindonesia.com/trans7/smil:trans7.smil/playlist.m3u8
-
 
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0/v2206
 #EXTINF:-1 tvg-id="MDTV" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://thumbor.prod.vidiocdn.com/LCZH_yEBnTYEQzrU1pB7w7ev-Bw=/230x230/filters:quality(70)/vidio-web-prod-livestreaming/uploads/livestreaming/square_image/875/325605.png" group-title="🇮🇩 NASIONAL 2",MDTV 
@@ -496,6 +489,24 @@ https://5bf7b725107e5.streamlock.net/brtv/brtv/playlist.m3u8
 #EXTINF:-1 group-logo="https://i.pinimg.com/1200x/8b/0a/66/8b0a66e4a31ae8c1a8f1823a92b65936.jpg"
 
 
+#EXTINF:-1 tvg-id="4" tvg-logo="https://www.visionplus.id/images/repository/373/437373-SNAPSHOT-l.png" group-title="🇮🇩 NASIONAL 3",RCTI 
+#EXTVLCOPT:Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)
+#EXTVLCOPT:http-origin=https://www.rctiplus.com
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://bandeltv.xyz/sc1980/2025/rplus/index.m3u8?id=rcti
+
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/376/437376-SNAPSHOT-l.png" group-title="🇮🇩 NASIONAL 3",GTV 
+#EXTVLCOPT:Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)
+#EXTVLCOPT:http-origin=https://www.rctiplus.com
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://bandeltv.xyz/sc1980/2025/rplus/index.m3u8?id=gtv
+
+#EXTINF:-1 tvg-logo="https://www.visionplus.id/images/repository/374/437374-SNAPSHOT-l.png" group-title="🇮🇩 NASIONAL 3",MNC TV (R+B)
+#EXTVLCOPT:Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)
+#EXTVLCOPT:http-origin=https://www.rctiplus.com
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://bandeltv.xyz/sc1980/2025/rplus/index.m3u8?id=mnc
+
 #EXTINF:-1 tvg-logo="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSxGawAGIYu_BCrUhHD8CwLkgJEAsPV8auBLYrhzdR4dFtgGAMl" group-title="🇮🇩 NASIONAL 3" ,MOJI Dens
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
 https://op-flashcon-digdayahd-1.dens.tv/h/h207/index.m3u8
@@ -598,6 +609,16 @@ http://hometv.biz.id/play/DAtxb2AEuVjKed2cfeCDGa0HQvVs8_OGLIDG53kwhXA
 #################### nasional 4 ##########################################
 
 #EXTINF:-1 group-logo="https://i.pinimg.com/1200x/8b/0a/66/8b0a66e4a31ae8c1a8f1823a92b65936.jpg"
+
+
+#EXTINF:-1 tvg-id="Bandel" tvg-name="TRANS 7 | TV ONLINE (seven)" tvg-logo="https://servicebuss.transvision.co.id/hospitality/v1/files/channel_image/59e42ba7-a1d7-45af-a69e-8ca05ca51029.jpg" group-title="🇮🇩 NASIONAL 4",TRANS 7 | TV ONLINE (seven)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+https://live.eu-north-1a.cf.dmcdn.net/sec2(KwHQ-6H8FEXCa1XGzGIiaL514pQGawjqmugdblBrtphnaZePBHAcNEs6rhWkDG9WO4ijbz6Vjh6BvZuJc-g7slVn4FuhPjV_ICnNIO5FzUAsXqBAiYb3Ea-FwA0Kah6JMcMNPaWQAtpqQgGDz7iz6XnGzRXUjMNjtuHakpxi-6NUSJQ9r4ILuPVgp7YAfwMM)/dm/3/x8qckyq/d/live-h264-720.m3u8
+
+#EXTINF:-1 tvg-id="Lokal" group-title="🇮🇩 NASIONAL 4" tvg-logo="https://www.visionplus.id/images/repository/176/438176-SNAPSHOT-l.png" ch-number="7", Trans 7 (20D)
+#EXTVLCOPT:http-user-agent=lgadrm.mpdplayer/v1;(Linux; Android 16; id; tfjGCdW)
+https://bandeltv.xyz/2026/20detik/index.m3u8?id=trans7
+
 
 #EXTINF:-1 tvg-logo="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSxGawAGIYu_BCrUhHD8CwLkgJEAsPV8auBLYrhzdR4dFtgGAMl" group-title="🇮🇩 NASIONAL 4",MOJI (Dens)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0
