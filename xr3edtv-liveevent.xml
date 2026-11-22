@@ -10,6 +10,11 @@
     <display-name>🔴 [S1] LaLiga 2</display-name>
     <icon src="https://tmssl.akamaized.net//images/wappen/head/1536.png?lm=1695651736" />
   </channel>
+  <channel id="kltra_b6f917a2-5b6d-4f13-b6e2-6fbe123251c9_s2">
+    <display-name lang="id">🔴 [S2] LaLiga 2</display-name>
+    <display-name>🔴 [S2] LaLiga 2</display-name>
+    <icon src="https://tmssl.akamaized.net//images/wappen/head/1536.png?lm=1695651736" />
+  </channel>
   <channel id="kltra_590972fc-8f03-44d1-ab11-3be3eade19b3_s1">
     <display-name lang="id">🔴 [S1] LaLiga</display-name>
     <display-name>🔴 [S1] LaLiga</display-name>
@@ -230,7 +235,7 @@
     <display-name>🔴 [S1] Men Setka Cup</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
   </channel>
-  <channel id="kltra_liveevents_43607911_s1">
+  <channel id="kltra_liveevents_43606852_s1">
     <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
     <display-name>🔴 [S1] Men Setka Cup</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
@@ -495,11 +500,6 @@
     <display-name>⏳ 03:00 [S1] Peruvian First Division</display-name>
     <icon src="https://s.312977.com/data/6e676693e4b001ed2194da6ef45340b0.png" />
   </channel>
-  <channel id="kltra_71ab29ec-aac7-4d57-9468-5967746_s2">
-    <display-name lang="id">⏳ 03:00 [S2] Peruvian First Division</display-name>
-    <display-name>⏳ 03:00 [S2] Peruvian First Division</display-name>
-    <icon src="https://s.312977.com/data/6e676693e4b001ed2194da6ef45340b0.png" />
-  </channel>
   <channel id="od_mm-own-e14d420ee8_s1">
     <display-name lang="id">⏳ 03:00 [S1] LaLiga</display-name>
     <display-name>⏳ 03:00 [S1] LaLiga</display-name>
@@ -735,7 +735,7 @@
     <display-name>[S1] Sky Sports Golf</display-name>
     <icon src="/img/cards/247/247-dl-70.jpg?v=6" />
   </channel>
-  <programme start="20261123005157 +0700" stop="20261123030000 +0700" channel="od_mm-own-6fd681faff_s1">
+  <programme start="20261123005709 +0700" stop="20261123030000 +0700" channel="od_mm-own-6fd681faff_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sporting Cristal vs Cienciano del Cusco</title>
     <title>⏳ Kickoff 03:00 WIB: Sporting Cristal vs Cienciano del Cusco</title>
     <desc lang="id">🏆 Kompetisi: Liga 1 Peru
@@ -757,35 +757,46 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/je7zfi1603298076.jpg" />
   </programme>
-  <programme start="20261123022157 +0700" stop="20261123062500 +0700" channel="kltra_b6f917a2-5b6d-4f13-b6e2-6fbe123251c9_s1">
+  <programme start="20261123025500 +0700" stop="20261123062500 +0700" channel="kltra_b6f917a2-5b6d-4f13-b6e2-6fbe123251c9_s1">
     <title lang="id">Burgos vs Albacete</title>
     <title>Burgos vs Albacete</title>
     <desc lang="id">🏆 Kompetisi: Segunda Division
 ⚔️ Pertandingan: Burgos vs Albacete
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 02:21 WIB
-📡 Jalur: [S1] - Beesport - LaLiga Hypermotion</desc>
+⏰ Kickoff: 02:55 WIB
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://tmssl.akamaized.net//images/wappen/head/1536.png?lm=1695651736" />
   </programme>
-  <programme start="20261123022157 +0700" stop="20261123062500 +0700" channel="kltra_590972fc-8f03-44d1-ab11-3be3eade19b3_s1">
+  <programme start="20261123025500 +0700" stop="20261123062500 +0700" channel="kltra_b6f917a2-5b6d-4f13-b6e2-6fbe123251c9_s2">
+    <title lang="id">Burgos vs Albacete</title>
+    <title>Burgos vs Albacete</title>
+    <desc lang="id">🏆 Kompetisi: Segunda Division
+⚔️ Pertandingan: Burgos vs Albacete
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 02:55 WIB
+📡 Jalur: [S2] - Beesport - LaLiga Hypermotion</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://tmssl.akamaized.net//images/wappen/head/1536.png?lm=1695651736" />
+  </programme>
+  <programme start="20261123025500 +0700" stop="20261123062500 +0700" channel="kltra_590972fc-8f03-44d1-ab11-3be3eade19b3_s1">
     <title lang="id">Getafe vs Atletico Madrid</title>
     <title>Getafe vs Atletico Madrid</title>
     <desc lang="id">🏆 Kompetisi: La Liga
 ⚔️ Pertandingan: Getafe vs Atletico Madrid
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 02:21 WIB
-📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
+⏰ Kickoff: 02:55 WIB
+📡 Jalur: [S1] - Kltra - HD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/1UDHZMdKZD15W5gus7dJyg_96x96.png" />
   </programme>
-  <programme start="20261123022157 +0700" stop="20261123062500 +0700" channel="kltra_590972fc-8f03-44d1-ab11-3be3eade19b3_s2">
+  <programme start="20261123025500 +0700" stop="20261123062500 +0700" channel="kltra_590972fc-8f03-44d1-ab11-3be3eade19b3_s2">
     <title lang="id">Getafe vs Atletico Madrid</title>
     <title>Getafe vs Atletico Madrid</title>
     <desc lang="id">🏆 Kompetisi: La Liga
 ⚔️ Pertandingan: Getafe vs Atletico Madrid
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 02:21 WIB
+⏰ Kickoff: 02:55 WIB
 📡 Jalur: [S2] - Beesport - Premier Sports 1</desc>
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/1UDHZMdKZD15W5gus7dJyg_96x96.png" />
@@ -1219,7 +1230,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/6ca0fab4559da625c435532b99c0f710.png" />
   </programme>
-  <programme start="20261122205500 +0700" stop="20261123062157 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s1">
+  <programme start="20261122205500 +0700" stop="20261123062709 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s1">
     <title lang="id">ATP Finals</title>
     <title>ATP Finals</title>
     <desc lang="id">🏆 Kompetisi: ATP Finals
@@ -1230,7 +1241,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Tennis.png" />
   </programme>
-  <programme start="20261122205500 +0700" stop="20261123062157 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s2">
+  <programme start="20261122205500 +0700" stop="20261123062709 +0700" channel="kltra_c171557c-3e52-42af-94f3-d7719aaf1372_s2">
     <title lang="id">ATP Finals</title>
     <title>ATP Finals</title>
     <desc lang="id">🏆 Kompetisi: ATP Finals
@@ -1252,13 +1263,13 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
   </programme>
-  <programme start="20261123023500 +0700" stop="20261123060500 +0700" channel="kltra_liveevents_43607911_s1">
-    <title lang="id">Yaroslav Tebenko vs Vladislav Kovalchuk</title>
-    <title>Yaroslav Tebenko vs Vladislav Kovalchuk</title>
+  <programme start="20261123023000 +0700" stop="20261123060000 +0700" channel="kltra_liveevents_43606852_s1">
+    <title lang="id">Milan Cuba vs Jan Vrnak</title>
+    <title>Milan Cuba vs Jan Vrnak</title>
     <desc lang="id">🏆 Kompetisi: Men Setka Cup
-⚔️ Pertandingan: Yaroslav Tebenko vs Vladislav Kovalchuk
+⚔️ Pertandingan: Milan Cuba vs Jan Vrnak
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 02:35 WIB
+⏰ Kickoff: 02:30 WIB
 📡 Jalur: [S1] - Kltra - S1</desc>
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
@@ -1780,7 +1791,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401902281.jpg?v=3nf" />
   </programme>
-  <programme start="20261122170000 +0700" stop="20261123062157 +0700" channel="od_cr-india-a-pakistan-a_s1">
+  <programme start="20261122170000 +0700" stop="20261123062709 +0700" channel="od_cr-india-a-pakistan-a_s1">
     <title lang="id">india a vs pakistan a</title>
     <title>india a vs pakistan a</title>
     <desc lang="id">🏆 Kompetisi: acc men's asia cup rising stars 2026
@@ -1791,7 +1802,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/a0e836ecc4c72c73.jpg?v=3nf.t2s" />
   </programme>
-  <programme start="20261122170000 +0700" stop="20261123062157 +0700" channel="od_cr-warriorz-giants_s1">
+  <programme start="20261122170000 +0700" stop="20261123062709 +0700" channel="od_cr-warriorz-giants_s1">
     <title lang="id">warriorz vs giants</title>
     <title>warriorz vs giants</title>
     <desc lang="id">🏆 Kompetisi: il t20 2026
@@ -1802,7 +1813,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/8d1d4f7d8f632f03.jpg?v=3nf.t2" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123030000 +0700" channel="kltra_30b2d452-9620-43f6-a812-5966541_s1">
+  <programme start="20261123005709 +0700" stop="20261123030000 +0700" channel="kltra_30b2d452-9620-43f6-a812-5966541_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sporting Cristal vs CS Cienciano</title>
     <title>⏳ Kickoff 03:00 WIB: Sporting Cristal vs CS Cienciano</title>
     <desc lang="id">🏆 Kompetisi: Peruvian First Division
@@ -1824,7 +1835,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/fe6540a156bf0c4abe87ec8f9f746675.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123030000 +0700" channel="kltra_30b2d452-9620-43f6-a812-5966541_s2">
+  <programme start="20261123005709 +0700" stop="20261123030000 +0700" channel="kltra_30b2d452-9620-43f6-a812-5966541_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sporting Cristal vs CS Cienciano</title>
     <title>⏳ Kickoff 03:00 WIB: Sporting Cristal vs CS Cienciano</title>
     <desc lang="id">🏆 Kompetisi: Peruvian First Division
@@ -1846,14 +1857,14 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/fe6540a156bf0c4abe87ec8f9f746675.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123030000 +0700" channel="kltra_71ab29ec-aac7-4d57-9468-5967746_s1">
+  <programme start="20261123005709 +0700" stop="20261123030000 +0700" channel="kltra_71ab29ec-aac7-4d57-9468-5967746_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sport Huancayo vs Universitario de Deportes</title>
     <title>⏳ Kickoff 03:00 WIB: Sport Huancayo vs Universitario de Deportes</title>
     <desc lang="id">🏆 Kompetisi: Peruvian First Division
 ⚔️ Pertandingan: Sport Huancayo vs Universitario de Deportes
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 03:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/6e676693e4b001ed2194da6ef45340b0.png" />
   </programme>
@@ -1864,33 +1875,11 @@
 ⚔️ Pertandingan: Sport Huancayo vs Universitario de Deportes
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 03:00 WIB
-📡 Jalur: [S1] - Kltra - HD B [IOS]</desc>
+📡 Jalur: [S1] - Kltra - SD V [IOS]</desc>
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/6e676693e4b001ed2194da6ef45340b0.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123030000 +0700" channel="kltra_71ab29ec-aac7-4d57-9468-5967746_s2">
-    <title lang="id">⏳ Kickoff 03:00 WIB: Sport Huancayo vs Universitario de Deportes</title>
-    <title>⏳ Kickoff 03:00 WIB: Sport Huancayo vs Universitario de Deportes</title>
-    <desc lang="id">🏆 Kompetisi: Peruvian First Division
-⚔️ Pertandingan: Sport Huancayo vs Universitario de Deportes
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 03:00 WIB
-📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.312977.com/data/6e676693e4b001ed2194da6ef45340b0.png" />
-  </programme>
-  <programme start="20261123030000 +0700" stop="20261123063000 +0700" channel="kltra_71ab29ec-aac7-4d57-9468-5967746_s2">
-    <title lang="id">Sport Huancayo vs Universitario de Deportes</title>
-    <title>Sport Huancayo vs Universitario de Deportes</title>
-    <desc lang="id">🏆 Kompetisi: Peruvian First Division
-⚔️ Pertandingan: Sport Huancayo vs Universitario de Deportes
-⚡ Status: AKAN DATANG (UPCOMING)
-⏰ Kickoff: 03:00 WIB
-📡 Jalur: [S2] - Kltra - SD V [IOS]</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://s.312977.com/data/6e676693e4b001ed2194da6ef45340b0.png" />
-  </programme>
-  <programme start="20261123005157 +0700" stop="20261123030000 +0700" channel="od_mm-own-e14d420ee8_s1">
+  <programme start="20261123005709 +0700" stop="20261123030000 +0700" channel="od_mm-own-e14d420ee8_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Getafe vs Atlético Madrid</title>
     <title>⏳ Kickoff 03:00 WIB: Getafe vs Atlético Madrid</title>
     <desc lang="id">🏆 Kompetisi: LaLiga
@@ -1912,7 +1901,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/esp.1/401882803.jpg?v=3nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123030000 +0700" channel="od_mm-own-e14d420ee8_s2">
+  <programme start="20261123005709 +0700" stop="20261123030000 +0700" channel="od_mm-own-e14d420ee8_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Getafe vs Atlético Madrid</title>
     <title>⏳ Kickoff 03:00 WIB: Getafe vs Atlético Madrid</title>
     <desc lang="id">🏆 Kompetisi: LaLiga
@@ -1934,7 +1923,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/esp.1/401882803.jpg?v=3nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123033000 +0700" channel="od_espn-401910029_s1">
+  <programme start="20261123005709 +0700" stop="20261123033000 +0700" channel="od_espn-401910029_s1">
     <title lang="id">⏳ Kickoff 03:30 WIB: Atlanta Hawks vs Detroit Pistons</title>
     <title>⏳ Kickoff 03:30 WIB: Atlanta Hawks vs Detroit Pistons</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1956,7 +1945,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910029.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123033000 +0700" channel="od_espn-401910029_s2">
+  <programme start="20261123005709 +0700" stop="20261123033000 +0700" channel="od_espn-401910029_s2">
     <title lang="id">⏳ Kickoff 03:30 WIB: Atlanta Hawks vs Detroit Pistons</title>
     <title>⏳ Kickoff 03:30 WIB: Atlanta Hawks vs Detroit Pistons</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -1978,7 +1967,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910029.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123040000 +0700" channel="od_mm-own-e0e25e2a0a_s1">
+  <programme start="20261123005709 +0700" stop="20261123040000 +0700" channel="od_mm-own-e0e25e2a0a_s1">
     <title lang="id">⏳ Kickoff 04:00 WIB: Nashville SC vs TBD Away</title>
     <title>⏳ Kickoff 04:00 WIB: Nashville SC vs TBD Away</title>
     <desc lang="id">🏆 Kompetisi: MLS
@@ -2000,7 +1989,7 @@
     <category lang="id">Sports</category>
     <icon src="https://a.espncdn.com/i/teamlogos/soccer/500/18986.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123040000 +0700" channel="od_mm-own-e0e25e2a0a_s2">
+  <programme start="20261123005709 +0700" stop="20261123040000 +0700" channel="od_mm-own-e0e25e2a0a_s2">
     <title lang="id">⏳ Kickoff 04:00 WIB: Nashville SC vs TBD Away</title>
     <title>⏳ Kickoff 04:00 WIB: Nashville SC vs TBD Away</title>
     <desc lang="id">🏆 Kompetisi: MLS
@@ -2022,7 +2011,7 @@
     <category lang="id">Sports</category>
     <icon src="https://a.espncdn.com/i/teamlogos/soccer/500/18986.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123040000 +0700" channel="od_mm-own-e1cfaa22a1_s1">
+  <programme start="20261123005709 +0700" stop="20261123040000 +0700" channel="od_mm-own-e1cfaa22a1_s1">
     <title lang="id">⏳ Kickoff 04:00 WIB: Colo Colo vs Universidad Católica</title>
     <title>⏳ Kickoff 04:00 WIB: Colo Colo vs Universidad Católica</title>
     <desc lang="id">🏆 Kompetisi: Chilean Primera
@@ -2044,7 +2033,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/3ubi5w1777868554.jpg" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123040500 +0700" channel="kltra_4fa838f2-06ab-4e51-b9bd-adea7bf54e64_s1">
+  <programme start="20261123005709 +0700" stop="20261123040500 +0700" channel="kltra_4fa838f2-06ab-4e51-b9bd-adea7bf54e64_s1">
     <title lang="id">⏳ Kickoff 04:05 WIB: Los Angeles Chargers vs New York Jets</title>
     <title>⏳ Kickoff 04:05 WIB: Los Angeles Chargers vs New York Jets</title>
     <desc lang="id">🏆 Kompetisi: NFL
@@ -2066,7 +2055,7 @@
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fQRCFlwKEORFAvo-Tix0dg_48x48.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123040500 +0700" channel="kltra_4fa838f2-06ab-4e51-b9bd-adea7bf54e64_s2">
+  <programme start="20261123005709 +0700" stop="20261123040500 +0700" channel="kltra_4fa838f2-06ab-4e51-b9bd-adea7bf54e64_s2">
     <title lang="id">⏳ Kickoff 04:05 WIB: Los Angeles Chargers vs New York Jets</title>
     <title>⏳ Kickoff 04:05 WIB: Los Angeles Chargers vs New York Jets</title>
     <desc lang="id">🏆 Kompetisi: NFL
@@ -2088,7 +2077,7 @@
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/fQRCFlwKEORFAvo-Tix0dg_48x48.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123042500 +0700" channel="kltra_0fc430f8-dfbf-4021-ab95-66c16aeb44fd_s1">
+  <programme start="20261123005709 +0700" stop="20261123042500 +0700" channel="kltra_0fc430f8-dfbf-4021-ab95-66c16aeb44fd_s1">
     <title lang="id">⏳ Kickoff 04:25 WIB: Denver Broncos vs Las Vegas Raiders</title>
     <title>⏳ Kickoff 04:25 WIB: Denver Broncos vs Las Vegas Raiders</title>
     <desc lang="id">🏆 Kompetisi: NFL
@@ -2110,7 +2099,7 @@
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/-Y7S1VpDZQ6t9f-OZdlugw_48x48.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123042500 +0700" channel="kltra_0fc430f8-dfbf-4021-ab95-66c16aeb44fd_s2">
+  <programme start="20261123005709 +0700" stop="20261123042500 +0700" channel="kltra_0fc430f8-dfbf-4021-ab95-66c16aeb44fd_s2">
     <title lang="id">⏳ Kickoff 04:25 WIB: Denver Broncos vs Las Vegas Raiders</title>
     <title>⏳ Kickoff 04:25 WIB: Denver Broncos vs Las Vegas Raiders</title>
     <desc lang="id">🏆 Kompetisi: NFL
@@ -2132,7 +2121,7 @@
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/-Y7S1VpDZQ6t9f-OZdlugw_48x48.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123042500 +0700" channel="kltra_dc7d23e2-0f2a-4f2e-8ecc-87715655c54b_s1">
+  <programme start="20261123005709 +0700" stop="20261123042500 +0700" channel="kltra_dc7d23e2-0f2a-4f2e-8ecc-87715655c54b_s1">
     <title lang="id">⏳ Kickoff 04:25 WIB: New York Giants vs Jacksonville Jaguars</title>
     <title>⏳ Kickoff 04:25 WIB: New York Giants vs Jacksonville Jaguars</title>
     <desc lang="id">🏆 Kompetisi: NFL
@@ -2154,7 +2143,7 @@
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/CWCa7SI5xq9aS3NP2Gbl9A_48x48.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123042500 +0700" channel="kltra_dc7d23e2-0f2a-4f2e-8ecc-87715655c54b_s2">
+  <programme start="20261123005709 +0700" stop="20261123042500 +0700" channel="kltra_dc7d23e2-0f2a-4f2e-8ecc-87715655c54b_s2">
     <title lang="id">⏳ Kickoff 04:25 WIB: New York Giants vs Jacksonville Jaguars</title>
     <title>⏳ Kickoff 04:25 WIB: New York Giants vs Jacksonville Jaguars</title>
     <desc lang="id">🏆 Kompetisi: NFL
@@ -2176,7 +2165,7 @@
     <category lang="id">Sports</category>
     <icon src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/CWCa7SI5xq9aS3NP2Gbl9A_48x48.png" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123043000 +0700" channel="od_mm-own-d9aab6d8e9_s1">
+  <programme start="20261123005709 +0700" stop="20261123043000 +0700" channel="od_mm-own-d9aab6d8e9_s1">
     <title lang="id">⏳ Kickoff 04:30 WIB: Fluminense vs Mirassol</title>
     <title>⏳ Kickoff 04:30 WIB: Fluminense vs Mirassol</title>
     <desc lang="id">🏆 Kompetisi: Brasileirão
@@ -2198,7 +2187,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/bra.1/401841324.jpg?v=3nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123043000 +0700" channel="od_mm-own-2917e3a385_s1">
+  <programme start="20261123005709 +0700" stop="20261123043000 +0700" channel="od_mm-own-2917e3a385_s1">
     <title lang="id">⏳ Kickoff 04:30 WIB: Atlético Goianiense vs Vila Nova</title>
     <title>⏳ Kickoff 04:30 WIB: Atlético Goianiense vs Vila Nova</title>
     <desc lang="id">🏆 Kompetisi: Brasileirão Série B
@@ -2220,7 +2209,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/own/mm-own-2917e3a385.jpg?v=2" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123050000 +0700" channel="od_espn-401892769_s1">
+  <programme start="20261123005709 +0700" stop="20261123050000 +0700" channel="od_espn-401892769_s1">
     <title lang="id">⏳ Kickoff 05:00 WIB: Tampa Bay Lightning vs Buffalo Sabres</title>
     <title>⏳ Kickoff 05:00 WIB: Tampa Bay Lightning vs Buffalo Sabres</title>
     <desc lang="id">🏆 Kompetisi: National Hockey League
@@ -2242,7 +2231,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nhl/401892769.jpg?v=spl2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123050000 +0700" channel="od_espn-401892769_s2">
+  <programme start="20261123005709 +0700" stop="20261123050000 +0700" channel="od_espn-401892769_s2">
     <title lang="id">⏳ Kickoff 05:00 WIB: Tampa Bay Lightning vs Buffalo Sabres</title>
     <title>⏳ Kickoff 05:00 WIB: Tampa Bay Lightning vs Buffalo Sabres</title>
     <desc lang="id">🏆 Kompetisi: National Hockey League
@@ -2264,7 +2253,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nhl/401892769.jpg?v=spl2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123050000 +0700" channel="od_mm-own-5c4eeeeb2e_s1">
+  <programme start="20261123005709 +0700" stop="20261123050000 +0700" channel="od_mm-own-5c4eeeeb2e_s1">
     <title lang="id">⏳ Kickoff 05:00 WIB: River Plate vs Lanús</title>
     <title>⏳ Kickoff 05:00 WIB: River Plate vs Lanús</title>
     <desc lang="id">🏆 Kompetisi: Liga Argentina
@@ -2286,7 +2275,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/arg.1/401933761.jpg?v=3nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123050000 +0700" channel="od_mm-cric-dl-3e0b79b345_s1">
+  <programme start="20261123005709 +0700" stop="20261123050000 +0700" channel="od_mm-cric-dl-3e0b79b345_s1">
     <title lang="id">⏳ Kickoff 05:00 WIB: New Zealand vs India</title>
     <title>⏳ Kickoff 05:00 WIB: New Zealand vs India</title>
     <desc lang="id">🏆 Kompetisi: 1st Test Day-5
@@ -2308,7 +2297,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/chlogos/cricdl-ffc5860ef898-nf.jpg" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123053000 +0700" channel="od_espn-401841321_s1">
+  <programme start="20261123005709 +0700" stop="20261123053000 +0700" channel="od_espn-401841321_s1">
     <title lang="id">⏳ Kickoff 05:30 WIB: Red Bull Bragantino vs Vasco da Gama</title>
     <title>⏳ Kickoff 05:30 WIB: Red Bull Bragantino vs Vasco da Gama</title>
     <desc lang="id">🏆 Kompetisi: Brazilian Serie A
@@ -2330,7 +2319,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/bra.1/401841321.jpg?v=3nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123060000 +0700" channel="od_espn-401910030_s1">
+  <programme start="20261123005709 +0700" stop="20261123060000 +0700" channel="od_espn-401910030_s1">
     <title lang="id">⏳ Kickoff 06:00 WIB: Miami Heat vs Oklahoma City Thunder</title>
     <title>⏳ Kickoff 06:00 WIB: Miami Heat vs Oklahoma City Thunder</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2352,7 +2341,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910030.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123060000 +0700" channel="od_espn-401910030_s2">
+  <programme start="20261123005709 +0700" stop="20261123060000 +0700" channel="od_espn-401910030_s2">
     <title lang="id">⏳ Kickoff 06:00 WIB: Miami Heat vs Oklahoma City Thunder</title>
     <title>⏳ Kickoff 06:00 WIB: Miami Heat vs Oklahoma City Thunder</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2374,7 +2363,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910030.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123060700 +0700" channel="od_mm-own-f5a2f1d752_s1">
+  <programme start="20261123005709 +0700" stop="20261123060700 +0700" channel="od_mm-own-f5a2f1d752_s1">
     <title lang="id">⏳ Kickoff 06:07 WIB: Guadalajara vs Cruz Azul</title>
     <title>⏳ Kickoff 06:07 WIB: Guadalajara vs Cruz Azul</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -2396,7 +2385,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877047.jpg?v=ghost1nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123060700 +0700" channel="od_mm-own-f5a2f1d752_s2">
+  <programme start="20261123005709 +0700" stop="20261123060700 +0700" channel="od_mm-own-f5a2f1d752_s2">
     <title lang="id">⏳ Kickoff 06:07 WIB: Guadalajara vs Cruz Azul</title>
     <title>⏳ Kickoff 06:07 WIB: Guadalajara vs Cruz Azul</title>
     <desc lang="id">🏆 Kompetisi: Liga MX
@@ -2418,7 +2407,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mex.1/401877047.jpg?v=ghost1nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123063000 +0700" channel="od_mm-own-bb8c221ef9_s1">
+  <programme start="20261123005709 +0700" stop="20261123063000 +0700" channel="od_mm-own-bb8c221ef9_s1">
     <title lang="id">⏳ Kickoff 06:30 WIB: Chicago Fire FC vs Charlotte FC</title>
     <title>⏳ Kickoff 06:30 WIB: Chicago Fire FC vs Charlotte FC</title>
     <desc lang="id">🏆 Kompetisi: MLS
@@ -2440,7 +2429,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/usa.1/401933730.jpg?v=flag2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123063000 +0700" channel="od_mm-own-026e980ba3_s1">
+  <programme start="20261123005709 +0700" stop="20261123063000 +0700" channel="od_mm-own-026e980ba3_s1">
     <title lang="id">⏳ Kickoff 06:30 WIB: Deportes Limache vs La Serena</title>
     <title>⏳ Kickoff 06:30 WIB: Deportes Limache vs La Serena</title>
     <desc lang="id">🏆 Kompetisi: Chilean Primera
@@ -2462,7 +2451,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/xz25o31779081534.jpg" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401910031_s1">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401910031_s1">
     <title lang="id">⏳ Kickoff 07:00 WIB: Washington Wizards vs Orlando Magic</title>
     <title>⏳ Kickoff 07:00 WIB: Washington Wizards vs Orlando Magic</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2484,7 +2473,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910031.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401910031_s2">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401910031_s2">
     <title lang="id">⏳ Kickoff 07:00 WIB: Washington Wizards vs Orlando Magic</title>
     <title>⏳ Kickoff 07:00 WIB: Washington Wizards vs Orlando Magic</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2506,7 +2495,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910031.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401910032_s1">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401910032_s1">
     <title lang="id">⏳ Kickoff 07:00 WIB: Chicago Bulls vs Denver Nuggets</title>
     <title>⏳ Kickoff 07:00 WIB: Chicago Bulls vs Denver Nuggets</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2528,7 +2517,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910032.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401910032_s2">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401910032_s2">
     <title lang="id">⏳ Kickoff 07:00 WIB: Chicago Bulls vs Denver Nuggets</title>
     <title>⏳ Kickoff 07:00 WIB: Chicago Bulls vs Denver Nuggets</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2550,7 +2539,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910032.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401910033_s1">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401910033_s1">
     <title lang="id">⏳ Kickoff 07:00 WIB: Utah Jazz vs Dallas Mavericks</title>
     <title>⏳ Kickoff 07:00 WIB: Utah Jazz vs Dallas Mavericks</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2572,7 +2561,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910033.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401910033_s2">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401910033_s2">
     <title lang="id">⏳ Kickoff 07:00 WIB: Utah Jazz vs Dallas Mavericks</title>
     <title>⏳ Kickoff 07:00 WIB: Utah Jazz vs Dallas Mavericks</title>
     <desc lang="id">🏆 Kompetisi: National Basketball Association
@@ -2594,7 +2583,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nba/401910033.jpg?v=ghst2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401892770_s1">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401892770_s1">
     <title lang="id">⏳ Kickoff 07:00 WIB: St. Louis Blues vs Edmonton Oilers</title>
     <title>⏳ Kickoff 07:00 WIB: St. Louis Blues vs Edmonton Oilers</title>
     <desc lang="id">🏆 Kompetisi: National Hockey League
@@ -2616,7 +2605,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nhl/401892770.jpg?v=spl2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401892770_s2">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401892770_s2">
     <title lang="id">⏳ Kickoff 07:00 WIB: St. Louis Blues vs Edmonton Oilers</title>
     <title>⏳ Kickoff 07:00 WIB: St. Louis Blues vs Edmonton Oilers</title>
     <desc lang="id">🏆 Kompetisi: National Hockey League
@@ -2638,7 +2627,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nhl/401892770.jpg?v=spl2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401892771_s1">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401892771_s1">
     <title lang="id">⏳ Kickoff 07:00 WIB: Dallas Stars vs Pittsburgh Penguins</title>
     <title>⏳ Kickoff 07:00 WIB: Dallas Stars vs Pittsburgh Penguins</title>
     <desc lang="id">🏆 Kompetisi: National Hockey League
@@ -2660,7 +2649,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/nhl/401892771.jpg?v=spl2nf" />
   </programme>
-  <programme start="20261123005157 +0700" stop="20261123070000 +0700" channel="od_espn-401892771_s2">
+  <programme start="20261123005709 +0700" stop="20261123070000 +0700" channel="od_espn-401892771_s2">
     <title lang="id">⏳ Kickoff 07:00 WIB: Dallas Stars vs Pittsburgh Penguins</title>
     <title>⏳ Kickoff 07:00 WIB: Dallas Stars vs Pittsburgh Penguins</title>
     <desc lang="id">🏆 Kompetisi: National Hockey League
