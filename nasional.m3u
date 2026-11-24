@@ -13,14 +13,9 @@ https://lynk.id/xr3ed
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
 https://bandeltv.xyz/sc1980/2025/rplus/index.m3u8?id=rcti
 #EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI - Server 2" tvg-logo="https://www.visionplus.id/images/repository/580/580-LOGO-l.png" group-title="🇮🇩 NASIONAL",RCTI - Server 2
-#KODIPROP:inputstreamaddon=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=dash
+#EXTVLCOPT:http-user-agent=android-R+
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-#EXTVLCOPT:http-origin=https://www.rctiplus.com
-#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
-#KODIPROP:inputstream.adaptive.license_key=https://bandeltv.xyz/sc1980/2025/Kvision/v/drm1.php?id=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIxIiwiaWQiOiIxIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.0KrYWLJvg0uJssWM2t4z9I2EJDQZszD7Z6AYuYpzrr0
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://bandeltv.xyz/sc1980/2025/Kvision/v/mpd1.php/.mpd?id=1&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIxIiwiaWQiOiIxIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.0KrYWLJvg0uJssWM2t4z9I2EJDQZszD7Z6AYuYpzrr0
+https://rplus.inisemar.my.id/rcti.m3u8
 #EXTINF:-1 tvg-id="RCTI" tvg-name="RCTI - Server 3" tvg-logo="https://www.visionplus.id/images/repository/580/580-LOGO-l.png" group-title="🇮🇩 NASIONAL",RCTI - Server 3
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
@@ -28,6 +23,10 @@ https://bandeltv.xyz/sc1980/2025/Kvision/v/mpd1.php/.mpd?id=1&token=eyJ0eXAiOiJK
 #KODIPROP:inputstream.adaptive.license_key=http://liveloveyou.my.id/gvision/widevine.php?id=1
 https://d2xz2v5wuvgur6.cloudfront.net/out/v1/997ce8767b604fae9fce05379b3b8b3a/index.mpd
 #EXTINF:-1 tvg-id="MNC TV" tvg-name="MNC TV - Server 1" tvg-logo="https://www.visionplus.id/images/repository/581/581-LOGO-l.png" group-title="🇮🇩 NASIONAL",MNC TV - Server 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://linier-mnctv.rctiplus.id/mnctv-sdi-avc1_1000000=17-mp4a_96000=1.m3u8
+#EXTINF:-1 tvg-id="MNC TV" tvg-name="MNC TV - Server 2" tvg-logo="https://www.visionplus.id/images/repository/581/581-LOGO-l.png" group-title="🇮🇩 NASIONAL",MNC TV - Server 2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
@@ -40,17 +39,22 @@ https://d2xz2v5wuvgur6.cloudfront.net/out/v1/d6b026ad50f14b7f9af5ddd5450007d4/in
 https://bandeltv.xyz/sc1980/2025/rplus/index.m3u8?id=gtv
 #EXTINF:-1 tvg-id="GTV" tvg-name="GTV - Server 2" tvg-logo="https://www.visionplus.id/images/repository/582/582-LOGO-l.png" group-title="🇮🇩 NASIONAL",GTV - Server 2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://linier-gtv.rctiplus.id/gtv-sdi-avc1_1000000=7-mp4a_96000=1.m3u8
+#EXTINF:-1 tvg-id="GTV" tvg-name="GTV - Server 3" tvg-logo="https://www.visionplus.id/images/repository/582/582-LOGO-l.png" group-title="🇮🇩 NASIONAL",GTV - Server 3
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
 #KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
 #KODIPROP:inputstream.adaptive.license_key=http://liveloveyou.my.id/gvision/widevine.php?id=3
 https://d2tjypxxy769fn.cloudfront.net/out/v1/b8b9b1d5f80f45649b4a3619291551ab/index.mpd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTINF:-1 tvg-id="iNews" tvg-name="iNews - Server 1" tvg-logo="https://www.visionplus.id/images/repository/583/583-LOGO-l.png" group-title="🇮🇩 NASIONAL",iNews - Server 1
-#EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/inews/index.m3u8
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://linier-inews.rctiplus.id/inews-sdi-avc1_1000000=22-mp4a_96000=1.m3u8
 #EXTINF:-1 tvg-id="SindoNews TV" tvg-name="SindoNews TV - Server 1" tvg-logo="https://www.visionplus.id/images/repository/584/584-LOGO-l.png" group-title="🇮🇩 NASIONAL",SindoNews TV - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/sindonews/index.m3u8
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://dsgtq5sngxkde.cloudfront.net/sindonews/index.m3u8
 #EXTINF:-1 tvg-id="SCTV" tvg-name="SCTV - Server 1" tvg-logo="https://www.visionplus.id/images/repository/062/569062-LOGO-l.png" group-title="🇮🇩 NASIONAL",SCTV - Server 1
 #EXTVLCOPT:http-user-agent=VidioPlayer/7.27.12
 #KODIPROP:inputstream=inputstream.adaptive
@@ -89,13 +93,8 @@ https://live.cnbcindonesia.com/trans7/smil:trans7.smil/playlist.m3u8
 https://live.cnnindonesia.com/trans7/smil:trans7/chunklist_w26855752592_b744100_sleng.m3u8
 #EXTINF:-1 tvg-id="ANTV" tvg-name="ANTV - Server 1" tvg-logo="https://www.visionplus.id/images/repository/587/587-LOGO-l.png" group-title="🇮🇩 NASIONAL",ANTV - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/antv/index.m3u8
-#EXTINF:-1 tvg-id="ANTV" tvg-name="ANTV - Server 2" tvg-logo="https://www.visionplus.id/images/repository/587/587-LOGO-l.png" group-title="🇮🇩 NASIONAL",ANTV - Server 2
-#EXTVLCOPT:http-referrer=https://m.vidio.com/
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 14; Google TV Streamer Build/UTT3.240625.001.K5; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.60 Mobile Safari/537.36
-http://tvratu.my.id/nissa/index.m3u8?id=782&type=hls
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://dsgtq5sngxkde.cloudfront.net/antv/index.m3u8
 #EXTINF:-1 tvg-id="tvOne" tvg-name="tvOne - Server 1" tvg-logo="https://images.indihometv.com/assets/88_TVONE_2025_03_17_14_49_56.png" group-title="🇮🇩 NASIONAL",tvOne - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0
 https://op-group1-densxvisionhd-1.dens.tv/h/h40/index.m3u8
@@ -184,10 +183,10 @@ https://5bf7b725107e5.streamlock.net/brtv/brtv/playlist.m3u8
 https://op-flashcon-digdayahd-1.dens.tv/h/h313/S1/mnf.m3u8
 #EXTINF:-1 tvg-id="Carubantv" tvg-name="Carubantv - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/3a/CarubanTV%28Low-res%29.png" group-title="🇮🇩 NASIONAL",Carubantv - Server 1
 https://stream.carubantv.id/hls/0/stream.m3u8
-#EXTINF:-1 tvg-id="Celebrities" tvg-name="Celebrities - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/67/Celebrities_TV.png" group-title="🇮🇩 NASIONAL",Celebrities - Server 1
+#EXTINF:-1 tvg-id="Celebritiestv" tvg-name="Celebritiestv - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/67/Celebrities_TV.png" group-title="🇮🇩 NASIONAL",Celebritiestv - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/celebrities/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/celebrities/index.m3u8
 #EXTINF:-1 tvg-id="Cnbc Indonesia Channelfeed" tvg-name="Cnbc Indonesia Channelfeed - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/id/3/35/CNBC_Indonesia.png" group-title="🇮🇩 NASIONAL",Cnbc Indonesia Channelfeed - Server 1
 #KODIPROP:inputstream=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
@@ -211,18 +210,11 @@ https://dhohotv.siar.us/dhohotv/live/playlist.m3u8?checkedby:iptvcat.com
 #EXTINF:-1 tvg-id="Duta Tv" tvg-name="Duta Tv - Server 1" tvg-logo="https://i.imgur.com/B4JW54M.png" group-title="🇮🇩 NASIONAL",Duta Tv - Server 1
 https://dutatv.siar.us/dutatv/live/playlist.m3u8
 #EXTINF:-1 tvg-id="Entertainment" tvg-name="Entertainment - Server 1" tvg-logo="https://i.imgur.com/Djnj4GI.png" group-title="🇮🇩 NASIONAL",Entertainment - Server 1
-#EXTVLCOPT:http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/mncent/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/mncent/index.m3u8
 #EXTINF:-1 tvg-id="Garuda Tv Channelfeed" tvg-name="Garuda Tv Channelfeed - Server 1" tvg-logo="https://thumbor.prod.vidiocdn.com/qtIYvE-mjwMPwd-VUxilo2gFiAI=/230x230/filters:quality(70)/vidio-web-prod-livestreaming/uploads/livestreaming/square_image/18162/b4bea2.png" group-title="🇮🇩 NASIONAL",Garuda Tv Channelfeed - Server 1
 https://hgmtv.com:19360/garudatvlivestreaming/480p.m3u8
-#EXTINF:-1 tvg-id="Gtv V" tvg-name="Gtv V - Server 1" tvg-logo="https://www.visionplus.id/images/repository/376/437376-SNAPSHOT-l.png" group-title="🇮🇩 NASIONAL",Gtv V - Server 1
-#KODIPROP:inputstreamaddon=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=dash
-#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
-#KODIPROP:inputstream.adaptive.license_key=https://bandeltv.xyz/sc1980/2025/Kvision/v/drm1.php?id=3&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIzIiwiaWQiOiIzIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.CKpa3Q2QcohM-xIGRfsIYjmiu6Ife9a4zZaq5wPV5B4
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://bandeltv.xyz/sc1980/2025/Kvision/v/mpd1.php/.mpd?id=3&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIzIiwiaWQiOiIzIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.CKpa3Q2QcohM-xIGRfsIYjmiu6Ife9a4zZaq5wPV5B4
 #EXTINF:-1 tvg-id="Indonesiana Tv" tvg-name="Indonesiana Tv - Server 1" tvg-logo="https://1.bp.blogspot.com/-KpWyLR5i7xQ/YZxuWqY4HfI/AAAAAAAAIJc/aSs_n2nzEQYWjGTpiKpgjjHMiTg7a8jVgCLcBGAsYHQ/s720/Untitled-1.png" group-title="🇮🇩 NASIONAL",Indonesiana Tv - Server 1
 https://tvstreamcast.com/indonesiana.m3u8
 #EXTINF:-1 tvg-id="Indonesiana Tv Channelfeed" tvg-name="Indonesiana Tv Channelfeed - Server 1" tvg-logo="https://layarceritaperempuan.indonesiana.tv/_nuxt/img/logo-indonesianatv-fit.0d9697f.png" group-title="🇮🇩 NASIONAL",Indonesiana Tv Channelfeed - Server 1
@@ -274,13 +266,6 @@ https://op-group1-densxvisionhd-1.dens.tv/h/h223/index.m3u8
 #EXTVLCOPT:http-origin=https://www.rctiplus.com
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
 https://bandeltv.xyz/sc1980/2025/rplus/index.m3u8?id=mnc
-#EXTINF:-1 tvg-id="Mnc Tv V" tvg-name="Mnc Tv V - Server 1" tvg-logo="https://www.visionplus.id/images/repository/374/437374-SNAPSHOT-l.png" group-title="🇮🇩 NASIONAL",Mnc Tv V - Server 1
-#KODIPROP:inputstreamaddon=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=dash
-#KODIPROP:inputstream.adaptive.license_type=com.widevine.alpha
-#KODIPROP:inputstream.adaptive.license_key=https://bandeltv.xyz/sc1980/2025/Kvision/v/drm1.php?id=2&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIyIiwiaWQiOiIyIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.eZrV7bbU7BDqN30NSMdvRTKRNoHAjo-mH0kqHESjF2Y
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://bandeltv.xyz/sc1980/2025/Kvision/v/mpd1.php/.mpd?id=2&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhbmRlbHR2Lnh5eiIsImF1ZCI6Imt2aXNpb24iLCJzdWIiOiIyIiwiaWQiOiIyIiwiaWF0IjoxNzk1MjI3NTQ0LCJuYmYiOjE3OTUyMjc1MzksImV4cCI6MTc5NTI0OTE0NH0.eZrV7bbU7BDqN30NSMdvRTKRNoHAjo-mH0kqHESjF2Y
 #EXTINF:-1 tvg-id="Moji Dens" tvg-name="Moji Dens - Server 1" tvg-logo="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSxGawAGIYu_BCrUhHD8CwLkgJEAsPV8auBLYrhzdR4dFtgGAMl" group-title="🇮🇩 NASIONAL",Moji Dens - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0
 https://op-group1-densxvisionhd-1.dens.tv/h/h207/02.m3u8
@@ -289,9 +274,6 @@ https://op-group1-densxvisionhd-1.dens.tv/h/h207/02.m3u8
 https://op-flashcon-digdayahd-1.dens.tv/h/h207/index.m3u8
 #EXTINF:-1 tvg-id="Moji Tv Dens" tvg-name="Moji Tv Dens - Server 1" tvg-logo="https://thumbor.prod.vidiocdn.com/g7gTjD2Il1GI4DJULOZ1cv6NSj4=/230x230/filters:quality(70)/vidio-web-prod-livestreaming/uploads/livestreaming/square_image/206/1823dc.png" group-title="🇮🇩 NASIONAL",Moji Tv Dens - Server 1
 https://op-flashcon-digdayahd-1.dens.tv/h/h207/index.m3u8
-#EXTINF:-1 tvg-id="Music Tv" tvg-name="Music Tv - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/0/04/Music_TV_%282020%29.png" group-title="🇮🇩 NASIONAL",Music Tv - Server 1
-#EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/musictv/index.m3u8
 #EXTINF:-1 tvg-id="Nusantara Tv Channelfeed" tvg-name="Nusantara Tv Channelfeed - Server 1" tvg-logo="https://1.bp.blogspot.com/-XuTzv0bqfxY/YJYrykum4tI/AAAAAAAAEl8/keGu1T6qQ2QuMv2uAZWS22w4dCsXNpUHgCLcBGAsYHQ/s720/ntv-p.png" group-title="🇮🇩 NASIONAL",Nusantara Tv Channelfeed - Server 1
 https://nusantaratv.siar.us/nusantaratv/live/playlist.m3u8
 #EXTINF:-1 tvg-id="Pon Tv" tvg-name="Pon Tv - Server 1" tvg-logo="https://i.imgur.com/P5erWzm.png" group-title="🇮🇩 NASIONAL",Pon Tv - Server 1
@@ -336,7 +318,7 @@ https://cdn.gunadarma.ac.id/streams/ugtv/ingestugtv_high.m3u8
 #EXTINF:-1 tvg-id="Vision Prime" tvg-name="Vision Prime - Server 1" tvg-logo="https://i.imgur.com/FJnXWQq.png" group-title="🇮🇩 NASIONAL",Vision Prime - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/visionprime/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/visionprime/index.m3u8
 #EXTINF:-1 tvg-id="Vtv" tvg-name="Vtv - Server 1" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/7b/VTV_Indonesia_red.png" group-title="🇮🇩 NASIONAL",Vtv - Server 1
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
 https://flv.intechmedia.net/live/ch107.m3u8|user-agent=Mozilla/5.0
