@@ -214,7 +214,6 @@ https://v10.siar.us/rctv/live/playlist.m3u8
 #EXTVLCOPT:http-user-agent=android-R+
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
 https://rplus.inisemar.my.id/rcti.m3u8
-https://r-plus.sedotcw3.workers.dev/index.m3u8?id=rcti
 
 #EXTINF:-1 tvg-id="MNCTV.id@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.visionplus.id/images/repository/374/437374-SNAPSHOT-l.png" group-title="🇮🇩 NASIONAL 2",MNC TV 
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
@@ -682,100 +681,100 @@ https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/106/106.mpd
 #EXTINF:-1 tvg-id="109.trans" group-title="MOVIES" tvg-logo="https://i.imgur.com/uB76Ft0.png", CINEMAX
 http://136.239.173.10:6610/001/2/ch00000090990000001108/manifest.mpd?AuthInfo=v87HD9rEhwHiAdYyrP20Tg5pgSMSITY%2FHYvvCWJRp%2BoD7Jkv0l3sE1jz6821dGRWytokK1MIobcue1ImXa0ZEA%3D%3D&version=v1.0&BreakPoint=0&virtualDomain=001.live_hls.zte.com&programid=ch00000000000000001233&contentid=ch00000000000000001233&videoid=ch00000090990000001108&recommendtype=0&userid=1349825919509&boid=001&stbid=02%3A00%3A00%3A00%3A00%3A00&terminalflag=1&profilecode=&usersessionid=LAO494UQ9QXXXX&NeedJITP=1&JITPMediaType=DASH&JITPDRMType=NO
 
-#EXTINF:-1 tvg-id="tvNAsia.hk@SD" group-title="MOVIES" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_tvn.png",tvN
+#EXTINF:-1 tvg-id="HITS.sg@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz"  tvg-logo="https://www.hitstv.com/assets/hits.png" group-title="MOVIES",Hits (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-https://proxy-v.rctiplus.id/live/web/tvn/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/hits/index.m3u8
 
-#EXTINF:-1 tvg-id="tvNMoviesAsia.hk@SD" group-title="MOVIES" tvg-logo="https://raw.githubusercontent.com/apistech/project/refs/heads/main/logo/image_ch_tvnmovies.png",tvN Movies
+#EXTINF:-1 tvg-id="HITSMovies.sg@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz"  tvg-logo="https://static.wikia.nocookie.net/logos/images/1/16/HITS_Movies_logo.png/revision/latest/scale-to-width-down/423?cb=20220323123229&path-prefix=vi" group-title="MOVIES",HitsMovies (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.rctiplus.com/
-https://proxy-v.rctiplus.id/live/web/tvnmovies/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/hitsmovies/index.m3u8
 
-#EXTINF:-1 tvg-id="HITS.sg@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml"  tvg-logo="https://www.hitstv.com/assets/hits.png" group-title="MOVIES",Hits (Vision+)
+#EXTINF:-1 tvg-id="StudioUniversalLatinAmerica.us@Brazil" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://i.imgur.com/484iq4l.jpeg" group-title="MOVIES", STUDIO UNIVERSAL (Vision+)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://dsgtq5sngxkde.cloudfront.net/universal/index.m3u8
+
+#EXTINF:-1 tvg-id="AXNAsia.sg@Indonesia" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/bb/AXN_2011.png/revision/latest?cb=20201126072546" group-title="MOVIES",AXN (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/hits/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/axn/index.m3u8
 
-#EXTINF:-1 group-title="MOVIES" tvg-id="KIX.hk@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://static.wikia.nocookie.net/logos/images/2/21/KIX_HD.png/revision/latest?cb=20220216043203&path-prefix=vi",KIX (Vision+)
+#EXTINF:-1 group-title="MOVIES" tvg-id="Galaxy.id@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://static.wikia.nocookie.net/logos/images/1/19/Galaxy_tv_2020.png/revision/latest/scale-to-width-down/1200?cb=20241026110710&path-prefix=id",Galaxy (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/kix/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/galaxy/index.m3u8
 
-#EXTINF:-1 tvg-id="Thrill.hk@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://www.mncvision.id/userfiles/image/channel/thrill_150x150px.jpg" group-title="MOVIES",Thriil (Vision+)
+#EXTINF:-1 group-title="MOVIES" tvg-id="GalaxyPremium.id@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://static.wikia.nocookie.net/logos/images/1/19/Galaxy_tv_2020.png/revision/latest/scale-to-width-down/1200?cb=20241026110710&path-prefix=id",Galaxy Premium (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/thrill/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/galaxyprem/index.m3u8
 
-#EXTINF:-1 tvg-id="AXNAsia.sg@Indonesia" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/bb/AXN_2011.png/revision/latest?cb=20201126072546" group-title="MOVIES",AXN (Vision+)
+#EXTINF:-1 group-title="MOVIES" tvg-id="KIX.hk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://static.wikia.nocookie.net/logos/images/2/21/KIX_HD.png/revision/latest?cb=20220216043203&path-prefix=vi",KIX (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/axn/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/kix/index.m3u8
 
-#EXTINF:-1 tvg-id="CelestialMoviesIndonesia.id@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://alchetron.com/cdn/celestial-movies-bb30cf54-c796-47e1-aa8f-f2b8bdbbf5a-resize-750.png" group-title="MOVIES",Celestial Movies (Vision+)
+#EXTINF:-1 tvg-id="Thrill.hk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/thrill_150x150px.jpg" group-title="MOVIES",Thriil (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/celestialmovies/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/thrill/index.m3u8
 
-#EXTINF:-1 tvg-id="CelestialClassicMovies.id@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" group-title="MOVIES" tvg-logo="https://www.visionplus.id/images/repository/613/613-LOGO-m.png",CCM (Vision+)
+#EXTINF:-1 tvg-id="CelestialMoviesIndonesia.id@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://alchetron.com/cdn/celestial-movies-bb30cf54-c796-47e1-aa8f-f2b8bdbbf5a-resize-750.png" group-title="MOVIES",Celestial Movies (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/celestialclassic/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/celestialmovies/index.m3u8
 
-#EXTINF:-1 tvg-id="CinemachiAction.uk@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_8.png" group-title="MOVIES",Cineedge (Vision+)
+#EXTINF:-1 tvg-id="CelestialClassicMovies.id@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" group-title="MOVIES" tvg-logo="https://www.visionplus.id/images/repository/613/613-LOGO-m.png",CCM (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/cineedge/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/celestialclassic/index.m3u8
 
-#EXTINF:-1 group-title="MOVIES" tvg-id="ZeeBioskop.id@SD" tvg-url="https://raw.githubusercontent.com/apistech/project/refs/heads/main/epgs/guide.xml" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_23.png",Zee Bioskop (Vision+)
+#EXTINF:-1 tvg-id="CinemachiAction.uk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_8.png" group-title="MOVIES",Cineedge (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/zeebioskop/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/cineedge/index.m3u8
 
-#EXTINF:-1 tvg-logo="https://i.imgur.com/BvnDLBK.png" group-title="MOVIES", STUDIO UNIVERSAL +
+#EXTINF:-1 tvg-id="Cinemachi.uk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_7.png" group-title="MOVIES",ORIGINALS (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/universal/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/originals/index.m3u8
 
-#EXTINF:-1 tvg-logo="https://i.imgur.com/dFctrJw.png" group-title="MOVIES", SUPERRIX +
+#EXTINF:-1 tvg-id="CinemachiMax.uk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_10.png" group-title="MOVIES",SUPERRIX (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/superrix/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/superrix/index.m3u8
 
-#EXTINF:-1 tvg-id="Originals" tvg-logo="https://i.imgur.com/rgXTNXB.png" group-title="MOVIES", ORIGINALS +
+#EXTINF:-1 tvg-id="CinemachiXtra.uk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_6.png" group-title="MOVIES",Uniquest (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/originals/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/uniques/index.m3u8
 
-#EXTINF:-1 tvg-logo="https://i.imgur.com/Fol6HrU.png" group-title="MOVIES", UNIQUES +
+EXTINF:-1 tvg-id="CinemachiAction.uk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_8.png" group-title="MOVIES",Cineedge (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/uniques/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/cineedge/index.m3u8
 
-#EXTINF:-1 tvg-logo="https://i.imgur.com/ii7VKKM.png" group-title="MOVIES", BUDDY STAR +
+#EXTINF:-1 group-title="MOVIES" tvg-id="ZeeBioskop.id@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_23.png",Zee Bioskop (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/buddystars/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/zeebioskop/index.m3u8
 
-#EXTINF:-1 group-title="MOVIES"  tvg-logo="https://i.imgur.com/IMzpYdv.png?raw=true", GALAXY +
+#EXTINF:-1 tvg-id="tvNAsia.hk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://e7.pngegg.com/pngimages/120/627/png-clipart-south-korea-tvn-television-channel-television-show-fight-miscellaneous-television-thumbnail.png" group-title="MOVIES",TVN (Vision+)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://dsgtq5sngxkde.cloudfront.net/tvn/index.m3u8
+
+#EXTINF:-1 tvg-id="tvNMoviesAsia.hk@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://www.mncvision.id/userfiles/image/channel/channel_25.png" group-title="MOVIES",TvN movies HD (Vision+)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+#EXTVLCOPT:http-referrer=https://www.rctiplus.com/
+https://dsgtq5sngxkde.cloudfront.net/tvnmovies/index.m3u8
+
+#EXTINF:-1 tvg-id="ROCKAction.sg@SD" tvg-url="https://github.com/apistech/project/raw/refs/heads/main/epgs/guide.xml.gz" tvg-logo="https://i.imgur.com/l6lmlqG.png" group-title="MOVIES",Rock Action (Vision+)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 #EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/galaxy/index.m3u8
-
-#EXTINF:-1 tvg-id="" tvg-logo="https://i.imgur.com/fD896xt.png" group-title="MOVIES", GALAXY PREMIUM +
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/galaxyprem/index.m3u8
-
-#EXTINF:-1 tvg-id="ROCKAction.id" tvg-url="https://www.bevy.be/bevyfiles/indonesia.xml" tvg-logo="https://i.imgur.com/8Vp1CI8.png?raw=true" group-title="MOVIES", ROCK ACTION +
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/rockaction/index.m3u8
-
-#EXTINF:-1 group-title="MOVIES" tvg-id="Zee Bioskop - [Channel 23].id" tvg-url="https://www.bevy.be/bevyfiles/indonesia.xml" tvg-logo="https://i.imgur.com/wyW6wCP.png?raw=true", ZEE BIOSKOP +
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-#EXTVLCOPT:http-referrer=https://www.visionplus.id/
-https://proxy-v.rctiplus.id/live/web/zeebioskop/index.m3u8
+https://dsgtq5sngxkde.cloudfront.net/rockaction/index.m3u8
 
 #EXTINF:-1 tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_MOVIES/images/LOGO_HD/image.png" group-title="MOVIES", STAR MOVIES
 http://tv.cloudcdn.me/live.ts?channelId=198&uid=12643&deviceMac=00:1A:79:03:13:DE
