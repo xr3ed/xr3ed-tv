@@ -185,11 +185,6 @@
     <display-name>🔴 [S1] UEL</display-name>
     <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/1393.png" />
   </channel>
-  <channel id="kltra_liveevents_43829132_s1">
-    <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
-    <display-name>🔴 [S1] Men Setka Cup</display-name>
-    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
-  </channel>
   <channel id="kltra_7e81e1aa-07c5-46bc-a2b9-5883443_s1">
     <display-name lang="id">🔴 [S1] FIBA World Cup Europe Qualifiers</display-name>
     <display-name>🔴 [S1] FIBA World Cup Europe Qualifiers</display-name>
@@ -213,6 +208,16 @@
   <channel id="kltra_liveevents_40022500_s1">
     <display-name lang="id">🔴 [S1] League A</display-name>
     <display-name>🔴 [S1] League A</display-name>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Volleyball.png" />
+  </channel>
+  <channel id="kltra_liveevents_43831497_s1">
+    <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
+    <display-name>🔴 [S1] Men Setka Cup</display-name>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
+  </channel>
+  <channel id="kltra_liveevents_43879009_s1">
+    <display-name lang="id">🔴 [S1] Women Pro League</display-name>
+    <display-name>🔴 [S1] Women Pro League</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Volleyball.png" />
   </channel>
   <channel id="kltra_a9b28736-f9b5-4b40-8dcc-6050095_s1">
@@ -967,17 +972,6 @@
     <category lang="id">Sports</category>
     <icon src="https://i0.wp.com/static.cdnpro.sbs//football/teams/1393.png" />
   </programme>
-  <programme start="20261127021500 +0700" stop="20261127054500 +0700" channel="kltra_liveevents_43829132_s1">
-    <title lang="id">Josef Dolezal vs Jakub Senk</title>
-    <title>Josef Dolezal vs Jakub Senk</title>
-    <desc lang="id">🏆 Kompetisi: Men Setka Cup
-⚔️ Pertandingan: Josef Dolezal vs Jakub Senk
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 02:15 WIB
-📡 Jalur: [S1] - Kltra - S1</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
-  </programme>
   <programme start="20261127020000 +0700" stop="20261127053000 +0700" channel="kltra_7e81e1aa-07c5-46bc-a2b9-5883443_s1">
     <title lang="id">Portugal vs Ukraina</title>
     <title>Portugal vs Ukraina</title>
@@ -1030,6 +1024,28 @@
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
 ⏰ Kickoff: 02:00 WIB
 📡 Jalur: [S1] - Server 1 (Worker HLS)</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Volleyball.png" />
+  </programme>
+  <programme start="20261127020000 +0700" stop="20261127053000 +0700" channel="kltra_liveevents_43831497_s1">
+    <title lang="id">Vladimir Sawolyuk vs Vsevolod Lytvyn</title>
+    <title>Vladimir Sawolyuk vs Vsevolod Lytvyn</title>
+    <desc lang="id">🏆 Kompetisi: Men Setka Cup
+⚔️ Pertandingan: Vladimir Sawolyuk vs Vsevolod Lytvyn
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 02:00 WIB
+📡 Jalur: [S1] - Kltra - S1</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
+  </programme>
+  <programme start="20261127015500 +0700" stop="20261127052500 +0700" channel="kltra_liveevents_43879009_s1">
+    <title lang="id">Sovy-Pro (w) vs Foxy-Pro (w)</title>
+    <title>Sovy-Pro (w) vs Foxy-Pro (w)</title>
+    <desc lang="id">🏆 Kompetisi: Women Pro League
+⚔️ Pertandingan: Sovy-Pro (w) vs Foxy-Pro (w)
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 01:55 WIB
+📡 Jalur: [S1] - Kltra - S1</desc>
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Volleyball.png" />
   </programme>
@@ -1242,7 +1258,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/fd620b8823d0cf56.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127023000 +0700" channel="kltra_6f266174-d827-4ca3-9b9f-6087024_s1">
+  <programme start="20261127002729 +0700" stop="20261127023000 +0700" channel="kltra_6f266174-d827-4ca3-9b9f-6087024_s1">
     <title lang="id">⏳ Kickoff 02:30 WIB: Iceland vs Bosnia and Herzegovina</title>
     <title>⏳ Kickoff 02:30 WIB: Iceland vs Bosnia and Herzegovina</title>
     <desc lang="id">🏆 Kompetisi: FIBA World Cup Europe Qualifiers
@@ -1264,7 +1280,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/e636d459fbc58a8075ef0562996f6475.png" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127023000 +0700" channel="kltra_6f266174-d827-4ca3-9b9f-6087024_s2">
+  <programme start="20261127002729 +0700" stop="20261127023000 +0700" channel="kltra_6f266174-d827-4ca3-9b9f-6087024_s2">
     <title lang="id">⏳ Kickoff 02:30 WIB: Iceland vs Bosnia and Herzegovina</title>
     <title>⏳ Kickoff 02:30 WIB: Iceland vs Bosnia and Herzegovina</title>
     <desc lang="id">🏆 Kompetisi: FIBA World Cup Europe Qualifiers
@@ -1286,7 +1302,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/e636d459fbc58a8075ef0562996f6475.png" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127023000 +0700" channel="od_espn-401906869_s1">
+  <programme start="20261127002729 +0700" stop="20261127023000 +0700" channel="od_espn-401906869_s1">
     <title lang="id">⏳ Kickoff 02:30 WIB: Texas Longhorns vs Georgetown Hoyas</title>
     <title>⏳ Kickoff 02:30 WIB: Texas Longhorns vs Georgetown Hoyas</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1308,7 +1324,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401906869.jpg?v=3nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127023000 +0700" channel="od_espn-401906869_s2">
+  <programme start="20261127002729 +0700" stop="20261127023000 +0700" channel="od_espn-401906869_s2">
     <title lang="id">⏳ Kickoff 02:30 WIB: Texas Longhorns vs Georgetown Hoyas</title>
     <title>⏳ Kickoff 02:30 WIB: Texas Longhorns vs Georgetown Hoyas</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1330,7 +1346,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401906869.jpg?v=3nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127023000 +0700" channel="od_tsdb-2554226_s1">
+  <programme start="20261127002729 +0700" stop="20261127023000 +0700" channel="od_tsdb-2554226_s1">
     <title lang="id">⏳ Kickoff 02:30 WIB: Volley Perugia vs Volley Lube</title>
     <title>⏳ Kickoff 02:30 WIB: Volley Perugia vs Volley Lube</title>
     <desc lang="id">🏆 Kompetisi: Italian Volleyball League
@@ -1352,7 +1368,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/6e6a182c81bd9a47.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_tsdb-2594760_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_tsdb-2594760_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Gent vs Crvena Zvezda</title>
     <title>⏳ Kickoff 03:00 WIB: Gent vs Crvena Zvezda</title>
     <desc lang="id">🏆 Kompetisi: UEFA Conference League
@@ -1374,7 +1390,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/30e2d47693c2c1a2.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_tsdb-2550642_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_tsdb-2550642_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: CA Brive vs Biarritz Olympique</title>
     <title>⏳ Kickoff 03:00 WIB: CA Brive vs Biarritz Olympique</title>
     <desc lang="id">🏆 Kompetisi: French Pro D2
@@ -1396,7 +1412,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/ecfec1c4d819d438.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-3fce4dc898_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-3fce4dc898_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Crystal Palace vs Real Sociedad</title>
     <title>⏳ Kickoff 03:00 WIB: Crystal Palace vs Real Sociedad</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1418,7 +1434,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915504.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-3fce4dc898_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-3fce4dc898_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Crystal Palace vs Real Sociedad</title>
     <title>⏳ Kickoff 03:00 WIB: Crystal Palace vs Real Sociedad</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1440,7 +1456,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915504.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-5002a16b29_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-5002a16b29_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Ferencvaros vs NK Celje</title>
     <title>⏳ Kickoff 03:00 WIB: Ferencvaros vs NK Celje</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1462,7 +1478,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915516.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-5002a16b29_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-5002a16b29_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Ferencvaros vs NK Celje</title>
     <title>⏳ Kickoff 03:00 WIB: Ferencvaros vs NK Celje</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1484,7 +1500,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915516.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f1176c43e_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f1176c43e_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Juventus vs Omonia Nicosia</title>
     <title>⏳ Kickoff 03:00 WIB: Juventus vs Omonia Nicosia</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1506,7 +1522,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915502.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f1176c43e_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f1176c43e_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Juventus vs Omonia Nicosia</title>
     <title>⏳ Kickoff 03:00 WIB: Juventus vs Omonia Nicosia</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1528,7 +1544,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915502.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-2024beb133_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-2024beb133_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Lyon vs Lillestrom</title>
     <title>⏳ Kickoff 03:00 WIB: Lyon vs Lillestrom</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1550,7 +1566,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915501.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-2024beb133_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-2024beb133_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Lyon vs Lillestrom</title>
     <title>⏳ Kickoff 03:00 WIB: Lyon vs Lillestrom</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1572,7 +1588,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915501.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f27de5d8b_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f27de5d8b_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: NEC Nijmegen vs Stade Rennais</title>
     <title>⏳ Kickoff 03:00 WIB: NEC Nijmegen vs Stade Rennais</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1594,7 +1610,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915505.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f27de5d8b_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-4f27de5d8b_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: NEC Nijmegen vs Stade Rennais</title>
     <title>⏳ Kickoff 03:00 WIB: NEC Nijmegen vs Stade Rennais</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1616,7 +1632,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915505.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-cc3f256ca6_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-cc3f256ca6_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: OFI Crete vs Anderlecht</title>
     <title>⏳ Kickoff 03:00 WIB: OFI Crete vs Anderlecht</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1638,7 +1654,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915503.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-cc3f256ca6_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-cc3f256ca6_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: OFI Crete vs Anderlecht</title>
     <title>⏳ Kickoff 03:00 WIB: OFI Crete vs Anderlecht</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1660,7 +1676,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915503.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-423e02115d_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-423e02115d_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sparta Prague vs AZ Alkmaar</title>
     <title>⏳ Kickoff 03:00 WIB: Sparta Prague vs AZ Alkmaar</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1682,7 +1698,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915514.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-423e02115d_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-423e02115d_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sparta Prague vs AZ Alkmaar</title>
     <title>⏳ Kickoff 03:00 WIB: Sparta Prague vs AZ Alkmaar</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1704,7 +1720,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915514.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-7213f96a17_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-7213f96a17_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sunderland vs Jagiellonia Bialystok</title>
     <title>⏳ Kickoff 03:00 WIB: Sunderland vs Jagiellonia Bialystok</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1726,7 +1742,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915513.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-7213f96a17_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-7213f96a17_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Sunderland vs Jagiellonia Bialystok</title>
     <title>⏳ Kickoff 03:00 WIB: Sunderland vs Jagiellonia Bialystok</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1748,7 +1764,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915513.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-8b02b102a9_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-8b02b102a9_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Torreense vs Celtic</title>
     <title>⏳ Kickoff 03:00 WIB: Torreense vs Celtic</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1770,14 +1786,14 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915512.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-8b02b102a9_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-8b02b102a9_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Torreense vs Celtic</title>
     <title>⏳ Kickoff 03:00 WIB: Torreense vs Celtic</title>
     <desc lang="id">🏆 Kompetisi: Europa League
 ⚔️ Pertandingan: Torreense vs Celtic
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 03:00 WIB
-📡 Jalur: [S2] - Beesport - TNT Sports 3 BU</desc>
+📡 Jalur: [S2] - Beesport - TNT Sports 3</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915512.jpg?v=8nf" />
   </programme>
@@ -1788,11 +1804,11 @@
 ⚔️ Pertandingan: Torreense vs Celtic
 ⚡ Status: AKAN DATANG (UPCOMING)
 ⏰ Kickoff: 03:00 WIB
-📡 Jalur: [S2] - Beesport - TNT Sports 3 BU</desc>
+📡 Jalur: [S2] - Beesport - TNT Sports 3</desc>
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915512.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-663ea2bce0_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-663ea2bce0_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: TSG Hoffenheim vs SK Sturm Graz</title>
     <title>⏳ Kickoff 03:00 WIB: TSG Hoffenheim vs SK Sturm Graz</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1814,7 +1830,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915515.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-663ea2bce0_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-663ea2bce0_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: TSG Hoffenheim vs SK Sturm Graz</title>
     <title>⏳ Kickoff 03:00 WIB: TSG Hoffenheim vs SK Sturm Graz</title>
     <desc lang="id">🏆 Kompetisi: Europa League
@@ -1836,7 +1852,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa/401915515.jpg?v=8nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-0c3c065afc_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-0c3c065afc_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Borac Banja Luka vs Atalanta</title>
     <title>⏳ Kickoff 03:00 WIB: Borac Banja Luka vs Atalanta</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -1858,7 +1874,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915806.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-0c3c065afc_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-0c3c065afc_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Borac Banja Luka vs Atalanta</title>
     <title>⏳ Kickoff 03:00 WIB: Borac Banja Luka vs Atalanta</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -1880,7 +1896,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915806.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-4b0bd9c3e1_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-4b0bd9c3e1_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Braga vs KuPS Kuopio</title>
     <title>⏳ Kickoff 03:00 WIB: Braga vs KuPS Kuopio</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -1902,7 +1918,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915802.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-4b0bd9c3e1_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-4b0bd9c3e1_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Braga vs KuPS Kuopio</title>
     <title>⏳ Kickoff 03:00 WIB: Braga vs KuPS Kuopio</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -1924,7 +1940,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915802.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-3a074bbd32_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-3a074bbd32_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: CSKA Sofia vs Trabzonspor</title>
     <title>⏳ Kickoff 03:00 WIB: CSKA Sofia vs Trabzonspor</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -1946,7 +1962,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915803.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-3a074bbd32_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-3a074bbd32_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: CSKA Sofia vs Trabzonspor</title>
     <title>⏳ Kickoff 03:00 WIB: CSKA Sofia vs Trabzonspor</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -1968,7 +1984,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915803.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-ce33ae7964_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-ce33ae7964_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: FC Nordsjælland vs Panathinaikos</title>
     <title>⏳ Kickoff 03:00 WIB: FC Nordsjælland vs Panathinaikos</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -1990,7 +2006,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/d12852e2e47cf500.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-ce33ae7964_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-ce33ae7964_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: FC Nordsjælland vs Panathinaikos</title>
     <title>⏳ Kickoff 03:00 WIB: FC Nordsjælland vs Panathinaikos</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -2012,7 +2028,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/d12852e2e47cf500.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-bee3e51996_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-bee3e51996_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Hajduk Split vs Sint-Truidense</title>
     <title>⏳ Kickoff 03:00 WIB: Hajduk Split vs Sint-Truidense</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -2034,7 +2050,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915805.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-bee3e51996_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-bee3e51996_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Hajduk Split vs Sint-Truidense</title>
     <title>⏳ Kickoff 03:00 WIB: Hajduk Split vs Sint-Truidense</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -2056,7 +2072,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915805.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-00f039e0e8_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-00f039e0e8_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: Inter D'Escaldes vs F.C. København</title>
     <title>⏳ Kickoff 03:00 WIB: Inter D'Escaldes vs F.C. København</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -2078,7 +2094,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/a467ceeaf1848a2d.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-00f039e0e8_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-00f039e0e8_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: Inter D'Escaldes vs F.C. København</title>
     <title>⏳ Kickoff 03:00 WIB: Inter D'Escaldes vs F.C. København</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -2100,7 +2116,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/a467ceeaf1848a2d.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-0e9e4014f2_s1">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-0e9e4014f2_s1">
     <title lang="id">⏳ Kickoff 03:00 WIB: KAA Gent vs Red Star Belgrade</title>
     <title>⏳ Kickoff 03:00 WIB: KAA Gent vs Red Star Belgrade</title>
     <desc lang="id">🏆 Kompetisi: Conference League
@@ -2122,7 +2138,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/uefa.europa.conf/401915804.jpg?v=6nf" />
   </programme>
-  <programme start="20261127002221 +0700" stop="20261127030000 +0700" channel="od_mm-own-0e9e4014f2_s2">
+  <programme start="20261127002729 +0700" stop="20261127030000 +0700" channel="od_mm-own-0e9e4014f2_s2">
     <title lang="id">⏳ Kickoff 03:00 WIB: KAA Gent vs Red Star Belgrade</title>
     <title>⏳ Kickoff 03:00 WIB: KAA Gent vs Red Star Belgrade</title>
     <desc lang="id">🏆 Kompetisi: Conference League
