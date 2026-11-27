@@ -5,6 +5,11 @@
     <display-name>⏳ 28/11 00:30 [S1] Bundesliga</display-name>
     <icon src="/img/cards/ger.2/401885047.jpg?v=3nf" />
   </channel>
+  <channel id="od_mm-own-6169c70d5f_s2">
+    <display-name lang="id">⏳ 28/11 00:30 [S2] Bundesliga</display-name>
+    <display-name>⏳ 28/11 00:30 [S2] Bundesliga</display-name>
+    <icon src="/img/cards/ger.2/401885047.jpg?v=3nf" />
+  </channel>
   <channel id="od_tsdb-2525465_s1">
     <display-name lang="id">⏳ 28/11 01:00 [S1] Germany Liga 3</display-name>
     <display-name>⏳ 28/11 01:00 [S1] Germany Liga 3</display-name>
@@ -60,12 +65,12 @@
     <display-name>🔴 [S2] MotoGP</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </channel>
-  <channel id="kltra_liveevents_43882386_s1">
+  <channel id="kltra_liveevents_43882932_s1">
     <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
     <display-name>🔴 [S1] Men Setka Cup</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
   </channel>
-  <channel id="kltra_liveevents_43882069_s1">
+  <channel id="kltra_liveevents_43882386_s1">
     <display-name lang="id">🔴 [S1] Men Setka Cup</display-name>
     <display-name>🔴 [S1] Men Setka Cup</display-name>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
@@ -420,7 +425,7 @@
     <display-name>[S1] Sky Sports Golf</display-name>
     <icon src="/img/cards/247/247-dl-70.jpg?v=6" />
   </channel>
-  <programme start="20261127202240 +0700" stop="20261128003000 +0700" channel="od_mm-own-6169c70d5f_s1">
+  <programme start="20261127202739 +0700" stop="20261128003000 +0700" channel="od_mm-own-6169c70d5f_s1">
     <title lang="id">⏳ Kickoff 00:30 WIB: 1. FC Heidenheim 1846 vs 1. FC Nürnberg</title>
     <title>⏳ Kickoff 00:30 WIB: 1. FC Heidenheim 1846 vs 1. FC Nürnberg</title>
     <desc lang="id">🏆 Kompetisi: 2. Bundesliga
@@ -442,7 +447,29 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/ger.2/401885047.jpg?v=3nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128010000 +0700" channel="od_tsdb-2525465_s1">
+  <programme start="20261127202739 +0700" stop="20261128003000 +0700" channel="od_mm-own-6169c70d5f_s2">
+    <title lang="id">⏳ Kickoff 00:30 WIB: 1. FC Heidenheim 1846 vs 1. FC Nürnberg</title>
+    <title>⏳ Kickoff 00:30 WIB: 1. FC Heidenheim 1846 vs 1. FC Nürnberg</title>
+    <desc lang="id">🏆 Kompetisi: 2. Bundesliga
+⚔️ Pertandingan: 1. FC Heidenheim 1846 vs 1. FC Nürnberg
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 00:30 WIB
+📡 Jalur: [S2] - Beesport - Sky Bundesliga 3</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/ger.2/401885047.jpg?v=3nf" />
+  </programme>
+  <programme start="20261128003000 +0700" stop="20261128040000 +0700" channel="od_mm-own-6169c70d5f_s2">
+    <title lang="id">1. FC Heidenheim 1846 vs 1. FC Nürnberg</title>
+    <title>1. FC Heidenheim 1846 vs 1. FC Nürnberg</title>
+    <desc lang="id">🏆 Kompetisi: 2. Bundesliga
+⚔️ Pertandingan: 1. FC Heidenheim 1846 vs 1. FC Nürnberg
+⚡ Status: AKAN DATANG (UPCOMING)
+⏰ Kickoff: 00:30 WIB
+📡 Jalur: [S2] - Beesport - Sky Bundesliga 3</desc>
+    <category lang="id">Sports</category>
+    <icon src="/img/cards/ger.2/401885047.jpg?v=3nf" />
+  </programme>
+  <programme start="20261127202739 +0700" stop="20261128010000 +0700" channel="od_tsdb-2525465_s1">
     <title lang="id">⏳ Kickoff 01:00 WIB: Hansa Rostock vs Havelse</title>
     <title>⏳ Kickoff 01:00 WIB: Hansa Rostock vs Havelse</title>
     <desc lang="id">🏆 Kompetisi: Germany Liga 3
@@ -464,7 +491,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/085208e886d1f527.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128023000 +0700" channel="od_espn-401883102_s1">
+  <programme start="20261127202739 +0700" stop="20261128023000 +0700" channel="od_espn-401883102_s1">
     <title lang="id">⏳ Kickoff 02:30 WIB: Leganés vs CD Sabadell</title>
     <title>⏳ Kickoff 02:30 WIB: Leganés vs CD Sabadell</title>
     <desc lang="id">🏆 Kompetisi: Spanish LALIGA 2
@@ -585,6 +612,17 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </programme>
+  <programme start="20261127221500 +0700" stop="20261128014500 +0700" channel="kltra_liveevents_43882932_s1">
+    <title lang="id">Ondrej Mezera vs Miroslav Hajek</title>
+    <title>Ondrej Mezera vs Miroslav Hajek</title>
+    <desc lang="id">🏆 Kompetisi: Men Setka Cup
+⚔️ Pertandingan: Ondrej Mezera vs Miroslav Hajek
+⚡ Status: SEDANG BERLANGSUNG (LIVE)
+⏰ Kickoff: 22:15 WIB
+📡 Jalur: [S1] - Kltra - S1</desc>
+    <category lang="id">Sports</category>
+    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
+  </programme>
   <programme start="20261127221000 +0700" stop="20261128014000 +0700" channel="kltra_liveevents_43882386_s1">
     <title lang="id">Hrabskyi Andrii vs Volodymyr Voronenkov</title>
     <title>Hrabskyi Andrii vs Volodymyr Voronenkov</title>
@@ -592,17 +630,6 @@
 ⚔️ Pertandingan: Hrabskyi Andrii vs Volodymyr Voronenkov
 ⚡ Status: SEDANG BERLANGSUNG (LIVE)
 ⏰ Kickoff: 22:10 WIB
-📡 Jalur: [S1] - Kltra - S1</desc>
-    <category lang="id">Sports</category>
-    <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
-  </programme>
-  <programme start="20261127220500 +0700" stop="20261128013500 +0700" channel="kltra_liveevents_43882069_s1">
-    <title lang="id">Kyrylo Tkachenko vs Dmytro Belanchyk</title>
-    <title>Kyrylo Tkachenko vs Dmytro Belanchyk</title>
-    <desc lang="id">🏆 Kompetisi: Men Setka Cup
-⚔️ Pertandingan: Kyrylo Tkachenko vs Dmytro Belanchyk
-⚡ Status: SEDANG BERLANGSUNG (LIVE)
-⏰ Kickoff: 22:05 WIB
 📡 Jalur: [S1] - Kltra - S1</desc>
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Table_Tennis.png" />
@@ -981,7 +1008,7 @@
     <category lang="id">Sports</category>
     <icon src="https://r2.thesportsdb.com/images/media/event/thumb/057x931795726143.jpg/preview" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261127223000 +0700" channel="kltra_52909ef1-f9e9-4291-a879-6030197_s1">
+  <programme start="20261127202739 +0700" stop="20261127223000 +0700" channel="kltra_52909ef1-f9e9-4291-a879-6030197_s1">
     <title lang="id">⏳ Kickoff 22:30 WIB: FC Universitatea Cluj vs ACS Sepsi OSK Sfantu Gheorghe</title>
     <title>⏳ Kickoff 22:30 WIB: FC Universitatea Cluj vs ACS Sepsi OSK Sfantu Gheorghe</title>
     <desc lang="id">🏆 Kompetisi: Romanian National Championship
@@ -1003,7 +1030,7 @@
     <category lang="id">Sports</category>
     <icon src="https://s.312977.com/data/b4b3d6c3f82ad054fb24f8131597f94d.png" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261127230000 +0700" channel="od_espn-401920429_s1">
+  <programme start="20261127202739 +0700" stop="20261127230000 +0700" channel="od_espn-401920429_s1">
     <title lang="id">⏳ Kickoff 23:00 WIB: Xavier Musketeers vs Virginia Cavaliers</title>
     <title>⏳ Kickoff 23:00 WIB: Xavier Musketeers vs Virginia Cavaliers</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1025,7 +1052,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401920429.jpg?v=3nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261127230000 +0700" channel="od_espn-401920429_s2">
+  <programme start="20261127202739 +0700" stop="20261127230000 +0700" channel="od_espn-401920429_s2">
     <title lang="id">⏳ Kickoff 23:00 WIB: Xavier Musketeers vs Virginia Cavaliers</title>
     <title>⏳ Kickoff 23:00 WIB: Xavier Musketeers vs Virginia Cavaliers</title>
     <desc lang="id">🏆 Kompetisi: NCAA Men's Basketball
@@ -1047,7 +1074,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/mens-college-basketball/401920429.jpg?v=3nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261127230000 +0700" channel="od_tsdb-2491310_s1">
+  <programme start="20261127202739 +0700" stop="20261127230000 +0700" channel="od_tsdb-2491310_s1">
     <title lang="id">⏳ Kickoff 23:00 WIB: IMT Novi Beograd vs Mačva Šabac</title>
     <title>⏳ Kickoff 23:00 WIB: IMT Novi Beograd vs Mačva Šabac</title>
     <desc lang="id">🏆 Kompetisi: Serbian Super Liga
@@ -1069,7 +1096,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/227da2fc6f20a972.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261127230000 +0700" channel="od_tsdb-2624360_s1">
+  <programme start="20261127202739 +0700" stop="20261127230000 +0700" channel="od_tsdb-2624360_s1">
     <title lang="id">⏳ Kickoff 23:00 WIB: Brežice vs Triglav Kranj</title>
     <title>⏳ Kickoff 23:00 WIB: Brežice vs Triglav Kranj</title>
     <desc lang="id">🏆 Kompetisi: Slovenia Cup
@@ -1091,7 +1118,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/6a46f087ce59f7b3.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261127233000 +0700" channel="od_tsdb-2487380_s1">
+  <programme start="20261127202739 +0700" stop="20261127233000 +0700" channel="od_tsdb-2487380_s1">
     <title lang="id">⏳ Kickoff 23:30 WIB: Lokomotiv Sofia vs Slavia Sofia</title>
     <title>⏳ Kickoff 23:30 WIB: Lokomotiv Sofia vs Slavia Sofia</title>
     <desc lang="id">🏆 Kompetisi: Bulgarian First League
@@ -1113,7 +1140,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/0359aecb35beae65.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261127233000 +0700" channel="od_tsdb-2514932_s1">
+  <programme start="20261127202739 +0700" stop="20261127233000 +0700" channel="od_tsdb-2514932_s1">
     <title lang="id">⏳ Kickoff 23:30 WIB: Torpedo Moscow vs SKA-Khabarovsk</title>
     <title>⏳ Kickoff 23:30 WIB: Torpedo Moscow vs SKA-Khabarovsk</title>
     <desc lang="id">🏆 Kompetisi: Russian Football National League
@@ -1135,7 +1162,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/f7910dd64b55d745.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="kltra_697c3f35-524e-4623-8c45-9f410baa3e64_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="kltra_697c3f35-524e-4623-8c45-9f410baa3e64_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Formula 1: Qatar Airways Qatar Grand Prix 2026</title>
     <title>⏳ Kickoff 00:00 WIB: Formula 1: Qatar Airways Qatar Grand Prix 2026</title>
     <desc lang="id">🏆 Kompetisi: Formula 1: Qatar Airways Qatar Grand Prix 2026
@@ -1157,7 +1184,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="kltra_697c3f35-524e-4623-8c45-9f410baa3e64_s2">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="kltra_697c3f35-524e-4623-8c45-9f410baa3e64_s2">
     <title lang="id">⏳ Kickoff 00:00 WIB: Formula 1: Qatar Airways Qatar Grand Prix 2026</title>
     <title>⏳ Kickoff 00:00 WIB: Formula 1: Qatar Airways Qatar Grand Prix 2026</title>
     <desc lang="id">🏆 Kompetisi: Formula 1: Qatar Airways Qatar Grand Prix 2026
@@ -1179,7 +1206,7 @@
     <category lang="id">Sports</category>
     <icon src="https://kltraid.pages.dev/images/sportsicon/Main_Racing.png" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_espn-401856762_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_espn-401856762_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Ole Miss Rebels vs Mississippi State Bulldogs</title>
     <title>⏳ Kickoff 00:00 WIB: Ole Miss Rebels vs Mississippi State Bulldogs</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1201,7 +1228,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401856762.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_espn-401856762_s2">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_espn-401856762_s2">
     <title lang="id">⏳ Kickoff 00:00 WIB: Ole Miss Rebels vs Mississippi State Bulldogs</title>
     <title>⏳ Kickoff 00:00 WIB: Ole Miss Rebels vs Mississippi State Bulldogs</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1223,7 +1250,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401856762.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_espn-401862840_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_espn-401862840_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: UTSA Roadrunners vs Tulsa Golden Hurricane</title>
     <title>⏳ Kickoff 00:00 WIB: UTSA Roadrunners vs Tulsa Golden Hurricane</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1245,7 +1272,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401862840.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_espn-401866472_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_espn-401866472_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Akron Zips vs Buffalo Bulls</title>
     <title>⏳ Kickoff 00:00 WIB: Akron Zips vs Buffalo Bulls</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1267,7 +1294,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401866472.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_espn-401866473_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_espn-401866473_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Ohio Bobcats vs Toledo Rockets</title>
     <title>⏳ Kickoff 00:00 WIB: Ohio Bobcats vs Toledo Rockets</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1289,7 +1316,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401866473.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2482592_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2482592_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Istra 1961 vs Varaždin</title>
     <title>⏳ Kickoff 00:00 WIB: Istra 1961 vs Varaždin</title>
     <desc lang="id">🏆 Kompetisi: Croatian First Football League
@@ -1311,7 +1338,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/26972d59d3dc63ac.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2490331_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2490331_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Raków Częstochowa vs Piast Gliwice</title>
     <title>⏳ Kickoff 00:00 WIB: Raków Częstochowa vs Piast Gliwice</title>
     <desc lang="id">🏆 Kompetisi: Polish Ekstraklasa
@@ -1333,7 +1360,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/979c9c9c3f6a4928.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2495133_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2495133_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Radomlje vs Nafta</title>
     <title>⏳ Kickoff 00:00 WIB: Radomlje vs Nafta</title>
     <desc lang="id">🏆 Kompetisi: Slovenian 1. SNL
@@ -1355,7 +1382,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/ec310149d6ab0542.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2499992_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2499992_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: GKS Tychy vs Chojniczanka Chojnice</title>
     <title>⏳ Kickoff 00:00 WIB: GKS Tychy vs Chojniczanka Chojnice</title>
     <desc lang="id">🏆 Kompetisi: Polish II liga
@@ -1377,7 +1404,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/5f6223bd03d7ffdc.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2519361_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2519361_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Artis Brno vs Slovácko</title>
     <title>⏳ Kickoff 00:00 WIB: Artis Brno vs Slovácko</title>
     <desc lang="id">🏆 Kompetisi: Czech First League
@@ -1399,7 +1426,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/71c8921a07ad56ab.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2528969_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2528969_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Sarıyer vs İstanbulspor</title>
     <title>⏳ Kickoff 00:00 WIB: Sarıyer vs İstanbulspor</title>
     <desc lang="id">🏆 Kompetisi: Turkish 1 Lig
@@ -1421,7 +1448,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/c033adcea407e361.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2548737_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2548737_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: AEK Larnaca vs Apollon Limassol</title>
     <title>⏳ Kickoff 00:00 WIB: AEK Larnaca vs Apollon Limassol</title>
     <desc lang="id">🏆 Kompetisi: Cypriot First Division
@@ -1443,7 +1470,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/7309686476fad7e2.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_tsdb-2548740_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_tsdb-2548740_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: AEL Limassol vs Olympiakos Nicosia</title>
     <title>⏳ Kickoff 00:00 WIB: AEL Limassol vs Olympiakos Nicosia</title>
     <desc lang="id">🏆 Kompetisi: Cypriot First Division
@@ -1465,7 +1492,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/m/bf971041e5855682.jpg?v=3nf.t4l" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_mm-own-c16d468374_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_mm-own-c16d468374_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Alanyaspor vs Konyaspor</title>
     <title>⏳ Kickoff 00:00 WIB: Alanyaspor vs Konyaspor</title>
     <desc lang="id">🏆 Kompetisi: Süper Lig
@@ -1487,7 +1514,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/tur.1/401888241.jpg?v=3nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000000 +0700" channel="od_mm-own-daf921000e_s1">
+  <programme start="20261127202739 +0700" stop="20261128000000 +0700" channel="od_mm-own-daf921000e_s1">
     <title lang="id">⏳ Kickoff 00:00 WIB: Caykur Rizespor vs Kasimpasa</title>
     <title>⏳ Kickoff 00:00 WIB: Caykur Rizespor vs Kasimpasa</title>
     <desc lang="id">🏆 Kompetisi: Süper Lig
@@ -1509,7 +1536,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/tur.1/401888240.jpg?v=3nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000800 +0700" channel="od_espn-401858536_s1">
+  <programme start="20261127202739 +0700" stop="20261128000800 +0700" channel="od_espn-401858536_s1">
     <title lang="id">⏳ Kickoff 00:08 WIB: Iowa Hawkeyes vs Nebraska Cornhuskers</title>
     <title>⏳ Kickoff 00:08 WIB: Iowa Hawkeyes vs Nebraska Cornhuskers</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1531,7 +1558,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401858536.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128000800 +0700" channel="od_espn-401858536_s2">
+  <programme start="20261127202739 +0700" stop="20261128000800 +0700" channel="od_espn-401858536_s2">
     <title lang="id">⏳ Kickoff 00:08 WIB: Iowa Hawkeyes vs Nebraska Cornhuskers</title>
     <title>⏳ Kickoff 00:08 WIB: Iowa Hawkeyes vs Nebraska Cornhuskers</title>
     <desc lang="id">🏆 Kompetisi: NCAA - Football
@@ -1553,7 +1580,7 @@
     <category lang="id">Sports</category>
     <icon src="/img/cards/college-football/401858536.jpg?v=nf2nf" />
   </programme>
-  <programme start="20261127202240 +0700" stop="20261128003000 +0700" channel="od_tsdb-2533319_s1">
+  <programme start="20261127202739 +0700" stop="20261128003000 +0700" channel="od_tsdb-2533319_s1">
     <title lang="id">⏳ Kickoff 00:30 WIB: Dinamo City vs Partizani Tirana</title>
     <title>⏳ Kickoff 00:30 WIB: Dinamo City vs Partizani Tirana</title>
     <desc lang="id">🏆 Kompetisi: Albanian Superliga
